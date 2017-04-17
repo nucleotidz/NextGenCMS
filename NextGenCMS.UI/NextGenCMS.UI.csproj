@@ -172,6 +172,9 @@
     <Content Include="css\bootstrap\bootstrap.css" />
     <Content Include="css\bootstrap\bootstrap.min.css" />
     <Content Include="css\global.css" />
+    <Content Include="css\kendo\kendo.common-material.min.css" />
+    <Content Include="css\kendo\kendo.material.min.css" />
+    <Content Include="css\kendo\kendo.material.mobile.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="css\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -184,7 +187,9 @@
     <Content Include="Scripts\angular\app.js" />
     <Content Include="Scripts\angular\route.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
+    <Content Include="Scripts\controller\DashBoardcontroller.js" />
     <Content Include="Scripts\jquery\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\kendo\kendo.all.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -199,7 +204,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\constants\" />
-    <Folder Include="Scripts\controller\" />
     <Folder Include="Scripts\factory\" />
     <Folder Include="Scripts\service\" />
   </ItemGroup>

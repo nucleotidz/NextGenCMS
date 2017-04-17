@@ -15,7 +15,8 @@ namespace NextGenCMS.UI
         private static void LoadStyleSheets(BundleCollection bundles)
         {
             LoadBootStarpStyle(bundles);
-            LoadBootGloablStyle(bundles);
+            LoadBootGloabalStyle(bundles);
+            LoadKendoStyle(bundles);
         }
 
         private static void LoadJavaScripts(BundleCollection bundles)
@@ -23,6 +24,7 @@ namespace NextGenCMS.UI
             LoadJquery(bundles);
             LoadAngular(bundles);
             LoadBoostrap(bundles);
+            LoadKendo(bundles);
         }
 
         #region Javascripts
@@ -44,6 +46,12 @@ namespace NextGenCMS.UI
                   "~/Scripts/Angular/route.js"
              ));
         }
+        private static void LoadKendo(BundleCollection bundles)
+        {
+            bundles.Add(new ScriptBundle("~/Scripts/kendo/js").Include(
+                          "~/Scripts/kendo/kendo.all.min.js"
+                          ));
+        }
 
         private static void LoadBoostrap(BundleCollection bundles)
         {
@@ -62,11 +70,20 @@ namespace NextGenCMS.UI
               "~/css/bootstrap/bootstrap.min.css"
             ));
         }
-        private static void LoadBootGloablStyle(BundleCollection bundles)
+        private static void LoadBootGloabalStyle(BundleCollection bundles)
         {
             bundles.Add(new StyleBundle("~/css/css").Include
             (
               "~/css/global.css"
+            ));
+        }
+        private static void LoadKendoStyle(BundleCollection bundles)
+        {
+            bundles.Add(new StyleBundle("~/css/kendo/css").Include
+            (
+              "~/css/kendo/kendo.common-material.min.css",
+               "~/css/kendo/kendo.material.min.css",
+                "~/css/kendo/kendo.material.mobile.min.css"
             ));
         }
         #endregion

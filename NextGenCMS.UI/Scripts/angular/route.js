@@ -23,7 +23,9 @@
     }).state('Home.Admin', {      
         views: {           
             'content@': {
-                templateUrl: 'Home/Adminstration'
+                templateUrl: 'Home/Adminstration',
+                controller: 'DashboardController',
+                controllerAs: "vm"
             }       
 
         }
