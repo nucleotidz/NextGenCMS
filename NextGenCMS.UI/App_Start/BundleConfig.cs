@@ -25,6 +25,7 @@ namespace NextGenCMS.UI
             LoadAngular(bundles);
             LoadBoostrap(bundles);
             LoadKendo(bundles);
+            LoadController(bundles);
         }
 
         #region Javascripts
@@ -52,7 +53,14 @@ namespace NextGenCMS.UI
                           "~/Scripts/kendo/kendo.all.min.js"
                           ));
         }
-
+        private static void LoadController(BundleCollection bundles)
+        {
+            bundles.Add(new ScriptBundle("~/Scripts/controller/js").Include
+             (
+               "~/Scripts/controller/DashBoardcontroller.js"
+              
+             ));
+        }
         private static void LoadBoostrap(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/Scripts/bootstrap/js").Include
