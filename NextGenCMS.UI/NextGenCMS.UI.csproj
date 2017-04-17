@@ -157,6 +157,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SecurityController.cs" />
+    <Compile Include="Filters\Secure.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -171,12 +173,16 @@
     <Content Include="css\bootstrap\bootstrap.min.css" />
     <Content Include="css\global.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\DXC_logo.png" />
+    <Content Include="images\favicon.ico" />
     <Content Include="Scripts\angular\angular-resource.min.js" />
     <Content Include="Scripts\angular\angular-ui-router.js" />
     <Content Include="Scripts\angular\angular.min.js" />
+    <Content Include="Scripts\angular\app.js" />
+    <Content Include="Scripts\angular\route.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
     <Content Include="Scripts\jquery\jquery-1.10.2.min.js" />
     <Content Include="Web.config" />
@@ -198,15 +204,23 @@
     <Folder Include="Scripts\service\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <Content Include="css\bootstrap\bootstrap-theme.css.map" />
     <Content Include="css\bootstrap\bootstrap-theme.min.css.map" />
     <Content Include="css\bootstrap\bootstrap.css.map" />
     <Content Include="css\bootstrap\bootstrap.min.css.map" />
+    <Content Include="css\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Project_Readme.html" />
+    <Content Include="Views\Security\Login.cshtml" />
+    <Content Include="Views\Shared\_LoginLayout.cshtml" />
+    <Content Include="Views\Home\Menu.cshtml" />
+    <Content Include="Views\Home\Header.cshtml" />
+    <Content Include="Views\Home\Dashboard.cshtml" />
+    <Content Include="Views\Home\ToolPane.cshtml" />
+    <Content Include="Views\Home\Adminstration.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<div class="container loginPage">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="logoImg pull-left">
+                <img src="~/images/DXC_logo.png" alt="DXC.tecnology logo" />
+            </div>
+            <div class="welcomeText">
+                Welcome to <span class="dxcIntlgnce">DXC INTELLIGENCE</span>
+            </div>
+        </div>
+    </div>
+    <form action=@Url.Action("Authenticate", "Security") method="post">
+        <div class="row">
+            <div class="col-xs-12"><label class="userLogin" for="username"><span class="glyphicon glyphicon-lock"></span>User Login</label></div>
+            <div class="col-xs-6"><input type="text" id="username" name="userName" autofocus placeholder="User Name" /></div>
+            <div class="col-xs-6"><input type="password" name="Password" id="password" placeholder="Password" /></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-9 pull-left font12">Did you forget your password?</div>
+            <div class="col-xs-3 text-right pull-right"><button type="submit" class="btn btn-primary btn-sm">LOGIN</button></div>
+        </div>
+    </form>
+</div>

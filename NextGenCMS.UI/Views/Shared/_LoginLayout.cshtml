@@ -1,22 +1,17 @@
 ﻿<!DOCTYPE html>
-<html ng-app="NextGenCMS">
+<html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Login Page</title>  
     <link rel="icon" href="~/images/favicon.ico">
     @Scripts.Render("~/Scripts/jquery/js", "~/Scripts/angular/js", "~/Scripts/bootstrap/js")
     @Styles.Render("~/css/bootstrap/css", "~/css/css")
 
 </head>
 <body>
-    <div class="container">
-        <div ui-view="menu"></div>
-        <div ui-view="header"></div>
-        <div ui-view="toolpane"></div>
-        <div ui-view="content"></div>
-        @RenderBody()
+    @RenderBody()
 
-        </div>
+
 </body>
 </html>
