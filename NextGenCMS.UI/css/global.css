@@ -1,14 +1,16 @@
+html {
+  height: 100%;
+}
+body {
+  min-height: 100vh
+}
+
 body{
-	/*border-left:solid 1px #999;
-	border-right:solid 1px #999;
-	border:solid 1px #999;*/
-	/*width:80%;
-	height:100%;*/
     background: #f0f0f0; /* For browsers that do not support gradients */    
-    background: -webkit-linear-gradient(top,#f0f0f0 , #f3f3f3); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(top,#f0f0f0 , #f3f3f3); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(top,#f0f0f0 , #f3f3f3); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(top,#f0f0f0 , #f3f3f3); /* Standard syntax (must be last) */
+    background: -webkit-linear-gradient(bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(214,211,214,1) 100%); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(214,211,214,1) 100%);/* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(214,211,214,1) 100%);/* For Firefox 3.6 to 15 */
+    background: linear-gradient(bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(214,211,214,1) 100%); /* Standard syntax (must be last) */
 	color:#6B6869;
 }
 
@@ -19,13 +21,13 @@ body{
 /*----Login Page------*/
 .loginPage {
     width: 500px;
-    margin-top: 100px;
+    /*margin-top: 100px;*/
     padding: 50px 50px 35px 50px;
 }
 .logoImg{margin-right: 20px;}
 
 .logoImg img{
-	border:solid 0px #000 !important;
+	border:solid 5px #000 !important;
 }
 
 .welcomeText{
@@ -77,17 +79,13 @@ input[type="text"],input[type="password"]{
     margin-bottom: 0px;
     border-bottom: 1px solid #e7e7e7;
     background-color: transparent;
-	border-radius: 0px;
+	border-radius: 0px;kosw
 	margin: 0px 0px 0px 60px;
 }
 .navbar-default {    
     border: 0px;
 	border-bottom: 1px solid #c6c6c6;
 }
-
-
-
-
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
     color: #0978C0;
@@ -243,48 +241,66 @@ ul.adminTools li{
 .bluebtn{
 	padding: 2px 10px 2px 10px;
 }
-.iconLinkBG{
-	width: 70px;
-	height: 70px;
-    background: #EAE8E8;
-    -moz-border-radius: 70px;
-	-webkit-border-radius: 70px;
-	border-radius: 70px;
-	border:solid 1px #cfcfcf;
-	background: -webkit-radial-gradient(28px -10px,#fff , #ccc); /* For Safari 5.1 to 6.0 */
-    background: -o-radial-gradient(28px -10px,#fff , #ccc); /* For Opera 11.1 to 12.0 */
-    background: -moz-radial-gradient(28px -10px,#fff , #ccc); /* For Firefox 3.6 to 15 */
-    /*background: radial-gradient(28px -10px,#fff , #ccc);*/
-}
-.iconLinkBG:hover{background: -webkit-radial-gradient(28px -10px,#fff , #ddd);}
 
-.iconLinkBG span.iconText{
-    font-size:11px;
-	display:block;
-	text-align:center;
-}
-.iconLinkBG span.glyphicon {
-    font-size: 20px;
-    text-align: center;
+
+/*----End Dashboard Page------*/
+
+/*----Buttons Style------*/
+
+ul.iconLinks li a {
     display: block;
-    padding: 10px 0px 5px 0px;
+    background-color: #f7f7f7;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#e7e7e7));
+    background-image: -webkit-linear-gradient(top, #f7f7f7, #e7e7e7);
+    background-image: -moz-linear-gradient(top, #f7f7f7, #e7e7e7);
+    background-image: -ms-linear-gradient(top, #f7f7f7, #e7e7e7);
+    background-image: -o-linear-gradient(top, #f7f7f7, #e7e7e7);    
+    width: 80px;
+    height: 80px;
+    position: relative;
+    text-align: center;
+    line-height: 20px;
+    border-radius: 50%;
+    box-shadow: 0px 3px 8px #aaa, inset 0px 2px 3px #fff;
+	padding-top:18px;
+	font-size:16px;
+	color:#72716F;
 }
+span.iconText{
+	font-size:12px;
+	line-height: 18px;
+}
+
+ul.iconLinks li a:hover {
+    text-decoration: none;
+    color: #0978C0;
+    background: #f5f5f5;
+}
+
 ul.iconLinks{
 	list-style:none;
 	padding:0px;
 }
 ul.iconLinks li{
     float: left;
-	margin:5px 30px 5px 0px;
-}
-ul.iconLinks li a{
-    color: #6B6869;
-}
-ul.iconLinks li a:focus, ul.iconLinks li a:hover {
-    color: #0978C0;
-    text-decoration: none;
+	margin:5px 50px 50px 0px;
 }
 
-/*----End Dashboard Page------*/
+ul.iconLinks li a:before {
+    content: "";
+    display: block;
+    background: #fff;
+    border: 2px solid #ddd;
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    bottom: -8px;
+    right: -8px;
+    z-index: -1;
+    border-radius: 50%;
+    box-shadow: inset 0px 8px 48px #fff;
+}
 
-
+ul.iconLinks li a span.glyphicon{
+display: block;
+}
