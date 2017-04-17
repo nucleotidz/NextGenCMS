@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B0E36219-6C36-4450-986F-989F4EB35B5D}</ProjectGuid>
+    <ProjectGuid>{685ADE6A-9EE0-429F-B192-38F9637EDF14}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DXC.DMS</RootNamespace>
-    <AssemblyName>DXC.DMS</AssemblyName>
+    <RootNamespace>NextGenCMS.UI</RootNamespace>
+    <AssemblyName>NextGenCMS.UI</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -154,15 +154,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Filters\Secure.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="css\bootstrap\bootstrap-theme.css" />
     <Content Include="css\bootstrap\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap\bootstrap.css" />
@@ -171,6 +173,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
     <Content Include="Scripts\angular\angular-resource.min.js" />
     <Content Include="Scripts\angular\angular-ui-router.js" />
     <Content Include="Scripts\angular\angular.min.js" />
@@ -221,9 +224,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>56194</DevelopmentServerPort>
+          <DevelopmentServerPort>62788</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:56194/</IISUrl>
+          <IISUrl>http://localhost:62788/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

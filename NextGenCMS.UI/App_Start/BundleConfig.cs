@@ -1,6 +1,7 @@
-﻿using System.Web.Optimization;
+﻿using System.Web;
+using System.Web.Optimization;
 
-namespace DXC.DMS
+namespace NextGenCMS.UI
 {
     public class BundleConfig
     {

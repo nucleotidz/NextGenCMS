@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DXC.DMS")]
+[assembly: AssemblyTitle("NextGenCMS.UI")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("DXC.DMS")]
+[assembly: AssemblyProduct("NextGenCMS.UI")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("8dfd5384-9eff-45ef-ad00-f2e095bad8de")]
+[assembly: Guid("6ac83356-32b4-4277-a4b6-ede7716651cc")]
 
 // Version information for an assembly consists of the following four values:
 //
