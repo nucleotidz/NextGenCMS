@@ -1,1 +1,1 @@
-﻿var app = angular.module("NextGenCMS", ["ui.router","ngResource"])
+﻿var app = angular.module("NextGenCMS", ["ui.router", "ngResource"])
