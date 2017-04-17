@@ -1,0 +1,290 @@
+body{
+	/*border-left:solid 1px #999;
+	border-right:solid 1px #999;
+	border:solid 1px #999;*/
+	/*width:80%;
+	height:100%;*/
+    background: #f0f0f0; /* For browsers that do not support gradients */    
+    background: -webkit-linear-gradient(top,#f0f0f0 , #f3f3f3); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(top,#f0f0f0 , #f3f3f3); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(top,#f0f0f0 , #f3f3f3); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(top,#f0f0f0 , #f3f3f3); /* Standard syntax (must be last) */
+	color:#6B6869;
+}
+
+.container{
+	border:solid 1px #999;
+	box-shadow: 4px 4px 5px grey;
+}
+/*----Login Page------*/
+.loginPage {
+    width: 500px;
+    margin-top: 100px;
+    padding: 50px 50px 35px 50px;
+}
+.logoImg{margin-right: 20px;}
+
+.logoImg img{
+	border:solid 5px #000 !important;
+}
+
+.welcomeText{
+	margin-left: 112px;
+	margin-top: 11px;
+}
+
+.dxcIntlgnce{
+	display: block;
+    font-size: 130%;
+	text-shadow: 1px 1px #fff;
+}
+.row{margin-bottom:15px;}
+
+label{
+	font-size: 12px;
+	text-shadow: 1px 1px #fff;
+}
+
+.glyphicon{
+	    padding: 0px 7px 0px 0px;
+}
+
+input[type="text"],input[type="password"]{
+	border: solid 8px #ccc;
+    border-radius: 5px;
+	padding:2px 5px;
+	width:100%;
+	font-size: 12px;
+}
+.font12{font-size:12px;}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+	color: inherit;
+    opacity: 0.5!important;
+}
+
+/*----End Login Page------*/
+
+
+/*----Header Menu------*/
+
+.navbar-nav {
+    font-size: 110%;
+    margin: 0px;
+}
+
+.navbar {
+    margin-bottom: 0px;
+    border-bottom: 1px solid #e7e7e7;
+    background-color: transparent;
+	border-radius: 0px;
+	margin: 0px 0px 0px 60px;
+}
+.navbar-default {    
+    border: 0px;
+	border-bottom: 1px solid #c6c6c6;
+}
+
+
+
+
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    color: #0978C0;
+    background-color:transparent;
+}
+
+.navbar-nav .glyphicon{
+	float:left;
+	display: block;
+}
+
+.navbar-nav>li>a {
+    padding: 0px 0px;
+    width: auto;
+    float: left;
+    position: relative;
+    top: -1px;
+	color:#0978C0;
+}
+.navbar-nav>li>a:focus, .navbar-nav>li>a:hover {
+    text-decoration:underline;
+}
+.navbar-nav>li.active{
+	color:#0978C0;
+}
+
+.nav>li {
+	padding: 10px 0px 20px 0px;
+	margin-right:50px;
+}
+.navbar-header button span.glyphicon {
+    font-size: 12px;
+    padding: 0px;
+}
+.navbar-toggle {
+    padding: 4px 7px;
+}
+/*----End Header Menu------*/
+
+/*----Dashboard Page------*/
+
+.pageHeader h1{	
+    display: inline;
+    font-weight: inherit;
+    font-size: 26px;
+	padding-left:15px;
+}
+div.pageTitle{
+	margin: 0px 0px 0px 60px;
+    border-bottom: solid 1px #c6c6c6;
+	padding-bottom: 13px;
+}
+
+.settingicon{
+	width: 40px;
+	height: 40px;
+    background: #057FC2; 
+    -moz-border-radius: 70px;
+	-webkit-border-radius: 70px;
+	border-radius: 70px;
+}
+
+.settingicon span{
+    position: relative;
+    top: 22%;
+    left: 18%;
+    font-size: 25px;
+    color: #E0E4E7;
+}
+
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+.breadcrumb{
+	padding: 0px;
+	margin-bottom:0px;
+    background-color: transparent;
+}
+
+.toolPane {    
+    float: left;
+    position: fixed;
+	
+}
+.toolPane ul{
+	list-style: none;
+    padding: 4px;
+    margin: 0px;
+	width: 36px;
+    border: solid 1px #ccc;
+    border-radius: 26px;
+}
+.toolPane ul.pageTools li, ul.adminTools li{
+	width: 25px;
+    height: 25px;
+    background: #767676;
+    -moz-border-radius: 70px;
+    -webkit-border-radius: 70px;
+    border-radius: 70px;
+    font-size: 14px;
+    margin: 10px 0px;
+	padding:3px 5px;
+}
+ul.adminTools{
+     margin-top: 15px;
+}
+
+ul.adminTools li{
+    background: #057FC2;
+}
+
+.toolPane ul li a{
+	color:#fff
+}
+.toolPane ul li a:hover,.toolPane ul li a:focus{
+	text-decoration:none;
+	color:#ddd;
+}
+.rightPane{
+	margin-left: 60px;
+	min-height:400px;
+}
+.btnPane{
+	background:#DADADA;
+	padding:7px;
+}
+.btnPane .btn{
+	border-radius:15px;
+	margin-right:20px;
+}
+.btnPane .btn span{
+	margin-left: 5px;
+    width: 15px;
+    height: 15px;
+	border-radius: 13px;
+    background: #B2AEAF;
+    padding: 2px 0px 0px 0px;
+    font-size: 10px;
+}
+.graybtn{
+	background:#72716F;
+	padding: 2px 3px 2px 10px;
+	border-color:#555150;
+	box-shadow: 2px 1px 2px grey;
+}
+
+.graybtn:hover,.graybtn:active:hover,.graybtn:active:focus,.graybtn:focus {
+    color: #fff;
+    background-color: #898887;
+    border-color: #72716F;
+}
+.bluebtn{
+	padding: 2px 10px 2px 10px;
+}
+.iconLinkBG{
+	width: 70px;
+	height: 70px;
+    background: #EAE8E8;
+    -moz-border-radius: 70px;
+	-webkit-border-radius: 70px;
+	border-radius: 70px;
+	border:solid 1px #cfcfcf;
+	background: -webkit-radial-gradient(28px -10px,#fff , #ccc); /* For Safari 5.1 to 6.0 */
+    background: -o-radial-gradient(28px -10px,#fff , #ccc); /* For Opera 11.1 to 12.0 */
+    background: -moz-radial-gradient(28px -10px,#fff , #ccc); /* For Firefox 3.6 to 15 */
+    /*background: radial-gradient(28px -10px,#fff , #ccc);*/
+}
+.iconLinkBG:hover{background: -webkit-radial-gradient(28px -10px,#fff , #ddd);}
+
+.iconLinkBG span.iconText{
+    font-size:11px;
+	display:block;
+	text-align:center;
+}
+.iconLinkBG span.glyphicon {
+    font-size: 20px;
+    text-align: center;
+    display: block;
+    padding: 10px 0px 5px 0px;
+}
+ul.iconLinks{
+	list-style:none;
+	padding:0px;
+}
+ul.iconLinks li{
+    float: left;
+	margin:5px 30px 5px 0px;
+}
+ul.iconLinks li a{
+    color: #6B6869;
+}
+ul.iconLinks li a:focus, ul.iconLinks li a:hover {
+    color: #0978C0;
+    text-decoration: none;
+}
+
+/*----End Dashboard Page------*/
+
+
