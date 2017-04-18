@@ -37,11 +37,11 @@ namespace NextGenCMS.UI.Controllers
             NextGenCMS.APIHelper.classes.APIHelper apiCaller = new NextGenCMS.APIHelper.classes.APIHelper();
             LoginModel _loginModel = new LoginModel
             {
-                password = username,
-                username = password
+                password = password,
+                username = username 
             };
             string token = apiCaller.Post(ConfigurationManager.AppSettings["API:URL"] + "authentication/login", JsonConvert.SerializeObject(_loginModel));
-            Session["SessionContext"] = token;
+            Session["SessionContext"] = JsonConvert.DeserializeObject(token);
             return new RedirectResult(BaseURL);
         }
     }

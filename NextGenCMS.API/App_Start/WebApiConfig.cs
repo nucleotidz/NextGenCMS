@@ -16,9 +16,7 @@ namespace NextGenCMS.API
             var json = config.Formatters.JsonFormatter;
             var settings = json.SerializerSettings;
             json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.None;
-            config.Formatters.Remove(config.Formatters.XmlFormatter);
-
-            settings.Formatting = Formatting.Indented;
+            config.Formatters.Remove(config.Formatters.XmlFormatter);            
             settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             settings.NullValueHandling = NullValueHandling.Include;
             var corsAttr = new EnableCorsAttribute("*", "*", "*");

@@ -54,7 +54,9 @@ namespace NextGenCMS.BL.classes
         /// <param name="password">password</param>
         public string AuthenticateUser(LoginModel loginModel)
         {
-            return _apiHelper.Post(ServiceUrl.Login, JsonConvert.SerializeObject(loginModel));
+            string token = _apiHelper.Post(ServiceUrl.Login, JsonConvert.SerializeObject(loginModel));
+            LoginToken _loginToken = JsonConvert.DeserializeObject<LoginToken>(token);
+            return _loginToken.data.ticket;
         }
 
         #region Dispose

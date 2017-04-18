@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\LoginModel.cs" />
+    <Compile Include="classes\LoginToken.cs" />
     <Compile Include="constants\ApiHelper.cs" />
     <Compile Include="constants\AppConfigKeys.cs" />
     <Compile Include="constants\ServiceUrl.cs" />
