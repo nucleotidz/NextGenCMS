@@ -50,6 +50,7 @@ namespace NextGenCMS.API.Controllers
         {
             return Request.CreateResponse(HttpStatusCode.OK, this._authentication.AuthenticateUser(loginModel));
         }
+
         #endregion
     }
 }
