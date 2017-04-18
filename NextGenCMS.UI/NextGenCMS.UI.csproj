@@ -162,6 +162,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Model\Token.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -188,6 +189,8 @@
     <Content Include="Scripts\angular\route.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
     <Content Include="Scripts\controller\DashBoardcontroller.js" />
+    <Content Include="Scripts\factory\Cache.js" />
+    <Content Include="Scripts\factory\Interceptor.js" />
     <Content Include="Scripts\jquery\jquery-1.10.2.min.js" />
     <Content Include="Scripts\kendo\kendo.all.min.js" />
     <Content Include="Web.config" />
@@ -204,7 +207,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\constants\" />
-    <Folder Include="Scripts\factory\" />
     <Folder Include="Scripts\service\" />
   </ItemGroup>
   <ItemGroup>

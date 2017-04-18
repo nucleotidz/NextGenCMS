@@ -1,4 +1,5 @@
 ﻿using NextGenCMS.UI.Filters;
+using NextGenCMS.UI.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,12 @@ namespace NextGenCMS.UI.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            Token token = new Token()
+            {
+                key = Session["SessionContext"].ToString()
+            };
+
+            return View(token);
         }
         public ActionResult Menu()
         {

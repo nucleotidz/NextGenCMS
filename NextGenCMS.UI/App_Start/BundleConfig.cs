@@ -17,6 +17,7 @@ namespace NextGenCMS.UI
             LoadBootStarpStyle(bundles);
             LoadBootGloabalStyle(bundles);
             LoadKendoStyle(bundles);
+            LoadFactory(bundles);
         }
 
         private static void LoadJavaScripts(BundleCollection bundles)
@@ -59,6 +60,15 @@ namespace NextGenCMS.UI
              (
                "~/Scripts/controller/DashBoardcontroller.js"
               
+             ));
+        }
+        private static void LoadFactory(BundleCollection bundles)
+        {
+            bundles.Add(new ScriptBundle("~/Scripts/factory/js").Include
+             (
+               "~/Scripts/factory/Interceptor.js",
+               "~/Scripts/factory/Cache.js"
+
              ));
         }
         private static void LoadBoostrap(BundleCollection bundles)

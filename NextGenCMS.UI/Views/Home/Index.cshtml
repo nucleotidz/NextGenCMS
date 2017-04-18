@@ -1,5 +1,18 @@
 ﻿@{
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    @model NextGenCMS.UI.Model.Token
 }
-
+<div ng-controller="IndexController"></div>
+<script type="text/javascript">
+    (function () {
+        'use strict';
+        app.controller('IndexController', ['$scope', 'Cache',
+        function ($scope, Cache) {
+            var token = Cache.get('token');
+            if (!token) {
+                Cache.put("token", "@Model.key");
+            };
+        }]);
+    })();
+</script>
