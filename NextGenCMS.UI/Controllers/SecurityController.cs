@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using NextGenCMS.APIHelper.classes;
+using NextGenCMS.UI.Model;
+using System.Configuration;
+using Newtonsoft.Json;
 
 namespace NextGenCMS.UI.Controllers
 {
@@ -30,7 +34,14 @@ namespace NextGenCMS.UI.Controllers
         [HttpPost]
         public ActionResult Authenticate(string username, string password)
         {
-            Session["SessionContext"] = Guid.NewGuid().ToString();
+            NextGenCMS.APIHelper.classes.APIHelper apiCaller = new NextGenCMS.APIHelper.classes.APIHelper();
+            LoginModel _loginModel = new LoginModel
+            {
+                password = username,
+                username = password
+            };
+            string token = apiCaller.Post(ConfigurationManager.AppSettings["API:URL"] + "authentication/login", JsonConvert.SerializeObject(_loginModel));
+            Session["SessionContext"] = token;
             return new RedirectResult(BaseURL);
         }
     }
