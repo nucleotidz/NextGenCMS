@@ -27,6 +27,8 @@ namespace NextGenCMS.UI
             LoadBoostrap(bundles);
             LoadKendo(bundles);
             LoadController(bundles);
+            LoadConstant(bundles);
+            LoadAPI(bundles);
         }
 
         #region Javascripts
@@ -59,7 +61,7 @@ namespace NextGenCMS.UI
             bundles.Add(new ScriptBundle("~/Scripts/controller/js").Include
              (
                "~/Scripts/controller/DashBoardcontroller.js"
-              
+
              ));
         }
         private static void LoadFactory(BundleCollection bundles)
@@ -71,12 +73,27 @@ namespace NextGenCMS.UI
 
              ));
         }
+        private static void LoadConstant(BundleCollection bundles)
+        {
+            bundles.Add(new ScriptBundle("~/Scripts/constants/js").Include
+             (
+               "~/Scripts/constants/Global.js"
+
+             ));
+        }
         private static void LoadBoostrap(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/Scripts/bootstrap/js").Include
              (
                "~/Scripts/bootstrap/bootstrap.min.js"
              ));
+        }
+        private static void LoadAPI(BundleCollection bundles)
+        {
+            bundles.Add(new ScriptBundle("~/Scripts/httpfactory/js").Include
+                 (
+                   "~/Scripts/httpfactory/AuthenticationAPI.js"
+                 ));
         }
 
         #endregion
