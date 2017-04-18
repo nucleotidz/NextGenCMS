@@ -193,6 +193,16 @@
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NextGenCMS.BL\NextGenCMS.BL.csproj">
+      <Project>{1eafc4da-f8e2-45d6-be1e-eb54b6947a7a}</Project>
+      <Name>NextGenCMS.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NextGenCMS.Model\NextGenCMS.Model.csproj">
+      <Project>{4b3f69b5-216c-490a-9f05-b6ae63378799}</Project>
+      <Name>NextGenCMS.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
