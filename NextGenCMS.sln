@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{67A4133F-2D04-4415-9E44-EFDBEE3B0457}"
 EndProject
@@ -28,6 +28,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{27B6FD9B-313A-412F-AF99-9BD27D41E6F9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NextGenCMS.UI", "NextGenCMS.UI\NextGenCMS.UI.csproj", "{685ADE6A-9EE0-429F-B192-38F9637EDF14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NextGenCMS.APIHelper", "NextGenCMS.APIHelper\NextGenCMS.APIHelper.csproj", "{B5F63349-F235-4E7B-9415-BCD82D1DD8DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{685ADE6A-9EE0-429F-B192-38F9637EDF14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{685ADE6A-9EE0-429F-B192-38F9637EDF14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{685ADE6A-9EE0-429F-B192-38F9637EDF14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5F63349-F235-4E7B-9415-BCD82D1DD8DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5F63349-F235-4E7B-9415-BCD82D1DD8DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5F63349-F235-4E7B-9415-BCD82D1DD8DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5F63349-F235-4E7B-9415-BCD82D1DD8DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,5 +81,6 @@ Global
 		{D58DB420-7AD0-4970-953A-2726367CE902} = {A82DA893-A68F-4874-85F4-6A914830C8F7}
 		{88651450-AF00-4D99-8D9F-E96C9D97ABD8} = {68D08C4F-8D5A-4CB7-AA21-C1924F2E8348}
 		{685ADE6A-9EE0-429F-B192-38F9637EDF14} = {27B6FD9B-313A-412F-AF99-9BD27D41E6F9}
+		{B5F63349-F235-4E7B-9415-BCD82D1DD8DB} = {A82DA893-A68F-4874-85F4-6A914830C8F7}
 	EndGlobalSection
 EndGlobal

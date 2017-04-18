@@ -35,13 +35,12 @@ ul {
     margin-right: 20px;
 }
 
-    .logoImg img {
-        border: solid 0px #000 !important;
-    }
+/*.logoImg img {
+    border: solid 0px #000 !important;
+}*/
 
 .welcomeText {
     margin-left: 112px;
-    margin-top: 0px;
 }
 
 .dxcIntlgnce {
@@ -95,7 +94,7 @@ input[type="text"], input[type="password"] {
     border-bottom: 1px solid #e7e7e7;
     background-color: transparent;
     border-radius: 0px;
-    margin: 0px 0px 0px 60px;
+    kosw margin: 0px 0px 0px 60px;
 }
 
 .navbar-default {
@@ -104,10 +103,10 @@ input[type="text"], input[type="password"] {
     margin-left: 60px;
 }
 
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
-    color: #0978C0;
-    background-color: transparent;
-}
+    .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
+        color: #0978C0;
+        background-color: transparent;
+    }
 
 .navbar-nav .glyphicon {
     float: left;
@@ -123,9 +122,9 @@ input[type="text"], input[type="password"] {
     color: #0978C0;
 }
 
-    .navbar-nav > li > a:focus, .navbar-nav > li > a:hover {
-        text-decoration: underline;
-    }
+.navbar-nav > li > a:focus, .navbar-nav > li > a:hover {
+    text-decoration: underline;
+}
 
 .navbar-nav > li.active {
     color: #0978C0;
@@ -253,43 +252,43 @@ ul.logoutBox li a {
     position: fixed;
 }
 
-.toolPane ul {
-    list-style: none;
-    padding: 4px;
-    margin: 0px;
-    width: 36px;
-    border: solid 1px #ccc;
-    border-radius: 26px;
-}
+    .toolPane ul {
+        list-style: none;
+        padding: 4px;
+        margin: 0px;
+        width: 36px;
+        border: solid 1px #ccc;
+        border-radius: 26px;
+    }
 
-.toolPane ul.pageTools li, ul.adminTools li {
-    width: 25px;
-    height: 25px;
-    background: #767676;
-    -moz-border-radius: 70px;
-    -webkit-border-radius: 70px;
-    border-radius: 70px;
-    font-size: 14px;
-    margin: 10px 0px;
-    padding: 3px 5px;
-}
+        .toolPane ul.pageTools li, ul.adminTools li {
+            width: 25px;
+            height: 25px;
+            background: #767676;
+            -moz-border-radius: 70px;
+            -webkit-border-radius: 70px;
+            border-radius: 70px;
+            font-size: 14px;
+            margin: 10px 0px;
+            padding: 3px 5px;
+        }
 
 ul.adminTools {
     margin-top: 15px;
 }
 
-ul.adminTools li {
-    background: #057FC2;
-}
+    ul.adminTools li {
+        background: #057FC2;
+    }
 
 .toolPane ul li a {
     color: #fff;
 }
 
-.toolPane ul li a:hover, .toolPane ul li a:focus {
-    text-decoration: none;
-    color: #ddd;
-}
+    .toolPane ul li a:hover, .toolPane ul li a:focus {
+        text-decoration: none;
+        color: #ddd;
+    }
 
 .rightPane {
     margin-left: 60px;
@@ -302,20 +301,20 @@ ul.adminTools li {
     height: 50px;
 }
 
-.btnPane .btn {
-    border-radius: 15px;
-    margin-right: 20px;
-}
+    .btnPane .btn {
+        border-radius: 15px;
+        margin-right: 20px;
+    }
 
-.btnPane .btn span {
-    margin-left: 5px;
-    width: 15px;
-    height: 15px;
-    border-radius: 13px;
-    background: #B2AEAF;
-    padding: 2px 0px 0px 0px;
-    font-size: 10px;
-}
+        .btnPane .btn span {
+            margin-left: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 13px;
+            background: #B2AEAF;
+            padding: 2px 0px 0px 0px;
+            font-size: 10px;
+        }
 
 .graybtn {
     background: #72716F;
@@ -324,11 +323,11 @@ ul.adminTools li {
     box-shadow: 2px 1px 2px grey;
 }
 
-.graybtn:hover, .graybtn:active:hover, .graybtn:active:focus, .graybtn:focus {
-    color: #fff;
-    background-color: #898887;
-    border-color: #72716F;
-}
+    .graybtn:hover, .graybtn:active:hover, .graybtn:active:focus, .graybtn:focus {
+        color: #fff;
+        background-color: #898887;
+        border-color: #72716F;
+    }
 
 .bluebtn {
     padding: 2px 10px 2px 10px;
@@ -375,24 +374,24 @@ ul.iconLinks li {
     margin: 5px 50px 50px 0px;
 }
 
-ul.iconLinks li a:before {
-    content: "";
-    display: block;
-    background: #fff;
-    border: 2px solid #ddd;
-    position: absolute;
-    top: -8px;
-    left: -8px;
-    bottom: -8px;
-    right: -8px;
-    z-index: -1;
-    border-radius: 50%;
-    box-shadow: inset 0px 8px 48px #fff;
-}
+    ul.iconLinks li a:before {
+        content: "";
+        display: block;
+        background: #fff;
+        border: 2px solid #ddd;
+        position: absolute;
+        top: -8px;
+        left: -8px;
+        bottom: -8px;
+        right: -8px;
+        z-index: -1;
+        border-radius: 50%;
+        box-shadow: inset 0px 8px 48px #fff;
+    }
 
-ul.iconLinks li a span.glyphicon {
-    display: block;
-}
+    ul.iconLinks li a span.glyphicon {
+        display: block;
+    }
 /*---- End Button Style-------*/
 
 /* --Modal Window------*/
@@ -431,11 +430,16 @@ h4.modal-title {
     top: -3px;
 }
 
-.modal-header .settingicon span {
-    position: relative;
-    top: 22%;
-    left: 18%;
-    font-size: 18px;
-    color: #E0E4E7;
-}
+    .modal-header .settingicon span {
+        position: relative;
+        top: 22%;
+        left: 18%;
+        font-size: 18px;
+        color: #E0E4E7;
+    }
+
+
+
+
+
 /*----End Modal Window---*/
