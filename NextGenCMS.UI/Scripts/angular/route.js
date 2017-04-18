@@ -6,7 +6,7 @@
         url: '/',
         views: {
             'header': {
-                templateUrl: 'Home/Header',
+                templateUrl: 'Home/Header',                
 
             }, 'menu': {
                 templateUrl: 'Home/Menu',
