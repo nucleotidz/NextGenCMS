@@ -1,7 +1,7 @@
 ﻿
 namespace NextGenCMS.Model.constants
 {
-    public static partial class CommonConstants
+    public static class ApiHelper
     {
         /// <summary>
         /// string x-thirdparty-Id 

@@ -10,12 +10,14 @@ namespace NextGenCMS.BL.classes
     using NextGenCMS.APIHelper.interfaces;
     using NextGenCMS.DL.interfaces;
     using NextGenCMS.Model.classes;
+    using NextGenCMS.BL.interfaces;
+    using NextGenCMS.Model.constants;
     #endregion
 
     /// <summary>
     /// This method will handle Business logic of Authentication
     /// </summary>
-    public class Authentication
+    public class Authentication : IAuthentication
     {
         /// <summary>
         /// disposed is used to reallocate memory of UnUsed Objects
@@ -52,7 +54,7 @@ namespace NextGenCMS.BL.classes
         /// <param name="password">password</param>
         public string AuthenticateUser(LoginModel loginModel)
         {
-            return _apiHelper.Post("", JsonConvert.SerializeObject<T>(loginModel));
+            return _apiHelper.Post(ServiceUrl.Login, JsonConvert.SerializeObject(loginModel));
         }
 
         #region Dispose

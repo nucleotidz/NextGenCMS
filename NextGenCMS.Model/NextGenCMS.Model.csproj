@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,7 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\LoginModel.cs" />
-    <Compile Include="constants\CommonConstants.cs" />
+    <Compile Include="constants\ApiHelper.cs" />
+    <Compile Include="constants\AppConfigKeys.cs" />
+    <Compile Include="constants\ServiceUrl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

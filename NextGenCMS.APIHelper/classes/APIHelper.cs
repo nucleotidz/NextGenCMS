@@ -55,9 +55,9 @@ namespace NextGenCMS.APIHelper.classes
                 WebRequest req = WebRequest.Create(uri);
                 //req.Headers.Add(CommonConstants.x_thirdparty_Id, CommonConstants.ProviderSelfService);
                 //Add these, as we're doing a POST
-                req.ContentType = CommonConstants.text_json;
+                req.ContentType = ApiHelper.text_json;
                 req.Timeout = 1000000;
-                req.Method = CommonConstants.Post;
+                req.Method = ApiHelper.Post;
                 //We need to count how many bytes we're sending. Post'ed Faked Forms should be name=value&
                 using (var streamWriter = new StreamWriter(req.GetRequestStream()))
                 {
