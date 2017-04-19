@@ -14,7 +14,9 @@
         <div ui-view="menu"></div>
         <div ui-view="header"></div>
         <div ui-view="toolpane"></div>
-        <div ui-view="content"></div>
+        <div class="rightPane">
+            <div ui-view="content"></div>
+        </div>
         @RenderBody()
 
     </div>
