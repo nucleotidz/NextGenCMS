@@ -43,6 +43,14 @@
                 controllerAs: "vm"
             }
         }
+    }).state('Home.Folder', {
+        views: {
+            'content@': {
+                templateUrl: 'Folder/Home',
+                controller: 'FolderController',
+                controllerAs: "vm"
+            }
+        }
     });
 
 });

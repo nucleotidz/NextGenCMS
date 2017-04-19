@@ -33,6 +33,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,10 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Alfresco\Folder\Datalist.cs" />
+    <Compile Include="Alfresco\Folder\Permissions.cs" />
+    <Compile Include="Alfresco\Folder\Permissions2.cs" />
+    <Compile Include="Alfresco\Folder\RootObject.cs" />
     <Compile Include="classes\LoginModel.cs" />
     <Compile Include="classes\LoginToken.cs" />
     <Compile Include="constants\ApiHelper.cs" />
     <Compile Include="constants\AppConfigKeys.cs" />
+    <Compile Include="constants\Filter.cs" />
     <Compile Include="constants\ServiceUrl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

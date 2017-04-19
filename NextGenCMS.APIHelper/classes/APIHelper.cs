@@ -58,10 +58,12 @@ namespace NextGenCMS.APIHelper.classes
                 req.ContentType = ApiHelper.text_json;
                 req.Timeout = 1000000;
                 req.Method = ApiHelper.Post;
-                //We need to count how many bytes we're sending. Post'ed Faked Forms should be name=value&
-                using (var streamWriter = new StreamWriter(req.GetRequestStream()))
+                if (!string.IsNullOrEmpty(parameters))
                 {
-                    streamWriter.Write(parameters);
+                    using (var streamWriter = new StreamWriter(req.GetRequestStream()))
+                    {
+                        streamWriter.Write(parameters);
+                    }
                 }
                 using (WebResponse resp = req.GetResponse())
                 {

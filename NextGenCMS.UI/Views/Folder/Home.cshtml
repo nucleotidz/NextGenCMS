@@ -1,0 +1,38 @@
+﻿@{
+    Layout = null;
+}
+<div class="row">
+    <ul class="breadcrumb">
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Administration</a></li>
+        <li class="active">Files</li>
+    </ul>
+</div>
+<div class="threeCols clearfix">
+    <div class="innerCol col-xs-12 col-md-3">
+        <div kendo-tree-view="tree"
+             k-data-source="vm.treeData"
+             k-on-change="vm.selectedItem = dataItem"
+             k-on-select="vm.Select();"
+             >
+            <span k-template>
+                {{dataItem.name}} 
+            </span>
+        </div>
+
+    </div>
+
+    <div class="innerCol col-xs-12 col-md-6">
+        Center Container
+    </div>
+    <div class="innerCol col-xs-12 col-md-3">
+        right Container
+    </div>
+</div>
+
+
+
+
+
+
+

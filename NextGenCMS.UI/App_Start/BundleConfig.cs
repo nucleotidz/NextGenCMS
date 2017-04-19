@@ -64,7 +64,8 @@ namespace NextGenCMS.UI
                "~/Scripts/controller/AdministrationController.js",
                "~/Scripts/controller/GroupManagementController.js",
                "~/Scripts/controller/UserManagementController.js",
-               "~/Scripts/controller/AddUserPopupController.js"
+               "~/Scripts/controller/AddUserPopupController.js",
+                 "~/Scripts/controller/FolderController.js"
              ));
         }
         private static void LoadFactory(BundleCollection bundles)
@@ -96,7 +97,8 @@ namespace NextGenCMS.UI
         {
             bundles.Add(new ScriptBundle("~/Scripts/httpfactory/js").Include
                  (
-                   "~/Scripts/httpfactory/AuthenticationAPI.js"
+                   "~/Scripts/httpfactory/AuthenticationAPI.js",
+                   "~/Scripts/httpfactory/FolderAPI.js"
                  ));
         }
 

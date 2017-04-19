@@ -1,50 +1,45 @@
 html {
-    height: 100%;
+  height: 100%;
 }
 
-body {
-    height: 100vh; /* Try removing this.. */
-    background: #f0f0f0; /* For browsers that do not support gradients */
+body{
+	height: 100vh; /* Try removing this.. */
+    background: #f0f0f0; /* For browsers that do not support gradients */    
     background: -webkit-linear-gradient(bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(214,211,214,1) 100%); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(214,211,214,1) 100%); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(214,211,214,1) 100%); /* For Firefox 3.6 to 15 */
+    background: -o-linear-gradient(bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(214,211,214,1) 100%);/* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(214,211,214,1) 100%);/* For Firefox 3.6 to 15 */
     background: linear-gradient(bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(214,211,214,1) 100%); /* Standard syntax (must be last) */
-    color: black;
-    font-weight: bold;
+	color:#000;
+	font-weight:bold;
 }
 
-ul {
-    list-style: none;
-    padding: 0px;
+ul{
+	list-style:none;
+	padding:0px;
+}
+.container{
+	border:solid 1px #999;
+	box-shadow: 4px 4px 5px grey;
+	height:97%;
+	min-height:500px;
+}
+span.redStar{
+	color:red;
 }
 
-.container {
-    border: solid 1px #999;
-    box-shadow: 4px 4px 5px grey;
-    height: 97%;
-    min-height: 500px;
-}
-
-span.redStar {
-    color: red;
-}
-
-h2 {
-    margin: 0px;
-}
+h2{margin:0px;}
 
 .form-group {
     margin-bottom: 0px;
 }
-
-.btn {
-    height: 28px;
+.btn{
+	height: 28px;
     font-size: 12px;
 }
 
 label {
     font-size: 11px !important;
-    font-weight: normal;
+    font-weight:normal;
 }
 
 .form-control {
@@ -52,23 +47,17 @@ label {
     padding: 6px 6px;
     font-size: 12px;
 }
-
 .input-group-addon {
-    padding: 5px 10px;
-    background-color: #057FC2;
+	padding: 5px 10px;
+	background-color: #057FC2;
     border: 1px solid #025A93;
-    font-size: 12px;
-    color: #fff;
-    border-radius: 17px;
+	font-size: 12px;
+	color: #fff;
+	border-radius: 17px;
 }
 
-.width20 {
-    width: 20% !important;
-}
-
-.width80 {
-    width: 80% !important;
-}
+.width20{width:20% !important;}
+.width80{width:80% !important;}
 
 /*----Login Page------*/
 .loginPage {
@@ -78,53 +67,45 @@ label {
     height: auto !important;
     min-height: auto !important;
 }
+.logoImg{margin-right: 20px;}
 
-.logoImg {
-    margin-right: 20px;
+.logoImg img{
+	/*border:solid 5px #000 !important;*/
 }
 
-    /*.logoImg img {
-        border: solid 5px #000 !important;
-    }*/
-
-.welcomeText {
-    margin-left: 112px;
+.welcomeText{
+	margin-left: 112px;
+	margin-top: 11px;
 }
 
-.dxcIntlgnce {
-    display: block;
+.dxcIntlgnce{
+	display: block;
     font-size: 130%;
-    text-shadow: 1px 1px #fff;
+	text-shadow: 1px 1px #fff;
+}
+.row{margin-bottom:15px;}
+
+label{
+	font-size: 12px;
+	text-shadow: 1px 1px #fff;
 }
 
-.row {
-    margin-bottom: 15px;
+.glyphicon{
+	padding: 0px 7px 0px 0px;
 }
 
-label {
-    font-size: 12px;
-    text-shadow: 1px 1px #fff;
-}
-
-.glyphicon {
-    padding: 0px 7px 0px 0px;
-}
-
-.loginPage input[type="text"], input[type="password"] {
-    border: solid 8px #ccc;
+.loginPage input[type="text"],input[type="password"]{
+	border: solid 8px #ccc;
     border-radius: 5px;
-    padding: 2px 5px;
-    width: 100%;
-    font-size: 12px;
+	padding:2px 5px;
+	width:100%;
+	font-size: 12px;
 }
-
-.font12 {
-    font-size: 12px;
-}
+.font12{font-size:12px;}
 
 ::-webkit-input-placeholder { /* WebKit browsers */
-    color: inherit;
-    opacity: 0.5 !important;
+	color: inherit;
+    opacity: 0.5!important;
 }
 
 /*----End Login Page------*/
@@ -141,53 +122,48 @@ label {
     margin-bottom: 0px;
     border-bottom: 1px solid #e7e7e7;
     background-color: transparent;
-    border-radius: 0px;
-    kosw margin: 0px 0px 0px 60px;
+	border-radius: 0px;kosw
+	margin: 0px 0px 0px 60px;
 }
-
 .navbar-default {
     border: 0px;
     border-bottom: 1px solid #c6c6c6;
     margin-left: 60px;
 }
 
-    .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
-        color: #0978C0;
-        background-color: transparent;
-    }
-
-.navbar-nav .glyphicon {
-    float: left;
-    display: block;
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    color: #0978C0;
+    background-color:transparent;
 }
 
-.navbar-nav > li > a {
+.navbar-nav .glyphicon{
+	float:left;
+	display: block;
+}
+
+.navbar-nav>li>a {
     padding: 0px 0px;
     width: auto;
     float: left;
     position: relative;
     top: -1px;
-    color: #0978C0;
+	color:#0978C0;
+}
+.navbar-nav>li>a:focus, .navbar-nav>li>a:hover {
+    text-decoration:underline;
+}
+.navbar-nav>li.active{
+	color:#0978C0;
 }
 
-    .navbar-nav > li > a:focus, .navbar-nav > li > a:hover {
-        text-decoration: underline;
-    }
-
-.navbar-nav > li.active {
-    color: #0978C0;
+.nav>li {
+	padding: 10px 0px 20px 0px;
+	margin-right:35px;
 }
-
-.nav > li {
-    padding: 10px 0px 20px 0px;
-    margin-right: 35px;
-}
-
 .navbar-header button span.glyphicon {
     font-size: 12px;
     padding: 0px;
 }
-
 .navbar-toggle {
     padding: 4px 7px;
 }
@@ -195,24 +171,22 @@ label {
 
 /*----Dashboard Page------*/
 
-.pageHeader h1 {
+.pageHeader h1{	
     display: inline;
     font-weight: inherit;
     font-size: 26px;
-    padding-left: 15px;
-    float: left;
-    margin: 0px;
+	padding-left:15px;
+	float:left;
+	margin:0px;
 }
-
-div.pageTitle {
-    margin: 0px 0px 0px 60px;
+div.pageTitle{
+	margin: 0px 0px 0px 60px;
     /*border-bottom: solid 1px #c6c6c6;*/
-    color: #fff;
+	color: #fff;
     padding-top: 6px;
-    background: #057FC2;
+	background: #057FC2;
 }
-
-ul.logoutBox {
+ ul.logoutBox {
     float: right;
     min-width: 300px;
     border: solid 1px #ccc;
@@ -224,164 +198,149 @@ ul.logoutBox {
     margin-bottom: 6px;
 }
 
-    ul.logoutBox li {
-        display: inline-block;
-        margin-right: 10px;
-        border-right: solid 1px #ccc;
-        padding-right: 10px;
-        line-height: 14px;
-    }
+ul.logoutBox li {
+    display: inline-block;
+    margin-right: 10px;
+    border-right: solid 1px #ccc;
+    padding-right: 10px;
+	line-height:14px;
+}
+ul.logoutBox li:last-child{    
+    border-right: solid 0px #ccc;
+	padding-right: 0px;
+	margin-right: 0px;
+	
+}
+ul.logoutBox li.blueText {
+    min-width: 127px !important;
+}
 
-        ul.logoutBox li:last-child {
-            border-right: solid 0px #ccc;
-            padding-right: 0px;
-            margin-right: 0px;
-        }
-
-        ul.logoutBox li.blueText {
-            min-width: 127px !important;
-        }
-
-        ul.logoutBox li a {
-            color: #777;
-        }
+ul.logoutBox li a {
+    color:#777;
+}
 
 .clearfix:after {
-    content: "";
-    display: table;
-    clear: both;
+  content: "";
+  display: table;
+  clear: both;
 }
 
-.blueText {
-    color: #057EC1;
-}
+.blueText{color:#057EC1;}
 
-.whiteText {
-    color: #fff;
-}
+.whiteText{color:#fff;}
 
-.btnPane .whiteText span {
+.btnPane .whiteText span{	
     background: #025A93 !important;
 }
 
-.btnPane .blueText.glyphicon {
-    font-size: 20px;
-    position: relative;
-    top: 5px;
+.btnPane .blueText.glyphicon{
+	font-size:20px;
+	position:relative;
+	top:5px;
 }
 
-.settingicon {
-    width: 40px;
-    height: 40px;
-    background: #057FC2;
+.settingicon{
+	width: 40px;
+	height: 40px;
+    background: #057FC2; 
     -moz-border-radius: 70px;
-    -webkit-border-radius: 70px;
-    border-radius: 70px;
+	-webkit-border-radius: 70px;
+	border-radius: 70px;
 }
 
-    .settingicon span {
-        position: relative;
-        top: 22%;
-        left: 18%;
-        font-size: 25px;
-        color: #E0E4E7;
-    }
+.settingicon span{
+    position: relative;
+    top: 22%;
+    left: 18%;
+    font-size: 25px;
+    color: #E0E4E7;
+}
 
 .row {
     margin-right: 0px;
     margin-left: 0px;
 }
-
-.breadcrumb {
-    padding: 0px;
-    margin-bottom: 0px;
+.breadcrumb{
+	padding: 0px;
+	margin-bottom:0px;
     background-color: transparent;
 }
 
-.toolPane {
+.toolPane {    
     float: left;
     position: fixed;
+	
+}
+.toolPane ul{
+	list-style: none;
+    padding: 0px 4px;
+    margin: 0px;
+	width: 36px;
+    border: solid 1px #ccc;
+    border-radius: 26px;
+}
+.toolPane ul.pageTools li, ul.adminTools li{
+	width: 25px;
+    height: 25px;
+    background: #767676;
+    -moz-border-radius: 70px;
+    -webkit-border-radius: 70px;
+    border-radius: 70px;
+    font-size: 14px;
+    margin: 10px 0px;
+	padding:3px 5px;
+}
+ul.adminTools{
+     margin-top: 15px;
 }
 
-    .toolPane ul {
-        list-style: none;
-        padding: 0px 4px;
-        margin: 0px;
-        width: 36px;
-        border: solid 1px #ccc;
-        border-radius: 26px;
-    }
-
-        .toolPane ul.pageTools li, ul.adminTools li {
-            width: 25px;
-            height: 25px;
-            background: #767676;
-            -moz-border-radius: 70px;
-            -webkit-border-radius: 70px;
-            border-radius: 70px;
-            font-size: 14px;
-            margin: 10px 0px;
-            padding: 3px 5px;
-        }
-
-ul.adminTools {
-    margin-top: 15px;
+ul.adminTools li{
+    background: #057FC2;
 }
 
-    ul.adminTools li {
-        background: #057FC2;
-    }
+.toolPane ul li a{
+	color:#fff
+}
+.toolPane ul li a:hover,.toolPane ul li a:focus{
+	text-decoration:none;
+	color:#ddd;
+}
+.rightPane{
+	margin-left: 60px;
+	min-height:400px;
+}
+.btnPane{
+	background:#DADADA;
+	padding:10px;
+	height:50px;
+}
+.btnPane .btn{
+	border-radius:15px;
+	margin-right:20px;
+}
+.btnPane .btn span{
+	margin-left: 5px;
+    width: 15px;
+    height: 15px;
+	border-radius: 13px;
+    background: #B2AEAF;
+    padding: 2px 0px 0px 0px;
+    font-size: 10px;
+}
+.graybtn{
+	background:#72716F;
+	padding: 2px 3px 2px 10px;
+	border-color:#555150;
+	box-shadow: 2px 1px 2px grey;
+}
 
-.toolPane ul li a {
+.graybtn:hover,.graybtn:active:hover,.graybtn:active:focus,.graybtn:focus {
     color: #fff;
+    background-color: #898887;
+    border-color: #72716F;
 }
-
-    .toolPane ul li a:hover, .toolPane ul li a:focus {
-        text-decoration: none;
-        color: #ddd;
-    }
-
-.rightPane {
-    margin-left: 60px;
-    min-height: 400px;
-}
-
-.btnPane {
-    background: #DADADA;
-    padding: 10px;
-    height: 50px;
-}
-
-    .btnPane .btn {
-        border-radius: 15px;
-        margin-right: 20px;
-    }
-
-        .btnPane .btn span {
-            margin-left: 5px;
-            width: 15px;
-            height: 15px;
-            border-radius: 13px;
-            background: #B2AEAF;
-            padding: 2px 0px 0px 0px;
-            font-size: 10px;
-        }
-
-.graybtn {
-    background: #72716F;
-    padding: 2px 3px 2px 10px;
-    border-color: #555150;
-    box-shadow: 2px 1px 2px grey;
-}
-
-    .graybtn:hover, .graybtn:active:hover, .graybtn:active:focus, .graybtn:focus {
-        color: #fff;
-        background-color: #898887;
-        border-color: #72716F;
-    }
-
-.bluebtn {
-    padding: 2px 10px 2px 10px;
+.bluebtn{
+	padding: 2px 10px 2px 10px;
 }
 
 
@@ -396,7 +355,7 @@ ul.iconLinks li a {
     background-image: -webkit-linear-gradient(top, #f7f7f7, #e7e7e7);
     background-image: -moz-linear-gradient(top, #f7f7f7, #e7e7e7);
     background-image: -ms-linear-gradient(top, #f7f7f7, #e7e7e7);
-    background-image: -o-linear-gradient(top, #f7f7f7, #e7e7e7);
+    background-image: -o-linear-gradient(top, #f7f7f7, #e7e7e7);    
     width: 80px;
     height: 80px;
     position: relative;
@@ -404,14 +363,13 @@ ul.iconLinks li a {
     line-height: 20px;
     border-radius: 50%;
     box-shadow: 0px 3px 8px #aaa, inset 0px 2px 3px #fff;
-    padding-top: 18px;
-    font-size: 16px;
-    color: #72716F;
+	padding-top:18px;
+	font-size:16px;
+	color:#72716F;
 }
-
-span.iconText {
-    font-size: 12px;
-    line-height: 18px;
+span.iconText{
+	font-size:12px;
+	line-height: 18px;
 }
 
 ul.iconLinks li a:hover {
@@ -419,30 +377,29 @@ ul.iconLinks li a:hover {
     color: #0978C0;
     background: #f5f5f5;
 }
-
-ul.iconLinks li {
+ul.iconLinks li{
     float: left;
-    margin: 5px 50px 50px 0px;
+	margin:5px 50px 50px 0px;
 }
 
-    ul.iconLinks li a:before {
-        content: "";
-        display: block;
-        background: #fff;
-        border: 2px solid #ddd;
-        position: absolute;
-        top: -8px;
-        left: -8px;
-        bottom: -8px;
-        right: -8px;
-        z-index: -1;
-        border-radius: 50%;
-        box-shadow: inset 0px 8px 48px #fff;
-    }
+ul.iconLinks li a:before {
+    content: "";
+    display: block;
+    background: #fff;
+    border: 2px solid #ddd;
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    bottom: -8px;
+    right: -8px;
+    z-index: -1;
+    border-radius: 50%;
+    box-shadow: inset 0px 8px 48px #fff;
+}
 
-    ul.iconLinks li a span.glyphicon {
-        display: block;
-    }
+ul.iconLinks li a span.glyphicon{
+display: block;
+}
 /*---- End Button Style-------*/
 
 /* --Modal Window------*/
@@ -469,7 +426,6 @@ h4.modal-title {
     float: left;
     margin: 0px;
 }
-
 .modal-header .settingicon {
     width: 30px;
     height: 30px;
@@ -481,28 +437,52 @@ h4.modal-title {
     top: -3px;
 }
 
-    .modal-header .settingicon span {
-        position: relative;
-        top: 22%;
-        left: 18%;
-        font-size: 18px;
-        color: #E0E4E7;
-    }
+.modal-header .settingicon span {
+    position: relative;
+    top: 22%;
+    left: 18%;
+    font-size: 18px;
+    color: #E0E4E7;
+}
 
-.modal-body h2 {
-    background: #eee;
+.modal-body h2{background: #eee;
     font-size: 12px;
     padding: 5px;
     font-weight: bold;
     color: #057EC1;
 }
-
 .modal-body {
     padding: 15px 0px !important;
 }
-
-
-
-
-
 /*----End Modal Window---*/
+
+.rightPane .threeCols div.innerCol{
+	border:solid 1px #ccc; 
+	height:auto;
+	background:#F4F4F4;
+	border-radius:4px;
+}
+
+#treeview .k-sprite {
+    background-image: url(../images/coloricons-sprite.png);
+}
+
+.k-treeview span.k-in {
+    padding: 3px;
+}
+
+span.k-state-selected, span.k-in.k-state-hover{
+	color:#0978C0;
+	background:none !important;
+}
+
+span.k-in.k-state-hover{
+	text-decoration:underline;
+
+}
+
+.rootfolder { background-position: 0 0; }
+.folder { background-position: 0 -16px; }
+.pdf { background-position: 0 -32px; }
+.html { background-position: 0 -48px; }
+.image { background-position: 0 -64px; }

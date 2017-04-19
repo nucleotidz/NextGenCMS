@@ -70,6 +70,7 @@ namespace NextGenCMS.API.App_Start
             kernel.Bind<IAuthentication>().To<Authentication>();
             kernel.Bind<IAuthenticationRepository>().To<AuthenticationRepository>();
             kernel.Bind<IAPIHelper>().To<APIHelper>();
+            kernel.Bind<IFolder>().To<Folder>();
         }        
     }
 }
