@@ -27,10 +27,9 @@ namespace NextGenCMS.API.Controllers
 
         #region "Constructor"
         /// <summary>
-        /// Constroctor for AuthorityModelController
+        /// Constroctor for AuthenticationController
         /// </summary>
-        /// <param name="_authorityBL">IAuthorityConfiguration</param>
-        /// <param name="_userBL">IUserAdministrationBL</param>
+        /// <param name="authentication">IAuthentication</param>
         public AuthenticationController(IAuthentication authentication)
         {
             this._authentication = authentication;
@@ -38,7 +37,6 @@ namespace NextGenCMS.API.Controllers
         #endregion
 
         #region Methods
-
         /// <summary>
         /// This method will authenticate user login
         /// </summary>
@@ -50,7 +48,16 @@ namespace NextGenCMS.API.Controllers
         {
             return Request.CreateResponse(HttpStatusCode.OK, this._authentication.AuthenticateUser(loginModel));
         }
-
+        /// <summary>
+        /// This method will delete the ticket and logout the user
+        /// </summary>
+        /// <returns>HttpResponseMessage</returns>
+        [HttpDelete]
+        [Route("logout")]
+        public HttpResponseMessage Logout()
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, this._authentication.Logout());
+        }
         #endregion
     }
 }

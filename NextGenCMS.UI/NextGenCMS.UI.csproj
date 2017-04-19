@@ -202,7 +202,8 @@
     <Content Include="Scripts\controller\DashboardController.js" />
     <Content Include="Scripts\factory\Cache.js" />
     <Content Include="Scripts\factory\Interceptor.js" />
-    <Content Include="Scripts\httpfactory\AuthenticationAPI.js" />
+    <Content Include="Scripts\httpfactory\AdministrationApi.js" />
+    <Content Include="Scripts\httpfactory\AuthenticationApi.js" />
     <Content Include="Scripts\httpfactory\FolderAPI.js" />
     <Content Include="Scripts\jquery\jquery-1.10.2.min.js" />
     <Content Include="Scripts\kendo\kendo.all.min.js" />
@@ -264,7 +265,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>62788</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

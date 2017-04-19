@@ -45,14 +45,26 @@
     <Compile Include="Alfresco\Folder\Permissions.cs" />
     <Compile Include="Alfresco\Folder\Permissions2.cs" />
     <Compile Include="Alfresco\Folder\RootObject.cs" />
+    <Compile Include="classes\administration\CreateUser\CreateUserRequest.cs" />
+    <Compile Include="classes\administration\CreateUser\ResponseError.cs" />
+    <Compile Include="classes\administration\CreateUser\Status.cs" />
+    <Compile Include="classes\administration\GetGroups\GetGroupsResponse.cs" />
+    <Compile Include="classes\administration\GetGroups\Group.cs" />
+    <Compile Include="classes\administration\GetGroups\Paging.cs" />
+    <Compile Include="classes\administration\GetUsers\GetUsersResponse.cs" />
+    <Compile Include="classes\administration\GetUsers\Paging.cs" />
+    <Compile Include="classes\administration\GetUsers\UserStatusTime.cs" />
+    <Compile Include="classes\administration\User.cs" />
+    <Compile Include="classes\authentication\Data.cs" />
     <Compile Include="classes\LoginModel.cs" />
-    <Compile Include="classes\LoginToken.cs" />
+    <Compile Include="classes\authentication\LoginToken.cs" />
     <Compile Include="constants\ApiHelper.cs" />
     <Compile Include="constants\AppConfigKeys.cs" />
     <Compile Include="constants\Filter.cs" />
     <Compile Include="constants\ServiceUrl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

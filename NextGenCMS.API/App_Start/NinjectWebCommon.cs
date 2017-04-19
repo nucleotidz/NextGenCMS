@@ -17,20 +17,20 @@ namespace NextGenCMS.API.App_Start
     using NextGenCMS.APIHelper.interfaces;
     using NextGenCMS.APIHelper.classes;
 
-    public static class NinjectWebCommon 
+    public static class NinjectWebCommon
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
         /// <summary>
         /// Starts the application
         /// </summary>
-        public static void Start() 
+        public static void Start()
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
             bootstrapper.Initialize(CreateKernel);
         }
-        
+
         /// <summary>
         /// Stops the application.
         /// </summary>
@@ -38,7 +38,7 @@ namespace NextGenCMS.API.App_Start
         {
             bootstrapper.ShutDown();
         }
-        
+
         /// <summary>
         /// Creates the kernel that will manage your application.
         /// </summary>
@@ -71,6 +71,8 @@ namespace NextGenCMS.API.App_Start
             kernel.Bind<IAuthenticationRepository>().To<AuthenticationRepository>();
             kernel.Bind<IAPIHelper>().To<APIHelper>();
             kernel.Bind<IFolder>().To<Folder>();
-        }        
+            kernel.Bind<IAdministration>().To<Administration>();
+            kernel.Bind<IAdministrationRepository>().To<AdministrationRepository>();
+        }
     }
 }

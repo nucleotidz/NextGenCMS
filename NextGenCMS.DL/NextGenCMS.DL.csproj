@@ -39,7 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="classes\AdministrationRepository.cs" />
     <Compile Include="classes\AuthenticationRepository.cs" />
+    <Compile Include="interfaces\IAdministrationRepository.cs" />
     <Compile Include="interfaces\IAuthenticationRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

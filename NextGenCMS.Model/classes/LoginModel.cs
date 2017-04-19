@@ -1,6 +1,9 @@
 ﻿
 namespace NextGenCMS.Model.classes
 {
+    /// <summary>
+    /// This model class is used for login
+    /// </summary>
     public class LoginModel
     {
         /// <summary>

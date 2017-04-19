@@ -98,7 +98,8 @@ namespace NextGenCMS.UI
             bundles.Add(new ScriptBundle("~/Scripts/httpfactory/js").Include
                  (
                    "~/Scripts/httpfactory/AuthenticationAPI.js",
-                   "~/Scripts/httpfactory/FolderAPI.js"
+                   "~/Scripts/httpfactory/FolderAPI.js",
+                   "~/Scripts/httpfactory/AdministrationApi.js"
                  ));
         }
 

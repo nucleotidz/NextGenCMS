@@ -1,8 +1,8 @@
-﻿app.factory('AuthenticationAPI', ['$resource', 'Global', function ($resource, Global) {
+﻿app.factory('AuthenticationApi', ['$resource', 'Global', function ($resource, Global) {
     return $resource('', {}, {
-        AuthenticateUser: {
-            method: "POST",
-            url: Global.apiuri + "Account/Save",
+        Logout: {
+            method: "DELETE",
+            url: Global.apiuri + "authentication/logout",
             isArray: false,
             param: {}
         }

@@ -3,6 +3,7 @@ namespace NextGenCMS.BL.classes
 {
     #region Namespaces
     using System;
+    using System.Web;
     using Newtonsoft.Json;
     #endregion
 
@@ -12,6 +13,7 @@ namespace NextGenCMS.BL.classes
     using NextGenCMS.Model.classes;
     using NextGenCMS.BL.interfaces;
     using NextGenCMS.Model.constants;
+    using NextGenCMS.Model.classes.authentication;
     #endregion
 
     /// <summary>
@@ -47,6 +49,7 @@ namespace NextGenCMS.BL.classes
         }
         #endregion
 
+        #region "Public Methods"
         /// <summary>
         /// This method will authenticate the user
         /// </summary>
@@ -58,6 +61,23 @@ namespace NextGenCMS.BL.classes
             LoginToken _loginToken = JsonConvert.DeserializeObject<LoginToken>(token);
             return _loginToken.data.ticket;
         }
+
+        /// <summary>
+        /// This method delete the ticket and logout the user
+        /// </summary>
+        /// <returns></returns>
+        public string Logout()
+        {
+            string data = string.Empty;
+            if (HttpContext.Current.Items[Filter.Token] != null)
+            {
+                data = this._apiHelper.Get(ServiceUrl.Logout + HttpContext.Current.Items[Filter.Token]);
+            }
+
+            string response = JsonConvert.DeserializeObject<string>(data);
+            return response;
+        }
+        #endregion
 
         #region Dispose
         /// <summary>

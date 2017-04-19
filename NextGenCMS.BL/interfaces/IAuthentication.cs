@@ -20,5 +20,11 @@ namespace NextGenCMS.BL.interfaces
         /// <param name="userName">user name</param>
         /// <param name="password">password</param>
         string AuthenticateUser(LoginModel loginModel);
+
+        /// <summary>
+        /// This method delete the ticket and logout the user
+        /// </summary>
+        /// <returns></returns>
+        string Logout();
     }
 }
