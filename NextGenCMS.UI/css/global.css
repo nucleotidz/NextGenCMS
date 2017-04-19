@@ -3,16 +3,14 @@ html {
 }
 
 body {
-    min-height: 100vh;
-}
-
-body {
+    height: 100vh; /* Try removing this.. */
     background: #f0f0f0; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(214,211,214,1) 100%); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(214,211,214,1) 100%); /* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(214,211,214,1) 100%); /* For Firefox 3.6 to 15 */
     background: linear-gradient(bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(214,211,214,1) 100%); /* Standard syntax (must be last) */
-    color: #6B6869;
+    color: black;
+    font-weight: bold;
 }
 
 ul {
@@ -23,21 +21,71 @@ ul {
 .container {
     border: solid 1px #999;
     box-shadow: 4px 4px 5px grey;
+    height: 97%;
+    min-height: 500px;
 }
+
+span.redStar {
+    color: red;
+}
+
+h2 {
+    margin: 0px;
+}
+
+.form-group {
+    margin-bottom: 0px;
+}
+
+.btn {
+    height: 28px;
+    font-size: 12px;
+}
+
+label {
+    font-size: 11px !important;
+    font-weight: normal;
+}
+
+.form-control {
+    height: 28px;
+    padding: 6px 6px;
+    font-size: 12px;
+}
+
+.input-group-addon {
+    padding: 5px 10px;
+    background-color: #057FC2;
+    border: 1px solid #025A93;
+    font-size: 12px;
+    color: #fff;
+    border-radius: 17px;
+}
+
+.width20 {
+    width: 20% !important;
+}
+
+.width80 {
+    width: 80% !important;
+}
+
 /*----Login Page------*/
 .loginPage {
     width: 500px;
-    /*margin-top: 100px;*/
+    /* margin-top: 100px; */
     padding: 50px 50px 35px 50px;
+    height: auto !important;
+    min-height: auto !important;
 }
 
 .logoImg {
     margin-right: 20px;
 }
 
-/*.logoImg img {
-    border: solid 0px #000 !important;
-}*/
+    /*.logoImg img {
+        border: solid 5px #000 !important;
+    }*/
 
 .welcomeText {
     margin-left: 112px;
@@ -62,7 +110,7 @@ label {
     padding: 0px 7px 0px 0px;
 }
 
-input[type="text"], input[type="password"] {
+.loginPage input[type="text"], input[type="password"] {
     border: solid 8px #ccc;
     border-radius: 5px;
     padding: 2px 5px;
@@ -122,9 +170,9 @@ input[type="text"], input[type="password"] {
     color: #0978C0;
 }
 
-.navbar-nav > li > a:focus, .navbar-nav > li > a:hover {
-    text-decoration: underline;
-}
+    .navbar-nav > li > a:focus, .navbar-nav > li > a:hover {
+        text-decoration: underline;
+    }
 
 .navbar-nav > li.active {
     color: #0978C0;
@@ -132,7 +180,7 @@ input[type="text"], input[type="password"] {
 
 .nav > li {
     padding: 10px 0px 20px 0px;
-    margin-right: 50px;
+    margin-right: 35px;
 }
 
 .navbar-header button span.glyphicon {
@@ -158,7 +206,10 @@ input[type="text"], input[type="password"] {
 
 div.pageTitle {
     margin: 0px 0px 0px 60px;
-    border-bottom: solid 1px #c6c6c6;
+    /*border-bottom: solid 1px #c6c6c6;*/
+    color: #fff;
+    padding-top: 6px;
+    background: #057FC2;
 }
 
 ul.logoutBox {
@@ -169,29 +220,31 @@ ul.logoutBox {
     border-radius: 32px;
     padding: 5px 10px;
     font-size: 12px;
-}
-
-ul.logoutBox li {
-    display: inline-block;
     margin-right: 10px;
-    border-right: solid 1px #ccc;
-    padding-right: 10px;
-    line-height: 14px;
+    margin-bottom: 6px;
 }
 
-ul.logoutBox li:last-child {
-    border-right: solid 0px #ccc;
-    padding-right: 0px;
-    margin-right: 0px;
-}
+    ul.logoutBox li {
+        display: inline-block;
+        margin-right: 10px;
+        border-right: solid 1px #ccc;
+        padding-right: 10px;
+        line-height: 14px;
+    }
 
-ul.logoutBox li.blueText {
-    min-width: 127px !important;
-}
+        ul.logoutBox li:last-child {
+            border-right: solid 0px #ccc;
+            padding-right: 0px;
+            margin-right: 0px;
+        }
 
-ul.logoutBox li a {
-    color: #777;
-}
+        ul.logoutBox li.blueText {
+            min-width: 127px !important;
+        }
+
+        ul.logoutBox li a {
+            color: #777;
+        }
 
 .clearfix:after {
     content: "";
@@ -224,17 +277,15 @@ ul.logoutBox li a {
     -moz-border-radius: 70px;
     -webkit-border-radius: 70px;
     border-radius: 70px;
-    position: relative;
-    top: -7px;
 }
 
-.settingicon span {
-    position: relative;
-    top: 22%;
-    left: 18%;
-    font-size: 25px;
-    color: #E0E4E7;
-}
+    .settingicon span {
+        position: relative;
+        top: 22%;
+        left: 18%;
+        font-size: 25px;
+        color: #E0E4E7;
+    }
 
 .row {
     margin-right: 0px;
@@ -254,7 +305,7 @@ ul.logoutBox li a {
 
     .toolPane ul {
         list-style: none;
-        padding: 4px;
+        padding: 0px 4px;
         margin: 0px;
         width: 36px;
         border: solid 1px #ccc;
@@ -437,6 +488,18 @@ h4.modal-title {
         font-size: 18px;
         color: #E0E4E7;
     }
+
+.modal-body h2 {
+    background: #eee;
+    font-size: 12px;
+    padding: 5px;
+    font-weight: bold;
+    color: #057EC1;
+}
+
+.modal-body {
+    padding: 15px 0px !important;
+}
 
 
 
