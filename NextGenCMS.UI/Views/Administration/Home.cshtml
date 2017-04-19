@@ -1,0 +1,26 @@
+﻿@{
+    Layout = null;
+}
+
+<div class="row">
+    <ul class="breadcrumb">
+        <li><a ui-sref="#">Dashboard</a></li>
+        <li>Administration</li>
+    </ul>
+</div>
+<div class="row">
+    <div class="btnPane">
+        <button type="button" class="btn btn-primary btn-sm bluebtn whiteText" ng-click="vm.addUser();" data-toggle="modal" data-target="#myModal">Create User<span class="glyphicon glyphicon-plus"></span></button>
+        <button type="button" class="btn btn-primary btn-sm bluebtn whiteText" ng-click="vm.addGroup();" data-toggle="modal" data-target="#myModal">Create Group<span class="glyphicon glyphicon-plus"></span></button>
+    </div>
+</div>
+<div class="row">
+    <ul class="iconLinks">
+        <li>
+            <a href ng-click="vm.goToUser();"><span class="glyphicon glyphicon-user"></span><span class="iconText">Users</span></a>
+        </li>
+        <li>
+            <a href ng-click="vm.goToGroup();"><span class="glyphicon glyphicon-folder-open"></span><span class="iconText">Groups</span></a>
+        </li>
+    </ul>
+</div>

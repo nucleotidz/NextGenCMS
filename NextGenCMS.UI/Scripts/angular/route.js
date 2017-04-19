@@ -18,16 +18,30 @@
             'toolpane': {
                 templateUrl: 'Home/ToolPane'
             }
-
         }
     }).state('Home.Admin', {      
         views: {           
             'content@': {
-                templateUrl: 'Home/Adminstration',
-                controller: 'DashboardController',
+                templateUrl: 'Administration/Home',
+                controller: 'AdministrationController',
                 controllerAs: "vm"
-            }       
-
+            }
+        }
+    }).state('Home.User', {
+        views: {
+            'content@': {
+                templateUrl: 'Administration/UserManagement',
+                controller: 'UserManagementController',
+                controllerAs: "vm"
+            }
+        }
+    }).state('Home.Group', {
+        views: {
+            'content@': {
+                templateUrl: 'Administration/GroupManagement',
+                controller: 'GroupManagementController',
+                controllerAs: "vm"
+            }
         }
     });
 

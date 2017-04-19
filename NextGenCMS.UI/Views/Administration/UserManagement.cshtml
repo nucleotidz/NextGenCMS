@@ -1,0 +1,101 @@
+﻿@{
+    Layout = null;
+}
+
+<div class="row">
+    <ul class="breadcrumb">
+        <li><a ui-sref="#">Administration</a></li>
+        <li>User Management</li>
+    </ul>
+</div>
+<div class="btnPane">
+    <div class="row">
+        <div class="col-xs-2">
+            <h5>Search User</h5>
+        </div>
+        <div class="col-xs-4 pull-left">
+            <div class="input-group">
+                <input type="text" class="form-control" id="search" placeholder="Search">
+                <div class="input-group-addon"><span class="glyphicon glyphicon-search" /></div>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <button type="button" class="btn btn-primary btn-sm bluebtn whiteText pull-right" ng-click="vm.addUser();">Create User<span class="glyphicon glyphicon-plus"></span></button>
+        </div>
+    </div>
+</div>
+
+<form>
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>User Information</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="form-group">
+                <label for="firstName">First Name<span class="redStar">*</span></label>
+                <input type="text" class="form-control" id="firstName" placeholder="First Name" autofocus />
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="form-group">
+                <label for="lastName">Last Name<span class="redStar">*</span></label>
+                <input type="text" class="form-control" id="lastName" placeholder="Last Name" />
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address<span class="redStar">*</span></label>
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>About User</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="form-group">
+                <label for="userName">User Name<span class="redStar">*</span></label>
+                <input type="text" class="form-control" id="userName" placeholder="User Name" />
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="form-group">
+                <label for="password">Password<span class="redStar">*</span></label>
+                <input type="text" class="form-control" id="password" placeholder="Password" />
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="form-group">
+                <label for="passwordVerify">Password Verify<span class="redStar">*</span></label>
+                <input type="text" class="form-control" id="passwordVerify" placeholder="Password again" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <label for="search">Groups</label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="search" placeholder="Search">
+                <div class="input-group-addon"><span class="glyphicon glyphicon-search"></div>
+            </div>
+        </div>
+    </div>
+    <!--div class="row">
+            <div class="col-xs-4">
+                    <label for="quota" class="clearfix">Quota</label>
+                    <input type="text" class="form-control pull-left width80" id="quota" placeholder="Quota"/>
+                    <select class="form-control width20">
+                      <option>KB</option>
+                      <option>MB</option>
+                      <option>GB</option>
+                    </select>
+
+
+                </div>
+    </div-->
+</form>

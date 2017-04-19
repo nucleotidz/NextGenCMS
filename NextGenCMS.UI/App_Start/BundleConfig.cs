@@ -60,8 +60,11 @@ namespace NextGenCMS.UI
         {
             bundles.Add(new ScriptBundle("~/Scripts/controller/js").Include
              (
-               "~/Scripts/controller/DashBoardcontroller.js"
-
+               "~/Scripts/controller/DashBoardcontroller.js",
+               "~/Scripts/controller/AdministrationController.js",
+               "~/Scripts/controller/GroupManagementController.js",
+               "~/Scripts/controller/UserManagementController.js",
+               "~/Scripts/controller/AddUserPopupController.js"
              ));
         }
         private static void LoadFactory(BundleCollection bundles)
@@ -85,7 +88,8 @@ namespace NextGenCMS.UI
         {
             bundles.Add(new ScriptBundle("~/Scripts/bootstrap/js").Include
              (
-               "~/Scripts/bootstrap/bootstrap.min.js"
+               "~/Scripts/bootstrap/bootstrap.min.js",
+               "~/Scripts/bootstrap/ui-bootstrap-tpls-2.5.0.min.js"
              ));
         }
         private static void LoadAPI(BundleCollection bundles)

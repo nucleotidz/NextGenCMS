@@ -6,7 +6,6 @@
             isArray: false,
             param: {}
         }
-
     });
 }]);
 

@@ -1,8 +1,9 @@
 ﻿(function () {
     'use strict';
-    app.controller('DashboardController', ['$scope',
+    app.controller('AddUserPopupController', ['$scope',
     function ($scope) {
         var vm = this;
 
+        
     }]);
 })();
