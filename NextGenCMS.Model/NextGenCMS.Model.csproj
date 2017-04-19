@@ -42,11 +42,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Alfresco\Folder\Datalist.cs" />
+    <Compile Include="Alfresco\Folder\Item.cs" />
+    <Compile Include="Alfresco\Folder\Parent.cs" />
     <Compile Include="Alfresco\Folder\Permissions.cs" />
     <Compile Include="Alfresco\Folder\Permissions2.cs" />
     <Compile Include="Alfresco\Folder\RootObject.cs" />
+    <Compile Include="Alfresco\Folder\SRootObject.cs" />
+    <Compile Include="Alfresco\Folder\UserAccess.cs" />
+    <Compile Include="Alfresco\Folder\UserAccess2.cs" />
+    <Compile Include="classes\FolderModel.cs" />
     <Compile Include="classes\LoginModel.cs" />
     <Compile Include="classes\LoginToken.cs" />
+    <Compile Include="classes\SubFolderModel.cs" />
     <Compile Include="constants\ApiHelper.cs" />
     <Compile Include="constants\AppConfigKeys.cs" />
     <Compile Include="constants\Filter.cs" />

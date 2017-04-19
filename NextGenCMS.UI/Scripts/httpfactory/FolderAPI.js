@@ -6,6 +6,12 @@
                 method: "GET",
                 url: Global.apiuri + "Folder/Get",
                 isArray: true,               
+            },
+            GetSubFolderFolders: {
+                method: "POST",
+                url: Global.apiuri + "Folder/Get/SubFolder",
+                isArray: true,
+                params:{}
             }
         });
     }]);

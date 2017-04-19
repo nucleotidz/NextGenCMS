@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using NextGenCMS.Model.Alfresco.Folder;
 using System.Web;
+using NextGenCMS.Model.classes;
 
 namespace NextGenCMS.BL.classes
 {
@@ -31,21 +32,59 @@ namespace NextGenCMS.BL.classes
             this._apiHelper = apiHelper;
         }
 
-        public List<Datalist> GetRootFolders()
+        public List<FolderModel> GetRootFolders()
         {
             string data = string.Empty;
             if (HttpContext.Current.Items[Filter.Token] != null)
             {
                 data = this._apiHelper.Get(ServiceUrl.Folder + HttpContext.Current.Items[Filter.Token]);
             }
-          
+
             RootObject dataObject = JsonConvert.DeserializeObject<RootObject>(data);
-            return dataObject.datalists;
+            return this.MapFolder(dataObject.datalists);
         }
 
-        public void GetSubFoldersPath(string path)
+        public List<FolderModel> GetSubFoldersPath(string path)
         {
+            string data = string.Empty;
+            if (HttpContext.Current.Items[Filter.Token] != null)
+            {
+                data = this._apiHelper.Get(ServiceUrl.SubFolder + path + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
+            }
+            SRootObject dataObject = JsonConvert.DeserializeObject<SRootObject>(data);
+            return this.MapSubFolder(dataObject.items);
+        }
 
+        private List<FolderModel> MapFolder(List<Datalist> dataObject)
+        {
+            List<FolderModel> model = new List<FolderModel>();
+            dataObject.ForEach(x =>
+            {
+                model.Add(new FolderModel
+                {
+                    HasChildren = true,
+                    Name = x.name,
+                    Title = x.title,
+                    Noderef = x.nodeRef
+                });
+            });
+            return model;
+        }
+
+        private List<FolderModel> MapSubFolder(List<Item> dataObject)
+        {
+            List<FolderModel> model = new List<FolderModel>();
+            dataObject.ForEach(x =>
+            {
+                model.Add(new FolderModel
+                {
+                    HasChildren = x.hasChildren,
+                    Name = x.name,
+                    Title = x.name,
+                    Noderef = x.nodeRef
+                });
+            });
+            return model;
         }
 
         #region Dispose

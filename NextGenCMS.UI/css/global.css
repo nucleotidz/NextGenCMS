@@ -59,6 +59,8 @@ label {
 .width20{width:20% !important;}
 .width80{width:80% !important;}
 
+.clear{clear:both;}
+
 /*----Login Page------*/
 .loginPage {
     width: 500px;
@@ -456,15 +458,32 @@ h4.modal-title {
 }
 /*----End Modal Window---*/
 
-.rightPane .threeCols div.innerCol{
-	border:solid 1px #ccc; 
-	height:auto;
-	background:#F4F4F4;
-	border-radius:4px;
+.rightPane .col-table {
+    display: table;
 }
 
-#treeview .k-sprite {
-    background-image: url(../images/coloricons-sprite.png);
+.rightPane .col-row {
+    display:table-row;
+}
+.rightPane .column {
+    display:table-cell;
+	border:solid 1px #ccc;
+	background:#F4F4F4;
+}
+.column:after{
+	display: block;
+    position: absolute;
+    height: 100%;
+    content: "";
+    background-color: #fff;
+}
+
+#treeview span.folderIcon {
+    background: url(../images/folder_icon.png) 0px 9px no-repeat;
+    display: inline-block;
+    width: 13px;
+    height: 20px;
+    padding-right: 5px;
 }
 
 .k-treeview span.k-in {
@@ -486,3 +505,6 @@ span.k-in.k-state-hover{
 .pdf { background-position: 0 -32px; }
 .html { background-position: 0 -48px; }
 .image { background-position: 0 -64px; }
+
+
+/*--http://callmenick.com/_development/css-equal-height-columns/index2.html--*/

@@ -7,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using NextGenCMS.Model.Alfresco.Folder;
+using NextGenCMS.Model.classes;
 namespace NextGenCMS.API.Controllers
 {
     [RoutePrefix("api/Folder")]
@@ -22,8 +23,14 @@ namespace NextGenCMS.API.Controllers
         [Route("Get")]
         public HttpResponseMessage GetRootFolders()
         {
-            
-            return Request.CreateResponse(HttpStatusCode.OK,_folder.GetRootFolders());
+            return Request.CreateResponse(HttpStatusCode.OK, _folder.GetRootFolders());
+        }
+
+        [HttpPost]
+        [Route("Get/SubFolder")]
+        public HttpResponseMessage GetSubFolderFolders(SubFolderModel subFolderModel)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, _folder.GetSubFoldersPath(subFolderModel.path));
         }
     }
 }
