@@ -1,13 +1,14 @@
 ﻿(function () {
     'use strict';
-    app.controller('FolderController', ['$scope', '$rootScope', 'FolderAPI', 'FileAPI', '$q', '$modal', 'Global',
-function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global) {
+    app.controller('FolderController', ['$scope', '$rootScope', 'FolderAPI', 'FileAPI', '$q', '$modal', 'Global', 'Cache',
+function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
     var vm = this;
     var node;
     var path
     vm.treeData = null;
     var nodeRefs = [];
     var Files = [];
+    vm.orientation = "horizontal"
     function Bind() {
         var data = FolderAPI.GetRootFolders();
         $q.all([data.$promise]).then(function (response) {
@@ -181,10 +182,23 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global) {
             field: "webdavUrl", hidden: true
         }]
     }
-    vm.Download = function () {
+   function Download() {
         var entityGrid = $("#userGrid").data("kendoGrid")
         var selectedItem = entityGrid.dataItem(entityGrid.select());
-        window.open(Global.Alfresco + selectedItem.webdavUrl);
+        window.open(Global.Alfresco + selectedItem.webdavUrl + "?alf_ticket=" + Cache.get("token"));
+    }
+    vm.onSelect = function (evt) {
+        if (evt.item.textContent.trim() === "Download") {
+            Download();
+        }
+    }
+    vm.open = function (evt) {
+        var entityGrid = $("#userGrid").data("kendoGrid")
+        var selectedItem = entityGrid.dataItem(entityGrid.select());
+        if (selectedItem == null) {
+            evt.preventDefault();
+            return;
+        }
     }
     Bind();
 }])

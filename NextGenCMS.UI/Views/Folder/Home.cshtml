@@ -12,8 +12,8 @@
 <div class="row">
     <div class="btnPane">
         <button type="button" class="btn btn-primary btn-sm bluebtn whiteText">Upload<span class="glyphicon glyphicon-plus"></span></button>
-        <button type="button" class="btn btn-primary btn-sm graybtn" ng-click="vm.Download();">Download<span class="glyphicon glyphicon glyphicon-download"></span></button>
-        <button type="button" class="btn btn-primary btn-sm graybtn">Delete <span class="glyphicon glyphicon-trash"></span></button>   
+        @*<button type="button" class="btn btn-primary btn-sm graybtn" ng-click="vm.Download();">Download<span class="glyphicon glyphicon glyphicon-download"></span></button>*@
+        <button type="button" class="btn btn-primary btn-sm graybtn">Delete <span class="glyphicon glyphicon-trash"></span></button>
         <button type="button" class="btn btn-primary btn-sm graybtn" ng-click="vm.AddFolder();">New Folder<span class="glyphicon glyphicon-plus"></span></button>
         <button type="button" class="btn btn-primary btn-sm graybtn" ng-click="vm.AddSubFolder();">Sub Folder<span class="glyphicon glyphicon-arrow-up"></span></button>
     </div>
@@ -25,7 +25,7 @@
         <div kendo-tree-view="vm.tree" id="treeview"
              k-data-source="vm.treeData"
              k-on-change="vm.selectedItem(dataItem)">
-            <span k-template >
+            <span k-template>
                 {{dataItem.name}}
             </span>
         </div>
@@ -35,7 +35,7 @@
         <div id="userGrid"
              kendo-grid
              k-options="vm.FileGridOptions"
-             k-data-source="vm.FileGridDataSource" >
+             k-data-source="vm.FileGridDataSource">
         </div>
     </div>
 
@@ -51,16 +51,13 @@
             </div>
         </div>
 
-
-
-
-
     </div>
 </div>
 
-
-
-
-
-
-
+<ul kendo-context-menu k-filter="'#userGrid tbody tr[aria-selected=true]'"
+    k-on-open="vm.open(kendoEvent);"
+    k-orientation="vm.orientation"
+    k-on-select="vm.onSelect(kendoEvent);">
+    <li><span class="glyphicon glyphicon-download-alt"> </span> Download</li>
+    <li><span class="glyphicon glyphicon-trash"> </span> Delete</li>
+</ul>
