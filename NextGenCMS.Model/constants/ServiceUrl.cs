@@ -37,6 +37,7 @@ namespace NextGenCMS.Model.constants
         #endregion
 
         #region Folder File
+        public static readonly string SearchfileURL = AppConfigKeys.ServiceUrl + "alfresco/s/slingshot/search";
         public static readonly string Folder = AppConfigKeys.ServiceUrl + "alfresco/s/slingshot/datalists/lists/site/" + AppConfigKeys.Site + "/documentLibrary?alf_ticket=";
         public static readonly string SubFolder = AppConfigKeys.ServiceUrl + "alfresco/s/slingshot/doclib/treenode/site/" + AppConfigKeys.Site + "/documentLibrary/";
         public static readonly string AddFolder = AppConfigKeys.ServiceUrl + "alfresco/s/api/site/folder/" + AppConfigKeys.Site + "/documentLibrary/";

@@ -159,6 +159,7 @@
     <Compile Include="Controllers\AdministrationController.cs" />
     <Compile Include="Controllers\FolderController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Filters\Secure.cs" />
     <Compile Include="Global.asax.cs">
@@ -199,6 +200,7 @@
     <Content Include="Scripts\controller\AddUserPopupController.js" />
     <Content Include="Scripts\controller\FolderController.js" />
     <Content Include="Scripts\controller\GroupManagementController.js" />
+    <Content Include="Scripts\controller\SearchController.js" />
     <Content Include="Scripts\controller\UserManagementController.js" />
     <Content Include="Scripts\controller\AdministrationController.js" />
     <Content Include="Scripts\controller\DashboardController.js" />
@@ -208,6 +210,7 @@
     <Content Include="Scripts\httpfactory\AuthenticationApi.js" />
     <Content Include="Scripts\httpfactory\FileAPI.js" />
     <Content Include="Scripts\httpfactory\FolderAPI.js" />
+    <Content Include="Scripts\httpfactory\SearchAPI.js" />
     <Content Include="Scripts\jquery\jquery-1.10.2.min.js" />
     <Content Include="Scripts\kendo\kendo.all.min.js" />
     <Content Include="Scripts\underscore\underscore-min.js" />
@@ -249,6 +252,7 @@
     <Content Include="Views\Administration\AddUserPopup.cshtml" />
     <Content Include="Views\Folder\Home.cshtml" />
     <Content Include="Views\Folder\AddFolderPopup.cshtml" />
+    <Content Include="Views\Search\SearchDocument.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NextGenCMS.APIHelper\NextGenCMS.APIHelper.csproj">

@@ -66,7 +66,8 @@ namespace NextGenCMS.UI
                "~/Scripts/controller/GroupManagementController.js",
                "~/Scripts/controller/UserManagementController.js",
                "~/Scripts/controller/AddUserPopupController.js",
-               "~/Scripts/controller/AddFolderPopupController.js",
+               "~/Scripts/controller/AddFolderPopupController.js",            
+                  "~/Scripts/controller/SearchController.js",
                  "~/Scripts/controller/FolderController.js"
              ));
         }
@@ -101,7 +102,8 @@ namespace NextGenCMS.UI
                  (
                    "~/Scripts/httpfactory/AuthenticationAPI.js",
                    "~/Scripts/httpfactory/FolderAPI.js",
-                   "~/Scripts/httpfactory/AdministrationApi.js",
+                   "~/Scripts/httpfactory/AdministrationApi.js",                   
+                    "~/Scripts/httpfactory/SearchAPI.js"  ,
                     "~/Scripts/httpfactory/FileAPI.js"
                  ));
         }
