@@ -1,15 +1,14 @@
 ﻿(function () {
     'use strict';
-    app.controller('UserManagementController', ['$scope', '$modal', '$http', 'Cache', 'AdministrationApi', '$q',
-    function ($scope, $modal, $http, Cache, AdministrationApi, $q) {
+    app.controller('UserManagementController', ['$scope', '$modal', 'AdministrationApi', '$q',
+    function ($scope, $modal, AdministrationApi, $q) {
         var vm = this;
         vm.addUser = function () {
             var modalInstance = $modal.open({
                 backdrop: 'static',
                 keyboard: false,
                 templateUrl: './Administration/AddUserPopup',
-                controller: 'AddUserPopupController',
-                controllerAs: "vm"
+                controller: 'AddUserPopupController'
             });
         };
 

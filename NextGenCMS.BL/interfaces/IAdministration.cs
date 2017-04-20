@@ -11,7 +11,7 @@ namespace NextGenCMS.BL.interfaces
         /// </summary>
         /// <param name="createUser">createUser</param>
         /// <returns>string</returns>
-        User CreateUser(CreateUserRequest createUser);
+        object CreateUser(CreateUserRequest createUser);
 
         /// <summary>
         /// This method will return all the users

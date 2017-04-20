@@ -1,6 +1,7 @@
 ﻿namespace NextGenCMS.APIHelper.interfaces
 {
     #region Namespaces
+    using NextGenCMS.Model.classes;
     using System;
     using System.Web;
     #endregion
@@ -25,9 +26,9 @@
         /// <summary>
         /// Used for posting to API
         /// </summary>
-        /// <param name="request">HttpRequest request object</param>
-        /// <param name="uri">Address of URI</param>
+        /// <param name="uri">Address of api</param>
+        /// <param name="parameters">json object</param>
         /// <returns>response</returns>
-        string Post(HttpRequest request, string uri);
+        WebResponseModel Submit(string uri, string parameters);
     }
 }

@@ -56,6 +56,6 @@ namespace NextGenCMS.Model.classes.administration
         /// Gets or sets groups
         /// </summary>
         /// <value>string</value>     
-        public List<string> groups { get; set; }
+        public string[] groups { get; set; }
     }
 }

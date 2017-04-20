@@ -7,10 +7,11 @@ namespace NextGenCMS.APIHelper.classes
     using System.IO;
     using System.Net;
     #endregion
-    
+
     #region "NextGenCMS Namespaces"
     using NextGenCMS.Model.constants;
     using NextGenCMS.APIHelper.interfaces;
+    using NextGenCMS.Model.classes;
     #endregion
 
     public class APIHelper : IAPIHelper
@@ -81,44 +82,55 @@ namespace NextGenCMS.APIHelper.classes
         /// <summary>
         /// Used for posting to API
         /// </summary>
-        /// <param name="request">HttpRequest request object</param>
-        /// <param name="uri">Address of URI</param>
+        /// <param name="uri">Address of api</param>
+        /// <param name="parameters">json object</param>
         /// <returns>response</returns>
-        public string Post(HttpRequest request, string uri)
+        public WebResponseModel Submit(string uri, string parameters)
         {
             try
             {
                 ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
-                HttpWebRequest newRequest = (HttpWebRequest)WebRequest.Create(uri);
-                newRequest.ContentType = request.ContentType;
-                newRequest.Method = request.HttpMethod;
-                //newRequest.Headers.Add(CommonConstants.x_thirdparty_Id, CommonConstants.ProviderSelfService);
-
-                byte[] originalStream;
-                using (var memoryStream = new MemoryStream())
+                WebRequest req = WebRequest.Create(uri);
+                //req.Headers.Add(CommonConstants.x_thirdparty_Id, CommonConstants.ProviderSelfService);
+                //Add these, as we're doing a POST
+                req.ContentType = ApiHelper.application_json;
+                req.Timeout = 1000000;
+                req.Method = ApiHelper.Post;
+                if (!string.IsNullOrEmpty(parameters))
                 {
-                    request.InputStream.CopyTo(memoryStream);
-                    originalStream = memoryStream.ToArray();
-                }
-
-                using (var streamWriter = newRequest.GetRequestStream())
-                {
-                    if (originalStream != null && originalStream.Length > 0)
+                    using (var streamWriter = new StreamWriter(req.GetRequestStream()))
                     {
-                        streamWriter.Write(originalStream, 0, originalStream.Length);
+                        streamWriter.Write(parameters);
                     }
-                    streamWriter.Flush();
                 }
-
-                using (WebResponse resp = newRequest.GetResponse())
+                using (WebResponse resp = req.GetResponse())
                 {
                     StreamReader sr = new StreamReader(resp.GetResponseStream());
-                    string response = sr.ReadToEnd().Trim();
+                    var response = new WebResponseModel
+                    {
+                        status = NextGenCMS.Model.constants.ApiHelper.StatusCode.Success,
+                        message = sr.ReadToEnd().Trim()
+                    };
                     return response;
                 }
             }
-            catch
+            catch (WebException wex)
             {
+                if (wex.Response != null)
+                {
+                    using (var errorResponse = (HttpWebResponse)wex.Response)
+                    {
+                        using (var reader = new StreamReader(errorResponse.GetResponseStream()))
+                        {
+                            var response = new WebResponseModel
+                            {
+                                status = NextGenCMS.Model.constants.ApiHelper.StatusCode.Exception,
+                                message = reader.ReadToEnd().Trim()
+                            };
+                            return response;
+                        }
+                    }
+                }
                 throw;
             }
         }

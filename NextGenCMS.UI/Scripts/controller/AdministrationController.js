@@ -1,20 +1,29 @@
 ﻿(function () {
     'use strict';
-    app.controller('AdministrationController', ['$scope', '$state', '$http', 'Cache',
-    function ($scope, $state, $http, Cache) {
+    app.controller('AdministrationController', ['$scope', '$state', '$modal',
+    function ($scope, $state, $modal) {
         var vm = this;
-        var token = Cache.get('token');
-        vm.addUser = function () {
-            $http({
-                method: 'GET',
-                url: 'http://127.0.0.1:8080/alfresco/s/api/people-enterprise?alf_ticket=' + token,
+        //var token = Cache.get('token');
+        //vm.addUser = function () {
+        //    $http({
+        //        method: 'GET',
+        //        url: 'http://127.0.0.1:8080/alfresco/s/api/people-enterprise?alf_ticket=' + token,
 
-            }).then(function successCallback(response) {
-                vm.Documents = response.data.items;
-            }, function errorCallback(response) {
-                var l = 0;
+        //    }).then(function successCallback(response) {
+        //        vm.Documents = response.data.items;
+        //    }, function errorCallback(response) {
+        //        var l = 0;
+        //    });
+        //};
+        vm.addUser = function () {
+            var modalInstance = $modal.open({
+                backdrop: 'static',
+                keyboard: false,
+                templateUrl: './Administration/AddUserPopup',
+                controller: 'AddUserPopupController'
             });
         };
+
         vm.addGroup = function () {
 
         };

@@ -22,5 +22,11 @@ namespace NextGenCMS.Model.constants
         /// string POST 
         /// </summary>
         public const string Post = "POST";
+
+        public enum StatusCode
+        {
+            Success = 200,
+            Exception = 201
+        }
     }
 }
