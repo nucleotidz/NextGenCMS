@@ -9,7 +9,7 @@ namespace NextGenCMS.DL.classes
     using NextGenCMS.DL.interfaces;
     #endregion
 
-    public class AuthenticationRepository : IAuthenticationRepository
+    public class AdministrationRepository : IAdministrationRepository
     {
         /// <summary>
         /// disposed is used to reallocate memory of UnUsed Objects

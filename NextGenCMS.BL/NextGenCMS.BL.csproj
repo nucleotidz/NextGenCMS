@@ -44,8 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="classes\Administration.cs" />
     <Compile Include="classes\Authentication.cs" />
     <Compile Include="classes\Folder.cs" />
+    <Compile Include="interfaces\IAdministration.cs" />
     <Compile Include="interfaces\IAuthentication.cs" />
     <Compile Include="interfaces\IFolder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

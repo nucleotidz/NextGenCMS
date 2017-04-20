@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
-    app.controller('AdministrationController', ['$scope', '$state','$http','Cache',
-    function ($scope, $state, $http,Cache) {
+    app.controller('AdministrationController', ['$scope', '$state', '$http', 'Cache',
+    function ($scope, $state, $http, Cache) {
         var vm = this;
         var token = Cache.get('token');
         vm.addUser = function () {

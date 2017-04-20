@@ -6,24 +6,42 @@ using System.Web.Mvc;
 
 namespace NextGenCMS.UI.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class AdministrationController : Controller
     {
-        // GET: Administration
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Home()
         {
             return View();
         }
-        // GET: Administration
+      
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public ActionResult UserManagement()
         {
             return View();
         }
-        // GET: Administration
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public ActionResult GroupManagement()
         {
             return View();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public ActionResult AddUserPopup()
         {
             return View();
