@@ -195,6 +195,7 @@
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap\ui-bootstrap-tpls-2.5.0.min.js" />
     <Content Include="Scripts\constants\Global.js" />
+    <Content Include="Scripts\controller\AddFolderPopupController.js" />
     <Content Include="Scripts\controller\AddUserPopupController.js" />
     <Content Include="Scripts\controller\FolderController.js" />
     <Content Include="Scripts\controller\GroupManagementController.js" />
@@ -245,6 +246,7 @@
     <Content Include="Views\Administration\Home.cshtml" />
     <Content Include="Views\Administration\AddUserPopup.cshtml" />
     <Content Include="Views\Folder\Home.cshtml" />
+    <Content Include="Views\Folder\AddFolderPopup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NextGenCMS.APIHelper\NextGenCMS.APIHelper.csproj">

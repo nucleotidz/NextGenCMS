@@ -13,5 +13,10 @@ namespace NextGenCMS.UI.Controllers
         {
             return View();
         }
+
+        public ActionResult AddFolderPopup()
+        {
+            return View();
+        }
     }
 }

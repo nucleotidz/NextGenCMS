@@ -1,0 +1,43 @@
+﻿@{
+    Layout = null;
+}
+
+
+<div class="modal-header">
+    <button type="button" class="close" ng-click="closePopup();"><span aria-hidden="true">&times;</span></button>
+    <div class="settingicon pull-left"><span class="glyphicon glyphicon-folder-open"></span></div><h4 class="modal-title" id="modaladdFileID">Add folder</h4>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>Create Folder</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+                <label for="name">Name<span class="redStar">*</span></label>
+                <input type="text" class="form-control" ng-model="FolderModel.name" placeholder="Name" autofocus />
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="form-group">
+                <label for="title">Title<span class="redStar">*</span></label>
+                <input type="text" class="form-control" ng-model="FolderModel.title" placeholder="Title" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <label for="Description">Description<span class="redStar">*</span></label>
+                <textarea class="form-control" ng-model="FolderModel.description" placeholder="Description" />
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" ng-click="createFolder();">Ok</button>
+        <button type="button" class="btn btn-default" ng-click="closePopup();">Close</button>
+    </div>
+</div>

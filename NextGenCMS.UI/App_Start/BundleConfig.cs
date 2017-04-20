@@ -65,6 +65,7 @@ namespace NextGenCMS.UI
                "~/Scripts/controller/GroupManagementController.js",
                "~/Scripts/controller/UserManagementController.js",
                "~/Scripts/controller/AddUserPopupController.js",
+               "~/Scripts/controller/AddFolderPopupController.js",
                  "~/Scripts/controller/FolderController.js"
              ));
         }
