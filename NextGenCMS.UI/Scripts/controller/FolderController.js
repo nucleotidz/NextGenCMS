@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
-    app.controller('FolderController', ['$scope', '$rootScope', 'FolderAPI', 'FileAPI', '$q', '$modal',
-function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal) {
+    app.controller('FolderController', ['$scope', '$rootScope', 'FolderAPI', 'FileAPI', '$q', '$modal', 'Global',
+function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global) {
     var vm = this;
     var node;
     var path
@@ -180,6 +180,11 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal) {
         {
             field: "webdavUrl", hidden: true
         }]
+    }
+    vm.Download = function () {
+        var entityGrid = $("#userGrid").data("kendoGrid")
+        var selectedItem = entityGrid.dataItem(entityGrid.select());
+        window.open(Global.Alfresco + selectedItem.webdavUrl);
     }
     Bind();
 }])
