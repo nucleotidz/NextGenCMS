@@ -48,6 +48,7 @@
     <Compile Include="Alfresco\Folder\Permissions.cs" />
     <Compile Include="Alfresco\Folder\Permissions2.cs" />
     <Compile Include="Alfresco\Folder\RootObject.cs" />
+    <Compile Include="classes\ApiResponseModel.cs" />
     <Compile Include="classes\administration\CreateUser\CreateUserRequest.cs" />
     <Compile Include="classes\administration\CreateUser\ResponseError.cs" />
     <Compile Include="classes\administration\CreateUser\Status.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="classes\LoginModel.cs" />
     <Compile Include="classes\Folder\SubFolderModel.cs" />
     <Compile Include="classes\authentication\LoginToken.cs" />
+    <Compile Include="classes\WebResponseModel.cs" />
     <Compile Include="constants\ApiHelper.cs" />
     <Compile Include="constants\AppConfigKeys.cs" />
     <Compile Include="constants\FileFolder.cs" />

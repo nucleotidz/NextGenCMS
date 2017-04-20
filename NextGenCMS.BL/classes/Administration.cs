@@ -15,6 +15,8 @@ namespace NextGenCMS.BL.classes
     using NextGenCMS.Model.constants;
     using NextGenCMS.Model.classes.administration;
     using NextGenCMS.Model.classes.administration.GetUsers;
+    using NextGenCMS.Model;
+    using NextGenCMS.Model.classes.administration.CreateUser;
     #endregion
 
     public class Administration : IAdministration
@@ -55,16 +57,36 @@ namespace NextGenCMS.BL.classes
         /// </summary>
         /// <param name="createUser">createUser</param>
         /// <returns>string</returns>
-        public User CreateUser(CreateUserRequest createUser)
+        public object CreateUser(CreateUserRequest createUser)
         {
-            string data = string.Empty;
+            WebResponseModel response = new WebResponseModel();
             if (HttpContext.Current.Items[Filter.Token] != null)
             {
-                data = this._apiHelper.Post(ServiceUrl.CreateUser + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(createUser));
+                response = this._apiHelper.Submit(ServiceUrl.CreateUser + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(createUser));
             }
 
-            User response = JsonConvert.DeserializeObject<User>(data);
-            return response;
+            if (response.status == NextGenCMS.Model.constants.ApiHelper.StatusCode.Success)
+            {
+                User data = JsonConvert.DeserializeObject<User>(response.message);
+
+                var obj = new ApiResponseModel<User>
+                {
+                    Status = response.status,
+                    Result = data
+                };
+                return obj;
+            }
+            else
+            {
+                ResponseError data = JsonConvert.DeserializeObject<ResponseError>(response.message);
+
+                var obj = new ApiResponseModel<ResponseError>
+                {
+                    Status = response.status,
+                    Result = data
+                };
+                return obj;
+            }
         }
 
         /// <summary>

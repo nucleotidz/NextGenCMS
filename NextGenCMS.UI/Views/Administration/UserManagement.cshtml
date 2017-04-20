@@ -24,9 +24,13 @@
         </div>
     </div>
 </div>
-
-<div id="userGrid"
-     kendo-grid
-     k-options="vm.userGridOptions"
-     k-data-source="vm.userDataSourve" style="overflow: scroll;">
-</div>
+<br />
+<kendo-tabstrip>
+    <ul>
+        <li class="k-state-active" href="#">Users</li>
+    </ul>
+    <div id="userGrid"
+         kendo-grid
+         k-options="vm.userGridOptions"
+         k-data-source="vm.userDataSourve">
+    </div>
