@@ -18,6 +18,12 @@
                 url: Global.apiuri + "Folder/Create",
                 isArray: false,
                 params: {}
+            },
+            CreateSubFolder: {
+                method: "POST",
+                url: Global.apiuri + "Folder/Create/SubFolder",
+                isArray: false,
+                params: {}
             }
         });
     }]);

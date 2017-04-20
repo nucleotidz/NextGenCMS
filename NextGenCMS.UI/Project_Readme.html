@@ -1,1 +1,235 @@
-﻿
+﻿<!doctype html>
+<html lang="en-US">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Files</title>
+    <link rel="icon" href="images/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="all" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" media="all" href="css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" type="text/css" media="all" href="css/global.css">
+    <link rel="stylesheet" type="text/css" media="all" href="http://cdn.kendostatic.com/2015.1.318/styles/kendo.common.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" language="javascript" charset="utf-8" src="js/bootstrap.min.js"></script>
+    <script src="https://kendo.cdn.telerik.com/2017.1.223/js/kendo.all.min.js"></script>
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.1.223/styles/kendo.common-material.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.1.223/styles/kendo.material.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.1.223/styles/kendo.material.mobile.min.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <nav class="navbar navbar-default">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="glyphicon glyphicon-align-justify"></span>
+                    </button>
+                    <!--a class="navbar-brand" href="#">Brand</a-->
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><span class="glyphicon glyphicon-cloud"></span><a href="#">Dashboard</a></li>
+                        <li class="active"><span class="glyphicon glyphicon-file"></span><a href="#">Pages</a></li>
+                        <li><span class="glyphicon glyphicon-th-list"></span><a href="#">Content</a></li>
+                        <li><span class="glyphicon glyphicon-user"></span><a href="#">Administration</a></li>
+                        <li><span class="glyphicon glyphicon-signal"></span><a href="#">Analytics</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <div class="row pageHeader">
+            <div class="settingicon pull-left"><span class="glyphicon glyphicon-cog"></span></div>
+            <div class="pageTitle clearfix">
+                <h1>Files</h1>
+                <ul class="logoutBox">
+                    <li class="blueText">Hello, Nikhat</li>
+                    <li><span class="glyphicon glyphicon-user"></span><a href="#">Profile</a></li>
+                    <li><span class="glyphicon glyphicon-lock"></span><a href="#">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="toolPane">
+            <ul class="pageTools">
+                <li><a href="#" title="Dashboard"><span class="glyphicon glyphicon-cloud"></span></a></li>
+                <li><a href="#" title="New Page"><span class="glyphicon glyphicon-file"></span></a></li>
+                <li><a href="#" title="Content"><span class="glyphicon glyphicon-th-list"></span></a></li>
+                <li><a href="#" title="Administration"><span class="glyphicon glyphicon-user"></span></a></li>
+                <li><a href="#" title="Analytics"><span class="glyphicon glyphicon-signal"></span></a></li>
+            </ul>
+            <ul class="adminTools">
+                <li><a href="#" title="User"><span class="glyphicon glyphicon-user"></span></a></li>
+                <li><a href="#" title="Settings"><span class="glyphicon glyphicon-cog"></span></a></li>
+
+            </ul>
+        </div>
+        <div class="rightPane">
+            <div class="row">
+                <ul class="breadcrumb">
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Administration</a></li>
+                    <li class="active">Files</li>
+                    <ul>
+            </div>
+            <div class="row">
+                <div class="btnPane">
+                    <button type="button" class="btn btn-primary btn-sm graybtn">Folder Up<span class="glyphicon glyphicon-arrow-up"></span></button>
+                    <button type="button" class="btn btn-primary btn-sm bluebtn whiteText">Upload<span class="glyphicon glyphicon-plus"></span></button>
+                    <button type="button" class="btn btn-primary btn-sm graybtn">Download<span class="glyphicon glyphicon glyphicon-download"></span></button>
+                    <button type="button" class="btn btn-primary btn-sm graybtn">Delete <span class="glyphicon glyphicon-trash"></span></button>
+                    <button type="button" class="btn btn-primary btn-sm graybtn paddRight8">Rename</button>
+                    <button type="button" class="btn btn-primary btn-sm graybtn paddRight8">Copy</button>
+                    <button type="button" class="btn btn-primary btn-sm graybtn paddRight8">Paste</button>
+                    <button type="button" class="btn btn-primary btn-sm graybtn">New Folder<span class="glyphicon glyphicon-plus"></button>
+                </div>
+            </div>
+
+
+            <div class="threeCols">
+                <div class="menuColumn col-xs-12 col-md-3">
+
+                    <ul id="treeview">
+
+                        <li data-expanded="true">
+                            <span class="folderIcon"></span>
+                            ....
+                            <ul>
+                                <li data-expanded="true">
+                                    <span class="folderIcon"></span>App_Data
+                                    <ul>
+                                        <li data-expanded="true">
+                                            <span class="folderIcon"></span>RedSpell
+                                            <ul>
+                                        </li>
+                                        <li><span class="folderIcon"></span>child 1</li>
+                                        <li><span class="folderIcon"></span>child 2</li>
+                                    </ul>
+                                <li data-expanded="true"><span class="folderIcon"></span>XSintelligence</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="folderIcon"></span>Backend_Themes
+                            <ul>
+                                <li data-expanded="true">
+                                    <span class="folderIcon"></span>Theme1
+                                </li>
+                                <li data-expanded="true">
+                                    <span class="folderIcon"></span>Theme2
+                                </li>
+                                <li>
+                                    <span class="folderIcon"></span>Theme3
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="folderIcon"></span>Bin
+                            <ul>
+                                <li data-expanded="true">
+                                    <span class="folderIcon"></span>Theme1
+                                </li>
+                                <li data-expanded="true">
+                                    <span class="folderIcon"></span>Theme2
+                                </li>
+                                <li>
+                                    <span class="folderIcon"></span>Theme3
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="folderIcon"></span>ClientBin
+                            <ul>
+                                <li>
+                                    <span class="folderIcon"></span>Client1
+                                </li>
+                                <li>
+                                    <span class="folderIcon"></span>Client2
+                                </li>
+                                <li>
+                                    <span class="folderIcon"></span>Client3
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="folderIcon"></span>Obj
+                        </li>
+                        <li>
+                            <span class="folderIcon"></span>Picture_library
+                        </li>
+                    </ul>
+                    </li>
+                    </ul>
+                </div>
+
+                <div class="column col-xs-12 col-md-6">
+                    <div id="grid"></div>
+                </div>
+                <div class="column col-xs-12 col-md-3">
+
+                    <div class="gnrlInfoBox">
+                        <div class="gnrlInfoBoxHead"><span class="crossX">X</span><h5>24/7 Support Ticket</h5></div>
+                        <p class="infoContent">Give us a call 24 hours a day, 7 days a week. Our highly trained, courteous support staff is waiting to take your call.</p>
+                        <p class="infoContent">24/7 Technical Support (0091-000-6762216)</p>
+                        <div class="supportTicket">
+                            <button type="button" class="btn btn-primary btn-sm bluebtn whiteText">Create Support Ticket</button>
+                        </div>
+                    </div>
+
+                    <div class="gnrlInfoBox">
+                        <div class="gnrlInfoBoxHead"><span class="crossX">X</span><h5>24/7 Support Ticket</h5></div>
+                        <p class="infoContent">Give us a call 24 hours a day, 7 days a week. Our highly trained, courteous support staff is waiting to take your call.</p>
+                        <p class="infoContent">24/7 Technical Support (0091-000-6762216)</p>
+                        <div class="supportTicket">
+                            <button type="button" class="btn btn-primary btn-sm bluebtn whiteText">Create Support Ticket</button>
+                        </div>
+                    </div>
+
+                    <div class="gnrlInfoBox">
+                        <div class="gnrlInfoBoxHead"><span class="crossX">X</span><h5>24/7 Support Ticket</h5></div>
+                        <p class="infoContent">Give us a call 24 hours a day, 7 days a week. Our highly trained, courteous support staff is waiting to take your call.</p>
+                        <p class="infoContent">24/7 Technical Support (0091-000-6762216)</p>
+                        <div class="supportTicket">
+                            <button type="button" class="btn btn-primary btn-sm bluebtn whiteText">Create Support Ticket</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+        $("#treeview").kendoTreeView();
+
+
+
+        var data = {
+            "d": [
+    { "Name": "App_data:#NWProducts", "Size": "0 KB", "Type": "HTML File" },
+    { "Name": "App_data:#NWProducts", "Size": "0 KB", "Type": "HTML File" },
+    { "Name": "App_data:#NWProducts", "Size": "0 KB", "Type": "HTML File" },
+    { "Name": "App_data:#NWProducts", "Size": "0 KB", "Type": "HTML File" },
+    { "Name": "App_data:#NWProducts", "Size": "0 KB", "Type": "HTML File" }
+            ]
+        };
+
+        $("#grid").kendoGrid({
+            dataSource: {
+                transport: {
+                    read: function (options) {
+                        options.success(data);
+                    }
+                },
+                schema: {
+                    data: "d"
+                }
+            }
+        });
+    });
+
+
+
+
+</script>

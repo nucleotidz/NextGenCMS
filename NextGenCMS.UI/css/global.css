@@ -3,14 +3,14 @@ html {
 }
 
 body{
-	height: 100vh; /* Try removing this.. */
+	height: 100%; /* Try removing this.. */
     background: #f0f0f0; /* For browsers that do not support gradients */    
     background: -webkit-linear-gradient(bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(214,211,214,1) 100%); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(214,211,214,1) 100%);/* For Opera 11.1 to 12.0 */
     background: -moz-linear-gradient(bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(214,211,214,1) 100%);/* For Firefox 3.6 to 15 */
     background: linear-gradient(bottom, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(214,211,214,1) 100%); /* Standard syntax (must be last) */
 	color:#000;
-	font-weight:bold;
+	/*font-weight:bold*/
 }
 
 ul{
@@ -118,6 +118,7 @@ label{
 .navbar-nav {
     font-size: 110%;
     margin: 0px;
+    font-weight:bold;
 }
 
 .navbar {
@@ -458,26 +459,6 @@ h4.modal-title {
 }
 /*----End Modal Window---*/
 
-.rightPane .col-table {
-    display: table;
-}
-
-.rightPane .col-row {
-    display:table-row;
-}
-.rightPane .column {
-    display:table-cell;
-	border:solid 1px #ccc;
-	background:#F4F4F4;
-}
-.column:after{
-	display: block;
-    position: absolute;
-    height: 100%;
-    content: "";
-    background-color: #fff;
-}
-
 #treeview span.folderIcon {
     background: url(../images/folder_icon.png) 0px 9px no-repeat;
     display: inline-block;
@@ -499,12 +480,39 @@ span.k-in.k-state-hover{
 	text-decoration:underline;
 
 }
+.threeCols .menuColumn{
+	background:#f4f4f4;
+	border:solid 1px #ccc;
+	border-radius:4px;
+}
+.column{}
 
-.rootfolder { background-position: 0 0; }
-.folder { background-position: 0 -16px; }
-.pdf { background-position: 0 -32px; }
-.html { background-position: 0 -48px; }
-.image { background-position: 0 -64px; }
+.gnrlInfoBox{background:#fff; border:solid 1px #ccc;border-radius:4px;margin-bottom:15px;}
 
+.gnrlInfoBoxHead{
+	background:#057FC2;color:#fff;padding:10px;border-radius: 4px 4px 0px 0px;
+}
 
-/*--http://callmenick.com/_development/css-equal-height-columns/index2.html--*/
+.gnrlInfoBoxHead span.crossX{
+	font-size: 16px;
+    display: block;
+    float: left;
+}
+.gnrlInfoBoxHead h5 {
+    position: relative;
+    top: 1px;
+    padding: 0px;
+    font-size: 17px;
+    margin-left: 20px;
+    font-weight: bold;
+	margin-bottom:0px !important;
+	margin-top:0px !important;
+}
+
+.gnrlInfoBox p.infoContent{
+	margin: 10px;
+    border-bottom: solid 1px #ccc;
+    padding-bottom: 10px;
+}
+
+div.supportTicket{text-align:center;margin-bottom:10px;}

@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Web.Http;
 using NextGenCMS.Model.Alfresco.Folder;
 using NextGenCMS.Model.classes;
+using NextGenCMS.Model.classes.Folder;
 namespace NextGenCMS.API.Controllers
 {
     [RoutePrefix("api/Folder")]
@@ -38,6 +39,13 @@ namespace NextGenCMS.API.Controllers
         public HttpResponseMessage CreateFolder(AddFolderModel folderModel)
         {
             return Request.CreateResponse(HttpStatusCode.OK, _folder.CreateFolder(folderModel));
+        }
+
+        [HttpPost]
+        [Route("Create/SubFolder")]
+        public HttpResponseMessage CreateSubFolder(AddSubFolderModel folderModel)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, _folder.CreateSubFolder(folderModel));
         }
     }
 }

@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using NextGenCMS.Model.Alfresco.Folder;
 using System.Web;
 using NextGenCMS.Model.classes;
+using NextGenCMS.Model.classes.Folder;
 
 namespace NextGenCMS.BL.classes
 {
@@ -69,7 +70,25 @@ namespace NextGenCMS.BL.classes
                 Name = folderModel.name,
                 Noderef = dataObject.nodeRef,
                 Title = folderModel.title,
-                HasChildren = true
+                HasChildren = false
+            };
+        }
+
+        public FolderModel CreateSubFolder(AddSubFolderModel folderModel)
+        {
+            folderModel.folder.type = FileFolder.type;
+            string data = string.Empty;
+            if (HttpContext.Current.Items[Filter.Token] != null)
+            {
+                data = this._apiHelper.Post(ServiceUrl.AddFolder + folderModel.path + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(folderModel.folder));
+            }
+            AddFolderRootObject dataObject = JsonConvert.DeserializeObject<AddFolderRootObject>(data);
+            return new FolderModel
+            {
+                Name = folderModel.folder.name,
+                Noderef = dataObject.nodeRef,
+                Title = folderModel.folder.title,
+                HasChildren = false
             };
         }
 

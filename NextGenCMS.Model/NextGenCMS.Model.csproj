@@ -62,11 +62,11 @@
     <Compile Include="Alfresco\Folder\SRootObject.cs" />
     <Compile Include="Alfresco\Folder\UserAccess.cs" />
     <Compile Include="Alfresco\Folder\UserAccess2.cs" />
-    <Compile Include="classes\AddFolderModel.cs" />
-    <Compile Include="classes\FolderModel.cs" />
+    <Compile Include="classes\Folder\AddFolderModel.cs" />
+    <Compile Include="classes\Folder\AddSubFolderModel.cs" />
+    <Compile Include="classes\Folder\FolderModel.cs" />
     <Compile Include="classes\LoginModel.cs" />
-    <Compile Include="classes\LoginToken.cs" />
-    <Compile Include="classes\SubFolderModel.cs" />
+    <Compile Include="classes\Folder\SubFolderModel.cs" />
     <Compile Include="classes\authentication\LoginToken.cs" />
     <Compile Include="constants\ApiHelper.cs" />
     <Compile Include="constants\AppConfigKeys.cs" />

@@ -4,23 +4,29 @@
 <div class="row">
     <ul class="breadcrumb">
         <li><a href="#">Dashboard</a></li>
-        <li><a href="#">Administration</a></li>
+       
         <li class="active">Files</li>
     </ul>
 </div>
+
 <div class="row">
-    <div class="btnPane">
-        <button type="button" class="btn btn-primary btn-sm graybtn" ng-click="vm.AddFolder();">Create Folder <span class="glyphicon glyphicon-plus"></span></button>
-        <button type="button" class="btn btn-primary btn-sm graybtn">Create Sub-Folder <span class="glyphicon glyphicon-plus"></span></button>
+    <div class="btnPane">       
+        <button type="button" class="btn btn-primary btn-sm bluebtn whiteText">Upload<span class="glyphicon glyphicon-plus"></span></button>
+        <button type="button" class="btn btn-primary btn-sm graybtn">Download<span class="glyphicon glyphicon glyphicon-download"></span></button>
         <button type="button" class="btn btn-primary btn-sm graybtn">Delete <span class="glyphicon glyphicon-trash"></span></button>
-        <button type="button" class="btn btn-primary btn-sm graybtn">Upload File<span class="glyphicon glyphicon-upload"></button>
+        <button type="button" class="btn btn-primary btn-sm graybtn paddRight8">Rename</button>
+        <button type="button" class="btn btn-primary btn-sm graybtn paddRight8">Copy</button>
+        <button type="button" class="btn btn-primary btn-sm graybtn paddRight8">Paste</button>
+        <button type="button" class="btn btn-primary btn-sm graybtn" ng-click="vm.AddFolder();">New Folder<span class="glyphicon glyphicon-plus"></span></button>
+        <button type="button" class="btn btn-primary btn-sm graybtn" ng-click="vm.AddSubFolder();">Sub Folder<span class="glyphicon glyphicon-arrow-up"></span></button>
     </div>
 </div>
-<div class="threeCols clearfix">
-    <div class="innerCol col-xs-12 col-md-3">
+
+<div class="threeCols">
+    <div class="menuColumn col-xs-12 col-md-3">
 
         <div kendo-tree-view="vm.tree" id="treeview"
-             k-data-source="vm.treeData" k-drag-and-drop="true" k-on-drop="vm.onDrop(kendoEvent)"
+             k-data-source="vm.treeData" 
              k-on-change="vm.selectedItem(dataItem)">
             <span k-template class="folderIcon">
                 {{dataItem.title}}
@@ -28,11 +34,26 @@
         </div>
     </div>
 
-    <div class="innerCol col-xs-12 col-md-6">
+    <div class="column col-xs-12 col-md-6">
         Center Container
     </div>
-    <div class="innerCol col-xs-12 col-md-3">
-        right Container
+
+    <div class="column col-xs-12 col-md-3">
+        
+
+            <div class="gnrlInfoBox">
+                <div class="gnrlInfoBoxHead"><span class="crossX">X</span><h5>24/7 Support Ticket</h5></div>
+                <p class="infoContent">Give us a call 24 hours a day, 7 days a week. Our highly trained, courteous support staff is waiting to take your call.</p>
+                <p class="infoContent">24/7 Technical Support (0091-000-6762216)</p>
+                <div class="supportTicket">
+                    <button type="button" class="btn btn-primary btn-sm bluebtn whiteText">Create Support Ticket</button>
+                </div>
+            </div>
+
+           
+
+
+       
     </div>
 </div>
 

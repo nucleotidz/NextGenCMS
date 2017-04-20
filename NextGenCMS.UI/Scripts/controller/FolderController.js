@@ -43,7 +43,6 @@ function ($scope, $rootScope, FolderAPI, $q) {
         });
     }
     vm.AddFolder = function () {
-
         var FolderModel = {
             name: "Ahmaar",
             title: "Ahmaar",
@@ -56,9 +55,27 @@ function ($scope, $rootScope, FolderAPI, $q) {
             nodeRefs.push(response[0].noderef)
         });
     }
-    vm.onDrop = function (e) {
-        var item = vm.tree.dataItem(e.sourceNode);
+    vm.AddSubFolder = function () {
+        if (vm.tree.select().length < 1) {
+            return;
+        }
+        var folder = {
+            name: "Ahamaaar",
+            title: "Ahamaaar",
+            description: false,
+            type: ""
+        }
+        var FolderModel = {
+            path: path,
+            folder: folder
+        }
+        var apiData = FolderAPI.CreateSubFolder(FolderModel)
+        $q.all([apiData.$promise]).then(function (response) {
+            vm.tree.append({ "name": response[0].name, "title": response[0].title, "description": response[0].description, "noderef": response[0].noderef, hasChildren: response[0].hasChildren }, vm.tree.select());
+            nodeRefs.push(response[0].noderef)
+        });
     }
+   
     Bind();
 }])
 })();
