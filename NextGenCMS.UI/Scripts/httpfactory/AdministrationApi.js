@@ -6,11 +6,15 @@
             isArray: false,
             param: {}
         },
+        searchUsers: {
+            method: "GET",
+            url: Global.apiuri + "administration/users/:searchText",
+            isArray: false
+        },
         getUsers: {
             method: "GET",
             url: Global.apiuri + "administration/users",
-            isArray: false,
-            param: {}
+            isArray: false
         },
         getGroups: {
             method: "GET",

@@ -4,6 +4,7 @@ namespace NextGenCMS.BL.classes
     #region Namespaces
     using System;
     using System.Web;
+    using System.Linq;
     using Newtonsoft.Json;
     #endregion
 
@@ -92,8 +93,9 @@ namespace NextGenCMS.BL.classes
         /// <summary>
         /// This method will return all the users
         /// </summary>
+        /// <param name="searchText">searchText</param>
         /// <returns>list of users</returns>
-        public GetUsersResponse GetUsers()
+        public GetUsersResponse GetUsers(string searchText)
         {
             string data = string.Empty;
             if (HttpContext.Current.Items[Filter.Token] != null)
@@ -102,6 +104,18 @@ namespace NextGenCMS.BL.classes
             }
 
             GetUsersResponse response = JsonConvert.DeserializeObject<GetUsersResponse>(data);
+
+            if (string.IsNullOrWhiteSpace(searchText))
+            {
+                response.people = response.people.Where(user => user.authorizationStatus == "AUTHORIZED").OrderBy(x => x.firstName).ToList();
+            }
+            else
+            {
+                response.people = response.people.Where(user => (user.firstName.IndexOf(searchText) != -1 ||
+                                                                  user.lastName.IndexOf(searchText) != -1 ||
+                                                                  user.userName.IndexOf(searchText) != -1) &&
+                                                                  user.authorizationStatus == "AUTHORIZED").OrderBy(x => x.firstName).ToList();
+            }
             return response;
         }
         #endregion

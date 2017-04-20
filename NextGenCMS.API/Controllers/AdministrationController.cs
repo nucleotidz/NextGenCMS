@@ -52,11 +52,28 @@ namespace NextGenCMS.API.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, this._administration.CreateUser(createUser));
         }
 
+        /// <summary>
+        /// This method will search users based on search text
+        /// </summary>
+        /// <param name="searchText">searchText</param>
+        /// <returns>HttpResponseMessage</returns>
+        [HttpGet]
+        [Route("users/{searchText}")]
+        public HttpResponseMessage SearchUsers(string searchText)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, this._administration.GetUsers(searchText));
+        }
+
+        /// <summary>
+        /// This method will search users based on search text
+        /// </summary>
+        /// <param name="searchText">searchText</param>
+        /// <returns>HttpResponseMessage</returns>
         [HttpGet]
         [Route("users")]
         public HttpResponseMessage GetUsers()
         {
-            return Request.CreateResponse(HttpStatusCode.OK, this._administration.GetUsers());
+            return Request.CreateResponse(HttpStatusCode.OK, this._administration.GetUsers(string.Empty));
         }
         #endregion
 

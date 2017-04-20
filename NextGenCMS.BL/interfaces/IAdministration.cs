@@ -16,8 +16,9 @@ namespace NextGenCMS.BL.interfaces
         /// <summary>
         /// This method will return all the users
         /// </summary>
+        /// <param name="searchText">searchText</param>
         /// <returns>list of users</returns>
-        GetUsersResponse GetUsers();
+        GetUsersResponse GetUsers(string searchText);
 
         /// <summary>
         /// This method will return all the users

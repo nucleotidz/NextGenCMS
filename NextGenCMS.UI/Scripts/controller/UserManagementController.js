@@ -3,6 +3,7 @@
     app.controller('UserManagementController', ['$scope', '$modal', 'AdministrationApi', '$q',
     function ($scope, $modal, AdministrationApi, $q) {
         var vm = this;
+        vm.searchText = "";
         vm.addUser = function () {
             var modalInstance = $modal.open({
                 backdrop: 'static',
@@ -39,16 +40,20 @@
                         },
                         jobtitle: {
                             type: "string", editable: false
-                        },
-                        authorizationStatus: {
-                            type: "string", editable: false
                         }
                     }
                 }
             },
         });
         vm.SearchUser = function () {
-            var data = AdministrationApi.getUsers();
+            var data;
+            if (vm.searchText == "") {
+                data = AdministrationApi.getUsers();
+            }
+            else {
+                data = AdministrationApi.searchUsers({ "searchText": vm.searchText });
+            }
+
             $q.all([data.$promise]).then(function (response) {
                 vm.UserData = response[0].people;
                 vm.userDataSourve.read();
@@ -91,10 +96,6 @@
             },
             {
                 field: "jobtitle", title: "Job Title"
-
-            },
-            {
-                field: "authorizationStatus", title: "AuthorizationStatus"
             }
             ]
         };
