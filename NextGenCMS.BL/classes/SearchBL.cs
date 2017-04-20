@@ -34,7 +34,7 @@ namespace NextGenCMS.BL.classes
         }
 
         public dynamic SearchFile(string searchKey)
-        {           
+        {         
             string data = string.Empty;
             if (HttpContext.Current.Items[Filter.Token] != null)
             {
