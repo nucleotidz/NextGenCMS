@@ -186,6 +186,7 @@
     <Content Include="images\coloricons-sprite.png" />
     <Content Include="images\DXC_logo.png" />
     <Content Include="images\favicon.ico" />
+    <Content Include="images\folder_icon.png" />
     <Content Include="Scripts\angular\angular-resource.min.js" />
     <Content Include="Scripts\angular\angular-ui-router.js" />
     <Content Include="Scripts\angular\angular.min.js" />

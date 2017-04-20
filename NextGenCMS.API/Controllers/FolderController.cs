@@ -32,5 +32,12 @@ namespace NextGenCMS.API.Controllers
         {
             return Request.CreateResponse(HttpStatusCode.OK, _folder.GetSubFoldersPath(subFolderModel.path));
         }
+
+        [HttpPost]
+        [Route("Create")]
+        public HttpResponseMessage CreateFolder(AddFolderModel folderModel)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, _folder.CreateFolder(folderModel));
+        }
     }
 }

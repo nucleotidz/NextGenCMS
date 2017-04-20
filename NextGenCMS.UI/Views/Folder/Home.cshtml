@@ -10,7 +10,7 @@
 </div>
 <div class="row">
     <div class="btnPane">
-        <button type="button" class="btn btn-primary btn-sm graybtn">Create Folder <span class="glyphicon glyphicon-plus"></span></button>
+        <button type="button" class="btn btn-primary btn-sm graybtn" ng-click="vm.AddFolder();">Create Folder <span class="glyphicon glyphicon-plus"></span></button>
         <button type="button" class="btn btn-primary btn-sm graybtn">Create Sub-Folder <span class="glyphicon glyphicon-plus"></span></button>
         <button type="button" class="btn btn-primary btn-sm graybtn">Delete <span class="glyphicon glyphicon-trash"></span></button>
         <button type="button" class="btn btn-primary btn-sm graybtn">Upload File<span class="glyphicon glyphicon-upload"></button>
@@ -18,8 +18,9 @@
 </div>
 <div class="threeCols clearfix">
     <div class="innerCol col-xs-12 col-md-3">
+
         <div kendo-tree-view="vm.tree" id="treeview"
-             k-data-source="vm.treeData"
+             k-data-source="vm.treeData" k-drag-and-drop="true" k-on-drop="vm.onDrop(kendoEvent)"
              k-on-change="vm.selectedItem(dataItem)">
             <span k-template class="folderIcon">
                 {{dataItem.title}}

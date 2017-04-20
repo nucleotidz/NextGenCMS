@@ -8,5 +8,6 @@ namespace NextGenCMS.BL.interfaces
     {
         List<FolderModel> GetRootFolders();
         List<FolderModel> GetSubFoldersPath(string path);
+        FolderModel CreateFolder(AddFolderModel folderModel);
     }
 }

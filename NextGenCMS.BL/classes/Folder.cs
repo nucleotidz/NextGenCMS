@@ -55,6 +55,24 @@ namespace NextGenCMS.BL.classes
             return this.MapSubFolder(dataObject.items);
         }
 
+        public FolderModel CreateFolder(AddFolderModel folderModel)
+        {
+            folderModel.type = FileFolder.type;
+            string data = string.Empty;
+            if (HttpContext.Current.Items[Filter.Token] != null)
+            {
+                data = this._apiHelper.Post(ServiceUrl.AddFolder + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(folderModel));
+            }
+            AddFolderRootObject dataObject = JsonConvert.DeserializeObject<AddFolderRootObject>(data);
+            return new FolderModel
+            {
+                Name = folderModel.name,
+                Noderef = dataObject.nodeRef,
+                Title = folderModel.title,
+                HasChildren = true
+            };
+        }
+
         private List<FolderModel> MapFolder(List<Datalist> dataObject)
         {
             List<FolderModel> model = new List<FolderModel>();
@@ -70,6 +88,8 @@ namespace NextGenCMS.BL.classes
             });
             return model;
         }
+
+
 
         private List<FolderModel> MapSubFolder(List<Item> dataObject)
         {
