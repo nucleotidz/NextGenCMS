@@ -193,6 +193,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdministrationController.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
+    <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\FolderController.cs" />
     <Compile Include="Filters\Secure.cs" />
     <Compile Include="Global.asax.cs">

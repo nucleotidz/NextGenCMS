@@ -1,12 +1,13 @@
 ﻿(function () {
     'use strict';
-    app.controller('FolderController', ['$scope', '$rootScope', 'FolderAPI', '$q', '$modal',
-function ($scope, $rootScope, FolderAPI, $q, $modal) {
+    app.controller('FolderController', ['$scope', '$rootScope', 'FolderAPI', 'FileAPI', '$q', '$modal',
+function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal) {
     var vm = this;
     var node;
     var path
     vm.treeData = null;
     var nodeRefs = [];
+    var Files = [];
     function Bind() {
         var data = FolderAPI.GetRootFolders();
         $q.all([data.$promise]).then(function (response) {
@@ -18,7 +19,7 @@ function ($scope, $rootScope, FolderAPI, $q, $modal) {
 
             });
         });
-    }
+    };
     vm.selectedItem = function (data) {
         node = data;
         path = data.name;
@@ -30,8 +31,18 @@ function ($scope, $rootScope, FolderAPI, $q, $modal) {
             path: path
         }
         var apiData = FolderAPI.GetSubFolderFolders(SubFolderModel)
-        $q.all([apiData.$promise]).then(function (response) {
+        var fileDate = FileAPI.GetFiles(SubFolderModel);
+        $q.all([apiData.$promise, fileDate.$promise]).then(function (response) {
+            if (response[1].items !== undefined && response[1].items.length > 0) {
+                Files = _.where(response[1].items, { isFolder: false });
+                vm.FileGridDataSource.read();
+            }
+            else {
+                Files = [];
+                vm.FileGridDataSource.read();
+            }
             if (response[0].length > 0) {
+
                 for (var i = 0; i < response[0].length; i++) {
                     if (nodeRefs.indexOf(response[0][i].noderef) > -1) {
                         return;
@@ -39,6 +50,7 @@ function ($scope, $rootScope, FolderAPI, $q, $modal) {
                     nodeRefs.push(response[0][i].noderef)
                 }
                 vm.tree.append(response[0], vm.tree.select());
+
             }
         });
     }
@@ -78,12 +90,97 @@ function ($scope, $rootScope, FolderAPI, $q, $modal) {
             var apiData = FolderAPI.CreateSubFolder(FolderModel)
             $q.all([apiData.$promise]).then(function (response) {
                 vm.tree.append({ "name": response[0].name, "title": response[0].title, "description": response[0].description, "noderef": response[0].noderef, hasChildren: response[0].hasChildren }, vm.tree.select());
-                nodeRefs.push(response[0].noderef)
-            });
+                nodeRefs.push(response[0].noderef);
 
+            });
         });
     }
-   
+
+    vm.FileGridDataSource = new kendo.data.DataSource({
+        type: "json",
+        transport: {
+            read: function (o) {
+                o.success(Files);
+            }
+        },
+        pageSize: 1000,
+        schema: {
+            model: {
+                action: "",
+                fields: {
+                    displayName: {
+                        type: "string", editable: false
+                    },
+                    version: {
+                        type: "string", editable: false
+                    },
+                    lockedByUser: {
+                        type: "string", editable: false
+                    },
+                    createdOn: {
+                        type: "string", editable: false
+                    },
+                    path: {
+                        type: "string", editable: false
+                    },
+                    nodeRef: {
+                        type: "string", editable: false
+                    },
+                    webdavUrl: {
+                        type: "string", editable: false
+                    }
+                }
+            }
+        },
+    });
+    vm.FileGridOptions = {
+        dataSource: vm.FileGridDataSource,
+        dataBound: function () {
+        },
+        sortable: {
+            mode: "multiple",
+            allowUnsort: true
+        },
+        reorderable: true,
+        resizable: true,
+        navigatable: true,
+        scrollable: true,
+        selectable: "row",
+        filterable: true,
+        pageable: {
+            numeric: false,
+            previousNext: false,
+            messages: {
+                empty: "No Records exist",
+                display: "No of records is: {2}"
+            }
+        },
+        columns: [
+        {
+            field: "displayName", title: "Name", filterable: true
+        },
+        {
+            field: "version", title: "Version"
+        },
+        {
+            field: "lockedByUser", title: "Locked By"
+        },
+        {
+            field: "createdOn", title: "Created On", template: "#= kendo.toString(kendo.parseDate(createdOn), 'dd MMM yyyy') #"
+        },
+        {
+            field: "modifiedOn", title: "Modified On", template: "#= kendo.toString(kendo.parseDate(modifiedOn), 'dd MMM yyyy') #"
+        },
+        {
+            field: "path", title: "path", hidden: true
+        },
+        {
+            field: "nodeRef", title: "nodeRef", hidden: true
+        },
+        {
+            field: "webdavUrl", hidden: true
+        }]
+    }
     Bind();
 }])
 })();

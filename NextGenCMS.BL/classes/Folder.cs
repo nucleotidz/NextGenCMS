@@ -11,6 +11,9 @@ using NextGenCMS.Model.Alfresco.Folder;
 using System.Web;
 using NextGenCMS.Model.classes;
 using NextGenCMS.Model.classes.Folder;
+using System.Dynamic;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Converters;
 
 namespace NextGenCMS.BL.classes
 {
@@ -40,8 +43,8 @@ namespace NextGenCMS.BL.classes
             {
                 data = this._apiHelper.Get(ServiceUrl.Folder + HttpContext.Current.Items[Filter.Token]);
             }
-
-            RootObject dataObject = JsonConvert.DeserializeObject<RootObject>(data);
+           
+            RootObject dataObject = JsonConvert.DeserializeObject<RootObject>(data);        
             return this.MapFolder(dataObject.datalists);
         }
 

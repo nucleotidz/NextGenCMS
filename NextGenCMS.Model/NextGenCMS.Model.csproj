@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Alfresco\File\User.cs" />
     <Compile Include="Alfresco\Folder\AddFolderRootObject.cs" />
     <Compile Include="Alfresco\Folder\Datalist.cs" />
     <Compile Include="Alfresco\Folder\Item.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Alfresco\Folder\SRootObject.cs" />
     <Compile Include="Alfresco\Folder\UserAccess.cs" />
     <Compile Include="Alfresco\Folder\UserAccess2.cs" />
+    <Compile Include="classes\File\FilePath.cs" />
     <Compile Include="classes\Folder\AddFolderModel.cs" />
     <Compile Include="classes\Folder\AddSubFolderModel.cs" />
     <Compile Include="classes\Folder\FolderModel.cs" />

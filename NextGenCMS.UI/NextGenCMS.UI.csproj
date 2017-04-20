@@ -206,9 +206,11 @@
     <Content Include="Scripts\factory\Interceptor.js" />
     <Content Include="Scripts\httpfactory\AdministrationApi.js" />
     <Content Include="Scripts\httpfactory\AuthenticationApi.js" />
+    <Content Include="Scripts\httpfactory\FileAPI.js" />
     <Content Include="Scripts\httpfactory\FolderAPI.js" />
     <Content Include="Scripts\jquery\jquery-1.10.2.min.js" />
     <Content Include="Scripts\kendo\kendo.all.min.js" />
+    <Content Include="Scripts\underscore\underscore-min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

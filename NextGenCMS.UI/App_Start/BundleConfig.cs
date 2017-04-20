@@ -29,6 +29,7 @@ namespace NextGenCMS.UI
             LoadController(bundles);
             LoadConstant(bundles);
             LoadAPI(bundles);
+            LoadUnderscore(bundles);
         }
 
         #region Javascripts
@@ -100,10 +101,17 @@ namespace NextGenCMS.UI
                  (
                    "~/Scripts/httpfactory/AuthenticationAPI.js",
                    "~/Scripts/httpfactory/FolderAPI.js",
-                   "~/Scripts/httpfactory/AdministrationApi.js"
+                   "~/Scripts/httpfactory/AdministrationApi.js",
+                    "~/Scripts/httpfactory/FileAPI.js"
                  ));
         }
-
+        private static void LoadUnderscore(BundleCollection bundles)
+        {
+            bundles.Add(new ScriptBundle("~/Scripts/underscore/js").Include
+                 (
+                   "~/Scripts/underscore/underscore-min.js"                   
+                 ));
+        }
         #endregion
         #region StyleSheets
         private static void LoadBootStarpStyle(BundleCollection bundles)
