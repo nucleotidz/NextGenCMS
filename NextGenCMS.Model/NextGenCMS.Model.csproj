@@ -71,6 +71,8 @@
     <Compile Include="classes\LoginModel.cs" />
     <Compile Include="classes\Folder\SubFolderModel.cs" />
     <Compile Include="classes\authentication\LoginToken.cs" />
+    <Compile Include="classes\Search\SearchItemModel.cs" />
+    <Compile Include="classes\Search\SearchResultModel.cs" />
     <Compile Include="classes\WebResponseModel.cs" />
     <Compile Include="constants\ApiHelper.cs" />
     <Compile Include="constants\AppConfigKeys.cs" />

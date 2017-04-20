@@ -48,10 +48,12 @@
     <Compile Include="classes\Authentication.cs" />
     <Compile Include="classes\File.cs" />
     <Compile Include="classes\Folder.cs" />
+    <Compile Include="classes\SearchBL.cs" />
     <Compile Include="interfaces\IAdministration.cs" />
     <Compile Include="interfaces\IAuthentication.cs" />
     <Compile Include="interfaces\IFile.cs" />
     <Compile Include="interfaces\IFolder.cs" />
+    <Compile Include="interfaces\ISearchBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

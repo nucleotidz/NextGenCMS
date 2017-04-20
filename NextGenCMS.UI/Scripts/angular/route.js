@@ -51,6 +51,14 @@
                 controllerAs: "vm"
             }
         }
+    }).state('Home.Search', {
+        views: {
+            'content@': {
+                templateUrl: 'Search/SearchDocument',
+                controller: 'SearchController',
+                controllerAs: "vm"
+            }
+        }
     });
 
 });
