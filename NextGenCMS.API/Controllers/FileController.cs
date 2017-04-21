@@ -26,5 +26,12 @@ namespace NextGenCMS.API.Controllers
         {
             return Request.CreateResponse(HttpStatusCode.OK, (object)_file.GetFiles(filePath));
         }
+        [Route("Download")]
+        [HttpPost]
+        public HttpResponseMessage Download(FilePath filePath)
+        {
+            _file.Download(filePath);
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
     }
 }

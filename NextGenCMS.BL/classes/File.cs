@@ -34,11 +34,21 @@ namespace NextGenCMS.BL.classes
             string data = string.Empty;
             if (HttpContext.Current.Items[Filter.Token] != null)
             {
-                data = this._apiHelper.Get(ServiceUrl.File  + filePath.path + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
+                data = this._apiHelper.Get(ServiceUrl.File + filePath.path + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
             }
             var converter = new ExpandoObjectConverter();
             dynamic dataObject = JsonConvert.DeserializeObject<ExpandoObject>(data, converter);
             return dataObject;
+        }
+
+        public void Download(FilePath filePath)
+        {
+            if (HttpContext.Current.Items[Filter.Token] != null)
+            {
+              this._apiHelper.Get(AppConfigKeys.ServiceUrl + "alfresco/s/" + filePath.path + "?a=true&alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
+            }
+
+           
         }
 
         #region Dispose

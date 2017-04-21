@@ -66,14 +66,9 @@ namespace NextGenCMS.BL.classes
         /// This method delete the ticket and logout the user
         /// </summary>
         /// <returns></returns>
-        public string Logout()
+        public string Logout(string ticket)
         {
-            string data = string.Empty;
-            if (HttpContext.Current.Items[Filter.Token] != null)
-            {
-                data = this._apiHelper.Get(ServiceUrl.Logout + HttpContext.Current.Items[Filter.Token]);
-            }
-
+            string data = this._apiHelper.Delete(ServiceUrl.Logout + ticket);
             string response = JsonConvert.DeserializeObject<string>(data);
             return response;
         }

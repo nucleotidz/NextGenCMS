@@ -24,7 +24,8 @@
 
         <div kendo-tree-view="vm.tree" id="treeview"
              k-data-source="vm.treeData"
-             k-on-change="vm.selectedItem(dataItem)">
+             k-on-change="vm.selectedItem(dataItem)"
+            >
             <span k-template>
                 {{dataItem.name}}
             </span>
@@ -60,4 +61,6 @@
     k-on-select="vm.onSelect(kendoEvent);">
     <li><span class="glyphicon glyphicon-download-alt"> </span> Download</li>
     <li><span class="glyphicon glyphicon-trash"> </span> Delete</li>
+    <li><span class="glyphicon glyphicon-lock"> </span> Check-Out</li>
+    <li><span class="glyphicon glyphicon-unlock"> </span> Check-In</li>
 </ul>

@@ -107,14 +107,13 @@ namespace NextGenCMS.BL.classes
 
             if (string.IsNullOrWhiteSpace(searchText))
             {
-                response.people = response.people.Where(user => user.authorizationStatus == "AUTHORIZED").OrderBy(x => x.firstName).ToList();
+                response.people = response.people.OrderBy(x => x.firstName).ToList();
             }
             else
             {
-                response.people = response.people.Where(user => (user.firstName.IndexOf(searchText) != -1 ||
-                                                                  user.lastName.IndexOf(searchText) != -1 ||
-                                                                  user.userName.IndexOf(searchText) != -1) &&
-                                                                  user.authorizationStatus == "AUTHORIZED").OrderBy(x => x.firstName).ToList();
+                response.people = response.people.Where(user => user.firstName.IndexOf(searchText) != -1 ||
+                                                                user.lastName.IndexOf(searchText) != -1 ||
+                                                                user.userName.IndexOf(searchText) != -1).OrderBy(x => x.firstName).ToList();
             }
             return response;
         }

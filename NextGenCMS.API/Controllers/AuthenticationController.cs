@@ -53,10 +53,10 @@ namespace NextGenCMS.API.Controllers
         /// </summary>
         /// <returns>HttpResponseMessage</returns>
         [HttpDelete]
-        [Route("logout")]
-        public HttpResponseMessage Logout()
+        [Route("logout/{ticket}")]
+        public HttpResponseMessage Logout(string ticket)
         {
-            return Request.CreateResponse(HttpStatusCode.OK, this._authentication.Logout());
+            return Request.CreateResponse(HttpStatusCode.OK, this._authentication.Logout(ticket));
         }
         #endregion
     }

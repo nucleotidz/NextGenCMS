@@ -44,5 +44,13 @@ namespace NextGenCMS.UI.Controllers
             Session["SessionContext"] = JsonConvert.DeserializeObject(token);
             return new RedirectResult(BaseURL);
         }
+        // GET: Security
+        public ActionResult Logout()
+        {
+            NextGenCMS.APIHelper.classes.APIHelper apiCaller = new NextGenCMS.APIHelper.classes.APIHelper();
+            apiCaller.Delete(ConfigurationManager.AppSettings["API:URL"] + "authentication/logout/" + Session["SessionContext"].ToString());
+            Session.Abandon();
+            return new RedirectResult(BaseURL);
+        }
     }
 }

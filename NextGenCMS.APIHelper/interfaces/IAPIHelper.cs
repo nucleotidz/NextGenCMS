@@ -30,5 +30,9 @@
         /// <param name="parameters">json object</param>
         /// <returns>response</returns>
         WebResponseModel Submit(string uri, string parameters);
+
+        void DownLoad(string uri);
+
+        string Delete(string uri);
     }
 }
