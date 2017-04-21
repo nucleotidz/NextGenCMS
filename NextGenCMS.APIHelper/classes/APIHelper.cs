@@ -76,9 +76,7 @@ namespace NextGenCMS.APIHelper.classes
             try
             {
                 ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
-                WebRequest req = WebRequest.Create(uri);
-                //req.Headers.Add(CommonConstants.x_thirdparty_Id, CommonConstants.ProviderSelfService);
-                //Add these, as we're doing a POST
+                WebRequest req = WebRequest.Create(uri);               
                 req.ContentType = ApiHelper.text_json;
                 req.Timeout = 1000000;
                 req.Method = ApiHelper.Post;
@@ -156,30 +154,27 @@ namespace NextGenCMS.APIHelper.classes
                 }
                 throw;
             }
-        }     
-        public void DownLoad(string url)
+        }
+        public void DownLoad(string url, string fileName)
         {
+         
             MemoryStream fileContent = null;
-            string fileName = String.Empty;
-
             Uri uri = new Uri(url);
             WebRequest webRequest = WebRequest.Create(uri);
             using (WebResponse webResponse = webRequest.GetResponse())
             {
-                fileName = webResponse.Headers["Content-Disposition"].Replace("attachment; filename=", String.Empty).Replace("\"", String.Empty);
+                byte[] response = new System.Net.WebClient().DownloadData(url);   
                 fileContent = new MemoryStream();
-                Stream responseStream = webResponse.GetResponseStream();
-                byte[] responseBuffer = new byte[16 * 1024];
-                int responseBytesRead;
-
-                while (responseStream.Read(responseBuffer, 0, responseBuffer.Length) > 0)
-                {
-                    responseBytesRead = responseStream.Read(responseBuffer, 0, responseBuffer.Length);
-                    fileContent.Write(responseBuffer, 0, responseBytesRead);
-                }
-                HttpContext.Current.Response.AddHeader("content-disposition", "attachment;");
-                HttpContext.Current.Response.OutputStream.Write(responseBuffer, 0, responseBuffer.Length);
+                Stream responseStream = webResponse.GetResponseStream();                            
+                HttpContext.Current.Response.ContentType = webResponse.Headers["content-type"];
+                string header = string.Format("attachment;filename=" + fileName);
+                HttpContext.Current.Response.AddHeader("Content-Disposition", header);
+                HttpContext.Current.Response.OutputStream.Write(response, 0, response.Length);
+                HttpContext.Current.Response.Flush();
+                HttpContext.Current.Response.Clear();
+                HttpContext.Current.Response.End();
             }
+
         }
 
     }

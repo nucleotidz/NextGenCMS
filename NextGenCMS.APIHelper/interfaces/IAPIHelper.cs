@@ -3,6 +3,7 @@
     #region Namespaces
     using NextGenCMS.Model.classes;
     using System;
+    using System.IO;
     using System.Web;
     #endregion
 
@@ -31,7 +32,7 @@
         /// <returns>response</returns>
         WebResponseModel Submit(string uri, string parameters);
 
-        void DownLoad(string uri);
+        void DownLoad(string uri, string fileName);
 
         string Delete(string uri);
     }

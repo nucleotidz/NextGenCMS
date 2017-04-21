@@ -9,6 +9,7 @@ using System.Dynamic;
 using System.Web;
 using System.Linq;
 using Newtonsoft.Json.Linq;
+using System.IO;
 
 namespace NextGenCMS.BL.classes
 {
@@ -41,14 +42,9 @@ namespace NextGenCMS.BL.classes
             return dataObject;
         }
 
-        public void Download(FilePath filePath)
+        public void Download(string url, string fileName, string token)
         {
-            if (HttpContext.Current.Items[Filter.Token] != null)
-            {
-              this._apiHelper.Get(AppConfigKeys.ServiceUrl + "alfresco/s/" + filePath.path + "?a=true&alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
-            }
-
-           
+            this._apiHelper.DownLoad(ServiceUrl.FileDownload + url + "?a=true&alf_ticket=" + token, fileName);
         }
 
         #region Dispose

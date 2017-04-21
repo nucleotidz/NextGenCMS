@@ -129,6 +129,9 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
                     },
                     webdavUrl: {
                         type: "string", editable: false
+                    },
+                    contentUrl: {
+                        type: "string", editable: false
                     }
                 }
             }
@@ -180,12 +183,21 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
         },
         {
             field: "webdavUrl", hidden: true
-        }]
+        },
+        { field: "contentUrl", hidden: true }]
     }
-   function Download() {
+    function Download() {
         var entityGrid = $("#userGrid").data("kendoGrid")
         var selectedItem = entityGrid.dataItem(entityGrid.select());
-        window.open(Global.Alfresco + selectedItem.webdavUrl + "?alf_ticket=" + Cache.get("token"));
+        //window.open(Global.Alfresco + selectedItem.webdavUrl + "?alf_ticket=" + Cache.get("token"));           
+        var formId = "formFile";
+        angular.element("body").append("<form  method='POST' id='" + formId + "' action='" + Global.apiuri + "File/Download" + "' target='_tab' >");
+        $("#" + formId + "").append("<input type='hidden' value='" + selectedItem.contentUrl + "'  name='path' >");
+        $("#" + formId + "").append("<input type='hidden' value='" + selectedItem.displayName + "'  name='name' >");
+        $("#" + formId + "").append("<input type='hidden' value='" + Cache.get("token") + "'  name='ticket' >");
+        angular.element("#" + formId + "").submit();
+        angular.element("#" + formId + "").remove();
+
     }
     vm.onSelect = function (evt) {
         if (evt.item.textContent.trim() === "Download") {

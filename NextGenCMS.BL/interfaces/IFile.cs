@@ -1,10 +1,11 @@
 ﻿using NextGenCMS.Model.classes.File;
+using System.IO;
 
 namespace NextGenCMS.BL.interfaces
 {
     public interface IFile
     {
         dynamic GetFiles(FilePath filePath);
-        void Download(FilePath filePath);
+        void  Download(string url, string fileName,string token);
     }
 }
