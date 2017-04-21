@@ -1,5 +1,5 @@
 ﻿
-namespace NextGenCMS.Model.classes
+namespace NextGenCMS.Model.classes.authentication
 {
     /// <summary>
     /// This model class is used for login

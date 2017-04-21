@@ -68,9 +68,10 @@
     <Compile Include="classes\Folder\AddFolderModel.cs" />
     <Compile Include="classes\Folder\AddSubFolderModel.cs" />
     <Compile Include="classes\Folder\FolderModel.cs" />
-    <Compile Include="classes\LoginModel.cs" />
+    <Compile Include="classes\authentication\LoginModel.cs" />
     <Compile Include="classes\Folder\SubFolderModel.cs" />
     <Compile Include="classes\authentication\LoginToken.cs" />
+    <Compile Include="classes\authentication\LoginResponse.cs" />
     <Compile Include="classes\Search\SearchItemModel.cs" />
     <Compile Include="classes\Search\SearchResultModel.cs" />
     <Compile Include="classes\WebResponseModel.cs" />

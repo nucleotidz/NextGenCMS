@@ -13,12 +13,8 @@ namespace NextGenCMS.UI.Controllers
     {
         public ActionResult Index()
         {
-            Token token = new Token()
-            {
-                key = Session["SessionContext"].ToString()
-            };
-
-            return View(token);
+            var loginResponse = (LoginResponse)Session["SessionContext"];
+            return View(loginResponse);
         }
         public ActionResult Menu()
         {

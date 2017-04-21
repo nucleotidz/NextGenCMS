@@ -117,13 +117,31 @@ namespace NextGenCMS.BL.classes
             }
             return response;
         }
+
+        /// <summary>
+        /// This method will fetch user details based on username
+        /// </summary>
+        /// <param name="username">username</param>
+        /// <returns>user details</returns>
+        public User GetUser(string username)
+        {
+            string data = string.Empty;
+            if (HttpContext.Current.Items[Filter.Token] != null)
+            {
+                data = this._apiHelper.Get(ServiceUrl.GetUser + username + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
+            }
+
+            User response = JsonConvert.DeserializeObject<User>(data);
+
+            return response;
+        }
         #endregion
 
         #region "Groups"
         /// <summary>
-        /// This method will return all the users
+        /// This method will return all the groups
         /// </summary>
-        /// <returns>list of users</returns>
+        /// <returns>list of groups</returns>
         public GetGroupsResponse GetGroups()
         {
             string data = string.Empty;
