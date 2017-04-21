@@ -78,11 +78,10 @@ namespace NextGenCMS.BL.classes
         /// This method delete the ticket and logout the user
         /// </summary>
         /// <returns></returns>
-        public string Logout(string ticket)
+        public bool Logout(string ticket)
         {
             string data = this._apiHelper.Delete(ServiceUrl.Logout + ticket + "?alf_ticket=" + ticket);
-            string response = JsonConvert.DeserializeObject<string>(data);
-            return response;
+            return true;
         }
         #endregion
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using NextGenCMS.Model.classes.administration;
 using NextGenCMS.Model.classes.administration.GetUsers;
+using System.Collections.Generic;
 
 namespace NextGenCMS.BL.interfaces
 {
@@ -18,7 +19,7 @@ namespace NextGenCMS.BL.interfaces
         /// </summary>
         /// <param name="searchText">searchText</param>
         /// <returns>list of users</returns>
-        GetUsersResponse GetUsers(string searchText);
+        GetUsersResponse GetUsers(string searchText, string username);
 
         /// <summary>
         /// This method will fetch user details based on username
@@ -32,5 +33,7 @@ namespace NextGenCMS.BL.interfaces
         /// </summary>
         /// <returns>list of groups</returns>
         GetGroupsResponse GetGroups();
+
+        bool DeleteUser(List<string> users);
     }
 }

@@ -3,7 +3,10 @@
     app.controller('UserManagementController', ['$scope', '$modal', 'AdministrationApi', '$q',
     function ($scope, $modal, AdministrationApi, $q) {
         var vm = this;
+        vm.userName = Cache.get('userName');
         vm.searchText = "";
+        vm.orientation = "vertical";
+        vm.editUser = true;
         vm.addUser = function () {
             var modalInstance = $modal.open({
                 backdrop: 'static',
@@ -14,7 +17,7 @@
         };
 
         vm.UserData = [];
-        vm.userDataSourve = new kendo.data.DataSource({
+        vm.userDataSource = new kendo.data.DataSource({
             type: "json",
             transport: {
                 read: function (o) {
@@ -48,20 +51,20 @@
         vm.SearchUser = function () {
             var data;
             if (vm.searchText == "") {
-                data = AdministrationApi.getUsers();
+                data = AdministrationApi.getUsers(vm.userName);
             }
             else {
-                data = AdministrationApi.searchUsers({ "searchText": vm.searchText });
+                data = AdministrationApi.searchUsers({ "searchText": vm.searchText, "username": vm.userName });
             }
 
             $q.all([data.$promise]).then(function (response) {
                 vm.UserData = response[0].people;
-                vm.userDataSourve.read();
+                vm.userDataSource.read();
             });
         }
 
         vm.userGridOptions = {
-            dataSource: vm.userDataSourve,
+            dataSource: vm.userDataSource,
             dataBound: function () {
             },
             sortable: {
@@ -72,7 +75,7 @@
             resizable: true,
             navigatable: true,
             scrollable: true,
-            selectable: "row",
+            selectable: "multiple",
             pageable: {
                 numeric: false,
                 previousNext: false,
@@ -100,5 +103,41 @@
             ]
         };
 
+        vm.onSelect = function (evt) {
+            var action = evt.item.textContent.trim();
+            if (action === "Delete") {
+                deleteUser();
+            }
+        }
+        vm.open = function (evt) {
+            var entityGrid = $("#userGrid").data("kendoGrid")
+            var selectedItems = entityGrid.select();
+            if (selectedItems == null) {
+                evt.preventDefault();
+                return;
+            }
+            vm.editUser = selectedItems.length == 1;
+        }
+
+        function deleteUser() {
+            var entityGrid = $("#userGrid").data("kendoGrid");
+            var selectedRows = entityGrid.select();
+            $scope.users = [];
+            angular.forEach(selectedRows, function (user) {
+                var username = entityGrid.dataItem(user).userName;
+                $scope.users.push(username);
+            });
+
+            var data = AdministrationApi.deleteUsers($scope.users);
+
+            $q.all([data.$promise]).then(function (response) {
+                if ($scope.users.length > 1) {
+                    alert("Users deleted successfuly.");
+                    vm.SearchUser();
+                }
+                else if ($scope.users.length == 1) alert("User deleted successfuly.");
+
+            });
+        }
     }]);
 })();

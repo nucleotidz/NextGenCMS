@@ -50,7 +50,8 @@ namespace NextGenCMS.UI.Controllers
         public ActionResult Logout()
         {
             NextGenCMS.APIHelper.classes.APIHelper apiCaller = new NextGenCMS.APIHelper.classes.APIHelper();
-            apiCaller.Delete(ConfigurationManager.AppSettings["API:URL"] + "authentication/logout/" + Session["SessionContext"].ToString());
+            var loginResponse = (LoginResponse)Session["SessionContext"];
+            apiCaller.Delete(ConfigurationManager.AppSettings["API:URL"] + "authentication/logout/" + loginResponse.Ticket);
             Session.Abandon();
             return new RedirectResult(BaseURL);
         }

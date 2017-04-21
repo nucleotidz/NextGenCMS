@@ -26,5 +26,14 @@
 <div id="userGrid"
      kendo-grid
      k-options="vm.userGridOptions"
-     k-data-source="vm.userDataSourve">
+     k-data-source="vm.userDataSource">
 </div>
+
+
+<ul kendo-context-menu k-filter="'#userGrid tbody tr[aria-selected=true]'"
+    k-on-open="vm.open(kendoEvent);"
+    k-orientation="vm.orientation"
+    k-on-select="vm.onSelect(kendoEvent);">
+    <li ng-show="vm.editUser"><span class="glyphicon glyphicon-edit"></span>Edit</li>
+    <li><span class="glyphicon glyphicon-trash"></span>Delete</li>
+</ul>

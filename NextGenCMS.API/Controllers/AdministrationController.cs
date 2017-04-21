@@ -12,6 +12,7 @@ namespace NextGenCMS.API.Controllers
     using NextGenCMS.Model.classes;
     using NextGenCMS.Model.classes.administration;
     using NextGenCMS.API.Filters;
+    using System.Collections.Generic;
     #endregion
 
     /// <summary>
@@ -43,7 +44,7 @@ namespace NextGenCMS.API.Controllers
         /// <summary>
         /// This method will authenticate user login
         /// </summary>
-        /// <param name="loginModel">loginModel</param>
+        /// <param name="createUser">createUser</param>
         /// <returns>HttpResponseMessage</returns>
         [HttpPost]
         [Route("user/create")]
@@ -58,10 +59,10 @@ namespace NextGenCMS.API.Controllers
         /// <param name="searchText">searchText</param>
         /// <returns>HttpResponseMessage</returns>
         [HttpGet]
-        [Route("users/{searchText}")]
-        public HttpResponseMessage SearchUsers(string searchText)
+        [Route("users/{searchText}/{username}")]
+        public HttpResponseMessage SearchUsers(string searchText, string username)
         {
-            return Request.CreateResponse(HttpStatusCode.OK, this._administration.GetUsers(searchText));
+            return Request.CreateResponse(HttpStatusCode.OK, this._administration.GetUsers(searchText, username));
         }
 
         /// <summary>
@@ -70,10 +71,10 @@ namespace NextGenCMS.API.Controllers
         /// <param name="searchText">searchText</param>
         /// <returns>HttpResponseMessage</returns>
         [HttpGet]
-        [Route("users")]
-        public HttpResponseMessage GetUsers()
+        [Route("users/{username}")]
+        public HttpResponseMessage GetUsers(string username)
         {
-            return Request.CreateResponse(HttpStatusCode.OK, this._administration.GetUsers(string.Empty));
+            return Request.CreateResponse(HttpStatusCode.OK, this._administration.GetUsers(string.Empty, username));
         }
 
         /// <summary>
@@ -86,6 +87,18 @@ namespace NextGenCMS.API.Controllers
         public HttpResponseMessage GetUser(string username)
         {
             return Request.CreateResponse(HttpStatusCode.OK, this._administration.GetUser(username));
+        }
+
+        /// <summary>
+        /// This method will delete the users
+        /// </summary>
+        /// <param name="loginModel">loginModel</param>
+        /// <returns>HttpResponseMessage</returns>
+        [HttpPost]
+        [Route("user/delete")]
+        public HttpResponseMessage DeleteUser(List<string> users)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, this._administration.DeleteUser(users));
         }
         #endregion
 

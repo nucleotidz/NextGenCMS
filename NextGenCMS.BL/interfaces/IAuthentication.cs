@@ -27,6 +27,6 @@ namespace NextGenCMS.BL.interfaces
         /// This method delete the ticket and logout the user
         /// </summary>
         /// <returns>string</returns>
-        string Logout(string ticket);
+        bool Logout(string ticket);
     }
 }

@@ -18,6 +18,7 @@ namespace NextGenCMS.BL.classes
     using NextGenCMS.Model.classes.administration.GetUsers;
     using NextGenCMS.Model;
     using NextGenCMS.Model.classes.administration.CreateUser;
+    using System.Collections.Generic;
     #endregion
 
     public class Administration : IAdministration
@@ -95,7 +96,7 @@ namespace NextGenCMS.BL.classes
         /// </summary>
         /// <param name="searchText">searchText</param>
         /// <returns>list of users</returns>
-        public GetUsersResponse GetUsers(string searchText)
+        public GetUsersResponse GetUsers(string searchText, string username)
         {
             string data = string.Empty;
             if (HttpContext.Current.Items[Filter.Token] != null)
@@ -107,13 +108,14 @@ namespace NextGenCMS.BL.classes
 
             if (string.IsNullOrWhiteSpace(searchText))
             {
-                response.people = response.people.OrderBy(x => x.firstName).ToList();
+                response.people = response.people.Where(user => user.userName != username).OrderBy(x => x.firstName).ToList();
             }
             else
             {
-                response.people = response.people.Where(user => user.firstName.IndexOf(searchText) != -1 ||
+                response.people = response.people.Where(user => (user.firstName.IndexOf(searchText) != -1 ||
                                                                 user.lastName.IndexOf(searchText) != -1 ||
-                                                                user.userName.IndexOf(searchText) != -1).OrderBy(x => x.firstName).ToList();
+                                                                user.userName.IndexOf(searchText) != -1) &&
+                                                                user.userName != username).OrderBy(x => x.firstName).ToList();
             }
             return response;
         }
@@ -135,6 +137,20 @@ namespace NextGenCMS.BL.classes
 
             return response;
         }
+
+        public bool DeleteUser(List<string> users)
+        {
+            string data = string.Empty;
+            if (HttpContext.Current.Items[Filter.Token] != null)
+            {
+                foreach (var username in users)
+                {
+                    data = this._apiHelper.Delete(ServiceUrl.DeleteUser + username + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
+                }
+            }
+
+            return true;
+        }
         #endregion
 
         #region "Groups"
@@ -151,6 +167,7 @@ namespace NextGenCMS.BL.classes
             }
 
             GetGroupsResponse response = JsonConvert.DeserializeObject<GetGroupsResponse>(data);
+            response.data = response.data.Where(group => group.zones.Contains("APP.DEFAULT")).ToList();
             return response;
         }
         #endregion
