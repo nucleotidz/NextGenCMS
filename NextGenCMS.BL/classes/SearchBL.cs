@@ -34,11 +34,11 @@ namespace NextGenCMS.BL.classes
         }
 
         public dynamic SearchFile(string searchKey)
-        {         
+        {           
             string data = string.Empty;
             if (HttpContext.Current.Items[Filter.Token] != null)
             {
-                data = this._apiHelper.Get(ServiceUrl.SearchfileURL + "?term=" + searchKey + "&site=" + AppConfigKeys.Site + "&alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
+                data = this._apiHelper.Get(ServiceUrl.SearchfileURL + "&term=" + searchKey + ServiceUrl.searchQuerystring + "&alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
             }
 
             var converter = new ExpandoObjectConverter();

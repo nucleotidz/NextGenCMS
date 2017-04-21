@@ -8,7 +8,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
     vm.treeData = null;
     var nodeRefs = [];
     var Files = [];
-    vm.orientation = "horizontal"
+    vm.orientation = "vertical";
     function Bind() {
         var data = FolderAPI.GetRootFolders();
         $q.all([data.$promise]).then(function (response) {
