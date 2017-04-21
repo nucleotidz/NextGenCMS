@@ -35,6 +35,9 @@
                         displayName: {
                             type: "string", editable: false
                         },
+                        type: {
+                            type: "string", editable: false
+                        },
                         modifiedBy: {
                             type: "string", editable: false
                         },
@@ -67,7 +70,7 @@
             },
             columns: [
             {
-                field: "displayName", title: "File Name"
+                field: "displayName", title: "Name"
             },
               {
                   field: "modifiedBy", title: "Modified By"
@@ -77,6 +80,9 @@
             },
             {
                 field: "description", title: "Description"
+            },
+            {
+                field: "type", title: "Type"
             }
             ]
         };

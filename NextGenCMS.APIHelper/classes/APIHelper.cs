@@ -24,7 +24,7 @@ namespace NextGenCMS.APIHelper.classes
             {
                 ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
                 WebRequest req = WebRequest.Create(uri);
-                req.Method = "DELETE";
+                req.Method = ApiHelper.Delete;
                 req.Timeout = 1000000;
                 //req.Headers.Add(CommonConstants.x_thirdparty_Id, CommonConstants.ProviderSelfService);
                 using (WebResponse resp = req.GetResponse())
