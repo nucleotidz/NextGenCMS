@@ -72,6 +72,18 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
 
         });
     }
+    vm.AddFile = function () {
+        var modalInstance = $modal.open({
+            backdrop: 'static',
+            keyboard: false,
+            templateUrl: './Folder/Upload',
+            controller: 'UploadController'
+        });
+        modalInstance.result.then(function (item) {
+            var Form = item;           
+
+        });
+    }
     vm.AddSubFolder = function () {
         if (vm.tree.select().length < 1) {
             return;

@@ -34,8 +34,22 @@ namespace NextGenCMS.APIHelper.classes
                     return response;// JsonConvert.DeserializeObject<T>(response);
                 }
             }
-            catch
+            catch (WebException wex)
             {
+                if (wex.Response != null)
+                {
+                    using (var errorResponse = (HttpWebResponse)wex.Response)
+                    {
+                        using (var reader = new StreamReader(errorResponse.GetResponseStream()))
+                        {
+                            var response = new WebResponseModel
+                            {
+                                status = NextGenCMS.Model.constants.ApiHelper.StatusCode.Exception,
+                                message = reader.ReadToEnd().Trim()
+                            };                           
+                        }
+                    }
+                }
                 throw;
             }
         }

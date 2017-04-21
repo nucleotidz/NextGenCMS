@@ -17,12 +17,12 @@ namespace NextGenCMS.API
             var settings = json.SerializerSettings;
             json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.None;
             config.Formatters.Remove(config.Formatters.XmlFormatter);  
-             config.Formatters.Add( new MultipartDataMediaFormatter.FormMultipartEncodedMediaTypeFormatter());
+            config.Formatters.Add( new MultipartDataMediaFormatter.FormMultipartEncodedMediaTypeFormatter());
         
             settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             settings.NullValueHandling = NullValueHandling.Include;
             var corsAttr = new EnableCorsAttribute("*", "*", "*");
-          //  config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
+            config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
 
             config.EnableCors(corsAttr);
             config.MapHttpAttributeRoutes();

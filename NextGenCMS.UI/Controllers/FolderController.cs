@@ -18,5 +18,10 @@ namespace NextGenCMS.UI.Controllers
         {
             return View();
         }
+
+        public ActionResult Upload()
+        {
+            return View();
+        }
     }
 }

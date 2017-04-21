@@ -53,6 +53,7 @@ namespace NextGenCMS.Model.constants
         public static readonly string SubFolder = AppConfigKeys.ServiceUrl + "alfresco/s/slingshot/doclib/treenode/site/" + AppConfigKeys.Site + "/documentLibrary/";
         public static readonly string AddFolder = AppConfigKeys.ServiceUrl + "alfresco/s/api/site/folder/" + AppConfigKeys.Site + "/documentLibrary/";
         public static readonly string File = AppConfigKeys.ServiceUrl + "alfresco/s/slingshot/doclib/doclist/1/site/" + AppConfigKeys.Site + "/documentLibrary/";
+        public static readonly string FileDownload = AppConfigKeys.ServiceUrl + "alfresco/s/";
         #endregion
     }
 }
