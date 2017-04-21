@@ -21,9 +21,16 @@ namespace NextGenCMS.BL.interfaces
         GetUsersResponse GetUsers(string searchText);
 
         /// <summary>
-        /// This method will return all the users
+        /// This method will fetch user details based on username
         /// </summary>
-        /// <returns>list of users</returns>
+        /// <param name="username">username</param>
+        /// <returns>user details</returns>
+        User GetUser(string username);
+
+        /// <summary>
+        /// This method will return all the groups
+        /// </summary>
+        /// <returns>list of groups</returns>
         GetGroupsResponse GetGroups();
     }
 }

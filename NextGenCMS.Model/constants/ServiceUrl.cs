@@ -27,6 +27,11 @@ namespace NextGenCMS.Model.constants
         /// GET - This api will return all the users
         /// </summary>
         public static readonly string GetUsers = AppConfigKeys.ServiceUrl + "alfresco/s/api/people?alf_ticket=";
+
+        /// <summary>
+        /// POST - This api will return user details based on username
+        /// </summary>
+        public static readonly string GetUser = AppConfigKeys.ServiceUrl + "alfresco/s/api/people/";
         #endregion
 
         #region "Administration - Groups"
@@ -42,6 +47,7 @@ namespace NextGenCMS.Model.constants
         public static readonly string Folder = AppConfigKeys.ServiceUrl + "alfresco/s/slingshot/datalists/lists/site/" + AppConfigKeys.Site + "/documentLibrary?alf_ticket=";
         public static readonly string SubFolder = AppConfigKeys.ServiceUrl + "alfresco/s/slingshot/doclib/treenode/site/" + AppConfigKeys.Site + "/documentLibrary/";
         public static readonly string AddFolder = AppConfigKeys.ServiceUrl + "alfresco/s/api/site/folder/" + AppConfigKeys.Site + "/documentLibrary/";
+        public static readonly string File = AppConfigKeys.ServiceUrl + "alfresco/s/slingshot/doclib/doclist/1/site/" + AppConfigKeys.Site + "/documentLibrary/";
         public static readonly string File = AppConfigKeys.ServiceUrl + "alfresco/s/slingshot/doclib/doclist/1/site/ahmar/documentLibrary/";
         public static readonly string FileDownload = AppConfigKeys.ServiceUrl + "alfresco/s/";
         #endregion

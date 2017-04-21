@@ -75,6 +75,18 @@ namespace NextGenCMS.API.Controllers
         {
             return Request.CreateResponse(HttpStatusCode.OK, this._administration.GetUsers(string.Empty));
         }
+
+        /// <summary>
+        /// This method will fetch user details based on username
+        /// </summary>
+        /// <param name="username">username</param>
+        /// <returns>HttpResponseMessage</returns>
+        [HttpGet]
+        [Route("user/{username}")]
+        public HttpResponseMessage GetUser(string username)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, this._administration.GetUser(username));
+        }
         #endregion
 
         #region "Groups

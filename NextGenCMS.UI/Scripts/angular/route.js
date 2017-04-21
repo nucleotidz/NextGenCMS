@@ -6,8 +6,9 @@
         url: '/',
         views: {
             'header': {
-                templateUrl: 'Home/Header',                
-
+                templateUrl: 'Home/Header',
+                controller: 'HeaderController',
+                controllerAs: "vm"
             }, 'menu': {
                 templateUrl: 'Home/Menu',
 

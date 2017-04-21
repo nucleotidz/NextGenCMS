@@ -3,17 +3,16 @@ namespace NextGenCMS.BL.classes
 {
     #region Namespaces
     using System;
-    using System.Web;
     using Newtonsoft.Json;
     #endregion
 
     #region "NextGenCMS Namespaces"
     using NextGenCMS.APIHelper.interfaces;
     using NextGenCMS.DL.interfaces;
-    using NextGenCMS.Model.classes;
     using NextGenCMS.BL.interfaces;
     using NextGenCMS.Model.constants;
     using NextGenCMS.Model.classes.authentication;
+    using NextGenCMS.Model.classes.administration;
     #endregion
 
     /// <summary>
@@ -36,16 +35,22 @@ namespace NextGenCMS.BL.classes
         /// </summary>
         private readonly IAPIHelper _apiHelper;
 
+        /// <summary>
+        /// Administration business layer object
+        /// </summary>
+        private readonly IAdministration _administration;
+
         #region Constructor
         /// <summary>
         /// COnstructor to initialize objects
         /// </summary>
         /// <param name="repository">IAuthenticationRepository</param>
         /// <param name="apiHelper">IAPIHelper</param>
-        public Authentication(IAuthenticationRepository repository, IAPIHelper apiHelper)
+        public Authentication(IAuthenticationRepository repository, IAPIHelper apiHelper, IAdministration administration)
         {
             _repository = repository;
             _apiHelper = apiHelper;
+            _administration = administration;
         }
         #endregion
 
@@ -55,11 +60,18 @@ namespace NextGenCMS.BL.classes
         /// </summary>
         /// <param name="userName">user name</param>
         /// <param name="password">password</param>
-        public string AuthenticateUser(LoginModel loginModel)
+        public LoginResponse AuthenticateUser(LoginModel loginModel)
         {
             string token = _apiHelper.Post(ServiceUrl.Login, JsonConvert.SerializeObject(loginModel));
-            LoginToken _loginToken = JsonConvert.DeserializeObject<LoginToken>(token);
-            return _loginToken.data.ticket;
+            LoginToken loginToken = JsonConvert.DeserializeObject<LoginToken>(token);
+            var data = this._apiHelper.Get(ServiceUrl.GetUser + loginModel.username + "?alf_ticket=" + loginToken.data.ticket);
+            User user = JsonConvert.DeserializeObject<User>(data);
+            LoginResponse response = new LoginResponse
+            {
+                Ticket = loginToken.data.ticket,
+                User = user
+            };
+            return response;
         }
 
         /// <summary>

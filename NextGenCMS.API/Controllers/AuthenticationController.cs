@@ -10,6 +10,7 @@ namespace NextGenCMS.API.Controllers
     #region "NextGenCMS Namespaces"
     using NextGenCMS.BL.interfaces;
     using NextGenCMS.Model.classes;
+    using NextGenCMS.Model.classes.authentication;
     #endregion
 
     /// <summary>

@@ -40,10 +40,12 @@ namespace NextGenCMS.UI.Controllers
                 password = password,
                 username = username 
             };
-            string token = apiCaller.Post(ConfigurationManager.AppSettings["API:URL"] + "authentication/login", JsonConvert.SerializeObject(_loginModel));
-            Session["SessionContext"] = JsonConvert.DeserializeObject(token);
+            string response = apiCaller.Post(ConfigurationManager.AppSettings["API:URL"] + "authentication/login", JsonConvert.SerializeObject(_loginModel));
+            LoginResponse result = JsonConvert.DeserializeObject<LoginResponse>(response);
+            Session["SessionContext"] = result;
             return new RedirectResult(BaseURL);
         }
+
         // GET: Security
         public ActionResult Logout()
         {

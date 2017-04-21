@@ -15,7 +15,7 @@
     <AssemblyName>NextGenCMS.UI</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -166,7 +166,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Model\LoginModel.cs" />
-    <Compile Include="Model\Token.cs" />
+    <Compile Include="Model\LoginResponse.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Model\UserStatusTime.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -202,6 +204,7 @@
     <Content Include="Scripts\controller\AddUserPopupController.js" />
     <Content Include="Scripts\controller\FolderController.js" />
     <Content Include="Scripts\controller\GroupManagementController.js" />
+    <Content Include="Scripts\controller\HeaderController.js" />
     <Content Include="Scripts\controller\SearchController.js" />
     <Content Include="Scripts\controller\UserManagementController.js" />
     <Content Include="Scripts\controller\AdministrationController.js" />
@@ -263,6 +266,7 @@
     <Content Include="Views\Folder\Home.cshtml" />
     <Content Include="Views\Folder\AddFolderPopup.cshtml" />
     <Content Include="Views\Search\SearchDocument.cshtml" />
+    <None Include="Properties\PublishProfiles\NextGenCMS.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NextGenCMS.APIHelper\NextGenCMS.APIHelper.csproj">
@@ -288,7 +292,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>62788</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:81/NextGenCms</IISUrl>
+          <IISUrl>http://localhost:62788/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

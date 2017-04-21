@@ -1,17 +1,26 @@
 ﻿@{
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    @model NextGenCMS.UI.Model.Token
+    @model NextGenCMS.UI.Model.LoginResponse
 }
 <div ng-controller="IndexController"></div>
 <script type="text/javascript">
+    var loginResponse = @Html.Raw(Json.Encode(ViewBag.LoginResponse));
     (function () {
         'use strict';
         app.controller('IndexController', ['$scope', 'Cache',
         function ($scope, Cache) {
             var token = Cache.get('token');
             if (!token) {
-                Cache.put("token", "@Model.key");
+                Cache.put("token", "@Model.Ticket");
+            };
+            var displayName = Cache.get('displayName');
+            if (!displayName) {
+                Cache.put("displayName", "@Model.User.firstName" + " " + "@Model.User.lastName");
+            };
+            var userName = Cache.get('userName');
+            if (!userName) {
+                Cache.put("userName", "@Model.User.userName");
             };
         }]);
     })();

@@ -66,9 +66,10 @@ namespace NextGenCMS.UI
                "~/Scripts/controller/GroupManagementController.js",
                "~/Scripts/controller/UserManagementController.js",
                "~/Scripts/controller/AddUserPopupController.js",
-               "~/Scripts/controller/AddFolderPopupController.js",            
+               "~/Scripts/controller/AddFolderPopupController.js",
                   "~/Scripts/controller/SearchController.js",
-                 "~/Scripts/controller/FolderController.js"
+                 "~/Scripts/controller/FolderController.js",
+                 "~/Scripts/controller/HeaderController.js"
              ));
         }
         private static void LoadFactory(BundleCollection bundles)
@@ -115,6 +116,7 @@ namespace NextGenCMS.UI
                  ));
         }
         #endregion
+
         #region StyleSheets
         private static void LoadBootStarpStyle(BundleCollection bundles)
         {
