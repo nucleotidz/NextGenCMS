@@ -68,7 +68,7 @@ namespace NextGenCMS.BL.classes
         /// <returns></returns>
         public string Logout(string ticket)
         {
-            string data = this._apiHelper.Delete(ServiceUrl.Logout + ticket);
+            string data = this._apiHelper.Delete(ServiceUrl.Logout + ticket + "?alf_ticket=" + ticket);
             string response = JsonConvert.DeserializeObject<string>(data);
             return response;
         }
