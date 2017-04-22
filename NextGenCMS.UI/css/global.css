@@ -51,7 +51,7 @@ label {
     padding: 5px 10px;
     background-color: #057FC2;
     border: 1px solid #025A93;
-    font-size: 12px;
+    font-size: 17px;
     color: #fff;
     border-radius: 17px;
 }
@@ -572,4 +572,13 @@ h4.modal-title {
 div.supportTicket {
     text-align: center;
     margin-bottom: 10px;
+}
+ div.fileZone {
+    border: 2px dashed #bbb;
+    border-radius: 5px;
+    padding: 25px;
+    text-align: center;
+    font: 20pt bold;
+    color: #bbb;
+    margin: 10px;
 }

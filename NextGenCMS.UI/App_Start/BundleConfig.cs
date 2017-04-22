@@ -30,6 +30,7 @@ namespace NextGenCMS.UI
             LoadConstant(bundles);
             LoadAPI(bundles);
             LoadUnderscore(bundles);
+            LoadDirective(bundles);
         }
 
         #region Javascripts
@@ -71,6 +72,14 @@ namespace NextGenCMS.UI
                  "~/Scripts/controller/FolderController.js",
                  "~/Scripts/controller/HeaderController.js",
                  "~/Scripts/controller/UploadController.js"
+             ));
+        }
+        private static void LoadDirective(BundleCollection bundles)
+        {
+            bundles.Add(new ScriptBundle("~/Scripts/Directive/js").Include
+             (
+               "~/Scripts/Directive/FileDrop.js"
+              
              ));
         }
         private static void LoadFactory(BundleCollection bundles)

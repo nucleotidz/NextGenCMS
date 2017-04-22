@@ -210,6 +210,7 @@
     <Content Include="Scripts\controller\UserManagementController.js" />
     <Content Include="Scripts\controller\AdministrationController.js" />
     <Content Include="Scripts\controller\DashboardController.js" />
+    <Content Include="Scripts\Directive\FileDrop.js" />
     <Content Include="Scripts\factory\Cache.js" />
     <Content Include="Scripts\factory\Interceptor.js" />
     <Content Include="Scripts\httpfactory\AdministrationApi.js" />

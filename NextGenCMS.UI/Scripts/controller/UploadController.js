@@ -3,6 +3,7 @@
     app.controller('UploadController', ['$scope', '$modalInstance', 'items', 'Global',
     function ($scope, $modalInstance, items, Global) {
         var FileArray = [];
+        $scope.rawFile = null;
         $scope.onUpload = function (e) {
         };
         $scope.onSelect = function (e) {
