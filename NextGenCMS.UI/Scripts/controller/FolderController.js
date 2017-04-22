@@ -4,6 +4,8 @@
 function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
     var vm = this;
     var node;
+    $scope.rawFile =null;
+    $scope.rawFileName = '';
     var path
     vm.treeData = null;
     var nodeRefs = [];
@@ -287,8 +289,18 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
         if (selectedItem == null) {
             evt.preventDefault();
             return;
-    }
+            }
+       
 }
+        $scope.upload = function () {
+            var formdata = new FormData();
+            formdata.append("path", path);
+             formdata.append($scope.rawFileName, $scope.rawFile);
+             var xhr = new XMLHttpRequest();
+            xhr.open("POST", Global.apiuri+"File/Upload", false);
+            xhr.send(formdata);
+            refreshFileGrid();
+         }
     Bind();
 }])
 }) ();
