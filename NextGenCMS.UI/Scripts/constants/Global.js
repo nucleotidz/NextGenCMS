@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict'
     app.constant('Global', {
-        apiuri: 'http://nextgencmsservice:82/api/',
+        apiuri: 'http://localhost:82/api/',
         Alfresco: 'http://127.0.0.1:8080/alfresco/',
     });
 })();

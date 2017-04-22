@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
-    app.controller('UploadController', ['$scope', '$modalInstance',
-    function ($scope, $modalInstance) {
+    app.controller('UploadController', ['$scope', '$modalInstance', 'items', 'Global',
+    function ($scope, $modalInstance, items, Global) {
         var FileArray = [];
         $scope.onUpload = function (e) {
         };
@@ -28,7 +28,14 @@
             $modalInstance.dismiss("close");
         }
         $scope.UploadFile = function () {
-
+            var formdata = new FormData();
+            formdata.append("path", items);
+            for (var i = 0; i < FileArray.length; i++) {
+                formdata.append(FileArray[i].File.name, FileArray[i].File.rawFile);
+            }
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", Global.apiuri+"File/Upload", false);
+            xhr.send(formdata);
         }
     }]);
 })();

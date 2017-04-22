@@ -37,5 +37,13 @@ namespace NextGenCMS.API.Controllers
           _file.Download(HttpContext.Current.Request.Form[0], HttpContext.Current.Request.Form[1] ,HttpContext.Current.Request.Form[2]);           
           return Request.CreateResponse(HttpStatusCode.OK);
         }
+        [Route("Upload")]
+        [AllowAnonymous]
+        [HttpPost]
+        public HttpResponseMessage Upload()
+        {
+            _file.Upload();
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
     }
 }

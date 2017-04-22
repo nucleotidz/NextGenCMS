@@ -108,8 +108,7 @@ namespace NextGenCMS.BL.classes
                 this.session = this.GetSession();
                 Document doc = (Document)this.session.GetObjectByPath("/sites/" + AppConfigKeys.Site + "/documentLibrary/" + objParams.path);
                 String fileName = doc.ContentStreamFileName;
-                IObjectId pwcId = doc.CheckOut(); // Checkout the document
-                //  Document pwc = (Document)this.session.GetObject(pwcId); 
+                IObjectId pwcId = doc.CheckOut();
             }
             catch
             {
@@ -160,18 +159,12 @@ namespace NextGenCMS.BL.classes
         {
             if (session == null)
             {
-                // default factory implementation
                 SessionFactory factory = SessionFactory.NewInstance();
                 Dictionary<String, String> parameter = new Dictionary<String, String>();
-
-                // user credentials
-                parameter.Add(SessionParameter.User, "admin"); // <-- Replace
-                parameter.Add(SessionParameter.Password, "admin"); // <-- Replace
-
-                // connection settings
-                parameter.Add(SessionParameter.AtomPubUrl, ServiceUrl.CMISApi); // Uncomment for Atom Pub binding
-                parameter.Add(SessionParameter.BindingType, BindingType.AtomPub); // Uncomment for Atom Pub binding
-
+                parameter.Add(SessionParameter.User, "admin");
+                parameter.Add(SessionParameter.Password, "admin");
+                parameter.Add(SessionParameter.AtomPubUrl, ServiceUrl.CMISApi); 
+                parameter.Add(SessionParameter.BindingType, BindingType.AtomPub);
                 this.session = factory.GetRepositories(parameter)[0].CreateSession();
             }
             return this.session;

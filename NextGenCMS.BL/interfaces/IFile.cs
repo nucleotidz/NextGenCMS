@@ -7,5 +7,6 @@ namespace NextGenCMS.BL.interfaces
     {
         dynamic GetFiles(FilePath filePath);
         void  Download(string url, string fileName,string token);
+        void Upload();
     }
 }

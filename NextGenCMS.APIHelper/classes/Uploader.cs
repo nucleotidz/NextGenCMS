@@ -19,8 +19,6 @@ namespace NextGenCMS.APIHelper.classes
         {
             try
             {
-                
-          
                 HttpWebRequest requestToServerEndpoint = (HttpWebRequest)WebRequest.Create(url + HttpContext.Current.Request.Form["token"]);
                 string boundaryString = "----WebKitFormBoundaryYHCnoErwHmT3HVf4";
                 requestToServerEndpoint.Method = WebRequestMethods.Http.Post;
