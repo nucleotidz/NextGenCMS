@@ -49,10 +49,11 @@
     <Compile Include="Alfresco\Folder\Permissions.cs" />
     <Compile Include="Alfresco\Folder\Permissions2.cs" />
     <Compile Include="Alfresco\Folder\RootObject.cs" />
+    <Compile Include="classes\administration\CreateUser\AddUserRole.cs" />
+    <Compile Include="classes\administration\CreateUser\UserRoleResponse.cs" />
     <Compile Include="classes\ApiResponseModel.cs" />
     <Compile Include="classes\administration\CreateUser\CreateUserRequest.cs" />
     <Compile Include="classes\administration\CreateUser\ResponseError.cs" />
-    <Compile Include="classes\administration\CreateUser\Status.cs" />
     <Compile Include="classes\administration\GetGroups\GetGroupsResponse.cs" />
     <Compile Include="classes\administration\GetGroups\Group.cs" />
     <Compile Include="classes\administration\GetGroups\Paging.cs" />

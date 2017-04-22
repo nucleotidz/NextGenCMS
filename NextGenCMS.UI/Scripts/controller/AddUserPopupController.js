@@ -17,7 +17,8 @@
             firstName: "",          //mandatory - the given Name
             lastName: "",           //mandatory - the family name
             email: "",              //mandatory - the email address
-            password: "",           //optional - the new user's password. If not specified then a value of "password" is used which should be changed as soon as possible.
+            password: "",
+            confirmPassword: "", //optional - the new user's password. If not specified then a value of "password" is used which should be changed as soon as possible.
             disableAccount: false,  //optional - If present and set to "true" the user is created but their account will be disabled.
             quota: -1,              //optional - Sets the quota size for the new user, in bytes.
             groups: [],//,             //optional - Array of group names to assign the new user to.
@@ -28,36 +29,63 @@
         };
 
         $scope.createUser = function () {
-            //$http({
-            //    method: 'POST',
-            //    url: 'http://127.0.0.1:8080/alfresco/s/api/people?alf_ticket=' + token,
-            //    data: $scope.user
-            //}).then(function successCallback(response) {
-            //    var x = response.data.items;
-            //}, function errorCallback(response) {
-            //    var l = 0;
-            //});
-            if ($scope.user.groupList != null && $scope.user.groupList != undefined && $scope.user.groupList.length > 0)
+            if (validateForm()) {
                 $scope.user.groups = _.pluck($scope.user.groupList, fullName);
-            var data = AdministrationApi.createUser($scope.user);
-            $q.all([data.$promise]).then(function (response) {
-                if (response !== null && response.length == 1) {
-                    var result = response[0];
-                    if (result.status === 200) {
-                        alert("User created successful.");
+                var data = AdministrationApi.createUser($scope.user);
+                $q.all([data.$promise]).then(function (response) {
+                    if (response !== null && response.length == 1) {
+                        var result = response[0];
+                        if (result.status === 200) {
+                            alert("User created successful.");
+                        }
+                        else {
+                            alert(result.result.message);
+                        }
                     }
-                    else {
-                        alert(result.result.message);
-                    }
-                }
-                $scope.closePopup();
-            });
+                    $scope.closePopup();
+                });
+            }
         };
 
         $scope.closePopup = function () {
             $modalInstance.dismiss("close");
         };
 
+        function validateForm() {
+            if ($scope.user.firstName == undefined || $scope.user.firstName == "") {
+                alert("First name is required.");
+                return false;
+            }
+            if ($scope.user.lastName == undefined || $scope.user.lastName == "") {
+                alert("Last name is required.");
+                return false;
+            }
+            if ($scope.user.email == undefined || $scope.user.email == "") {
+                alert("Email is required.");
+                return false;
+            }
+            if ($scope.user.userName == undefined || $scope.user.userName == "") {
+                alert("User name is required.");
+                return false;
+            }
+            if ($scope.user.password == undefined || $scope.user.password == "") {
+                alert("Password is required.");
+                return false;
+            }
+            if ($scope.user.confirmPassword == undefined || $scope.user.confirmPassword == "") {
+                alert("Confirm Password is required");
+                return false;
+            }
+            //if ($scope.user.password != $scope.user.confirmPassword) {
+            //    return false;
+            //}
+            if ($scope.user.groupList == undefined || $scope.user.groupList == null || $scope.user.groupList.length == 0) {
+                alert("Please select atleast one group.");
+                return false;
+            }
+
+            return true;
+        }
         init();
     }]);
 })();

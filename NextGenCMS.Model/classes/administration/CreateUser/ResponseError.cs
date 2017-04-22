@@ -15,4 +15,11 @@ namespace NextGenCMS.Model.classes.administration.CreateUser
         public string server { get; set; }
         public string time { get; set; }
     }
+
+    public class Status
+    {
+        public int code { get; set; }
+        public string name { get; set; }
+        public string description { get; set; }
+    }
 }
