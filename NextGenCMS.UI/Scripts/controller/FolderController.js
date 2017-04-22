@@ -30,7 +30,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
         }
         var SubFolderModel = {
             path: path
-        }
+        }       
         var apiData = FolderAPI.GetSubFolderFolders(SubFolderModel)
         var fileDate = FileAPI.GetFiles(SubFolderModel);
         $q.all([apiData.$promise, fileDate.$promise]).then(function (response) {
@@ -55,6 +55,23 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
             }
         });
     }
+    function refreshFileGrid() {
+        var SubFolderModel = {
+            path: path
+        }
+        var fileDate = FileAPI.GetFiles(SubFolderModel);
+        $q.all([fileDate.$promise]).then(function (response) {
+            if (response[0].items !== undefined && response[0].items.length > 0) {
+                Files = _.where(response[0].items, { isFolder: false });
+                vm.FileGridDataSource.read();
+            }
+            else {
+                Files = [];
+                vm.FileGridDataSource.read();
+            }
+        });
+    }
+
     vm.AddFolder = function () {
         var modalInstance = $modal.open({
             backdrop: 'static',
@@ -127,9 +144,9 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
                     version: {
                         type: "string", editable: false
                     },
-                    lockedByUser: {
-                        type: "string", editable: false
-                    },
+                    //lockedByUser: {
+                    //    type: "string", editable: false
+                    //},
                     createdOn: {
                         type: "string", editable: false
                     },
@@ -143,6 +160,9 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
                         type: "string", editable: false
                     },
                     contentUrl: {
+                        type: "string", editable: false
+                    },
+                    status: {
                         type: "string", editable: false
                     }
                 }
@@ -179,7 +199,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
             field: "version", title: "Version"
         },
         {
-            field: "lockedByUser", title: "Locked By"
+            field: "status", title: "Checked Out",  template: "#if (status == 'editing') {# yes #} else {# no #}  #"
         },
         {
             field: "createdOn", title: "Created On", template: "#= kendo.toString(kendo.parseDate(createdOn), 'dd MMM yyyy') #"
@@ -215,6 +235,24 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
         if (evt.item.textContent.trim() === "Download") {
             Download();
         }
+        if (evt.item.textContent.trim() === "Check-Out") {
+            Checkout();
+        }
+    }
+    function Checkout() {
+        var entityGrid = $("#userGrid").data("kendoGrid")
+        var selectedItem = entityGrid.dataItem(entityGrid.select());
+        var name = selectedItem.displayName;
+        var CheckoutParamsModel = {
+            path: '',
+            site: "ahmar",
+            container: "documentLibrary"
+        }
+        CheckoutParamsModel.path = path + "/" + name;
+        var apiData = FolderAPI.CheckOutFile(CheckoutParamsModel);
+        $q.all([apiData.$promise]).then(function (response) {
+            refreshFileGrid();
+        });
     }
     vm.open = function (evt) {
         var entityGrid = $("#userGrid").data("kendoGrid")

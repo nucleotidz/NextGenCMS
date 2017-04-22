@@ -24,6 +24,12 @@
                 url: Global.apiuri + "Folder/Create/SubFolder",
                 isArray: false,
                 params: {}
+            },
+            CheckOutFile: {
+                method: "POST",
+                url: Global.apiuri + "Folder/Checkout/File/",
+                isArray: false,
+                params: {}
             }
         });
     }]);
