@@ -55,5 +55,13 @@ namespace NextGenCMS.API.Controllers
             _folder.CheckOutFile(objPath);
             return Request.CreateResponse(HttpStatusCode.OK);
         }
+
+        [HttpGet]
+        [Route("Checkin/File/{objectId}")]
+        public HttpResponseMessage CheckInFile(string objectId)
+        {
+            _folder.CancelCheckout(objectId);
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
     }
 }

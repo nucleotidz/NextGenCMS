@@ -238,6 +238,9 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
         if (evt.item.textContent.trim() === "Check-Out") {
             Checkout();
         }
+        if (evt.item.textContent.trim() === "Check-In") {
+            Checkin();
+        }
     }
     function Checkout() {
         var entityGrid = $("#userGrid").data("kendoGrid")
@@ -250,6 +253,17 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
         }
         CheckoutParamsModel.path = path + "/" + name;
         var apiData = FolderAPI.CheckOutFile(CheckoutParamsModel);
+        $q.all([apiData.$promise]).then(function (response) {
+            refreshFileGrid();
+        });
+    }
+
+    function Checkin() {
+        var entityGrid = $("#userGrid").data("kendoGrid")
+        var selectedItem = entityGrid.dataItem(entityGrid.select());
+        var splitList = selectedItem.nodeRef.split("/");
+        var objId = splitList[splitList.length - 1];
+        var apiData = FolderAPI.CheckInFile({ "objectId": objId })
         $q.all([apiData.$promise]).then(function (response) {
             refreshFileGrid();
         });
