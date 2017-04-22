@@ -47,19 +47,19 @@
         <div class="col-xs-12 col-sm-6 col-md-4">
             <div class="form-group">
                 <label for="password">Password<span class="redStar">*</span></label>
-                <input type="text" class="form-control" ng-model="user.password" placeholder="Password" />
+                <input type="password" class="form-control"  ng-model="user.password" placeholder="Password" />
             </div>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-4">
             <div class="form-group">
-                <label for="passwordVerify">Password Verify<span class="redStar">*</span></label>
-                <input type="text" class="form-control" placeholder="Verify Password" />
+                <label for="passwordConfirm">Confirm Password<span class="redStar">*</span></label>
+                <input type="password" class="form-control" ng-model="user.confirmPassword" placeholder="Confirm Password" />
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
-            <label for="search">Groups</label>
+            <label for="search">Groups</label><span class="redStar">*</span>
             <select id="groups"
                     name="groups"
                     kendo-multi-select="groupsselect"

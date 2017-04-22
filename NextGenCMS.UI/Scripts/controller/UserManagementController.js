@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
-    app.controller('UserManagementController', ['$scope', '$modal', 'AdministrationApi', '$q',
-    function ($scope, $modal, AdministrationApi, $q) {
+    app.controller('UserManagementController', ['$scope', '$modal', 'AdministrationApi', '$q', 'Cache',
+    function ($scope, $modal, AdministrationApi, $q, Cache) {
         var vm = this;
         vm.userName = Cache.get('userName');
         vm.searchText = "";
@@ -51,7 +51,7 @@
         vm.SearchUser = function () {
             var data;
             if (vm.searchText == "") {
-                data = AdministrationApi.getUsers(vm.userName);
+                data = AdministrationApi.getUsers({ "username": vm.userName });
             }
             else {
                 data = AdministrationApi.searchUsers({ "searchText": vm.searchText, "username": vm.userName });
