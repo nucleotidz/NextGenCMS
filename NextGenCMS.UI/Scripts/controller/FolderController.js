@@ -30,7 +30,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
         }
         var SubFolderModel = {
             path: path
-        }       
+        }
         var apiData = FolderAPI.GetSubFolderFolders(SubFolderModel)
         var fileDate = FileAPI.GetFiles(SubFolderModel);
         $q.all([apiData.$promise, fileDate.$promise]).then(function (response) {
@@ -98,13 +98,13 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
             resolve: {
                 items: function () {
                     return path;
+                }
             }
-        }
         });
-        modalInstance.result.then(function (item) {
-            var Form = item;           
-
-        });
+        modalInstance.result.then(function () {
+                            }, function (popupData) {
+                                refreshFileGrid();
+                            });
     }
     vm.AddSubFolder = function () {
         if (vm.tree.select().length < 1) {
@@ -204,7 +204,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
             field: "version", title: "Version"
         },
         {
-                    field: "status", title: "Checked Out", template: "#if (status == 'editing') {# yes #} else {# no #}  #"
+            field: "status", title: "Checked Out", template: "#if (status == 'editing') {# yes #} else {# no #}  #"
         },
         {
             field: "createdOn", title: "Created On", template: "#= kendo.toString(kendo.parseDate(createdOn), 'dd MMM yyyy') #"
@@ -221,18 +221,19 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
         {
             field: "webdavUrl", hidden: true
         },
-            { field: "contentUrl", hidden: true
-    }]
+            {
+                field: "contentUrl", hidden: true
+            }]
     }
     function Download() {
         var entityGrid = $("#userGrid").data("kendoGrid")
         var selectedItem = entityGrid.dataItem(entityGrid.select());
         //window.open(Global.Alfresco + selectedItem.webdavUrl + "?alf_ticket=" + Cache.get("token"));           
         var formId = "formFile";
-        angular.element("body").append("<form  method='POST' id='" + formId + "' action='" +Global.apiuri + "File/Download" + "' target='_tab' >");
-        $("#" + formId + "").append("<input type='hidden' value='" +selectedItem.contentUrl + "'  name='path' >");
-        $("#" + formId + "").append("<input type='hidden' value='" +selectedItem.displayName + "'  name='name' >");
-        $("#" + formId + "").append("<input type='hidden' value='" +Cache.get("token") + "'  name='ticket' >");
+        angular.element("body").append("<form  method='POST' id='" + formId + "' action='" + Global.apiuri + "File/Download" + "' target='_tab' >");
+        $("#" + formId + "").append("<input type='hidden' value='" + selectedItem.contentUrl + "'  name='path' >");
+        $("#" + formId + "").append("<input type='hidden' value='" + selectedItem.displayName + "'  name='name' >");
+        $("#" + formId + "").append("<input type='hidden' value='" + Cache.get("token") + "'  name='ticket' >");
         angular.element("#" + formId + "").submit();
         angular.element("#" + formId + "").remove();
 
@@ -246,7 +247,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
         }
         if (evt.item.textContent.trim() === "Check-In") {
             Checkin();
-    }
+        }
     }
     function Checkout() {
         var entityGrid = $("#userGrid").data("kendoGrid")
@@ -257,7 +258,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
             site: "ahmar",
             container: "documentLibrary"
         }
-        CheckoutParamsModel.path = path + "/" +name;
+        CheckoutParamsModel.path = path + "/" + name;
         var apiData = FolderAPI.CheckOutFile(CheckoutParamsModel);
         $q.all([apiData.$promise]).then(function (response) {
             refreshFileGrid();
@@ -284,4 +285,4 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
     }
     Bind();
 }])
-}) ();
+})();

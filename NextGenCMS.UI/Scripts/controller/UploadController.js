@@ -36,6 +36,7 @@
             var xhr = new XMLHttpRequest();
             xhr.open("POST", Global.apiuri+"File/Upload", false);
             xhr.send(formdata);
+            $modalInstance.dismiss("success");
         }
     }]);
 })();
