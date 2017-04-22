@@ -14,15 +14,20 @@ using NextGenCMS.Model.classes.Folder;
 using System.Dynamic;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Converters;
+using DotCMIS.Client.Impl;
+using DotCMIS;
+using DotCMIS.Client;
 
 namespace NextGenCMS.BL.classes
 {
-    public class Folder : IFolder
+    public class Folder : IFolderNext
     {
         /// <summary>
         /// disposed is used to reallocate memory of UnUsed Objects
         /// </summary>
         private bool _disposed;
+
+        private ISession session = null;
 
         /// <summary>
         /// api helper object
@@ -43,8 +48,8 @@ namespace NextGenCMS.BL.classes
             {
                 data = this._apiHelper.Get(ServiceUrl.Folder + HttpContext.Current.Items[Filter.Token]);
             }
-           
-            RootObject dataObject = JsonConvert.DeserializeObject<RootObject>(data);        
+
+            RootObject dataObject = JsonConvert.DeserializeObject<RootObject>(data);
             return this.MapFolder(dataObject.datalists);
         }
 
@@ -95,6 +100,28 @@ namespace NextGenCMS.BL.classes
             };
         }
 
+
+        public void CheckOutFile(CheckoutParamsModel objParams)
+        {
+            try
+            {
+                this.session = this.GetSession();
+                Document doc = (Document)this.session.GetObjectByPath("/sites/" + AppConfigKeys.Site + "/documentLibrary/" + objParams.path);
+                String fileName = doc.ContentStreamFileName;
+                IObjectId pwcId = doc.CheckOut(); // Checkout the document
+                //  Document pwc = (Document)this.session.GetObject(pwcId); 
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public void CancelCheckout(string docId)
+        {
+
+        }
+
         private List<FolderModel> MapFolder(List<Datalist> dataObject)
         {
             List<FolderModel> model = new List<FolderModel>();
@@ -128,6 +155,28 @@ namespace NextGenCMS.BL.classes
             });
             return model;
         }
+
+        private ISession GetSession()
+        {
+            if (session == null)
+            {
+                // default factory implementation
+                SessionFactory factory = SessionFactory.NewInstance();
+                Dictionary<String, String> parameter = new Dictionary<String, String>();
+
+                // user credentials
+                parameter.Add(SessionParameter.User, "admin"); // <-- Replace
+                parameter.Add(SessionParameter.Password, "admin"); // <-- Replace
+
+                // connection settings
+                parameter.Add(SessionParameter.AtomPubUrl, ServiceUrl.CMISApi); // Uncomment for Atom Pub binding
+                parameter.Add(SessionParameter.BindingType, BindingType.AtomPub); // Uncomment for Atom Pub binding
+
+                this.session = factory.GetRepositories(parameter)[0].CreateSession();
+            }
+            return this.session;
+        }
+
 
         #region Dispose
         /// <summary>

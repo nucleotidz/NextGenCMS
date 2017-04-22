@@ -15,8 +15,8 @@ namespace NextGenCMS.API.Controllers
     [Secure]
     public class FolderController : ApiController
     {
-        IFolder _folder;
-        public FolderController(IFolder folder)
+        IFolderNext _folder;
+        public FolderController(IFolderNext folder)
         {
             this._folder = folder;
         }
@@ -46,6 +46,14 @@ namespace NextGenCMS.API.Controllers
         public HttpResponseMessage CreateSubFolder(AddSubFolderModel folderModel)
         {
             return Request.CreateResponse(HttpStatusCode.OK, _folder.CreateSubFolder(folderModel));
+        }
+
+        [HttpPost]
+        [Route("Checkout/File")]
+        public HttpResponseMessage CheckOutFile(CheckoutParamsModel objPath)
+        {
+            _folder.CheckOutFile(objPath);
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
     }
 }

@@ -4,11 +4,12 @@ using System.Collections.Generic;
 
 namespace NextGenCMS.BL.interfaces
 {
-    public interface IFolder
+    public interface IFolderNext
     {
         List<FolderModel> GetRootFolders();
         List<FolderModel> GetSubFoldersPath(string path);
         FolderModel CreateFolder(AddFolderModel folderModel);
         FolderModel CreateSubFolder(AddSubFolderModel folderModel);
+        void CheckOutFile(CheckoutParamsModel objParams);
     }
 }

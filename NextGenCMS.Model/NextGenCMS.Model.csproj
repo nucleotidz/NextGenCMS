@@ -67,6 +67,7 @@
     <Compile Include="classes\File\FilePath.cs" />
     <Compile Include="classes\Folder\AddFolderModel.cs" />
     <Compile Include="classes\Folder\AddSubFolderModel.cs" />
+    <Compile Include="classes\Folder\CheckoutParamsModel.cs" />
     <Compile Include="classes\Folder\FolderModel.cs" />
     <Compile Include="classes\authentication\LoginModel.cs" />
     <Compile Include="classes\Folder\SubFolderModel.cs" />

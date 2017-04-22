@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotCMIS, Version=0.6.0.0, Culture=neutral, PublicKeyToken=0377a82433ccbb00, processorArchitecture=MSIL">
+      <HintPath>..\packages\Apache.DotCMIS.0.6\lib\DotCMIS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -52,7 +56,7 @@
     <Compile Include="interfaces\IAdministration.cs" />
     <Compile Include="interfaces\IAuthentication.cs" />
     <Compile Include="interfaces\IFile.cs" />
-    <Compile Include="interfaces\IFolder.cs" />
+    <Compile Include="interfaces\IFolderNext.cs" />
     <Compile Include="interfaces\ISearchBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
