@@ -103,22 +103,18 @@ namespace NextGenCMS.BL.classes
 
         public void CheckOutFile(CheckoutParamsModel objParams)
         {
-            try
-            {
                 this.session = this.GetSession();
                 Document doc = (Document)this.session.GetObjectByPath("/sites/" + AppConfigKeys.Site + "/documentLibrary/" + objParams.path);
                 String fileName = doc.ContentStreamFileName;
                 IObjectId pwcId = doc.CheckOut();
             }
-            catch
-            {
-                throw;
-            }
-        }
 
         public void CancelCheckout(string docId)
         {
-
+            this.session = this.GetSession();
+            IObjectId obj = new ObjectId(docId);
+            IDocument pwc = (IDocument)this.session.GetObject(obj);
+            pwc.CancelCheckOut();
         }
 
         private List<FolderModel> MapFolder(List<Datalist> dataObject)

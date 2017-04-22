@@ -30,6 +30,13 @@
                 url: Global.apiuri + "Folder/Checkout/File/",
                 isArray: false,
                 params: {}
+            },
+            CheckInFile: {
+                method: "GET",
+                url: Global.apiuri + "Folder/Checkin/File/:objectId",
+                isArray: false,
+                params: {}
+
             }
         });
     }]);
