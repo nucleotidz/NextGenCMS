@@ -47,7 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\APIHelper.cs" />
+    <Compile Include="classes\Uploader.cs" />
     <Compile Include="interfaces\IAPIHelper.cs" />
+    <Compile Include="interfaces\IUploader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
