@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Alfresco\File\FileRootObject.cs" />
+    <Compile Include="Alfresco\File\Result.cs" />
     <Compile Include="Alfresco\File\User.cs" />
     <Compile Include="Alfresco\Folder\AddFolderRootObject.cs" />
     <Compile Include="Alfresco\Folder\Datalist.cs" />

@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using DotCMIS.Client;
 using DotCMIS;
 using DotCMIS.Data.Impl;
+using NextGenCMS.Model.Alfresco.File;
 
 namespace NextGenCMS.BL.classes
 {
@@ -53,7 +54,15 @@ namespace NextGenCMS.BL.classes
         {
             this._apiHelper.DownLoad(ServiceUrl.FileDownload + url + "?a=true&alf_ticket=" + token, fileName);
         }
-
+        public FileRootObject DeleteFile(FilePath filePath)
+        {
+            string data = string.Empty;
+            if (HttpContext.Current.Items[Filter.Token] != null)
+            {
+                data = this._apiHelper.Delete(ServiceUrl.DeleteFile + filePath.path + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
+            }
+          return  JsonConvert.DeserializeObject<FileRootObject>(data);
+        }
         public void Upload()
         {
             this.session = this.GetSession();

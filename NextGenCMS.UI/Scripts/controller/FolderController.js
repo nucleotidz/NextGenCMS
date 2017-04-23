@@ -288,7 +288,9 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
         });
         modalInstance.result.then(function () {
         }, function (popupData) {
-            refreshFileGrid();
+            if (popupData === "success") {
+                refreshFileGrid();
+            }
         });
     };
     vm.DeleteFolder = function () {

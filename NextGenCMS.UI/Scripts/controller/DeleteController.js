@@ -4,7 +4,15 @@
 function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, $modalInstance, items) {
     $scope.message = ""
     $scope.Delete=function(){
-        $modalInstance.dismiss("success");
+        if (items.entity.trim() === "file") {
+            var FilePath = { "path": items.path + "/" + items.data };
+            var data = FileAPI.DeleteFiles(FilePath);
+            $q.all([data.$promise]).then(function (response) {
+                if (response[0].overallSuccess) {
+                    $modalInstance.dismiss("success");
+                }
+            });
+        }
     }
     $scope.closePopup = function () {
         $modalInstance.dismiss("close");

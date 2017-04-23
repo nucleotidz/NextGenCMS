@@ -34,9 +34,10 @@ namespace NextGenCMS.API.Controllers
         [HttpPost]
         public HttpResponseMessage Download()
         {
-          _file.Download(HttpContext.Current.Request.Form[0], HttpContext.Current.Request.Form[1] ,HttpContext.Current.Request.Form[2]);           
-          return Request.CreateResponse(HttpStatusCode.OK);
+            _file.Download(HttpContext.Current.Request.Form[0], HttpContext.Current.Request.Form[1], HttpContext.Current.Request.Form[2]);
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
+
         [Route("Upload")]
         [AllowAnonymous]
         [HttpPost]
@@ -44,6 +45,13 @@ namespace NextGenCMS.API.Controllers
         {
             _file.Upload();
             return Request.CreateResponse(HttpStatusCode.OK);
+        }
+
+        [Route("Delete")]
+        [HttpPost]
+        public HttpResponseMessage DeleteFile(FilePath filePath)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, _file.DeleteFile(filePath));
         }
     }
 }

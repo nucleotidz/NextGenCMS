@@ -7,6 +7,12 @@
                 url: Global.apiuri + "File/Get/",
                 isArray: false,
                 params: {}
+            },
+            DeleteFiles: {
+                method: "POST",
+                url: Global.apiuri + "File/Delete/",
+                isArray: false,
+                params: {}
             }
            
         });

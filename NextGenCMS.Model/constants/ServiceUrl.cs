@@ -56,6 +56,7 @@ namespace NextGenCMS.Model.constants
         public static readonly string FileDownload = AppConfigKeys.ServiceUrl + "alfresco/s/";
         public static readonly string Checkout = AppConfigKeys.ServiceUrl + "alfresco/s/slingshot/doclib/action/checkout/site/";
         public static readonly string CMISApi = AppConfigKeys.ServiceUrl + "/alfresco/api/-default-/public/cmis/versions/1.0/atom/";
+        public static readonly string DeleteFile = AppConfigKeys.ServiceUrl + "/alfresco/s/slingshot/doclib/action/file/site/ahmar/documentLibrary/";
         #endregion
     }
 }
