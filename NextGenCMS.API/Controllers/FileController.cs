@@ -1,5 +1,6 @@
 ﻿using NextGenCMS.API.Filters;
 using NextGenCMS.BL.interfaces;
+using NextGenCMS.Model.Alfresco.Common;
 using NextGenCMS.Model.classes.File;
 using System;
 using System.Collections.Generic;

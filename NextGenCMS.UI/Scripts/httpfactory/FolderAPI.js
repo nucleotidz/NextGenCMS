@@ -37,7 +37,13 @@
                 isArray: false,
                 params: {}
 
-            }
+            },
+            DeleteFolder: {
+                method: "POST",
+                url: Global.apiuri + "Folder/Delete",
+                isArray: false,
+                params: {}
+            },
         });
     }]);
 })();

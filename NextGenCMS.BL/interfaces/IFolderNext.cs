@@ -1,4 +1,5 @@
-﻿using NextGenCMS.Model.classes;
+﻿using NextGenCMS.Model.Alfresco.Common;
+using NextGenCMS.Model.classes;
 using NextGenCMS.Model.classes.Folder;
 using System.Collections.Generic;
 
@@ -12,5 +13,6 @@ namespace NextGenCMS.BL.interfaces
         FolderModel CreateSubFolder(AddSubFolderModel folderModel);
         void CheckOutFile(CheckoutParamsModel objParams);
         void CancelCheckout(string docId);
+        DeleteRootObject DeleteFolder(FolderPath folderPath);
     }
 }

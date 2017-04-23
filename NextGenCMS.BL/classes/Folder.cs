@@ -17,6 +17,7 @@ using Newtonsoft.Json.Converters;
 using DotCMIS.Client.Impl;
 using DotCMIS;
 using DotCMIS.Client;
+using NextGenCMS.Model.Alfresco.Common;
 
 namespace NextGenCMS.BL.classes
 {
@@ -100,14 +101,23 @@ namespace NextGenCMS.BL.classes
             };
         }
 
-
+        public DeleteRootObject DeleteFolder(FolderPath folderPath)
+        {
+            string data = string.Empty;
+            if (HttpContext.Current.Items[Filter.Token] != null)
+            {
+                data = this._apiHelper.Delete(ServiceUrl.DeleteFolder + folderPath.path + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
+            }
+            return JsonConvert.DeserializeObject<DeleteRootObject>(data);
+           
+        }
         public void CheckOutFile(CheckoutParamsModel objParams)
         {
-                this.session = this.GetSession();
-                Document doc = (Document)this.session.GetObjectByPath("/sites/" + AppConfigKeys.Site + "/documentLibrary/" + objParams.path);
-                String fileName = doc.ContentStreamFileName;
-                IObjectId pwcId = doc.CheckOut();
-            }
+            this.session = this.GetSession();
+            Document doc = (Document)this.session.GetObjectByPath("/sites/" + AppConfigKeys.Site + "/documentLibrary/" + objParams.path);
+            String fileName = doc.ContentStreamFileName;
+            IObjectId pwcId = doc.CheckOut();
+        }
 
         public void CancelCheckout(string docId)
         {
@@ -159,7 +169,7 @@ namespace NextGenCMS.BL.classes
                 Dictionary<String, String> parameter = new Dictionary<String, String>();
                 parameter.Add(SessionParameter.User, "admin");
                 parameter.Add(SessionParameter.Password, "S!wan@246151");
-                parameter.Add(SessionParameter.AtomPubUrl, ServiceUrl.CMISApi); 
+                parameter.Add(SessionParameter.AtomPubUrl, ServiceUrl.CMISApi);
                 parameter.Add(SessionParameter.BindingType, BindingType.AtomPub);
                 this.session = factory.GetRepositories(parameter)[0].CreateSession();
             }

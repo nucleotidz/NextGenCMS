@@ -9,6 +9,7 @@ using System.Web.Http;
 using NextGenCMS.Model.Alfresco.Folder;
 using NextGenCMS.Model.classes;
 using NextGenCMS.Model.classes.Folder;
+using NextGenCMS.Model.Alfresco.Common;
 namespace NextGenCMS.API.Controllers
 {
     [RoutePrefix("api/Folder")]
@@ -62,6 +63,13 @@ namespace NextGenCMS.API.Controllers
         {
             _folder.CancelCheckout(objectId);
             return Request.CreateResponse(HttpStatusCode.OK);
+        }
+
+        [HttpPost]
+        [Route("Delete")]
+        public HttpResponseMessage DeleteFolder(FolderPath folderPath)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, _folder.DeleteFolder(folderPath));
         }
     }
 }

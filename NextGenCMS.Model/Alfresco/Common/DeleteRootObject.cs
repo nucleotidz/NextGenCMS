@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NextGenCMS.Model.Alfresco.File
+namespace NextGenCMS.Model.Alfresco.Common
 {
-    public class FileRootObject
+    public class DeleteRootObject
     {
         public int totalResults { get; set; }
         public bool overallSuccess { get; set; }

@@ -4,6 +4,7 @@
 function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
     var vm = this;
     var node;
+    var path
     var deleteData = {
         path: "",
         entity: "",
@@ -11,7 +12,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
     }
     $scope.rawFile = null;
     $scope.rawFileName = '';
-    var path
+   
     vm.treeData = null;
     var nodeRefs = [];
     var Files = [];
@@ -30,6 +31,9 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
         });
     };
     vm.selectedItem = function (data) {
+        if (data === undefined) {
+            return;
+        }
         node = data;
         path = data.name;
         while (data.parentNode() !== undefined) {
@@ -293,7 +297,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
             }
         });
     };
-    vm.DeleteFolder = function () {
+    vm.DeleteFolder = function () { 
         deleteData.path = path;
         deleteData.entity = "folder"
         deleteData.data = node
@@ -310,9 +314,30 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
         });
         modalInstance.result.then(function () {
         }, function (popupData) {
-            refreshFileGrid();
+            if (popupData === "success") {
+                var array = node.parent();
+                var index = array.indexOf(node);
+                array.splice(index, 1);
+                remove(node.noderef)
+                node = null;
+                path = '';
+                vm.TreeSelect = true;
+                Files = [];
+                vm.FileGridDataSource.read();
+                if (vm.treeData._data.length < 1) {
+                    nodeRefs = [];
+                }
+            }
         });
     };
+    function remove(item) {
+        for (var i = nodeRefs.length; i--;) {
+            if (nodeRefs[i] === item) {
+                nodeRefs.splice(i, 1);
+                break;
+            }
+        }
+    }
     function Checkout() {
         var entityGrid = $("#userGrid").data("kendoGrid")
         var selectedItem = entityGrid.dataItem(entityGrid.select());

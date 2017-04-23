@@ -13,6 +13,15 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, $modalInstance, it
                 }
             });
         }
+        else if (items.entity.trim() === "folder") {
+            var FolderPath = { "path": items.path};
+            var data = FolderAPI.DeleteFolder(FolderPath);
+            $q.all([data.$promise]).then(function (response) {
+                if (response[0].overallSuccess) {
+                    $modalInstance.dismiss("success");
+                }
+            });
+        }
     }
     $scope.closePopup = function () {
         $modalInstance.dismiss("close");

@@ -41,8 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Alfresco\File\FileRootObject.cs" />
-    <Compile Include="Alfresco\File\Result.cs" />
+    <Compile Include="Alfresco\Common\DeleteRootObject.cs" />
+    <Compile Include="Alfresco\Common\Result.cs" />
     <Compile Include="Alfresco\File\User.cs" />
     <Compile Include="Alfresco\Folder\AddFolderRootObject.cs" />
     <Compile Include="Alfresco\Folder\Datalist.cs" />
@@ -73,6 +73,7 @@
     <Compile Include="classes\Folder\CheckoutParamsModel.cs" />
     <Compile Include="classes\Folder\FolderModel.cs" />
     <Compile Include="classes\authentication\LoginModel.cs" />
+    <Compile Include="classes\Folder\FolderPath.cs" />
     <Compile Include="classes\Folder\SubFolderModel.cs" />
     <Compile Include="classes\authentication\LoginToken.cs" />
     <Compile Include="classes\authentication\LoginResponse.cs" />
