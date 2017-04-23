@@ -202,6 +202,7 @@
     <Content Include="Scripts\constants\Global.js" />
     <Content Include="Scripts\controller\AddFolderPopupController.js" />
     <Content Include="Scripts\controller\AddUserPopupController.js" />
+    <Content Include="Scripts\controller\DeleteController.js" />
     <Content Include="Scripts\controller\FolderController.js" />
     <Content Include="Scripts\controller\GroupManagementController.js" />
     <Content Include="Scripts\controller\HeaderController.js" />
@@ -270,6 +271,7 @@
     <Content Include="Views\Search\SearchDocument.cshtml" />
     <None Include="Properties\PublishProfiles\NextGenCMS.pubxml" />
     <Content Include="Views\Folder\Upload.cshtml" />
+    <Content Include="Views\Folder\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NextGenCMS.APIHelper\NextGenCMS.APIHelper.csproj">

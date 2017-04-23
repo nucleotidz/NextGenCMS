@@ -29,7 +29,7 @@
                     size = file.size;                   
                     scope.$apply(function () {
                                 scope.file = file;
-                                 scope.fileName = name;
+                                scope.fileName = name;
                             });
                     scope.upload();
                     return false;

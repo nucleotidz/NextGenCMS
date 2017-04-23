@@ -23,5 +23,9 @@ namespace NextGenCMS.UI.Controllers
         {
             return View();
         }
+        public ActionResult Delete()
+        {
+            return View();
+        }
     }
 }

@@ -3,7 +3,7 @@
 }
 <div class="row">
     <ul class="breadcrumb">
-        <li><a href="#">Dashboard</a></li>
+        <li><a ui-sref=".">Dashboard</a></li>
 
         <li class="active">Files</li>
     </ul>
@@ -12,7 +12,7 @@
 <div class="row">
     <div class="btnPane">
         <button type="button" class="btn btn-primary btn-sm bluebtn whiteText" ng-click="vm.AddFile();" ng-disabled="vm.TreeSelect">Upload<span class="glyphicon glyphicon-plus"></span></button>      
-        <button type="button" class="btn btn-primary btn-sm bluebtn whiteText" ng-disabled="vm.TreeSelect">Delete <span class="glyphicon glyphicon-trash"></span></button>
+        <button type="button" class="btn btn-primary btn-sm bluebtn whiteText" ng-click="vm.DeleteFolder();" ng-disabled="vm.TreeSelect">Delete <span class="glyphicon glyphicon-trash"></span></button>
         <button type="button" class="btn btn-primary btn-sm bluebtn whiteText" ng-click="vm.AddFolder();">New Folder<span class="glyphicon glyphicon-plus"></span></button>
         <button type="button" class="btn btn-primary btn-sm bluebtn whiteText" ng-click="vm.AddSubFolder();" ng-disabled="vm.TreeSelect">Sub Folder<span class="glyphicon glyphicon-plus"></span></button>
     </div>
