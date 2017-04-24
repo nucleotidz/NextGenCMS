@@ -86,6 +86,7 @@
             scrollable: {
                 virtual: true
             },
+            height: 350,
             selectable: "multiple",
             pageable: {
                 numeric: false,

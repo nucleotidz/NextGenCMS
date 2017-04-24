@@ -37,6 +37,8 @@ namespace NextGenCMS.Model.constants
         /// DELETE - This api will delete user based on username
         /// </summary>
         public static readonly string DeleteUser = AppConfigKeys.ServiceUrl + "alfresco/s/api/people/";
+
+        public static readonly string UserRole = AppConfigKeys.ServiceUrl + "/alfresco/s/api/sites/" + AppConfigKeys.Site + "/invitations?alf_ticket=";
         #endregion
 
         #region "Administration - Groups"

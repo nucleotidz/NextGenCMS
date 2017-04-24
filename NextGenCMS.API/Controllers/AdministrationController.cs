@@ -5,14 +5,13 @@ namespace NextGenCMS.API.Controllers
     using System.Net;
     using System.Net.Http;
     using System.Web.Http;
+    using System.Collections.Generic;
     #endregion
 
     #region "NextGenCMS Namespaces"
     using NextGenCMS.BL.interfaces;
-    using NextGenCMS.Model.classes;
-    using NextGenCMS.Model.classes.administration;
     using NextGenCMS.API.Filters;
-    using System.Collections.Generic;
+    using NextGenCMS.Model.classes.administration.CreateUser;
     #endregion
 
     /// <summary>

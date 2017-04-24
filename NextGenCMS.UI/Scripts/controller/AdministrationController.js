@@ -22,6 +22,12 @@
                 templateUrl: './Administration/AddUserPopup',
                 controller: 'AddUserPopupController'
             });
+            modalInstance.result.then(function () {
+            }, function (popupData) {
+                if (popupData !== "close") {
+                    alert(popupData);
+                }
+            });
         };
 
         vm.addGroup = function () {

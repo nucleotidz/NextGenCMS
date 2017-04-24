@@ -64,7 +64,7 @@ namespace NextGenCMS.BL.classes
             WebResponseModel response = new WebResponseModel();
             if (HttpContext.Current.Items[Filter.Token] != null)
             {
-                response = this._apiHelper.Submit(ServiceUrl.CreateUser + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(createUser));
+                response = this._apiHelper.Submit(ServiceUrl.CreateUser + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(createUser.User));
             }
 
             if (response.status == NextGenCMS.Model.constants.ApiHelper.StatusCode.Success)
@@ -76,6 +76,8 @@ namespace NextGenCMS.BL.classes
                     Status = response.status,
                     Result = data
                 };
+
+                response = this._apiHelper.Submit(ServiceUrl.UserRole + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(createUser.UserRole));
                 return obj;
             }
             else

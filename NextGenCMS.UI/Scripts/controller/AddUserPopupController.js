@@ -12,7 +12,7 @@
             });
         };
 
-        $scope.user = {
+       $scope.user = {
             userName: "",           //mandatory - the user name for the new user
             firstName: "",          //mandatory - the given Name
             lastName: "",           //mandatory - the family name
@@ -28,10 +28,53 @@
             //jobtitle: ""            //optional - the job title of the new user.
         };
 
+        $scope.userRole = {
+            invitationType: "NOMINATED",
+            inviteeUserName: "",
+            inviteeRoleName: "",
+            inviteeRole: [],
+            inviteeFirstName: "",
+            inviteeLastName: "",
+            inviteeEmail: "",
+            serverPath: "",
+            acceptURL: "page/accept-invite",
+            rejectURL: "page/reject-invite"
+        };
+
+        $scope.rolesDataSource =[];
+        $scope.rolesDataSource.push({
+            "text": "Manager", "value" : "SiteManager"
+        });
+        $scope.rolesDataSource.push({
+            "text": "Collaborator", "value": "SiteCollaborator"
+        });
+        $scope.rolesDataSource.push({
+            "text": "Contributor", "value": "SiteContributor"
+        });
+        $scope.rolesDataSource.push({
+            "text": "Consumer", "value": "SiteConsumer"
+        });
+
+        $scope.customOptions = {
+               dataSource: $scope.rolesDataSource,
+               dataTextField: "text",
+               dataValueField: "value"
+        };
+
         $scope.createUser = function () {
             if (validateForm()) {
                 $scope.user.groups = _.pluck($scope.user.groupList, "fullName");
-                var data = AdministrationApi.createUser($scope.user);
+                $scope.userRole.inviteeUserName =$scope.user.userName ;
+                $scope.userRole.inviteeFirstName= $scope.user.firstName    ;   
+                $scope.userRole.inviteeLastName=$scope.user.lastName;
+                $scope.userRole.inviteeEmail =$scope.user.email;
+                $scope.userRole.inviteeRoleName = $scope.userRole.inviteeRole.value;
+
+                 $scope.createUserRequest ={
+                    User: $scope.user,
+                    UserRole: $scope.userRole
+                };
+                var data = AdministrationApi.createUser($scope.createUserRequest);
                 $q.all([data.$promise]).then(function (response) {
                     if (response !== null && response.length == 1) {
                         var result = response[0];
@@ -79,10 +122,10 @@
                 alert("Password do not match.");
                 return false;
             }
-            //if ($scope.user.groupList == undefined || $scope.user.groupList == null || $scope.user.groupList.length == 0) {
-            //    alert("Please select atleast one group.");
-            //    return false;
-            //}
+            if ($scope.userRole.inviteeRole == undefined || $scope.userRole.inviteeRole == null || $scope.userRole.inviteeRole.length == 0) {
+                alert("Please select role.");
+                return false;
+            }
 
             return true;
         }

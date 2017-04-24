@@ -47,7 +47,7 @@
         <div class="col-xs-12 col-sm-6 col-md-4">
             <div class="form-group">
                 <label for="password">Password<span class="redStar">*</span></label>
-                <input type="password" class="form-control"  ng-model="user.password" placeholder="Password" />
+                <input type="password" class="form-control" ng-model="user.password" placeholder="Password" />
             </div>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-4">
@@ -58,18 +58,49 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-12">
-            <label for="search">Groups</label>@*<span class="redStar">*</span>*@
-            <select id="groups"
-                    name="groups"
-                    kendo-multi-select="groupsselect"
-                    k-placeholder="'(Select groups)'"
-                    k-data-text-field="'displayName'"
-                    k-data-value-field="'fullName'"
-                    k-data-source="groupDataSource"
-                    k-ng-model="user.groupList"></select>
+        <div class="col-xs-12 col-sm-6 col-md-8">
+            <div class="form-group">
+                <label for="search">Groups</label>@*<span class="redStar">*</span>*@
+                <select id="groups"
+                        name="groups"
+                        kendo-multi-select="groupsselect"
+                        k-placeholder="'(Select groups)'"
+                        k-data-text-field="'displayName'"
+                        k-data-value-field="'fullName'"
+                        k-data-source="groupDataSource"
+                        k-ng-model="user.groupList"></select>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="form-group">
+                <label for="role" class="clearfix">Role</label><span class="redStar">*</span>
+                <select class="form-control widthFull100" kendo-drop-down-list id="drpUserRole"
+                        k-options="customOptions"
+                        k-option-label="'(Select role)'"
+                        k-ng-model="userRole.inviteeRole"></select>
+                @*<select class="form-control width100" ng-model="userRole.inviteeRoleName">
+                    <option value="0">Select Role</option>
+                    <option value="SiteManager">Manager</option>
+                    <option value="SiteCollaborator">Collaborator</option>
+                    <option value="SiteContributor">Contributor</option>
+                    <option value="SiteConsumer">Consumer</option>
+                </select>*@
+            </div>
         </div>
     </div>
+    @*<div class="row">
+            <div class="col-xs-4">
+                <label for="role" class="clearfix">Role</label><span class="redStar">*</span>
+                <input type="text" class="form-control pull-left width80" id="role" placeholder="Role" />
+                <select class="form-control width100" ng-model="userRole.inviteeRoleName">
+                    <option value="SiteManager">Manager</option>
+                    <option value="SiteCollaborator">Collaborator</option>
+                    <option value="SiteContributor">Contributor</option>
+                    <option value="SiteConsumer">Consumer</option>
+                </select>
+            </div>
+        </div>*@
+
     <!--div class="row">
             <div class="col-xs-4">
                     <label for="quota" class="clearfix">Quota</label>

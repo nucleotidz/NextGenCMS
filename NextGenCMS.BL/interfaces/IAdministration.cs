@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using NextGenCMS.Model.classes.administration;
 using NextGenCMS.Model.classes.administration.GetUsers;
-using System.Collections.Generic;
+using NextGenCMS.Model.classes.administration.CreateUser;
 
 namespace NextGenCMS.BL.interfaces
 {

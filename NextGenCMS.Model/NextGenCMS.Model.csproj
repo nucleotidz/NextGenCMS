@@ -51,6 +51,7 @@
     <Compile Include="Alfresco\Folder\Permissions.cs" />
     <Compile Include="Alfresco\Folder\Permissions2.cs" />
     <Compile Include="Alfresco\Folder\RootObject.cs" />
+    <Compile Include="classes\administration\CreateUser\AddUser.cs" />
     <Compile Include="classes\administration\CreateUser\AddUserRole.cs" />
     <Compile Include="classes\administration\CreateUser\UserRoleResponse.cs" />
     <Compile Include="classes\ApiResponseModel.cs" />
