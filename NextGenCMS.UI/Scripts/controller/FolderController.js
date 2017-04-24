@@ -220,8 +220,15 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
         },
         columns: [
         {
-            field: "displayName", title: "Name", filterable: true
-        },
+            field: "displayName", title: "Name", filterable: true, template: function (dataitem) {
+                               if(dataitem.lockedBy !=='') {
+                                   return "<span class='glyphicon glyphicon-tags'>&nbsp"+ dataitem.displayName + "</span>";
+                               }
+                                   else {
+                                   return dataitem.displayName;
+                                   }
+                },
+            },
         {
             field: "version", title: "Version"
         },
@@ -246,7 +253,11 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
             {
                 field: "contentUrl", hidden: true
             }]
-    }
+     }
+
+     function addLock(displayName) {
+            return "<span class='glyphicon glyphicon-lock' > </span> " + displayName;
+     }
     function Download() {
         var entityGrid = $("#userGrid").data("kendoGrid")
         var selectedItem = entityGrid.dataItem(entityGrid.select());              
@@ -342,7 +353,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
         var entityGrid = $("#userGrid").data("kendoGrid")
         var selectedItem = entityGrid.dataItem(entityGrid.select());
         if (selectedItem.lockedBy !== '') {
-            showAlert("File already checked by " + selectedItem.lockedBy, "danger");
+            showAlert("File already checked out by " + selectedItem.lockedBy, "danger");
             return;
             }      
         var name = selectedItem.displayName;

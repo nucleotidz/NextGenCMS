@@ -124,7 +124,11 @@ namespace NextGenCMS.BL.classes
             this.session = this.GetSession();
             IObjectId obj = new ObjectId(docId);
             IDocument pwc = (IDocument)this.session.GetObject(obj);
-            pwc.CancelCheckOut();
+            Dictionary<string, Object> properties = new Dictionary<string, object>();
+            properties["cmis:description"] = "New change";
+            var contentStream = session.GetContentStream(obj);
+            string checkinComment = "test change";
+            IObjectId newId = pwc.CheckIn(false, properties, contentStream, checkinComment);           
         }
 
         private List<FolderModel> MapFolder(List<Datalist> dataObject)
@@ -168,7 +172,7 @@ namespace NextGenCMS.BL.classes
                 SessionFactory factory = SessionFactory.NewInstance();
                 Dictionary<String, String> parameter = new Dictionary<String, String>();
                 parameter.Add(SessionParameter.User, "admin");
-                parameter.Add(SessionParameter.Password, "S!wan@246151");
+                parameter.Add(SessionParameter.Password, "admin");
                 parameter.Add(SessionParameter.AtomPubUrl, ServiceUrl.CMISApi);
                 parameter.Add(SessionParameter.BindingType, BindingType.AtomPub);
                 this.session = factory.GetRepositories(parameter)[0].CreateSession();
