@@ -274,7 +274,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
         if (evt.item.textContent.trim() === "Delete") {
             DeleteFile();
         }
-        if (evt.item.textContent.trim() === "CancelCheck-Out") {
+        if (evt.item.textContent.trim() === "Cancel Check-Out") {
             CancelCheckOut();
         }
     }
