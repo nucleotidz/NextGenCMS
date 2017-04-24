@@ -38,43 +38,16 @@
                  k-data-source="vm.FileGridDataSource">
             </div>
         </div>
-        <div class="row">
-            @* <div class="col-xs-12 col-sm-6 col-md-6">*@
-            @*  <div class="gnrlInfoBox">*@
-            @* <div class="gnrlInfoBoxHead"><span class="crossX">X</span><h5>Drop Zone</h5></div>*@
+        <div class="row">  
 
             <div class="fileZone" file-dropzone file="rawFile" upload="upload();" file-name="rawFileName">
                 Drag & Drop file to upload ...
-            </div>
-
-            @*</div>  *@
-            @* </div> *@
-            @*</div>*@
-        </div>
-
-        @*<div class="column col-xs-12 col-md-3">
-                <div class="gnrlInfoBox">
-                    <div class="gnrlInfoBoxHead"><span class="crossX">X</span><h5>Drop Zone</h5></div>
-
-                    <div class="fileZone" file-dropzone file="rawFile" upload="upload();" file-name="rawFileName" >
-                        Drag & Drop file to upload ...
-                    </div>
-
-                </div>
-
-                <div class="gnrlInfoBox">
-                    <div class="gnrlInfoBoxHead"><span class="crossX">X</span><h5>24/7 Support Ticket</h5></div>
-                    <p class="infoContent">Give us a call 24 hours a day, 7 </p>
-                    <p class="infoContent">24/7 Technical Support (0091-000-6762216)</p>
-                    <div class="supportTicket">
-                        <button type="button" class="btn btn-primary btn-sm bluebtn whiteText">Create Support Ticket</button>
-                    </div>
-                </div>
-
-            </div>*@
+            </div>         
+        </div>        
+    </div>
     </div>
 
-    <ul kendo-context-menu k-filter="'#userGrid tbody tr[aria-selected=true]'"
+ <ul kendo-context-menu k-filter="'#userGrid tbody tr[aria-selected=true]'"
         k-on-open="vm.open(kendoEvent);"
         k-orientation="vm.orientation"
         k-on-select="vm.onSelect(kendoEvent);">

@@ -5,10 +5,25 @@
     <div class="settingicon pull-left"><span class="glyphicon glyphicon-cog"></span></div>
     <div class="pageTitle clearfix">
         <h1>Dashboard</h1>
-        <ul class="logoutBox">
-            <li class="blueText">Hello, {{vm.Name}}</li>
-            <li><span class="glyphicon glyphicon-user"></span><a href="#">Profile</a></li>
-            <li><span class="glyphicon glyphicon-lock"></span><a href onclick="window.location.href = 'Security/Logout'">Logout</a></li>
-        </ul>
+        <div class="emailPane">
+
+            <ul class="logoutBox">
+                <li class="blueText">Hello, {{vm.Name}}</li>
+                <li><span class="glyphicon glyphicon-user"></span><a href="#">Profile</a></li>
+                <li><span class="glyphicon glyphicon-lock"></span><a href onclick="window.location.href = 'Security/Logout'">Logout</a></li>
+            </ul>
+            <ul class="emailIcons">
+                <li>
+                    <a href="#" title="Email"><span class="glyphicon glyphicon-envelope"> </span></a>
+                </li>
+                <li>
+                    <a href="#" title="Task List"><span class="glyphicon glyphicon-tasks"> </span></a>
+                </li>
+                <li>
+                    <a href="#" title="Notification"><span class="glyphicon glyphicon-file"> </span></a>
+                </li>
+            </ul>
+
+        </div>
     </div>
 </div>

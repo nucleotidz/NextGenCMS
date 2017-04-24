@@ -51,7 +51,7 @@ label {
     padding: 5px 10px;
     background-color: #057FC2;
     border: 1px solid #025A93;
-    font-size: 17px;
+    font-size: 12px;
     color: #fff;
     border-radius: 17px;
 }
@@ -152,6 +152,15 @@ label {
 
 /*----Header Menu------*/
 
+.headerMenu {
+    background: #FFF;
+    border: 1px solid #057FC2;
+    margin: 10px 0px 15px 0px;
+    border-radius: 45px;
+    box-shadow: -4px 3px 5px #999;
+    max-height: 37px;
+}
+
 .navbar-nav {
     font-size: 110%;
     margin: 0px;
@@ -167,8 +176,7 @@ label {
 
 .navbar-default {
     border: 0px;
-    border-bottom: 1px solid #c6c6c6;
-    margin-left: 60px;
+    margin-left: 44px;
 }
 
     .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
@@ -179,6 +187,8 @@ label {
 .navbar-nav .glyphicon {
     float: left;
     display: block;
+    position: relative;
+    top: 0px;
 }
 
 .navbar-nav > li > a {
@@ -199,7 +209,7 @@ label {
 }
 
 .nav > li {
-    padding: 10px 0px 20px 0px;
+    padding: 9px 0px 0px 0px;
     margin-right: 35px;
 }
 
@@ -226,7 +236,7 @@ label {
 
 div.pageTitle {
     margin: 0px 0px 0px 60px;
-    /*border-bottom: solid 1px #c6c6c6;*/
+    border-radius: 5px;
     color: #fff;
     padding-top: 6px;
     background: #057FC2;
@@ -244,27 +254,49 @@ ul.logoutBox {
     margin-bottom: 6px;
 }
 
-    ul.logoutBox li {
-        display: inline-block;
-        margin-right: 10px;
-        border-right: solid 1px #ccc;
-        padding-right: 10px;
-        line-height: 14px;
+.emailPane {
+    float: right;
+    width: auto;
+}
+
+ul.emailIcons {
+    float: right;
+}
+
+    ul.emailIcons li a span.glyphicon {
+        color: #fff;
+        position: relative;
+        top: 8px;
     }
 
-        ul.logoutBox li:last-child {
-            border-right: solid 0px #ccc;
-            padding-right: 0px;
-            margin-right: 0px;
-        }
+    ul.emailIcons li {
+        width: auto;
+        height: 24px;
+        margin: 0px 10px 0px 0px;
+        display: inline;
+    }
 
-        ul.logoutBox li.blueText {
-            min-width: 127px !important;
-        }
+ul.logoutBox li {
+    display: inline-block;
+    margin-right: 10px;
+    border-right: solid 1px #ccc;
+    padding-right: 10px;
+    line-height: 14px;
+}
 
-        ul.logoutBox li a {
-            color: #777;
-        }
+    ul.logoutBox li:last-child {
+        border-right: solid 0px #ccc;
+        padding-right: 0px;
+        margin-right: 0px;
+    }
+
+    ul.logoutBox li.blueText {
+        min-width: 127px !important;
+    }
+
+    ul.logoutBox li a {
+        color: #777;
+    }
 
 .clearfix:after {
     content: "";
@@ -301,10 +333,10 @@ ul.logoutBox {
 
     .settingicon span {
         position: relative;
-        top: 22%;
-        left: 18%;
+        top: 6px;
+        left: 8px;
         font-size: 25px;
-        color: #E0E4E7;
+        color: #fff;
     }
 
 .row {
@@ -330,6 +362,7 @@ ul.logoutBox {
         width: 36px;
         border: solid 1px #ccc;
         border-radius: 26px;
+        background: #fff;
     }
 
         .toolPane ul.pageTools li, ul.adminTools li {
@@ -346,6 +379,7 @@ ul.logoutBox {
 
 ul.adminTools {
     margin-top: 15px;
+    background: #fff;
 }
 
     ul.adminTools li {
@@ -363,13 +397,14 @@ ul.adminTools {
 
 .rightPane {
     margin-left: 60px;
-    min-height: 400px;
+    min-height: 515px;
 }
 
 .btnPane {
     background: #DADADA;
     padding: 10px;
     height: 50px;
+    border-radius: 5px;
 }
 
     .btnPane .btn {
@@ -521,15 +556,12 @@ h4.modal-title {
     padding: 15px 0px !important;
 }
 /*----End Modal Window---*/
+
 .threeCols .menuColumn {
     background: #f4f4f4;
     border: solid 1px #ccc;
     border-radius: 4px;
-    height: 385px;
-    overflow: auto;
-}
-
-.column {
+    min-height: 385px;
 }
 
 .gnrlInfoBox {
@@ -572,6 +604,15 @@ h4.modal-title {
 div.supportTicket {
     text-align: center;
     margin-bottom: 10px;
+}
+
+.column-left {
+    padding-left: 0px;
+}
+
+.column-right {
+    padding-left: 0px;
+    padding-right: 0px;
 }
  div.fileZone {
     border: 2px dashed #057FC2;
