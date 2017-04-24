@@ -91,20 +91,27 @@ ul.k-treeview-lines li.k-item span.k-in {
 
 /*----Login Page------*/
 .loginPage {
-    width: 500px;
-    /* margin-top: 100px; */
+    width: 45%;
     padding: 50px 50px 35px 50px;
     height: auto !important;
-    min-height: auto !important;
+    margin-top: 10%;
+    background: #fff;
+    border-radius: 20px;
+    border-color: #057FC2;
+    border-width: 10px;
+    border-style: outset;
 }
 
 .logoImg {
     margin-right: 20px;
 }
 
-    .logoImg img {
-        /*border:solid 5px #000 !important;*/
-    }
+span.userField, span.passwordField {
+    position: relative;
+    top: 30px;
+    left: 12px;
+    color: #057FC2;
+}
 
 .welcomeText {
     margin-left: 112px;
@@ -130,10 +137,14 @@ label {
     padding: 0px 7px 0px 0px;
 }
 
-.loginPage input[type="text"], input[type="password"] {
+label.userLogin {
+    font-size: 13px !important;
+}
+
+.loginPage input[type="text"], .loginPage input[type="password"] {
     border: solid 8px #ccc;
     border-radius: 5px;
-    padding: 2px 5px;
+    padding: 2px 2px 2px 2px;
     width: 100%;
     font-size: 12px;
 }
@@ -152,37 +163,34 @@ label {
 
 /*----Header Menu------*/
 
-.headerMenu {
+/*.headerMenu {
     background: #FFF;
     border: 1px solid #057FC2;
     margin: 10px 0px 15px 0px;
     border-radius: 45px;
     box-shadow: -4px 3px 5px #999;
     max-height: 37px;
-}
+}*/
 
 .navbar-nav {
-    font-size: 110%;
+    font-size: 107%;
     margin: 0px;
+    padding-top: 4px;
 }
 
 .navbar {
-    margin-bottom: 0px;
-    border-bottom: 1px solid #e7e7e7;
+    min-height: 43px;
+    background: #FFF;
+    border: solid 1px #057FC2;
+    margin: 10px 0px 0px 60px;
+    border-radius: 45px;
+    box-shadow: -4px 3px 5px #999;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
+    color: #0978C0;
     background-color: transparent;
-    border-radius: 0px;
-    kosw margin: 0px 0px 0px 60px;
 }
-
-.navbar-default {
-    border: 0px;
-    margin-left: 44px;
-}
-
-    .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
-        color: #0978C0;
-        background-color: transparent;
-    }
 
 .navbar-nav .glyphicon {
     float: left;
@@ -261,19 +269,21 @@ ul.logoutBox {
 
 ul.emailIcons {
     float: right;
+    margin: 0px;
+    padding-top: 8px;
 }
 
     ul.emailIcons li a span.glyphicon {
         color: #fff;
-        position: relative;
-        top: 8px;
     }
 
     ul.emailIcons li {
         width: auto;
-        height: 24px;
-        margin: 0px 10px 0px 0px;
+        height: 15px;
+        margin: 0px 20px 0px 0px;
         display: inline;
+        border-right: solid 1px #fff;
+        padding-right: 10px;
     }
 
 ul.logoutBox li {
@@ -477,7 +487,7 @@ ul.iconLinks li a:hover {
 
 ul.iconLinks li {
     float: left;
-    margin: 5px 50px 50px 0px;
+    margin: 5px 50px 50px 8px;
 }
 
     ul.iconLinks li a:before {
@@ -629,4 +639,8 @@ div.fileZone {
 span.anoucement  {
     display: block;
     float: left;
+}
+
+.margin0{
+    margin : 0px;
 }
