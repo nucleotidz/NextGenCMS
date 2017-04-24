@@ -341,6 +341,10 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
     function Checkout() {
         var entityGrid = $("#userGrid").data("kendoGrid")
         var selectedItem = entityGrid.dataItem(entityGrid.select());
+        if (selectedItem.lockedBy !== '') {
+            showAlert("File already checked by " + selectedItem.lockedBy, "danger");
+            return;
+            }      
         var name = selectedItem.displayName;
         var CheckoutParamsModel = {
             path: '',
@@ -354,9 +358,17 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
         });
     }
 
+    function showAlert(msg, type) {
+        alert(msg);
+    }
+
     function Checkin() {
         var entityGrid = $("#userGrid").data("kendoGrid")
         var selectedItem = entityGrid.dataItem(entityGrid.select());
+        if (selectedItem.lockedBy === '') {
+          showAlert("File not checked out", "danger");
+          return;
+       }
         var splitList = selectedItem.nodeRef.split("/");
         var objId = splitList[splitList.length - 1];
         var apiData = FolderAPI.CheckInFile({
