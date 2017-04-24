@@ -30,19 +30,18 @@
 
         $scope.createUser = function () {
             if (validateForm()) {
-                $scope.user.groups = _.pluck($scope.user.groupList, fullName);
+                $scope.user.groups = _.pluck($scope.user.groupList, "fullName");
                 var data = AdministrationApi.createUser($scope.user);
                 $q.all([data.$promise]).then(function (response) {
                     if (response !== null && response.length == 1) {
                         var result = response[0];
                         if (result.status === 200) {
-                            alert("User created successful.");
+                            $modalInstance.dismiss("User created successful.");
                         }
                         else {
-                            alert(result.result.message);
+                            $modalInstance.dismiss(result.result.message);
                         }
                     }
-                    $scope.closePopup();
                 });
             }
         };
@@ -76,13 +75,14 @@
                 alert("Confirm Password is required");
                 return false;
             }
-            //if ($scope.user.password != $scope.user.confirmPassword) {
-            //    return false;
-            //}
-            if ($scope.user.groupList == undefined || $scope.user.groupList == null || $scope.user.groupList.length == 0) {
-                alert("Please select atleast one group.");
+            if ($scope.user.password != $scope.user.confirmPassword) {
+                alert("Password do not match.");
                 return false;
             }
+            //if ($scope.user.groupList == undefined || $scope.user.groupList == null || $scope.user.groupList.length == 0) {
+            //    alert("Please select atleast one group.");
+            //    return false;
+            //}
 
             return true;
         }

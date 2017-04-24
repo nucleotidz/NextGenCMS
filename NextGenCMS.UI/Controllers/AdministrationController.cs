@@ -46,5 +46,14 @@ namespace NextGenCMS.UI.Controllers
         {
             return View();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult DeleteUser()
+        {
+            return View();
+        }
     }
 }

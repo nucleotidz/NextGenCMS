@@ -7,12 +7,20 @@
         vm.searchText = "";
         vm.orientation = "vertical";
         vm.editUser = true;
+        vm.searchClicked = false;
         vm.addUser = function () {
             var modalInstance = $modal.open({
                 backdrop: 'static',
                 keyboard: false,
                 templateUrl: './Administration/AddUserPopup',
                 controller: 'AddUserPopupController'
+            });
+            modalInstance.result.then(function () { 
+            }, function (popupData) {
+                if (popupData !== "close") {
+                    alert(popupData);
+                    if (vm.searchClicked) vm.SearchUser();
+                }
             });
         };
 
@@ -49,6 +57,7 @@
             },
         });
         vm.SearchUser = function () {
+            vm.searchClicked = true;
             var data;
             if (vm.searchText == "") {
                 data = AdministrationApi.getUsers({ "username": vm.userName });
@@ -74,7 +83,9 @@
             reorderable: true,
             resizable: true,
             navigatable: true,
-            scrollable: true,
+            scrollable: {
+                virtual: true
+            },
             selectable: "multiple",
             pageable: {
                 numeric: false,
@@ -128,15 +139,31 @@
                 $scope.users.push(username);
             });
 
-            var data = AdministrationApi.deleteUsers($scope.users);
-
-            $q.all([data.$promise]).then(function (response) {
-                if ($scope.users.length > 1) {
-                    alert("Users deleted successfuly.");
-                    vm.SearchUser();
+            var usernames = $scope.users.join(", ");
+            var message = "Do you want to delete users " + usernames + " ?";
+            var modalInstance = $modal.open({
+                backdrop: 'static',
+                keyboard: false,
+                templateUrl: './Administration/DeleteUser',
+                controller: 'DeleteUserController',
+                resolve: {
+                    items: function () {
+                        return message;
+                    }
                 }
-                else if ($scope.users.length == 1) alert("User deleted successfuly.");
-
+            });
+            modalInstance.result.then(function () {
+            }, function (popupData) {
+                if (popupData === "yes") {
+                    var data = AdministrationApi.deleteUsers($scope.users);
+                    $q.all([data.$promise]).then(function (response) {
+                        if ($scope.users.length > 1) {
+                            alert("Users deleted successfuly.");
+                        }
+                        else if ($scope.users.length == 1) alert("User deleted successfuly.");
+                        if (vm.searchClicked) vm.SearchUser();
+                    });
+                }
             });
         }
     }]);
