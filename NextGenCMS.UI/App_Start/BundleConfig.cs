@@ -73,7 +73,8 @@ namespace NextGenCMS.UI
                  "~/Scripts/controller/HeaderController.js",
                  "~/Scripts/controller/UploadController.js",
                   "~/Scripts/controller/DeleteController.js",
-                  "~/Scripts/controller/DeleteUserController.js"
+                  "~/Scripts/controller/DeleteUserController.js",
+                  "~/Scripts/controller/TaskListController.js"
              ));
         }
         private static void LoadDirective(BundleCollection bundles)
@@ -117,7 +118,8 @@ namespace NextGenCMS.UI
                    "~/Scripts/httpfactory/FolderAPI.js",
                    "~/Scripts/httpfactory/AdministrationApi.js",                   
                     "~/Scripts/httpfactory/SearchAPI.js"  ,
-                    "~/Scripts/httpfactory/FileAPI.js"
+                    "~/Scripts/httpfactory/FileAPI.js",
+                    "~/Scripts/httpfactory/WorkFlowAPI.js"
                  ));
         }
         private static void LoadUnderscore(BundleCollection bundles)

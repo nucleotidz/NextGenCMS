@@ -60,6 +60,14 @@
                 controllerAs: "vm"
             }
         }
+    }).state('Home.TaskList', {
+        views: {
+            'content@': {
+                templateUrl: 'Workflow/TaskList',
+                controller: 'TaskListController',
+                controllerAs: "vm"
+            }
+        }
     });
 
 });
