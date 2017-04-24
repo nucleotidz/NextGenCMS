@@ -13,6 +13,7 @@ namespace NextGenCMS.BL.interfaces
         FolderModel CreateSubFolder(AddSubFolderModel folderModel);
         void CheckOutFile(CheckoutParamsModel objParams);
         void CancelCheckout(string docId);
+        void CheckIn(string docId);
         DeleteRootObject DeleteFolder(FolderPath folderPath);
     }
 }

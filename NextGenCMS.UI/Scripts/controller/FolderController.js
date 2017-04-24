@@ -213,7 +213,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
         {
             field: "displayName", title: "Name", filterable: true, template: function (dataitem) {
                                if(dataitem.lockedBy !=='') {
-                                   return "<span class='glyphicon glyphicon-tags'>&nbsp"+ dataitem.displayName + "</span>";
+                                   return dataitem.displayName +"&nbsp<span class='glyphicon glyphicon-tags'></span>";
                                }
                                    else {
                                    return dataitem.displayName;
@@ -274,7 +274,11 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
         if (evt.item.textContent.trim() === "Delete") {
             DeleteFile();
         }
+        if (evt.item.textContent.trim() === "CancelCheck-Out") {
+            CancelCheckOut();
+        }
     }
+
     function DeleteFile() {
         var entityGrid = $("#userGrid").data("kendoGrid")
         var selectedItem = entityGrid.dataItem(entityGrid.select());
@@ -359,7 +363,6 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
             refreshFileGrid();
         });
     }
-
     function showAlert(msg, type) {
         alert(msg);
     }
@@ -380,6 +383,23 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
             refreshFileGrid();
         });
     }
+
+   function CancelCheckOut() {
+        var entityGrid = $("#userGrid").data("kendoGrid")
+        var selectedItem = entityGrid.dataItem(entityGrid.select());
+        if (selectedItem.lockedBy === '') {
+          showAlert("File not checked out", "danger");
+              return;
+              }
+            var splitList = selectedItem.nodeRef.split("/");
+            var objId = splitList[splitList.length -1];
+        var apiData = FolderAPI.CancelCheckOut({
+            "objectId": objId
+            })
+        $q.all([apiData.$promise]).then(function (response) {
+            refreshFileGrid();
+            });
+          };
     vm.open = function (evt) {
         var entityGrid = $("#userGrid").data("kendoGrid")
         var selectedItem = entityGrid.dataItem(entityGrid.select());

@@ -31,6 +31,12 @@
                 isArray: false,
                 params: {}
             },
+            CancelCheckOut: {
+                        method: "GET",
+                    url: Global.apiuri + "Folder/CancelCheckout/File/:objectId",
+                    isArray: false,
+                    params: {}
+                },
             CheckInFile: {
                 method: "GET",
                 url: Global.apiuri + "Folder/Checkin/File/:objectId",

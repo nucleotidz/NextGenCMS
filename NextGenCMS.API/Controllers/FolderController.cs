@@ -58,10 +58,18 @@ namespace NextGenCMS.API.Controllers
         }
 
         [HttpGet]
-        [Route("Checkin/File/{objectId}")]
-        public HttpResponseMessage CheckInFile(string objectId)
+        [Route("CancelCheckout/File/{objectId}")]
+        public HttpResponseMessage CancelCheckOut(string objectId)
         {
             _folder.CancelCheckout(objectId);
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
+
+        [HttpGet]
+        [Route("CheckIn/File/{objectId}")]
+        public HttpResponseMessage CheckInFile(string objectId)
+        {
+            _folder.CheckIn(objectId);
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 

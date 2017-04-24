@@ -124,6 +124,14 @@ namespace NextGenCMS.BL.classes
             this.session = this.GetSession();
             IObjectId obj = new ObjectId(docId);
             IDocument pwc = (IDocument)this.session.GetObject(obj);
+            pwc.CancelCheckOut();
+        }
+
+        public void CheckIn(string docId)
+        {
+            this.session = this.GetSession();
+            IObjectId obj = new ObjectId(docId);
+            IDocument pwc = (IDocument)this.session.GetObject(obj);
             Dictionary<string, Object> properties = new Dictionary<string, object>();
             properties["cmis:description"] = "New change";
             var contentStream = session.GetContentStream(obj);
