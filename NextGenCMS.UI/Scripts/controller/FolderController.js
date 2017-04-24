@@ -204,20 +204,11 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
         reorderable: true,
         resizable: true,
         navigatable: true,
-        scrollable: {
-            virtual: true
-        },
-        height:350,
+        scrollable:true,
+        height:300,
         selectable: "row",
-        filterable: true,
-        pageable: {
-            numeric: false,
-            previousNext: false,
-            messages: {
-                empty: "No Records exist",
-                display: "No of records is: {2}"
-            }
-        },
+            filterable: true,
+            footer: false,      
         columns: [
         {
             field: "displayName", title: "Name", filterable: true, template: function (dataitem) {

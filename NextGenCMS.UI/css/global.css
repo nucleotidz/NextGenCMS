@@ -574,11 +574,12 @@ div.supportTicket {
     margin-bottom: 10px;
 }
  div.fileZone {
-    border: 2px dashed #bbb;
+    border: 2px dashed #057FC2;
     border-radius: 5px;
     padding: 25px;
     text-align: center;
     font: 13pt bold;
-    color: #bbb;
+    color: #057FC2;
+    height: 10px;
     margin: 10px;
 }

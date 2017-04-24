@@ -11,7 +11,7 @@
 
 <div class="row">
     <div class="btnPane">
-        <button type="button" class="btn btn-primary btn-sm bluebtn whiteText" ng-click="vm.AddFile();" ng-disabled="vm.TreeSelect">Upload<span class="glyphicon glyphicon-plus"></span></button>      
+        <button type="button" class="btn btn-primary btn-sm bluebtn whiteText" ng-click="vm.AddFile();" ng-disabled="vm.TreeSelect">Upload<span class="glyphicon glyphicon-plus"></span></button>
         <button type="button" class="btn btn-primary btn-sm bluebtn whiteText" ng-click="vm.DeleteFolder();" ng-disabled="vm.TreeSelect">Delete Folder<span class="glyphicon glyphicon-trash"></span></button>
         <button type="button" class="btn btn-primary btn-sm bluebtn whiteText" ng-click="vm.AddFolder();">New Folder<span class="glyphicon glyphicon-plus"></span></button>
         <button type="button" class="btn btn-primary btn-sm bluebtn whiteText" ng-click="vm.AddSubFolder();" ng-disabled="vm.TreeSelect">Sub Folder<span class="glyphicon glyphicon-plus"></span></button>
@@ -23,57 +23,70 @@
 
         <div kendo-tree-view="vm.tree" id="treeview"
              k-data-source="vm.treeData"
-             k-on-change="vm.selectedItem(dataItem)"
-            >
+             k-on-change="vm.selectedItem(dataItem)">
             <span k-template>
                 {{dataItem.name}}
             </span>
         </div>
     </div>
 
-    <div class="column col-xs-12 col-md-6">
-        <div id="userGrid"
-             kendo-grid
-             k-options="vm.FileGridOptions"
-             k-data-source="vm.FileGridDataSource">
+    <div class="column col-xs-12 col-md-9">
+        <div class="row">
+            <div id="userGrid"
+                 kendo-grid
+                 k-options="vm.FileGridOptions"
+                 k-data-source="vm.FileGridDataSource">
+            </div>
         </div>
-    </div>
+        <div class="row">
+            @* <div class="col-xs-12 col-sm-6 col-md-6">*@
+            @*  <div class="gnrlInfoBox">*@
+            @* <div class="gnrlInfoBoxHead"><span class="crossX">X</span><h5>Drop Zone</h5></div>*@
 
-    <div class="column col-xs-12 col-md-3">
-        <div class="gnrlInfoBox">
-            <div class="gnrlInfoBoxHead"><span class="crossX">X</span><h5>Drop Zone</h5></div>
-            
-            <div class="fileZone" file-dropzone file="rawFile" upload="upload();" file-name="rawFileName" >
+            <div class="fileZone" file-dropzone file="rawFile" upload="upload();" file-name="rawFileName">
                 Drag & Drop file to upload ...
             </div>
-            
+
+            @*</div>  *@
+            @* </div> *@
+            @*</div>*@
         </div>
 
-        <div class="gnrlInfoBox">
-            <div class="gnrlInfoBoxHead"><span class="crossX">X</span><h5>24/7 Support Ticket</h5></div>
-            <p class="infoContent">Give us a call 24 hours a day, 7 </p>
-            <p class="infoContent">24/7 Technical Support (0091-000-6762216)</p>
-            <div class="supportTicket">
-                <button type="button" class="btn btn-primary btn-sm bluebtn whiteText">Create Support Ticket</button>
-            </div>
-        </div>
+        @*<div class="column col-xs-12 col-md-3">
+                <div class="gnrlInfoBox">
+                    <div class="gnrlInfoBoxHead"><span class="crossX">X</span><h5>Drop Zone</h5></div>
 
+                    <div class="fileZone" file-dropzone file="rawFile" upload="upload();" file-name="rawFileName" >
+                        Drag & Drop file to upload ...
+                    </div>
+
+                </div>
+
+                <div class="gnrlInfoBox">
+                    <div class="gnrlInfoBoxHead"><span class="crossX">X</span><h5>24/7 Support Ticket</h5></div>
+                    <p class="infoContent">Give us a call 24 hours a day, 7 </p>
+                    <p class="infoContent">24/7 Technical Support (0091-000-6762216)</p>
+                    <div class="supportTicket">
+                        <button type="button" class="btn btn-primary btn-sm bluebtn whiteText">Create Support Ticket</button>
+                    </div>
+                </div>
+
+            </div>*@
     </div>
-</div>
 
-<ul kendo-context-menu k-filter="'#userGrid tbody tr[aria-selected=true]'"
-    k-on-open="vm.open(kendoEvent);"
-    k-orientation="vm.orientation"
-    k-on-select="vm.onSelect(kendoEvent);">
-    <li><span class="glyphicon glyphicon-download-alt"> </span> Download</li>
-    <li><span class="glyphicon glyphicon-edit"> </span> Edit</li>
-    <li><span class="glyphicon glyphicon-link"> </span>Link File</li>
-    <li><span class="glyphicon glyphicon-move"> </span> Move To...</li>
-    <li><span class="glyphicon glyphicon-trash"> </span> Delete</li>
-    <li><span class="glyphicon glyphicon-floppy-open"></span> Check-Out</li>
-    <li><span class="glyphicon glyphicon-floppy-save"> </span> Check-In</li>
-    <li><span class="glyphicon glyphicon-transfer"> </span> Start Workflow</li>
-    <li><span class="glyphicon glyphicon-cog"> </span> Manage Permissions</li>
-    <li><span class="glyphicon glyphicon-list-alt"> </span> Properties</li>
-    <li><span class="glyphicon glyphicon-envelope"> </span> Email</li>
-</ul>
+    <ul kendo-context-menu k-filter="'#userGrid tbody tr[aria-selected=true]'"
+        k-on-open="vm.open(kendoEvent);"
+        k-orientation="vm.orientation"
+        k-on-select="vm.onSelect(kendoEvent);">
+        <li><span class="glyphicon glyphicon-download-alt"> </span> Download</li>
+        <li><span class="glyphicon glyphicon-edit"> </span> Edit</li>
+        <li><span class="glyphicon glyphicon-link"> </span>Link File</li>
+        <li><span class="glyphicon glyphicon-move"> </span> Move To...</li>
+        <li><span class="glyphicon glyphicon-trash"> </span> Delete</li>
+        <li><span class="glyphicon glyphicon-floppy-open"></span> Check-Out</li>
+        <li><span class="glyphicon glyphicon-floppy-save"> </span> Check-In</li>
+        <li><span class="glyphicon glyphicon-transfer"> </span> Start Workflow</li>
+        <li><span class="glyphicon glyphicon-cog"> </span> Manage Permissions</li>
+        <li><span class="glyphicon glyphicon-list-alt"> </span> Properties</li>
+        <li><span class="glyphicon glyphicon-envelope"> </span> Email</li>
+    </ul>

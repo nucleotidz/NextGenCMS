@@ -55,11 +55,17 @@
             dataSource: vm.searchGridDataSourve,
             dataBound: function () {
             },
+            sortable: {
+            mode: "multiple",
+            allowUnsort: true
+        },
             reorderable: true,
             resizable: true,
             navigatable: true,
-            scrollable: true,
-            selectable: "row",
+                scrollable: true,
+                height: 350,
+                    selectable: "row",
+                        filterable: true,
             pageable: {
                 numeric: false,
                 previousNext: false,
