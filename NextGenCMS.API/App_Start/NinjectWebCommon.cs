@@ -73,6 +73,7 @@ namespace NextGenCMS.API.App_Start
             kernel.Bind<IFolderNext>().To<Folder>();
             kernel.Bind<IFile>().To<File>();
             kernel.Bind<ISearchBL>().To<SearchBL>();
+            kernel.Bind<IWorkflowBL>().To<WorkflowBL>();
             kernel.Bind<IAdministration>().To<Administration>();
             kernel.Bind<IAdministrationRepository>().To<AdministrationRepository>();
         }
