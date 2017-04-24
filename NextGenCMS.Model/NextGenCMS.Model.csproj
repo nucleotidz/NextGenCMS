@@ -81,6 +81,7 @@
     <Compile Include="classes\Search\SearchItemModel.cs" />
     <Compile Include="classes\Search\SearchResultModel.cs" />
     <Compile Include="classes\WebResponseModel.cs" />
+    <Compile Include="classes\Workflow\WorkFlowModel.cs" />
     <Compile Include="classes\Workflow\WorkFlows.cs" />
     <Compile Include="constants\ApiHelper.cs" />
     <Compile Include="constants\AppConfigKeys.cs" />

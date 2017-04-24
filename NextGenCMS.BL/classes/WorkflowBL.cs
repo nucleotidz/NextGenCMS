@@ -32,14 +32,36 @@ namespace NextGenCMS.BL.classes
             this._apiHelper = apiHelper;
         }
 
-        public RootObject GetAllTask()
+        public List<WorkFlowModel> GetAllTask()
         {
             string data = string.Empty;
             if (HttpContext.Current.Items[Filter.Token] != null)
             {
-                data = this._apiHelper.Get(ServiceUrl.SubFolder + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
+                data = this._apiHelper.Get(ServiceUrl.TaskList + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
             }
-            return JsonConvert.DeserializeObject<RootObject>(data);
+
+            return this.Map(JsonConvert.DeserializeObject<RootObject>(data));
+        }
+
+        private List<WorkFlowModel> Map(RootObject rootObject)
+        {
+            List<WorkFlowModel> dataObject = new List<WorkFlowModel>();
+            List<Datum> data = rootObject.data;
+            foreach (Datum obj in data)
+            {
+                dataObject.Add(new WorkFlowModel
+                {
+                    Activityid = obj.workflowInstance.id,
+                    dueDate = Convert.ToDateTime(obj.workflowInstance.dueDate),
+                    firstName = obj.workflowInstance.initiator.firstName,
+                    startDate = Convert.ToDateTime(obj.workflowInstance.startDate),
+                    state = obj.state,
+                    title = obj.workflowInstance.description
+                });
+            }
+            return dataObject;
+
+
         }
     }
 }

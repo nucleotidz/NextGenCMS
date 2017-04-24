@@ -60,6 +60,7 @@ namespace NextGenCMS.Model.constants
         public static readonly string CMISApi = AppConfigKeys.ServiceUrl + "/alfresco/api/-default-/public/cmis/versions/1.0/atom/";
         public static readonly string DeleteFile = AppConfigKeys.ServiceUrl + "/alfresco/s/slingshot/doclib/action/file/site/" + AppConfigKeys.Site + "/documentLibrary/";
         public static readonly string DeleteFolder = AppConfigKeys.ServiceUrl + "alfresco/s/slingshot/doclib/action/folder/site/" + AppConfigKeys.Site + "/documentLibrary/";
+        public static readonly string TaskList = AppConfigKeys.ServiceUrl + "alfresco/s/api/task-instances";
         #endregion
     }
 }

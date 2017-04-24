@@ -9,6 +9,6 @@ namespace NextGenCMS.BL.interfaces
 {
     public interface IWorkflowBL
     {
-        RootObject GetAllTask();
+        List<WorkFlowModel> GetAllTask();
     }
 }

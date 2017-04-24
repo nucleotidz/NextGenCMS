@@ -2,11 +2,10 @@
     'use strict'
     app.factory('WorkFlowAPI', ['$resource', 'Global', function ($resource, Global) {
         return $resource('', {}, {
-            SearchFiles: {
+            GetWorkFlow: {
                 method: "GET",
-                url: Global.apiuri + "Search/File/:searchKey",
-                isArray: false,
-                param: {}
+                url: Global.apiuri + "WorkFlow/Get",
+                isArray: true                
             }
         });
     }]);
