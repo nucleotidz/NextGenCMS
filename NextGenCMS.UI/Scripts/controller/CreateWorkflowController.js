@@ -4,7 +4,7 @@
     function ($scope, $modalInstance, WorkFlowAPI, AdministrationApi, $q, Profile, items) {
         $scope.userName = Profile.get('Profile').User.userName;
         $scope.UserData = new kendo.data.DataSource();
-        $scope.DocID = items.objId;
+        $scope.DocID = items;
         $scope.isgroupreview = false;
         $scope.WdTypeDataSrc = [{
             "text": "Assign a review task to a single reviewer", "value": "activitiReview"
