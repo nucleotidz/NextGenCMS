@@ -5,11 +5,11 @@
 }
 <div ng-controller="IndexController"></div>
 <script type="text/javascript">
-    var loginResponse = @Html.Raw(Json.Encode(ViewBag.LoginResponse));
+    var loginResponse = @Html.Raw(Json.Encode((NextGenCMS.UI.Model.LoginResponse)Session["SessionContext"]));
     (function () {
         'use strict';
-        app.controller('IndexController', ['$scope', 'Cache',
-        function ($scope, Cache) {
+        app.controller('IndexController', ['$scope', 'Cache','Profile',
+        function ($scope, Cache,Profile) {
             var token = Cache.get('token');
             if (!token) {
                 Cache.put("token", "@Model.Ticket");
@@ -22,6 +22,9 @@
             if (!userName) {
                 Cache.put("userName", "@Model.User.userName");
             };
+            if(!Cache.get('Profile')){
+                Cache.put("Profile", loginResponse);
+            }
         }]);
     })();
 </script>
