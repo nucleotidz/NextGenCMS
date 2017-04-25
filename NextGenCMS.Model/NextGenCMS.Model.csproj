@@ -54,16 +54,14 @@
     <Compile Include="classes\administration\CreateUser\AddUser.cs" />
     <Compile Include="classes\administration\CreateUser\AddUserRole.cs" />
     <Compile Include="classes\administration\CreateUser\UserRoleResponse.cs" />
+    <Compile Include="classes\administration\UserSites.cs" />
+    <Compile Include="classes\administration\UserWithGroups.cs" />
     <Compile Include="classes\ApiResponseModel.cs" />
     <Compile Include="classes\administration\CreateUser\CreateUserRequest.cs" />
     <Compile Include="classes\administration\CreateUser\ResponseError.cs" />
     <Compile Include="classes\administration\GetGroups\GetGroupsResponse.cs" />
     <Compile Include="classes\administration\GetGroups\Group.cs" />
-    <Compile Include="classes\administration\GetGroups\Paging.cs" />
     <Compile Include="classes\administration\GetUsers\GetUsersResponse.cs" />
-    <Compile Include="classes\administration\GetUsers\Paging.cs" />
-    <Compile Include="classes\administration\GetUsers\UserStatusTime.cs" />
-    <Compile Include="classes\administration\User.cs" />
     <Compile Include="classes\authentication\Data.cs" />
     <Compile Include="Alfresco\Folder\SRootObject.cs" />
     <Compile Include="Alfresco\Folder\UserAccess.cs" />
@@ -85,6 +83,7 @@
     <Compile Include="classes\Workflow\ItemBodyModel.cs" />
     <Compile Include="classes\Workflow\Variables.cs" />
     <Compile Include="classes\Workflow\WorkflowDefinitionModel.cs" />
+    <Compile Include="classes\Workflow\WorkFlowFileModel.cs" />
     <Compile Include="classes\Workflow\WorkFlowModel.cs" />
     <Compile Include="classes\Workflow\WorkFlows.cs" />
     <Compile Include="constants\ApiHelper.cs" />

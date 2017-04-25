@@ -17,7 +17,7 @@
             method: "GET",
             url: Global.apiuri + "WorkFlow/Get/File/:Id",
             isArray: false                
-    }
+            }
         });
     }]);
 })();

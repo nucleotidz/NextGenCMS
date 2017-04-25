@@ -39,7 +39,7 @@ namespace NextGenCMS.BL.classes
             string data = string.Empty;
             if (HttpContext.Current.Items[Filter.Token] != null)
             {
-                data = this._apiHelper.Get(ServiceUrl.TaskList + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token]);                
+                data = this._apiHelper.Get(ServiceUrl.TaskList + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
             }
             return this.Map(JsonConvert.DeserializeObject<RootObject>(data));
         }
@@ -67,7 +67,8 @@ namespace NextGenCMS.BL.classes
                     fullName = obj.owner.firstName + " " + obj.owner.lastName,
                     priority = GetPriority(obj.properties.bpm_priority),
                     taskId = obj.properties.bpm_taskId,
-                    workflowid = obj.id
+                    workflowid = obj.id,
+                    description = obj.description
                 });
             }
             return dataObject.OrderBy(x => x.priority).ToList();

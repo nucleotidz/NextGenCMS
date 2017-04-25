@@ -9,6 +9,6 @@ namespace NextGenCMS.BL.interfaces
         void  Download(string url, string fileName,string token);
         void Upload();
         DeleteRootObject DeleteFile(FilePath filePath);
-
+        void Download(string docId);
     }
 }

@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
-    app.controller('TaskListController', ['$scope', 'WorkFlowAPI', '$q',
-    function ($scope, WorkFlowAPI, $q) {
+    app.controller('TaskListController', ['$scope', 'WorkFlowAPI', '$q', '$modal',
+    function ($scope, WorkFlowAPI, $q, $modal) {
         var vm = this;
         var grddata = [];
 
@@ -25,10 +25,10 @@
                         title: {
                             type: "string", editable: false
                         },
-                        firstName: {
+                        fullName: {
                             type: "string", editable: false
                         },
-                        state: {
+                        status: {
                             type: "string", editable: false
                         },
                         outcome: {
@@ -42,7 +42,29 @@
                         },
                         activityid: {
                             type: "string", editable: false
-                        }
+                        },
+
+                        pid: {
+                            type: "string", editable: false
+                        },
+                        comment: {
+                            type: "string", editable: false
+                        },
+                        OwnerUsername: {
+                            type: "string", editable: false
+                        },
+                        priority: {
+                            type: "string", editable: false
+                        },
+                        taskId: {
+                            type: "string", editable: false
+                        },
+                        workflowid: {
+                            type: "string", editable: false
+                        },
+                        description: {
+                            type: "string", editable: false
+                        },
 
                     }
                 }
@@ -69,10 +91,10 @@
                 field: "title", title: "Title"
             },
             {
-                field: "firstName", title: "Creator"
+                field: "fullName", title: "Creator"
             },
             {
-                field: "state", title: "State"
+                field: "status", title: "State"
             },
             {
                 field: "outcome", title: "Outcome"
@@ -86,9 +108,46 @@
             {
                 field: "activityid", title: "ActivityId", hidden: true
             },
-            
+             {
+                 field: "pid", title: "pid", hidden: true
+             },
+             {
+                 field: "comment", title: "comment", hidden: true
+             },
+             {
+                 field: "OwnerUsername", title: "OwnerUsername", hidden: true
+             },
+             {
+                 field: "priority", title: "priority", hidden: true
+             },
+             {
+                 field: "taskId", title: "taskId", hidden: true
+             },
+             { field: "workflowid", title: "workflowid", hidden: true },
+             { field: "description", title: "description", hidden: true }
             ]
         }
+        vm.OpenDetails = function () {
+            var entityGrid = $("#wf_grd").data("kendoGrid")
+            var selectedItem = entityGrid.dataItem(entityGrid.select());
 
+            var modalInstance = $modal.open({
+                backdrop: 'static',
+                keyboard: false,
+                templateUrl: './Workflow/ViewEditWorkFlow',
+                controller: 'ViewEditWfController',
+                resolve: {
+                    items: function () {
+                        return selectedItem;
+                    }
+                }
+            });
+            modalInstance.result.then(function () {
+            }, function (popupData) {
+                if (popupData === "success") {
+                    //refreshFileGrid();
+                }
+            });
+        }
     }]);
 })();

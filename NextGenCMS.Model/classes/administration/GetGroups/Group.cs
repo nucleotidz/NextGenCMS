@@ -5,6 +5,7 @@ namespace NextGenCMS.Model.classes.administration
     public class Group
     {
         public string authorityType { get; set; }
+        public string itemName { get; set; }
         public string shortName { get; set; }
         public string fullName { get; set; }
         public string displayName { get; set; }

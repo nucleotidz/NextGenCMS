@@ -169,7 +169,7 @@
     <Compile Include="Model\LoginModel.cs" />
     <Compile Include="Model\LoginResponse.cs" />
     <Compile Include="Model\User.cs" />
-    <Compile Include="Model\UserStatusTime.cs" />
+    <Compile Include="Model\UserSites.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -218,6 +218,7 @@
     <Content Include="Scripts\controller\UserManagementController.js" />
     <Content Include="Scripts\controller\AdministrationController.js" />
     <Content Include="Scripts\controller\DashboardController.js" />
+    <Content Include="Scripts\controller\ViewEditWFController.js" />
     <Content Include="Scripts\Directive\FileDrop.js" />
     <Content Include="Scripts\factory\Cache.js" />
     <Content Include="Scripts\factory\Interceptor.js" />
@@ -288,6 +289,7 @@
     <Content Include="Views\Administration\DeleteUser.cshtml" />
     <Content Include="Views\Workflow\WorkflowDetail.cshtml" />
     <Content Include="Views\Workflow\TaskList.cshtml" />
+    <Content Include="Views\Workflow\ViewEditWorkFlow.cshtml" />
     <Content Include="Views\Workflow\CreateWorkflow.cshtml" />
   </ItemGroup>
   <ItemGroup>
