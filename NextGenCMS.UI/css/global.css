@@ -133,7 +133,9 @@ label {
     text-shadow: 1px 1px #fff;
 }
 
-.glyphicon {
+
+
+.navbar-nav .glyphicon {
     padding: 0px 7px 0px 0px;
 }
 
@@ -568,7 +570,7 @@ h4.modal-title {
 /*----End Modal Window---*/
 
 .threeCols .menuColumn {
-    background: #f4f4f4;
+    background: #fff;
     border: solid 1px #ccc;
     border-radius: 4px;
     min-height: 385px;
@@ -636,11 +638,28 @@ div.fileZone {
     margin: 10px;
 }
 
-span.anoucement  {
+span.anoucement {
     display: block;
     float: left;
 }
 
-.margin0{
-    margin : 0px;
+.margin0 {
+    margin: 0px;
 }
+
+/* kendo override*/
+
+.k-grid td, .k-grid-header th.k-header {
+    padding: 8px !important;
+    font-size: 12px;
+}
+
+.k-grid-header th.k-header {
+    font-weight: bold;
+}
+
+.k-grid-header th.k-header>.k-link {
+    color: #000;
+}
+/* end kendo override*/
+
