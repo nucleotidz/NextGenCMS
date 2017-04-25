@@ -9,9 +9,9 @@
         <li>Task List</li>
     </ul>
 </div>
-<div kendo-grid id="wf_grd" 
+<div kendo-grid id="wf_grd"
      k-options="vm.wfGridOption"
-     k-data-source="vm.wfGridDataSource">
+     k-data-source="vm.wfGridDataSource" ng-dblclick="vm.OpenDetails();">
 </div>
 @*kendo-grid
     k-options="vm.userGridOptions"

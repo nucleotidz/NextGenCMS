@@ -51,18 +51,42 @@ namespace NextGenCMS.BL.classes
             {
                 dataObject.Add(new WorkFlowModel
                 {
+
                     Activityid = obj.workflowInstance.id,
                     dueDate = Convert.ToDateTime(obj.workflowInstance.dueDate),
                     firstName = obj.workflowInstance.initiator.firstName,
                     startDate = Convert.ToDateTime(obj.workflowInstance.startDate),
                     state = obj.properties.bpm_status,
                     outcome = obj.properties.bpm_outcome,
-                    title = obj.workflowInstance.description
+                    title = obj.workflowInstance.description,
+                    pid = obj.id,
+                    status = obj.properties.bpm_status,
+                    comment = obj.properties.bpm_comment,
+                    OwnerUsername = obj.owner.userName,
+                    fullName = obj.owner.firstName + " " + obj.owner.lastName,
+                    priority = GetPriority(obj.properties.bpm_priority),
+                    taskId = obj.properties.bpm_taskId,
+                    workflowid = obj.id
                 });
             }
-            return dataObject;
+            return dataObject.OrderBy(x => x.priority).ToList();
+        }
 
-
+        private string GetPriority(int priority)
+        {
+            if (priority == 1)
+            {
+                return "High";
+            }
+            else if (priority == 2)
+            {
+                return "Medium";
+            }
+            else if (priority == 3)
+            {
+                return "Low";
+            }
+            return string.Empty;
         }
     }
 }

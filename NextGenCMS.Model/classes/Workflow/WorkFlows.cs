@@ -33,7 +33,7 @@ namespace NextGenCMS.Model.classes.Workflow
         public object bpm_context { get; set; }
         public string cm_name { get; set; }
         public string bpm_status { get; set; }
-        public object bpm_comment { get; set; }
+        public string bpm_comment { get; set; }
         public string cm_created { get; set; }
         public string bpm_taskId { get; set; }
         public string bpm_outcome { get; set; }
