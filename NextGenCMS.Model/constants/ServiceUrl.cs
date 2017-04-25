@@ -38,7 +38,9 @@ namespace NextGenCMS.Model.constants
         /// </summary>
         public static readonly string DeleteUser = AppConfigKeys.ServiceUrl + "alfresco/s/api/people/";
 
-        public static readonly string UserRole = AppConfigKeys.ServiceUrl + "/alfresco/s/api/sites/" + AppConfigKeys.Site + "/invitations?alf_ticket=";
+        public static readonly string AddUserRole = AppConfigKeys.ServiceUrl + "/alfresco/s/api/sites/" + AppConfigKeys.Site + "/invitations?alf_ticket=";
+
+        public static readonly string GetUserSites = AppConfigKeys.ServiceUrl + "alfresco/s/api/people/";
         #endregion
 
         #region "Administration - Groups"

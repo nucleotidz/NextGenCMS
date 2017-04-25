@@ -5,6 +5,7 @@ namespace NextGenCMS.BL.classes
     using System;
     using System.Web;
     using System.Linq;
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     #endregion
 
@@ -18,7 +19,8 @@ namespace NextGenCMS.BL.classes
     using NextGenCMS.Model.classes.administration.GetUsers;
     using NextGenCMS.Model;
     using NextGenCMS.Model.classes.administration.CreateUser;
-    using System.Collections.Generic;
+    using System.Dynamic;
+    using Newtonsoft.Json.Converters;
     #endregion
 
     public class Administration : IAdministration
@@ -69,15 +71,15 @@ namespace NextGenCMS.BL.classes
 
             if (response.status == NextGenCMS.Model.constants.ApiHelper.StatusCode.Success)
             {
-                User data = JsonConvert.DeserializeObject<User>(response.message);
+                UserWithGroups data = JsonConvert.DeserializeObject<UserWithGroups>(response.message);
 
-                var obj = new ApiResponseModel<User>
+                var obj = new ApiResponseModel<UserWithGroups>
                 {
                     Status = response.status,
                     Result = data
                 };
 
-                response = this._apiHelper.Submit(ServiceUrl.UserRole + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(createUser.UserRole));
+                response = this._apiHelper.Submit(ServiceUrl.AddUserRole + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(createUser.UserRole));
                 return obj;
             }
             else
@@ -127,15 +129,15 @@ namespace NextGenCMS.BL.classes
         /// </summary>
         /// <param name="username">username</param>
         /// <returns>user details</returns>
-        public User GetUser(string username)
+        public UserWithGroups GetUser(string username)
         {
             string data = string.Empty;
             if (HttpContext.Current.Items[Filter.Token] != null)
             {
-                data = this._apiHelper.Get(ServiceUrl.GetUser + username + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
+                data = this._apiHelper.Get(ServiceUrl.GetUser + username + "?groups=true&alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
             }
 
-            User response = JsonConvert.DeserializeObject<User>(data);
+            UserWithGroups response = JsonConvert.DeserializeObject<UserWithGroups>(data);
 
             return response;
         }
@@ -152,6 +154,24 @@ namespace NextGenCMS.BL.classes
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// This method will fetch user sites based on username
+        /// </summary>
+        /// <param name="username">username</param>
+        /// <returns>user details</returns>
+        public UserSites GetUserSites(string username)
+        {
+            string data = string.Empty;
+            if (HttpContext.Current.Items[Filter.Token] != null)
+            {
+                data = this._apiHelper.Get(ServiceUrl.GetUserSites + username + "/sites?roles=user&alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
+            }
+            //var converter = new ExpandoObjectConverter();
+            List<UserSites> response = JsonConvert.DeserializeObject<List<UserSites>>(data);
+            //var response = JsonConvert.DeserializeObject<UserSites>(dataObject.);
+            return response.FirstOrDefault(site => site.shortName == AppConfigKeys.Site);
         }
         #endregion
 

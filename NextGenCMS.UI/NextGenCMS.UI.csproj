@@ -169,7 +169,7 @@
     <Compile Include="Model\LoginModel.cs" />
     <Compile Include="Model\LoginResponse.cs" />
     <Compile Include="Model\User.cs" />
-    <Compile Include="Model\UserStatusTime.cs" />
+    <Compile Include="Model\UserSites.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

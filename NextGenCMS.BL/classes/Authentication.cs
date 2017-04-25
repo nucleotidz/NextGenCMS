@@ -13,6 +13,7 @@ namespace NextGenCMS.BL.classes
     using NextGenCMS.Model.constants;
     using NextGenCMS.Model.classes.authentication;
     using NextGenCMS.Model.classes.administration;
+    using System.Web;
     #endregion
 
     /// <summary>
@@ -64,12 +65,17 @@ namespace NextGenCMS.BL.classes
         {
             string token = _apiHelper.Post(ServiceUrl.Login, JsonConvert.SerializeObject(loginModel));
             LoginToken loginToken = JsonConvert.DeserializeObject<LoginToken>(token);
-            var data = this._apiHelper.Get(ServiceUrl.GetUser + loginModel.username + "?alf_ticket=" + loginToken.data.ticket);
-            User user = JsonConvert.DeserializeObject<User>(data);
-            LoginResponse response = new LoginResponse
+            HttpContext.Current.Items[Filter.Token] = loginToken.data.ticket;
+            //var data = this._apiHelper.Get(ServiceUrl.GetUser + loginModel.username + "?alf_ticket=" + );
+            //User user = JsonConvert.DeserializeObject<User>(data);
+            var user = _administration.GetUser(loginModel.username);
+
+            var userSites = _administration.GetUserSites(loginModel.username);
+            var response = new LoginResponse
             {
                 Ticket = loginToken.data.ticket,
-                User = user
+                User = user,
+                UserSites = userSites
             };
             return response;
         }
