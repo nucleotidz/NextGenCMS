@@ -1,11 +1,13 @@
 ﻿using DotCMIS.Client;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using NextGenCMS.APIHelper.interfaces;
 using NextGenCMS.BL.interfaces;
 using NextGenCMS.Model.classes.Workflow;
 using NextGenCMS.Model.constants;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,9 +39,8 @@ namespace NextGenCMS.BL.classes
             string data = string.Empty;
             if (HttpContext.Current.Items[Filter.Token] != null)
             {
-                data = this._apiHelper.Get(ServiceUrl.TaskList + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
+                data = this._apiHelper.Get(ServiceUrl.TaskList + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token]);                
             }
-
             return this.Map(JsonConvert.DeserializeObject<RootObject>(data));
         }
 
@@ -51,18 +52,69 @@ namespace NextGenCMS.BL.classes
             {
                 dataObject.Add(new WorkFlowModel
                 {
+
                     Activityid = obj.workflowInstance.id,
                     dueDate = Convert.ToDateTime(obj.workflowInstance.dueDate),
                     firstName = obj.workflowInstance.initiator.firstName,
                     startDate = Convert.ToDateTime(obj.workflowInstance.startDate),
                     state = obj.properties.bpm_status,
                     outcome = obj.properties.bpm_outcome,
-                    title = obj.workflowInstance.description
+                    title = obj.workflowInstance.description,
+                    pid = obj.id,
+                    status = obj.properties.bpm_status,
+                    comment = obj.properties.bpm_comment,
+                    OwnerUsername = obj.owner.userName,
+                    fullName = obj.owner.firstName + " " + obj.owner.lastName,
+                    priority = GetPriority(obj.properties.bpm_priority),
+                    taskId = obj.properties.bpm_taskId,
+                    workflowid = obj.id
                 });
             }
-            return dataObject;
+            return dataObject.OrderBy(x => x.priority).ToList();
+        }
 
+        private string GetPriority(int priority)
+        {
+            if (priority == 1)
+            {
+                return "High";
+            }
+            else if (priority == 2)
+            {
+                return "Medium";
+            }
+            else if (priority == 3)
+            {
+                return "Low";
+            }
+            return string.Empty;
+        }
+
+        public void CreateWorkflow(CreateWorkflowModel objModel)
+        {           
+            string data = string.Empty;
+            if (HttpContext.Current.Items[Filter.Token] != null)
+            {
+                data = this._apiHelper.Post(ServiceUrl.CreateProcessURL + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(objModel.workModel));
+                var converter = new ExpandoObjectConverter();
+                dynamic dataObject = JsonConvert.DeserializeObject<ExpandoObject>(data, converter);
+                var ProcessId = dataObject.entry.id;
+                ItemBodyModel item = new ItemBodyModel();
+                item.id = objModel.docId;
+                var retVal = this._apiHelper.Post(ServiceUrl.CreateProcessItems + ProcessId + "/items" + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(item));
+            }
 
         }
+
+        public FRootObject GetWorkflowFile(string id)
+        {
+            string data = string.Empty;
+            if (HttpContext.Current.Items[Filter.Token] != null)
+            {
+                data = this._apiHelper.Get(ServiceUrl.WfFile + id + "/items" + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
+            }
+            return JsonConvert.DeserializeObject<FRootObject>(data);
+        }
+
     }
 }

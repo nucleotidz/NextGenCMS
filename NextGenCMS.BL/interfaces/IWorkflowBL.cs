@@ -10,5 +10,8 @@ namespace NextGenCMS.BL.interfaces
     public interface IWorkflowBL
     {
         List<WorkFlowModel> GetAllTask();
+
+        void CreateWorkflow(CreateWorkflowModel objModel);
+        FRootObject GetWorkflowFile(string id);
     }
 }

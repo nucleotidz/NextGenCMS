@@ -1,5 +1,6 @@
 ﻿using NextGenCMS.API.Filters;
 using NextGenCMS.BL.interfaces;
+using NextGenCMS.Model.classes.Workflow;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,19 @@ namespace NextGenCMS.API.Controllers
         public HttpResponseMessage Get()
         {
             return Request.CreateResponse(HttpStatusCode.OK, this.workflowBl.GetAllTask());
+        }
+
+        [HttpPost]
+        [Route("Workflow")]
+        public HttpResponseMessage CreateWorkflow(CreateWorkflowModel objModel)
+        {
+            this.workflowBl.CreateWorkflow(objModel);
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
+        [Route("Get/File/{Id}")]
+        public HttpResponseMessage GetFile(string Id)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, this.workflowBl.GetWorkflowFile(Id));
         }
     }
 }

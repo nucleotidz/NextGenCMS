@@ -17,5 +17,13 @@ namespace NextGenCMS.UI.Controllers
         {
             return View();
         }
+        public  ActionResult CreateWorkflow()
+        {
+            return View();
+        }
+        public ActionResult ViewEditWorkFlow()
+        {
+            return View();
+        }
     }
 }

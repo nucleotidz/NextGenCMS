@@ -74,7 +74,9 @@ namespace NextGenCMS.UI
                  "~/Scripts/controller/UploadController.js",
                   "~/Scripts/controller/DeleteController.js",
                   "~/Scripts/controller/DeleteUserController.js",
-                  "~/Scripts/controller/TaskListController.js"
+                  "~/Scripts/controller/TaskListController.js",
+                     "~/Scripts/controller/CreateWorkflowController.js",                     
+                  "~/Scripts/controller/ViewEditWFController.js"
              ));
         }
         private static void LoadDirective(BundleCollection bundles)
@@ -136,7 +138,8 @@ namespace NextGenCMS.UI
         {
             bundles.Add(new StyleBundle("~/css/bootstrap/css").Include
             (
-              "~/css/bootstrap/bootstrap.min.css"
+              "~/css/bootstrap/bootstrap.min.css",
+              "~/css/fontawesome/font-awesome.min.css"
             ));
         }
         private static void LoadBootGloabalStyle(BundleCollection bundles)

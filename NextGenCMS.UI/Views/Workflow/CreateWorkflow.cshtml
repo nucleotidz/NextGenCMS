@@ -1,0 +1,74 @@
+﻿@{
+    Layout = null;
+}
+
+<div class="modal-header">
+    <button type="button" class="close" ng-click="closeWorkflowPopup();"><span aria-hidden="true">&times;</span></button>
+    <div class="settingicon pull-left"><span class="glyphicon glyphicon-user"></span></div><h4 class="modal-title" id="myModalLabel">Create Workflow</h4>
+</div>
+<div class="modal-body">   
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <label for="WfType">Select Workflow Type</label>
+            <select name="WfType" class="form-control widthFull100" kendo-drop-down-list id="dpworkfType"
+                    k-placeholder="'(Select)'"
+                    k-options="workfdpOptions"
+                    k-ng-model="wf.processDefinitionKey"
+                    k-on-change="OnWofklowTypeChange(kendoEvent);"></select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <label for="Message">Message</label>
+            <textarea name="Message" class="form-control" ng-model="wf.variables.bpm_workflowDescription" placeholder="Message" autofocus />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <label for="DueDate">Due date</label>
+            <input class="widthFull100 lastcntl" id="txt_DD" autocomplete="off" name="DueDate" kendo-date-picker="datepicker" k-ng-model="wf.variables.bpm_workflowDueDate" />
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <label for="Priority">Priority</label>
+            <select class="form-control widthFull100" kendo-drop-down-list id="dpPriority" name="Priority"
+                    k-placeholder="'(Select)'"
+                    k-data-text-field="'text'"
+                    k-data-value-field="'value'"
+                    k-data-source="priorityDataSrc"                   
+                    ng-model="wf.variables.bpm_workflowPriority"></select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <label for="Users">Choose Reviewer</label>
+            <select ng-disabled="isgroupreview" class="form-control widthFull100" kendo-drop-down-list id="dpReviewer" name="Users"
+                    k-placeholder="'(Select user)'"
+                    k-data-text-field="'firstName'"
+                    k-data-value-field="'userName'"
+                    k-data-source="UserData"
+                    k-ng-model="wf.variables.bpm_assignee"></select>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <label for="reviewGrp">Choose review group</label>
+            <select ng-disabled="!isgroupreview" class="form-control widthFull100" kendo-drop-down-list id="dpGroup" name="reviewGrp"
+                    k-placeholder="'(Select group)'"
+                    k-data-text-field="'displayName'"
+                    k-data-value-field="'fullName'"
+                    k-data-source="groupDataSource"
+                    k-ng-model="wf.variables.bpm_assigneeGrp"></select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <label>Attached File:{{wf.FileName}}</label>
+        </div>   
+    <div class="col-xs-12 col-sm-6 col-md-6">
+        <label for="emailNotif">Send email notification</label>
+        <input type="checkbox" name="emailNotif" ng-model="wf.variables.bpm_sendEMailNotifications">
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" ng-click="createWorkflow();">StartWorkflow</button>
+    <button type="button" class="btn btn-default" ng-click="closeWorkflowPopup();">Cancel</button>
+</div>

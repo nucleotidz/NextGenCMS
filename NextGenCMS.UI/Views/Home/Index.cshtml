@@ -22,8 +22,8 @@
             if (!userName) {
                 Cache.put("userName", "@Model.User.userName");
             };
-            if(!Cache.get('Profile')){
-                Cache.put("Profile", loginResponse);
+            if(!Profile.get('Profile')){
+                Profile.put("Profile", loginResponse);
             }
         }]);
     })();

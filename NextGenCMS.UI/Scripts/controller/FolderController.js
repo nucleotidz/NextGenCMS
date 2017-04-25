@@ -277,7 +277,35 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
         if (evt.item.textContent.trim() === "Cancel Check-Out") {
             CancelCheckOut();
         }
+        if (evt.item.textContent.trim() === "Start Workflow") {
+        OpenCreateWFPopup();
+}
     }
+
+    function OpenCreateWFPopup() {
+      var entityGrid = $("#userGrid").data("kendoGrid")
+      var selectedItem = entityGrid.dataItem(entityGrid.select());
+     var splitList = selectedItem.nodeRef.split("/");
+     var objId = splitList[splitList.length -1];
+      var modalInstance = $modal.open({
+        backdrop : 'static',
+        keyboard: false,
+        templateUrl: './Workflow/CreateWorkflow',
+        controller: 'CreateWorkflowController',
+        resolve: {
+          items: function() {
+              return objId;
+              }
+            }
+            });
+            modalInstance.result.then(function () {
+            }, function (popupData) {
+                if (popupData !== "close") {
+                    alert(popupData);
+                    if (vm.searchClicked) vm.SearchUser();
+                    }
+            });
+}
 
     function DeleteFile() {
         var entityGrid = $("#userGrid").data("kendoGrid")
