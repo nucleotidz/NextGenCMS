@@ -38,7 +38,9 @@ namespace NextGenCMS.Model.constants
         /// </summary>
         public static readonly string DeleteUser = AppConfigKeys.ServiceUrl + "alfresco/s/api/people/";
 
-        public static readonly string UserRole = AppConfigKeys.ServiceUrl + "/alfresco/s/api/sites/" + AppConfigKeys.Site + "/invitations?alf_ticket=";
+        public static readonly string AddUserRole = AppConfigKeys.ServiceUrl + "/alfresco/s/api/sites/" + AppConfigKeys.Site + "/invitations?alf_ticket=";
+
+        public static readonly string GetUserSites = AppConfigKeys.ServiceUrl + "alfresco/s/api/people/";
         #endregion
 
         #region "Administration - Groups"
@@ -61,6 +63,7 @@ namespace NextGenCMS.Model.constants
         public static readonly string DeleteFile = AppConfigKeys.ServiceUrl + "/alfresco/s/slingshot/doclib/action/file/site/" + AppConfigKeys.Site + "/documentLibrary/";
         public static readonly string DeleteFolder = AppConfigKeys.ServiceUrl + "alfresco/s/slingshot/doclib/action/folder/site/" + AppConfigKeys.Site + "/documentLibrary/";
         public static readonly string TaskList = AppConfigKeys.ServiceUrl + "alfresco/s/api/task-instances";
+        public static readonly string WfFile = AppConfigKeys.ServiceUrl + "alfresco/api/-default-/public/workflow/versions/1/processes/";
         #endregion
     }
 }

@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 namespace NextGenCMS.UI.Model
 {
     public class User
@@ -6,7 +7,6 @@ namespace NextGenCMS.UI.Model
         public string url { get; set; }
         public string userName { get; set; }
         public bool enabled { get; set; }
-        public string avatar { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string jobtitle { get; set; }
@@ -26,7 +26,6 @@ namespace NextGenCMS.UI.Model
         public string skype { get; set; }
         public string instantmsg { get; set; }
         public string userStatus { get; set; }
-        public UserStatusTime userStatusTime { get; set; }
         public string googleusername { get; set; }
         public int quota { get; set; }
         public int sizeCurrent { get; set; }
@@ -35,5 +34,25 @@ namespace NextGenCMS.UI.Model
         public string authorizationStatus { get; set; }
         public bool isDeleted { get; set; }
         public bool isAdminAuthority { get; set; }
+        public Capabilities capabilities { get; set; }
+        public List<Group> groups { get; set; }
+    }
+
+    public class Group
+    {
+        public string authorityType { get; set; }
+        public string itemName { get; set; }
+        public string shortName { get; set; }
+        public string fullName { get; set; }
+        public string displayName { get; set; }
+        public string url { get; set; }
+        public List<string> zones { get; set; }
+    }
+
+    public class Capabilities
+    {
+        public bool isAdmin { get; set; }
+        public bool isMutable { get; set; }
+        public bool isGuest { get; set; }
     }
 }

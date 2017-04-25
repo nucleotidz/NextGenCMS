@@ -1,13 +1,13 @@
 ﻿using NextGenCMS.Model.classes.administration.GetUsers;
+using System.Collections.Generic;
 
 namespace NextGenCMS.Model.classes.administration
 {
-    public class User
+    public class UserWithGroups
     {
         public string url { get; set; }
         public string userName { get; set; }
         public bool enabled { get; set; }
-        public string avatar { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string jobtitle { get; set; }
@@ -36,5 +36,19 @@ namespace NextGenCMS.Model.classes.administration
         public string authorizationStatus { get; set; }
         public bool isDeleted { get; set; }
         public bool isAdminAuthority { get; set; }
+        public Capabilities capabilities { get; set; }
+        public List<Group> groups { get; set; }
+        //public Immutability immutability { get; set; }
+    }
+    public class Capabilities
+    {
+        public bool isAdmin { get; set; }
+        public bool isMutable { get; set; }
+        public bool isGuest { get; set; }
+    }
+
+    public class UserStatusTime
+    {
+        public string iso8601 { get; set; }
     }
 }

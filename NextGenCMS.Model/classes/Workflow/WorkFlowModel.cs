@@ -23,5 +23,6 @@ namespace NextGenCMS.Model.classes.Workflow
         public string taskId { get; set; }
         public string priority { get; set; }
         public string workflowid { get; set; }
+        public string description { get; set; }
     }
 }

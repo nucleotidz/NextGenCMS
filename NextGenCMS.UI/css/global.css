@@ -65,6 +65,10 @@ label {
     width: 80% !important;
 }
 
+.widthFull100 {
+    width:100% !important;
+}
+
 .clear {
     clear: both;
 }

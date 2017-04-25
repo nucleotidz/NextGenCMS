@@ -169,7 +169,7 @@
     <Compile Include="Model\LoginModel.cs" />
     <Compile Include="Model\LoginResponse.cs" />
     <Compile Include="Model\User.cs" />
-    <Compile Include="Model\UserStatusTime.cs" />
+    <Compile Include="Model\UserSites.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -179,6 +179,9 @@
     <Content Include="css\bootstrap\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap\bootstrap.css" />
     <Content Include="css\bootstrap\bootstrap.min.css" />
+    <Content Include="css\fontawesome\font-awesome.css" />
+    <Content Include="css\fontawesome\font-awesome.min.css" />
+    <Content Include="css\fonts\fontawesome-webfont.svg" />
     <Content Include="css\global.css" />
     <Content Include="css\kendo\fonts\glyphs\KendoUIGlyphs.svg" />
     <Content Include="css\kendo\fonts\glyphs\WebComponentsIcons.svg" />
@@ -203,6 +206,7 @@
     <Content Include="Scripts\constants\Global.js" />
     <Content Include="Scripts\controller\AddFolderPopupController.js" />
     <Content Include="Scripts\controller\AddUserPopupController.js" />
+    <Content Include="Scripts\controller\CreateWorkflowController.js" />
     <Content Include="Scripts\controller\DeleteUserController.js" />
     <Content Include="Scripts\controller\DeleteController.js" />
     <Content Include="Scripts\controller\FolderController.js" />
@@ -260,6 +264,11 @@
     <Content Include="css\kendo\fonts\glyphs\WebComponentsIcons.eot" />
     <Content Include="css\kendo\fonts\glyphs\WebComponentsIcons.ttf" />
     <Content Include="css\kendo\fonts\glyphs\WebComponentsIcons.woff" />
+    <Content Include="css\fonts\fontawesome-webfont.eot" />
+    <Content Include="css\fonts\fontawesome-webfont.ttf" />
+    <Content Include="css\fonts\fontawesome-webfont.woff" />
+    <Content Include="css\fonts\fontawesome-webfont.woff2" />
+    <Content Include="css\fonts\FontAwesome.otf" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Security\Login.cshtml" />
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
@@ -281,6 +290,7 @@
     <Content Include="Views\Workflow\WorkflowDetail.cshtml" />
     <Content Include="Views\Workflow\TaskList.cshtml" />
     <Content Include="Views\Workflow\ViewEditWorkFlow.cshtml" />
+    <Content Include="Views\Workflow\CreateWorkflow.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NextGenCMS.APIHelper\NextGenCMS.APIHelper.csproj">

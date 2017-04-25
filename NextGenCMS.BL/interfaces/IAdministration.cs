@@ -27,14 +27,21 @@ namespace NextGenCMS.BL.interfaces
         /// </summary>
         /// <param name="username">username</param>
         /// <returns>user details</returns>
-        User GetUser(string username);
+        UserWithGroups GetUser(string username);
+
+        bool DeleteUser(List<string> users);
+
+        /// <summary>
+        /// This method will fetch user sites based on username
+        /// </summary>
+        /// <param name="username">username</param>
+        /// <returns>user sites with role</returns>
+        UserSites GetUserSites(string username);
 
         /// <summary>
         /// This method will return all the groups
         /// </summary>
         /// <returns>list of groups</returns>
         GetGroupsResponse GetGroups();
-
-        bool DeleteUser(List<string> users);
     }
 }

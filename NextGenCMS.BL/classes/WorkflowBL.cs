@@ -66,10 +66,21 @@ namespace NextGenCMS.BL.classes
                     fullName = obj.owner.firstName + " " + obj.owner.lastName,
                     priority = GetPriority(obj.properties.bpm_priority),
                     taskId = obj.properties.bpm_taskId,
-                    workflowid = obj.id
+                    workflowid = obj.id,
+                    description = obj.description
                 });
             }
             return dataObject.OrderBy(x => x.priority).ToList();
+        }
+
+        public FRootObject GetWorkflowFile(string id)
+        {
+            string data = string.Empty;
+            if (HttpContext.Current.Items[Filter.Token] != null)
+            {
+                data = this._apiHelper.Get(ServiceUrl.WfFile + id + "/items" + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
+            }
+            return JsonConvert.DeserializeObject<FRootObject>(data);
         }
 
         private string GetPriority(int priority)

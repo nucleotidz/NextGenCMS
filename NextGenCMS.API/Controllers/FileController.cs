@@ -54,5 +54,14 @@ namespace NextGenCMS.API.Controllers
         {
             return Request.CreateResponse(HttpStatusCode.OK, _file.DeleteFile(filePath));
         }
+
+        [Route("Download/By/Id")]
+        [AllowAnonymous]
+        [HttpPost]
+        public HttpResponseMessage DownloadFile()
+        {
+            _file.Download(HttpContext.Current.Request.Form[0]);
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
     }
 }

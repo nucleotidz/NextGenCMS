@@ -24,5 +24,10 @@ namespace NextGenCMS.API.Controllers
         {
             return Request.CreateResponse(HttpStatusCode.OK, this.workflowBl.GetAllTask());
         }
+        [Route("Get/File/{Id}")]
+        public HttpResponseMessage GetFile(string Id)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, this.workflowBl.GetWorkflowFile(Id));
+        }
     }
 }

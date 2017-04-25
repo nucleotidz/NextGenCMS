@@ -13,6 +13,7 @@ using DotCMIS.Client;
 using DotCMIS;
 using DotCMIS.Data.Impl;
 using NextGenCMS.Model.Alfresco.Common;
+using System.IO;
 
 namespace NextGenCMS.BL.classes
 {
@@ -58,7 +59,7 @@ namespace NextGenCMS.BL.classes
             {
                 data = this._apiHelper.Delete(ServiceUrl.DeleteFile + filePath.path + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
             }
-          return  JsonConvert.DeserializeObject<DeleteRootObject>(data);
+            return JsonConvert.DeserializeObject<DeleteRootObject>(data);
         }
         public void Upload()
         {
@@ -77,10 +78,31 @@ namespace NextGenCMS.BL.classes
                     MimeType = mime,
                     Length = 100,
                     Stream = HttpContext.Current.Request.Files[i].InputStream
-                };               
+                };
                 folder.CreateDocument(properties, contentStream, null);
             }
         }
+
+        public void Download(string docId)
+        {
+            this.session = this.GetSession();
+            IObjectId obj = this.session.CreateObjectId(docId);
+            IDocument doc = (IDocument)this.session.GetObject(obj);
+            var contentStream = doc.GetContentStream();
+            Stream fileStream = contentStream.Stream;
+            MemoryStream ms = new MemoryStream();
+            fileStream.CopyTo(ms);
+            byte[] response = ms.ToArray();
+            ms.Dispose();
+            HttpContext.Current.Response.ContentType = contentStream.MimeType;
+            string header = string.Format("attachment;filename=" + contentStream.FileName);
+            HttpContext.Current.Response.AddHeader("Content-Disposition", header);
+            HttpContext.Current.Response.OutputStream.Write(response, 0, response.Length);
+            HttpContext.Current.Response.Flush();
+            HttpContext.Current.Response.Clear();
+            HttpContext.Current.Response.End();
+        }
+
         private ISession GetSession()
         {
             if (session == null)
@@ -88,7 +110,7 @@ namespace NextGenCMS.BL.classes
                 SessionFactory factory = SessionFactory.NewInstance();
                 Dictionary<String, String> parameter = new Dictionary<String, String>();
                 parameter.Add(SessionParameter.User, "admin");
-                parameter.Add(SessionParameter.Password, "S!wan@246151");               
+                parameter.Add(SessionParameter.Password, "S!wan@246151");
                 parameter.Add(SessionParameter.AtomPubUrl, ServiceUrl.CMISApi);
                 parameter.Add(SessionParameter.BindingType, BindingType.AtomPub);
                 this.session = factory.GetRepositories(parameter)[0].CreateSession();

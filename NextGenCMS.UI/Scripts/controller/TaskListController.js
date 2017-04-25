@@ -58,7 +58,13 @@
                         },
                         taskId: {
                             type: "string", editable: false
-                        }
+                        },
+                        workflowid: {
+                            type: "string", editable: false
+                        },
+                        description: {
+                            type: "string", editable: false
+                        },
 
                     }
                 }
@@ -117,7 +123,8 @@
              {
                  field: "taskId", title: "taskId", hidden: true
              },
-             { field: "workflowid", title: "taskId", hidden: true }
+             { field: "workflowid", title: "workflowid", hidden: true },
+             { field: "description", title: "description", hidden: true }
             ]
         }
         vm.OpenDetails = function () {
