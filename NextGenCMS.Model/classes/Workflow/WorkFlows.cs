@@ -36,7 +36,7 @@ namespace NextGenCMS.Model.classes.Workflow
         public object bpm_comment { get; set; }
         public string cm_created { get; set; }
         public string bpm_taskId { get; set; }
-        public object bpm_outcome { get; set; }
+        public string bpm_outcome { get; set; }
     }
 
     public class PropertyLabels

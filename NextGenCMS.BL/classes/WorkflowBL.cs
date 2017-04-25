@@ -55,7 +55,8 @@ namespace NextGenCMS.BL.classes
                     dueDate = Convert.ToDateTime(obj.workflowInstance.dueDate),
                     firstName = obj.workflowInstance.initiator.firstName,
                     startDate = Convert.ToDateTime(obj.workflowInstance.startDate),
-                    state = obj.state,
+                    state = obj.properties.bpm_status,
+                    outcome = obj.properties.bpm_outcome,
                     title = obj.workflowInstance.description
                 });
             }

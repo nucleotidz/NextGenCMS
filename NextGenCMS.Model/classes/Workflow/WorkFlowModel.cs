@@ -14,6 +14,7 @@ namespace NextGenCMS.Model.classes.Workflow
         public DateTime startDate { get; set; }
         public DateTime dueDate { get; set; }
         public string Activityid { get; set; }
+        public string outcome { get; set; }
 
     }
 }

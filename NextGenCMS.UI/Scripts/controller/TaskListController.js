@@ -31,6 +31,9 @@
                         state: {
                             type: "string", editable: false
                         },
+                        outcome: {
+                            type: "string", editable: false
+                        },
                         startDate: {
                             type: "string", editable: false
                         },
@@ -72,6 +75,9 @@
                 field: "state", title: "State"
             },
             {
+                field: "outcome", title: "Outcome"
+            },
+            {
                 field: "startDate", title: "Started On", template: "#= kendo.toString(kendo.parseDate(startDate), 'dd MMM yyyy') #"
             },
             {
@@ -79,7 +85,8 @@
             },
             {
                 field: "activityid", title: "ActivityId", hidden: true
-            }
+            },
+            
             ]
         }
 
