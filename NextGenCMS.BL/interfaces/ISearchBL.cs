@@ -9,6 +9,6 @@ namespace NextGenCMS.BL.interfaces
 {
     public interface ISearchBL
     {
-        dynamic SearchFile(string searchKey);
+        dynamic SearchFile(string searchKey, bool IsContent);
     }
 }

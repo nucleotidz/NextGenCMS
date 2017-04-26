@@ -3,7 +3,8 @@
     app.controller('SearchController', ['SearchAPI', '$q',
     function (SearchAPI, $q) {
         var vm = this;
-        vm.searchKey = '';
+        vm.searchKey = '';        
+        vm.IsContent = false;
         vm.SearchModel = {
             name: "",
             title: "",
@@ -11,7 +12,8 @@
             type: ""
         }
         vm.SearchFile = function () {
-            var data = SearchAPI.SearchFiles({ "searchKey": vm.searchKey });
+            var data = SearchAPI.SearchFiles({ "searchKey": vm.searchKey, "IsContent": vm.IsContent
+            });
             $q.all([data.$promise]).then(function (response) {
                 searchData = response[0].items;              
                 vm.searchGridDataSourve.read();

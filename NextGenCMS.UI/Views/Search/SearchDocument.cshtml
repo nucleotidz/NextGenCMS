@@ -10,15 +10,21 @@
 </div>
 <div class="btnPane">
     <div class="row">
-        <div class="col-xs-2">
+        <div class="col-sm-4">
             <span style="font-weight:bold">Search</span>
         </div>
-        <div class="col-xs-4 pull-left">
+        <div class="col-sm-4">
+            <span>
+                Search in content
+            </span>
+            <input type="checkbox" id="IsContent" ng-model="vm.IsContent">
+        </div>
+        <div class="col-sm-4 pull-left">
             <div class="input-group">
                 <input type="text" class="form-control" id="searchdoc" placeholder="Search" ng-model="vm.searchKey">
                 <div class="input-group-addon" ng-click="vm.SearchFile();"><span class="glyphicon glyphicon-search" /></div>
             </div>
-        </div>       
+        </div>
     </div>
 </div>
 <div class="row">

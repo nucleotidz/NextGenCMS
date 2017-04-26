@@ -23,10 +23,10 @@ namespace NextGenCMS.API.Controllers
         }
 
         [HttpGet]
-        [Route("File/{searchKey}")]
-        public HttpResponseMessage SearchFiles(string searchKey)
+        [Route("File/{searchKey}/{IsContent}")]
+        public HttpResponseMessage SearchFiles(string searchKey, bool IsContent)
         {
-            return Request.CreateResponse(HttpStatusCode.OK, (object)this._searchBL.SearchFile(searchKey));
+            return Request.CreateResponse(HttpStatusCode.OK, (object)this._searchBL.SearchFile(searchKey, IsContent));
         }
 
 

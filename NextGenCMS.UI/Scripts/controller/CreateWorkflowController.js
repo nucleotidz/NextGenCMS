@@ -35,7 +35,8 @@
                 bpm_workflowPriority: "2",
                 bpm_workflowDueDate: "",
                 bpm_workflowDescription: "",
-                bpm_groupAssignee : ""
+                bpm_groupAssignee: "",
+                bpm_comment: "test"
             }
         }
         $scope.OnWofklowTypeChange = function (e) {
