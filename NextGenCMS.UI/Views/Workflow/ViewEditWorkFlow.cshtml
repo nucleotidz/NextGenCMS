@@ -63,9 +63,9 @@
     </div>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-default" ng-click="Approve();">Approve</button>
-    <button type="button" class="btn btn-primary" ng-click="Save();">Save</button>
-    <button type="button" class="btn btn-primary" ng-if="wf.TaskEnable">End Task</button>
-    <button type="button" class="btn btn-danger" ng-click="Reject();">Reject</button>
+    <button type="button" class="btn btn-success" ng-if="wf.ActionOccured" ng-click="Approve();">Approve</button>
+    <button type="button" class="btn btn-danger"  ng-if="wf.ActionOccured" ng-click="Reject();">Reject</button>
+    <button type="button" class="btn btn-primary" ng-if="wf.TaskEnable" ng-click="EndTask();">End Task</button> 
+    <button type="button" class="btn btn-primary" ng-click="Save();">Save</button>      
     <button type="button" class="btn btn-primary" ng-if="wf.ActionEnable" ng-click="closePopup();">Close</button>
 </div>

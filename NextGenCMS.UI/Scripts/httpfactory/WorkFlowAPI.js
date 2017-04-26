@@ -28,6 +28,16 @@
                 url: Global.apiuri + "workflow/Action",
                 isArray: false
             },
+            DoneTask: {
+                method: "POST",
+                url: Global.apiuri + "workflow/Done",
+                isArray: false
+            },
+            GetAllTasks:{
+                method: "GET",
+                url: Global.apiuri + "workflow/All/Task/:wfid",
+                isArray: true
+            }
         });
     }]);
 })();

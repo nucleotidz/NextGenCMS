@@ -71,8 +71,8 @@ namespace NextGenCMS.BL.classes
                     pid = obj.id,
                     status = obj.properties.bpm_status,
                     comment = obj.properties.bpm_comment,
-                    OwnerUsername = obj.owner != null ?  obj.owner.userName : string.Empty,
-                    fullName =  obj.owner != null ? obj.owner.firstName + " " + obj.owner.lastName : string.Empty,
+                    OwnerUsername = obj.owner != null ? obj.owner.userName : obj.workflowInstance.initiator.userName,
+                    fullName = obj.workflowInstance.initiator != null ? obj.workflowInstance.initiator.firstName + " " + obj.workflowInstance.initiator.lastName : string.Empty,
                     priority = GetPriority(obj.properties.bpm_priority),
                     taskId = obj.properties.bpm_taskId,
                     workflowid = obj.workflowInstance.id,
@@ -139,9 +139,42 @@ namespace NextGenCMS.BL.classes
             string data = string.Empty;
             if (HttpContext.Current.Items[Filter.Token] != null)
             {
-               
-                data = this._apiHelper.Post(ServiceUrl.ApproveReject+"activiti$2988/formprocessor" + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(model.WFAprroveReject));
+
+                data = this._apiHelper.Post(ServiceUrl.ApproveReject + model.activitiid + "/formprocessor" + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(model.WFAprroveReject));
             }
+        }
+        public void DoneTask(WFDoneModel model)
+        {
+            string data = string.Empty;
+            if (HttpContext.Current.Items[Filter.Token] != null)
+            {
+                data = this._apiHelper.Post(ServiceUrl.ApproveReject + model.activitiid + "/formprocessor" + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(model.wfDone));
+            }
+        }
+
+        public List<AllTaskModel> GetAllTasks(string wfid)
+        {
+            string data = string.Empty;
+            if (HttpContext.Current.Items[Filter.Token] != null)
+            {
+                data = this._apiHelper.Get(ServiceUrl.AllWF + wfid + "?includeTasks=true&alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
+            }
+            return this.MapAll(JsonConvert.DeserializeObject<NextGenCMS.Model.Alfresco.workflow.WfRootObject>(data));
+        }
+
+        private List<AllTaskModel> MapAll(NextGenCMS.Model.Alfresco.workflow.WfRootObject dataObject)
+        {
+            List<AllTaskModel> model = new List<AllTaskModel>();
+            foreach (NextGenCMS.Model.Alfresco.workflow.Task task in dataObject.data.tasks)
+            {
+                model.Add(new AllTaskModel
+                {
+                    bpm_comment = task.properties.bpm_comment,
+                    cm_owner = task.properties.cm_owner,
+                    cm_created = task.properties.cm_created
+                });
+            }
+            return model;
         }
     }
 }

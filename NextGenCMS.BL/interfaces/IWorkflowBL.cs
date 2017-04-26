@@ -15,5 +15,7 @@ namespace NextGenCMS.BL.interfaces
         FRootObject GetWorkflowFile(string id);
         void WorkflowUpdate(WFUpdateModel updateModel);
         void ApproveReject(WFApproveRejectModel model);
+        void DoneTask(WFDoneModel model);
+        List<AllTaskModel> GetAllTasks(string wfid);
     }
 }

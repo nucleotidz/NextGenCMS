@@ -53,5 +53,20 @@ namespace NextGenCMS.API.Controllers
             workflowBl.ApproveReject(model);
             return Request.CreateResponse(HttpStatusCode.OK);
         }
+
+        [HttpPost]
+        [Route("Done")]
+        public HttpResponseMessage DoneTask(WFDoneModel model)
+        {
+            workflowBl.DoneTask(model);
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
+
+        [HttpGet]
+        [Route("All/Task/{wfid}")]
+        public HttpResponseMessage GetAllTasks(string wfid)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, workflowBl.GetAllTasks(wfid));
+        }
     }
 }
