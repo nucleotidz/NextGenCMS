@@ -42,13 +42,13 @@
                 <select class="" kendo-drop-down-list
                         k-options="StatusOption"
                         k-option-label="'(Select Status)'"
-                        ng-model="wf.Status"></select>
+                        k-ng-model="wf.Status"></select>
             </div>
         </div>
         <div class="col-xs-12 col-sm-8 col-md-8">
             <div class="form-group">
                 <label for="File">File</label>
-                <span class="glyphicon glyphicon-paperclip"></span><a href ng-click="DownloadFile(wf.fileId)"> {{wf.fileName}}</a>
+                <span class="glyphicon glyphicon-file"></span><a href ng-click="DownloadFile(wf.fileId)"> {{wf.fileName}}</a>
             </div>
         </div>
     </div>
@@ -57,16 +57,15 @@
         <div class="col-xs-12 col-sm-6 col-md-12">
             <div class="form-group">
                 <label for="DueDate">Comment</label>
-                <textarea class="form-control"></textarea>
+                <textarea class="form-control" ng-model="wf.comment"></textarea>
             </div>
         </div>
     </div>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-default">Approve</button>
-
-    <button type="button" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-default" ng-click="Approve();">Approve</button>
+    <button type="button" class="btn btn-primary" ng-click="Save();">Save</button>
     <button type="button" class="btn btn-primary" ng-if="wf.TaskEnable">End Task</button>
-    <button type="button" class="btn btn-danger">Reject</button>
+    <button type="button" class="btn btn-danger" ng-click="Reject();">Reject</button>
     <button type="button" class="btn btn-primary" ng-if="wf.ActionEnable" ng-click="closePopup();">Close</button>
 </div>
