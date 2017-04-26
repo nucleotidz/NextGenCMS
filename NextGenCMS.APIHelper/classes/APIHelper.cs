@@ -90,8 +90,8 @@ namespace NextGenCMS.APIHelper.classes
             try
             {
                 ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
-                WebRequest req = WebRequest.Create(uri);               
-                req.ContentType = ApiHelper.text_json;
+                WebRequest req = WebRequest.Create(uri);
+                req.ContentType = ApiHelper.application_json;
                 req.Timeout = 1000000;
                 req.Method = ApiHelper.Post;
                 if (!string.IsNullOrEmpty(parameters))

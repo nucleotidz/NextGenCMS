@@ -62,13 +62,16 @@ namespace NextGenCMS.Model.constants
         public static readonly string CMISApi = AppConfigKeys.ServiceUrl + "/alfresco/api/-default-/public/cmis/versions/1.0/atom/";
         public static readonly string DeleteFile = AppConfigKeys.ServiceUrl + "/alfresco/s/slingshot/doclib/action/file/site/" + AppConfigKeys.Site + "/documentLibrary/";
         public static readonly string DeleteFolder = AppConfigKeys.ServiceUrl + "alfresco/s/slingshot/doclib/action/folder/site/" + AppConfigKeys.Site + "/documentLibrary/";
-        public static readonly string TaskList = AppConfigKeys.ServiceUrl + "alfresco/s/api/task-instances";
-        public static readonly string WfFile = AppConfigKeys.ServiceUrl + "alfresco/api/-default-/public/workflow/versions/1/processes/";
+   
         #endregion
 
         #region WorkflowAPI
         public static readonly string CreateProcessURL = AppConfigKeys.ServiceUrl + "/alfresco/api/-default-/public/workflow/versions/1/processes";
         public static readonly string CreateProcessItems = AppConfigKeys.ServiceUrl + "alfresco/api/-default-/public/workflow/versions/1/processes/";
+        public static readonly string TaskList = AppConfigKeys.ServiceUrl + "alfresco/s/api/task-instances";
+        public static readonly string WfFile = AppConfigKeys.ServiceUrl + "alfresco/api/-default-/public/workflow/versions/1/processes/";
+        public static readonly string WFUpdate = AppConfigKeys.ServiceUrl + "alfresco/api/-default-/public/workflow/versions/1/tasks/";
+        public static readonly string ApproveReject = AppConfigKeys.ServiceUrl + "alfresco/service/api/task/";
         #endregion
     }
 }

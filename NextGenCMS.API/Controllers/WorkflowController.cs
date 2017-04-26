@@ -38,5 +38,20 @@ namespace NextGenCMS.API.Controllers
         {
             return Request.CreateResponse(HttpStatusCode.OK, this.workflowBl.GetWorkflowFile(Id));
         }
+
+        [HttpPost]
+        [Route("Update/Workflow/Activity")]
+        public HttpResponseMessage UpdateWf(WFUpdateModel updateModel)
+        {
+            workflowBl.WorkflowUpdate(updateModel);
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
+        [HttpPost]
+        [Route("Action")]
+        public HttpResponseMessage ApproveReject(WFApproveRejectModel model)
+        {
+            workflowBl.ApproveReject(model);
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
     }
 }

@@ -58,7 +58,7 @@ namespace NextGenCMS.BL.classes
                     firstName = obj.workflowInstance.initiator.firstName,
                     startDate = Convert.ToDateTime(obj.workflowInstance.startDate),
                     state = obj.properties.bpm_status,
-                    outcome = obj.properties.bpm_outcome,
+                    outcome = obj.title,
                     title = obj.workflowInstance.description,
                     pid = obj.id,
                     status = obj.properties.bpm_status,
@@ -67,7 +67,7 @@ namespace NextGenCMS.BL.classes
                     fullName = obj.owner.firstName + " " + obj.owner.lastName,
                     priority = GetPriority(obj.properties.bpm_priority),
                     taskId = obj.properties.bpm_taskId,
-                    workflowid = obj.id,
+                    workflowid = obj.workflowInstance.id,
                     description = obj.description
                 });
             }
@@ -92,7 +92,7 @@ namespace NextGenCMS.BL.classes
         }
 
         public void CreateWorkflow(CreateWorkflowModel objModel)
-        {           
+        {
             string data = string.Empty;
             if (HttpContext.Current.Items[Filter.Token] != null)
             {
@@ -117,5 +117,23 @@ namespace NextGenCMS.BL.classes
             return JsonConvert.DeserializeObject<FRootObject>(data);
         }
 
+        public void WorkflowUpdate(WFUpdateModel updateModel)
+        {
+            string data = string.Empty;
+            if (HttpContext.Current.Items[Filter.Token] != null)
+            {
+                data = this._apiHelper.Post(ServiceUrl.WFUpdate + updateModel.wfId + "/variables" + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(updateModel.WFUpdate));
+            }
+        }
+
+        public void ApproveReject(WFApproveRejectModel model)
+        {
+            string data = string.Empty;
+            if (HttpContext.Current.Items[Filter.Token] != null)
+            {
+               
+                data = this._apiHelper.Post(ServiceUrl.ApproveReject+"activiti$2988/formprocessor" + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(model.WFAprroveReject));
+            }
+        }
     }
 }

@@ -17,7 +17,17 @@
             method: "GET",
             url: Global.apiuri + "WorkFlow/Get/File/:Id",
             isArray: false                
-            }
+            },
+            UpdateWf: {
+                method: "POST",
+                url: Global.apiuri + "workflow/Update/Workflow/Activity",
+                isArray: false                
+            },
+            ApproveReject: {
+                method: "POST",
+                url: Global.apiuri + "workflow/Action",
+                isArray: false
+            },
         });
     }]);
 })();

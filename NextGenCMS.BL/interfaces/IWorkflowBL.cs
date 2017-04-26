@@ -13,5 +13,7 @@ namespace NextGenCMS.BL.interfaces
 
         void CreateWorkflow(CreateWorkflowModel objModel);
         FRootObject GetWorkflowFile(string id);
+        void WorkflowUpdate(WFUpdateModel updateModel);
+        void ApproveReject(WFApproveRejectModel model);
     }
 }
