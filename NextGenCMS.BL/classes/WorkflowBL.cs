@@ -36,12 +36,20 @@ namespace NextGenCMS.BL.classes
 
         public List<WorkFlowModel> GetAllTask()
         {
-            string data = string.Empty;
-            if (HttpContext.Current.Items[Filter.Token] != null)
+            try
             {
-                data = this._apiHelper.Get(ServiceUrl.TaskList + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
+                string data = string.Empty;
+                if (HttpContext.Current.Items[Filter.Token] != null)
+                {
+                    data = this._apiHelper.Get(ServiceUrl.TaskList + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
+                }
+                RootObject response = JsonConvert.DeserializeObject<RootObject>(data);
+                return this.Map(response);
             }
-            return this.Map(JsonConvert.DeserializeObject<RootObject>(data));
+            catch
+            {
+                throw;
+            }
         }
 
         private List<WorkFlowModel> Map(RootObject rootObject)
@@ -63,8 +71,8 @@ namespace NextGenCMS.BL.classes
                     pid = obj.id,
                     status = obj.properties.bpm_status,
                     comment = obj.properties.bpm_comment,
-                    OwnerUsername = obj.owner.userName,
-                    fullName = obj.owner.firstName + " " + obj.owner.lastName,
+                    OwnerUsername = obj.owner != null ?  obj.owner.userName : string.Empty,
+                    fullName =  obj.owner != null ? obj.owner.firstName + " " + obj.owner.lastName : string.Empty,
                     priority = GetPriority(obj.properties.bpm_priority),
                     taskId = obj.properties.bpm_taskId,
                     workflowid = obj.workflowInstance.id,
@@ -74,7 +82,7 @@ namespace NextGenCMS.BL.classes
             return dataObject.OrderBy(x => x.priority).ToList();
         }
 
-        private string GetPriority(int priority)
+        private string GetPriority(int? priority)
         {
             if (priority == 1)
             {

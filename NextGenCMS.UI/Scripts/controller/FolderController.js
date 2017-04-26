@@ -285,6 +285,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
     function OpenCreateWFPopup() {
       var entityGrid = $("#userGrid").data("kendoGrid")
       var selectedItem = entityGrid.dataItem(entityGrid.select());
+      var fileName = selectedItem.displayName;
      var splitList = selectedItem.nodeRef.split("/");
      var objId = splitList[splitList.length -1];
       var modalInstance = $modal.open({
@@ -294,18 +295,19 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
         controller: 'CreateWorkflowController',
         resolve: {
           items: function() {
-              return objId;
+              return { "docId": objId,
+                       "FileName": fileName
               }
             }
-            });
-            modalInstance.result.then(function () {
-            }, function (popupData) {
-                if (popupData !== "close") {
-                    alert(popupData);
-                    if (vm.searchClicked) vm.SearchUser();
-                    }
-            });
-}
+              }
+                  });
+                        modalInstance.result.then(function () { 
+        }, function (popupData) {
+            if (popupData === "success") {
+                refreshFileGrid();
+                  }
+                  });
+                  }
 
     function DeleteFile() {
         var entityGrid = $("#userGrid").data("kendoGrid")

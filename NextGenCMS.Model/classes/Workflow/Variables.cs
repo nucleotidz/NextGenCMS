@@ -9,6 +9,7 @@ namespace NextGenCMS.Model.classes.Workflow
     public class Variables
     {
         public string bpm_assignee { get; set; }
+        public string bpm_groupAssignee { get; set; }
         public bool bpm_sendEMailNotifications { get; set; }
         public int bpm_workflowPriority { get; set; }
         public DateTime bpm_workflowDueDate { get; set; }

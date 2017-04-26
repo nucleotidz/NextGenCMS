@@ -4,7 +4,8 @@
     function ($scope, $modalInstance, WorkFlowAPI, AdministrationApi, $q, Profile, items) {
         $scope.userName = Profile.get('Profile').User.userName;
         $scope.UserData = new kendo.data.DataSource();
-        $scope.DocID = items;
+        $scope.DocID = items.docId;
+        $scope.FileName = items.FileName;
         $scope.isgroupreview = false;
         $scope.WdTypeDataSrc = [{
             "text": "Assign a review task to a single reviewer", "value": "activitiReview"
@@ -33,7 +34,8 @@
                 bpm_sendEMailNotifications: false,
                 bpm_workflowPriority: "2",
                 bpm_workflowDueDate: "",
-                bpm_workflowDescription: ""
+                bpm_workflowDescription: "",
+                bpm_groupAssignee : ""
             }
         }
         $scope.OnWofklowTypeChange = function (e) {
@@ -77,7 +79,7 @@
         $scope.createWorkflow = function () {
             $scope.wf.processDefinitionKey = $scope.wf.processDefinitionKey.value;
             if($scope.isgroupreview){
-                $scope.wf.variables.bpm_assignee = $scope.wf.variables.bpm_assigneeGrp.fullName;
+                $scope.wf.variables.bpm_groupAssignee = $scope.wf.variables.bpm_assigneeGrp.fullName;
             }
             else {
                 $scope.wf.variables.bpm_assignee = $scope.wf.variables.bpm_assignee.userName;
@@ -86,7 +88,7 @@
             $scope.WFModelWrapper.docId = $scope.DocID;
             var submitdata = WorkFlowAPI.CreateWorkflow($scope.WFModelWrapper);
             $q.all(submitdata.$promise).then(function (response){
-                var k = 0;
+                $modalInstance.dismiss("success");
             });
         }
         $scope.closeWorkflowPopup = function () {
