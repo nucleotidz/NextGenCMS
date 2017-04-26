@@ -52,7 +52,7 @@ namespace NextGenCMS.Model.constants
 
         #region Folder File
         public static readonly string SearchfileURL = AppConfigKeys.ServiceUrl + "alfresco/s/slingshot/search?filters=&encodedFilters=";
-        public static readonly string searchQuerystring = "&tag=&startIndex=0&sort=&site=" + AppConfigKeys.Site + "&rootNode=alfresco://company/home&repo=false&query=&pageSize=25&maxResults=0&noCache=1492749618651&spellcheck=true&highlightPrefix=&highlightPostfix=&highlightFields=cm:name,cm:description,cm:title,content,ia:descriptionEvent,ia:whatEvent,lnk:title&highlightFragmentSize=100&highlightSnippetCount=255&highlightMergeContiguous=false&highlightUsePhraseHighlighter=true";
+        public static readonly string searchQuerystring = "&tag=&startIndex=0&sort=&site=" + AppConfigKeys.Site + "&rootNode=alfresco://company/home&repo=false&pageSize=25&maxResults=0&noCache=1492749618651&spellcheck=true&highlightPrefix=&highlightPostfix=&highlightFields=cm:name,cm:description,cm:title,content,ia:descriptionEvent,ia:whatEvent,lnk:title&highlightFragmentSize=100&highlightSnippetCount=255&highlightMergeContiguous=false&highlightUsePhraseHighlighter=true";
         public static readonly string Folder = AppConfigKeys.ServiceUrl + "alfresco/s/slingshot/datalists/lists/site/" + AppConfigKeys.Site + "/documentLibrary?alf_ticket=";
         public static readonly string SubFolder = AppConfigKeys.ServiceUrl + "alfresco/s/slingshot/doclib/treenode/site/" + AppConfigKeys.Site + "/documentLibrary/";
         public static readonly string AddFolder = AppConfigKeys.ServiceUrl + "alfresco/s/api/site/folder/" + AppConfigKeys.Site + "/documentLibrary/";
