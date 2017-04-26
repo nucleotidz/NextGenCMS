@@ -11,5 +11,7 @@ namespace NextGenCMS.Model.classes.Workflow
         public string cm_owner { get; set; }
         public string bpm_comment { get; set; }
         public string cm_created { get; set; }
+        public DateTime Created { get; set; }
+        public int taskid { get; set; }
     }
 }

@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 
@@ -171,10 +172,14 @@ namespace NextGenCMS.BL.classes
                 {
                     bpm_comment = task.properties.bpm_comment,
                     cm_owner = task.properties.cm_owner,
-                    cm_created = task.properties.cm_created
+                    cm_created = task.properties.cm_created,
+                    Created = Convert.ToDateTime(task.properties.bpm_startDate),                   
+                    
                 });
             }
-            return model;
+            List<AllTaskModel> modelList = model.OrderByDescending(item => item.Created).ToList();
+            modelList.Remove(modelList.Take(1).FirstOrDefault());
+            return modelList;
         }
     }
 }
