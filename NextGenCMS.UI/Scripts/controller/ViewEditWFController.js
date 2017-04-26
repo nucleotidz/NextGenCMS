@@ -1,6 +1,6 @@
 ﻿(function () {
     'use strict';
-    app.controller('ViewEditWfController', ['$scope', '$rootScope', '$modalInstance', 'items', 'Global', '$timeout', 'WorkFlowAPI', '$q', '$http','Profile',
+    app.controller('ViewEditWfController', ['$scope', '$rootScope', '$modalInstance', 'items', 'Global', '$timeout', 'WorkFlowAPI', '$q', '$http', 'Profile',
     function ($scope, $rootScope, $modalInstance, items, Global, $timeout, WorkFlowAPI, $q, $http, Profile) {
         var grddata = [];
         $scope.wf = {
@@ -16,7 +16,7 @@
             fileId: "",
             desc: items.description,
             comment: "",
-            ActionOccured: true,          
+            ActionOccured: true,
         }
         if ((items.outcome == "Approved" || items.outcome == "Rejected") && items.ownerUsername == Profile.get('Profile').User.userName) {
             $scope.wf.ActionOccured = false;
@@ -32,7 +32,7 @@
             dataTextField: "text",
             dataValueField: "value"
         };
-        $timeout(function () {         
+        $timeout(function () {
             $scope.wf.Status = { "text": items.status, "value": items.status };
             $scope.wf.DueDate = items.dueDate
             $rootScope.$$phase = null
@@ -79,7 +79,8 @@
             var WFAprroveReject = {
                 "prop_wf_reviewOutcome": "Reject",
                 "prop_bpm_comment": $scope.wf.comment,
-                "prop_transitions": "Next"
+                "prop_transitions": "Next",
+                "prop_bpm_status": $scope.wf.Status.value
             }
             var model = {
                 activitiid: items.pid,
@@ -94,9 +95,10 @@
             var WFAprroveReject = {
                 "prop_wf_reviewOutcome": "Approve",
                 "prop_bpm_comment": $scope.wf.comment,
-                "prop_transitions": "Next"
+                "prop_transitions": "Next",
+                "prop_bpm_status": $scope.wf.Status.value
             }
-            
+
             var model = {
                 activitiid: items.pid,
                 WFAprroveReject: WFAprroveReject
@@ -108,12 +110,12 @@
             });
         }
         $scope.EndTask = function () {
-            var wfDone=  {
-                "prop_bpm_status":"Not Yet Started",
-                "assoc_packageItems_added":"",
-                "assoc_packageItems_removed":"",
+            var wfDone = {
+                "assoc_packageItems_added": "",
+                "assoc_packageItems_removed": "",
                 "prop_bpm_comment": $scope.wf.comment,
-                "prop_transitions":"Next"
+                "prop_transitions": "Next",
+                "prop_bpm_status": $scope.wf.Status.value
             }
             var model = {
                 activitiid: items.pid,
@@ -137,6 +139,10 @@
                 model: {
                     action: "",
                     fields: {
+                        status: {
+                            type: "string",
+                            editable: false
+                        },
                         cm_owner: {
                             type: "string", editable: false
                         },
@@ -145,7 +151,7 @@
                         },
                         cm_created: {
                             type: "string", editable: false
-                        }                     
+                        }
 
                     }
                 }
@@ -163,11 +169,12 @@
             resizable: true,
             navigatable: true,
             scrollable: true,
-            height: 200,
+            height: 120,
             selectable: "row",
             filterable: true,
             footer: false,
             columns: [
+                { field: "status" ,"title":"Last Status"},
             {
                 field: "cm_owner", title: "Commented By"
             },
@@ -176,7 +183,7 @@
             },
             {
                 field: "cm_created", title: "Commented On", template: "#= kendo.toString(kendo.parseDate(cm_created), 'dd MMM yyyy') #"
-            }            
+            }
             ]
         }
     }]);

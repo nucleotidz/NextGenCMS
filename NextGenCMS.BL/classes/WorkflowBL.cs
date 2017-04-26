@@ -173,8 +173,8 @@ namespace NextGenCMS.BL.classes
                     bpm_comment = task.properties.bpm_comment,
                     cm_owner = task.properties.cm_owner,
                     cm_created = task.properties.cm_created,
-                    Created = Convert.ToDateTime(task.properties.bpm_startDate),                   
-                    
+                    Created = Convert.ToDateTime(task.properties.bpm_startDate),
+                    status = task.properties.bpm_status
                 });
             }
             List<AllTaskModel> modelList = model.OrderByDescending(item => item.Created).ToList();
