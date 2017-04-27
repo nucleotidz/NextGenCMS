@@ -219,6 +219,7 @@
     <Content Include="Scripts\controller\AdministrationController.js" />
     <Content Include="Scripts\controller\DashboardController.js" />
     <Content Include="Scripts\controller\ViewEditWFController.js" />
+    <Content Include="Scripts\controller\WorkflowDetailController.js" />
     <Content Include="Scripts\Directive\FileDrop.js" />
     <Content Include="Scripts\factory\Cache.js" />
     <Content Include="Scripts\factory\Interceptor.js" />
