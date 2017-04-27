@@ -77,6 +77,10 @@ namespace NextGenCMS.BL.classes
                 User = user,
                 UserSites = userSites
             };
+
+            //var data = _apiHelper.Get("http://127.0.0.1:8080/alfresco/s/api/workflow-instances/activiti$1545?includeTasks=true&alf_ticket=" + loginToken.data.ticket);
+
+            //var workflow = JsonConvert.DeserializeObject<WorkflowTasks>(data);
             return response;
         }
 
@@ -112,6 +116,7 @@ namespace NextGenCMS.BL.classes
                 if (disposing)
                 {
                     _repository.Dispose();
+                    _apiHelper.Dispose();
                 }
             }
 

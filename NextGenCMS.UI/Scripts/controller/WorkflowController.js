@@ -79,6 +79,12 @@
                     }
                 },
                 selectable: "row",
+                toolbar: ["excel"],
+                excel: {
+                    allPages: true
+                },
+
+                groupable: true,
                 filterable: true,
                 footer: false,
                 columns: [{
@@ -109,6 +115,17 @@
                             } else {
                                 return ""
                             }
+                        },
+                        groupHeaderTemplate: function (dataitem) {
+                            if (dataitem.value.toString() === "1") {
+                                return "High"
+                            } else if (dataitem.value.toString() === "2") {
+                                return "Medium"
+                            } else if (dataitem.value.toString() === "3") {
+                                return "Low"
+                            } else {
+                                return ""
+                            }
                         }
                     },
                     {
@@ -120,17 +137,31 @@
                             } else {
                                 return "No";
                             }
+                        },
+                        groupHeaderTemplate: function (dataitem) {
+                            if (dataitem.value.toString() === "true") {
+                                return "Yes"
+                            } else {
+                                return "No";
+                            }
                         }
                     },
                     {
                         field: "startDate",
                         title: "Start Date",
-                        template: "#= kendo.toString(kendo.parseDate(startDate), 'dd MMM yyyy') #"
+                        template: "#= kendo.toString(kendo.parseDate(startDate), 'dd MMM yyyy') #",
+                        groupHeaderTemplate:function (dataitem) {                            
+                                return kendo.toString(kendo.parseDate(dataitem.value), 'dd MMM yyyy')                            
+                        }
+                           
                     },
                     {
                         field: "dueDate",
                         title: "Due Date",
-                        template: "#= kendo.toString(kendo.parseDate(dueDate), 'dd MMM yyyy') #"
+                        template: "#= kendo.toString(kendo.parseDate(dueDate), 'dd MMM yyyy') #",
+                        groupHeaderTemplate: function (dataitem) {
+                            return kendo.toString(kendo.parseDate(dataitem.value), 'dd MMM yyyy')
+                        }
                     },
 
                 ]

@@ -84,6 +84,14 @@
                 controllerAs: "vm"
             }
         }
+    }).state('Home.Reports', {
+        views: {
+            'content@': {
+                templateUrl: 'Reports/WorkflowReport',
+                controller: 'WorkflowReportController',
+                controllerAs: "vm"
+            }
+        }
     });
 
 });

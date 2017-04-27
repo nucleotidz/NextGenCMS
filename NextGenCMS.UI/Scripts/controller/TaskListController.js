@@ -92,6 +92,11 @@
             scrollable: true,
             height: 300,
             selectable: "row",
+            toolbar: ["excel"],
+            excel: {
+                allPages: true
+            },          
+            groupable: true,
             filterable: true,
             footer: false,
             columns: [
@@ -109,10 +114,16 @@
                 field: "outcome", title: "Outcome"
             },
             {
-                field: "startDate", title: "Started On", template: "#= kendo.toString(kendo.parseDate(startDate), 'dd MMM yyyy') #"
+                field: "startDate", title: "Started On", template: "#= kendo.toString(kendo.parseDate(startDate), 'dd MMM yyyy') #",
+                groupHeaderTemplate: function (dataitem) {
+                    return kendo.toString(kendo.parseDate(dataitem.value), 'dd MMM yyyy')
+                }
             },
             {
-                field: "dueDate", title: "Due", template: "#= kendo.toString(kendo.parseDate(dueDate), 'dd MMM yyyy') #"
+                field: "dueDate", title: "Due", template: "#= kendo.toString(kendo.parseDate(dueDate), 'dd MMM yyyy') #",
+                groupHeaderTemplate: function (dataitem) {
+                    return kendo.toString(kendo.parseDate(dataitem.value), 'dd MMM yyyy')
+                }
             },
             {
                 field: "activityid", title: "ActivityId", hidden: true

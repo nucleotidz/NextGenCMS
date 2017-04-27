@@ -75,5 +75,11 @@ namespace NextGenCMS.Model.constants
         public static readonly string AllWF = AppConfigKeys.ServiceUrl + "alfresco/s/api/workflow-instances/";
         public static readonly string CompletedWF = AppConfigKeys.ServiceUrl + "alfresco/s/api/workflow-instances";
         #endregion
+
+        #region "Workflow Report"
+        public static readonly string WorkflowReport = AppConfigKeys.ServiceUrl + "/alfresco/s/api/workflow-instances?exclude=jbpm$wcmwf:*,jbpm$wf:articleapproval,activiti$publishWebContent,jbpm$publishWebContent,jbpm$inwf:invitation-nominated,jbpm$imwf:invitation-moderated,activiti$activitiInvitationModerated,activiti$activitiInvitationNominated,activiti$activitiInvitationNominatedAddDirect&skipCount=0&maxItems=50";
+        public static readonly string WorkflowCompleted = "&pooledTasks=false&state=COMPLETED";
+        public static readonly string WorkflowInitiator = "&initiator=";
+        #endregion
     }
 }

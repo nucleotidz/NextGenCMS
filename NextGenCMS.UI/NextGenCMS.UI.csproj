@@ -161,6 +161,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\WorkflowController.cs" />
     <Compile Include="Filters\Secure.cs" />
     <Compile Include="Global.asax.cs">
@@ -221,6 +222,7 @@
     <Content Include="Scripts\controller\ViewEditWFController.js" />
     <Content Include="Scripts\controller\WorkflowDetailController.js" />
     <Content Include="Scripts\controller\WorkflowController.js" />
+    <Content Include="Scripts\controller\WorkflowReportController.js" />
     <Content Include="Scripts\Directive\FileDrop.js" />
     <Content Include="Scripts\factory\Cache.js" />
     <Content Include="Scripts\factory\Interceptor.js" />
@@ -230,7 +232,9 @@
     <Content Include="Scripts\httpfactory\FolderAPI.js" />
     <Content Include="Scripts\httpfactory\SearchAPI.js" />
     <Content Include="Scripts\httpfactory\WorkFlowAPI.js" />
+    <Content Include="Scripts\httpfactory\WorkflowReportApi.js" />
     <Content Include="Scripts\jquery\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\kendo\jszip.min.js" />
     <Content Include="Scripts\kendo\kendo.all.min.js" />
     <Content Include="Scripts\underscore\underscore-min.js" />
     <Content Include="Web.config" />
@@ -294,6 +298,7 @@
     <Content Include="Views\Workflow\ViewEditWorkFlow.cshtml" />
     <Content Include="Views\Workflow\CreateWorkflow.cshtml" />
     <Content Include="Views\Workflow\MyWorkFlow.cshtml" />
+    <Content Include="Views\Reports\WorkflowReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NextGenCMS.APIHelper\NextGenCMS.APIHelper.csproj">

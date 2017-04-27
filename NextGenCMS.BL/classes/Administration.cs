@@ -112,14 +112,14 @@ namespace NextGenCMS.BL.classes
 
             if (string.IsNullOrWhiteSpace(searchText))
             {
-                response.people = response.people.Where(user => user.userName != username && user.enabled).OrderBy(x => x.firstName).ToList();
+                response.people = response.people.Where(user => user.userName != username && !user.isDeleted).OrderBy(x => x.firstName).ToList();
             }
             else
             {
                 response.people = response.people.Where(user => (user.firstName.IndexOf(searchText) != -1 ||
                                                                 user.lastName.IndexOf(searchText) != -1 ||
                                                                 user.userName.IndexOf(searchText) != -1) &&
-                                                                user.userName != username && user.enabled).OrderBy(x => x.firstName).ToList();
+                                                                user.userName != username && !user.isDeleted).OrderBy(x => x.firstName).ToList();
             }
             return response;
         }
@@ -215,6 +215,7 @@ namespace NextGenCMS.BL.classes
                 if (disposing)
                 {
                     _repository.Dispose();
+                    _apiHelper.Dispose();
                 }
             }
 

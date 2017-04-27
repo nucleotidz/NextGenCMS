@@ -17,6 +17,12 @@ namespace NextGenCMS.APIHelper.classes
 
     public class APIHelper : IAPIHelper
     {
+        #region "Private fields"
+        /// <summary>
+        /// disposed is used to reallocate memory of Unused Objects
+        /// </summary>
+        private bool _disposed;
+        #endregion
 
         public string Delete(string uri)
         {
@@ -46,13 +52,15 @@ namespace NextGenCMS.APIHelper.classes
                             {
                                 status = NextGenCMS.Model.constants.ApiHelper.StatusCode.Exception,
                                 message = reader.ReadToEnd().Trim()
-                            };                           
+                            };
+                            return response.message;
                         }
                     }
                 }
                 throw;
             }
         }
+
         /// <summary>
         /// Gets the specified URI.
         /// </summary>
@@ -120,7 +128,7 @@ namespace NextGenCMS.APIHelper.classes
                             {
                                 status = NextGenCMS.Model.constants.ApiHelper.StatusCode.Exception,
                                 message = reader.ReadToEnd().Trim()
-                            };                           
+                            };
                         }
                     }
                 }
@@ -183,6 +191,7 @@ namespace NextGenCMS.APIHelper.classes
                 throw;
             }
         }
+
         public void DownLoad(string url, string fileName)
         {
          
@@ -205,5 +214,31 @@ namespace NextGenCMS.APIHelper.classes
 
         }
 
+        #region Dispose
+        /// <summary>
+        /// Dispose method
+        /// </summary>
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        /// Overriding Dispose method
+        /// </summary>
+        /// <param name="disposing">disposing</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this._disposed)
+            {
+                if (disposing)
+                {
+                }
+            }
+
+            this._disposed = true;
+        }
+        #endregion
     }
 }

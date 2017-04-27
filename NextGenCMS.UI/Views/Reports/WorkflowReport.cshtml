@@ -1,0 +1,117 @@
+﻿@{
+    Layout = null;
+}
+<script>
+    $(document).ready(function () {
+        $("#treeview").kendoTreeView();
+
+    });
+
+
+
+
+</script>
+<div class="twoCols clearfix">
+    <div class="menuColumn col-xs-12 col-md-3">
+        <ul id="treeview" class="reportMenus">
+            <li data-expanded="true">
+                Work Flow
+                <ul>
+                    <li>Active</li>
+                    <li>Completed</li>
+                </ul>
+            </li>
+            <li data-expanded="true">
+                Due
+                <ul>
+                    <li>Today</li>
+                    <li>Tomorrow</li>
+                    <li>Next 7 Days</li>
+                    <li>Overdue</li>
+                    <li>No Date</li>
+                </ul>
+            </li>
+            <li data-expanded="true">
+                Started
+                <ul>
+                    <li>Last 7 Days</li>
+                    <li>Last 14 Days</li>
+                    <li>Last 28 Days</li>
+                </ul>
+            </li>
+            <li data-expanded="true">
+                Priority
+                <ul>
+                    <li>High</li>
+                    <li>Medium</li>
+                    <li>Low</li>
+                </ul>
+            </li>
+            <li data-expanded="true">
+                Workflow Type
+                <ul>
+                    <li>New Task</li>
+                    <li>Review and Approve (group review)</li>
+                    <li>Review and Approve (one or more reviewers)</li>
+                    <li>Review and Approve (pooled review)</li>
+                    <li>Review And Approve (single reviewer)</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="col-xs-12 col-md-9">
+        @*<div class="row">
+                <div id="workflowGrid"
+                     kendo-grid
+                     k-options="vm.workflowGridOptions"
+                     k-data-source="vm.workflowGridDataSource">
+                </div>
+            </div>*@
+        <div class="row">
+            <div kendo-list-view id="listView" k-data-source="source">
+                <div k-template>
+                    <div class="col-xs-12">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h2>Details: {{dataItem.message}}</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <span>Title: {{dataItem.title}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <span>Description: {{dataItem.description}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-4">
+                                <span>Started by: {{dataItem.initiator.username}}</span>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-4">
+                                <span>Due: {{dataItem.dueDate}}</span>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-4">
+                                <<span>Completed: {{dataItem.endDate}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-4">
+                                <span>Started: {{dataItem.startDate}}</span>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-4">
+                                <span>Priority: {{dataItem.priority}}</span>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-4">
+                                <<span>Status: "Workflow is in Progress"</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div kendo-pager k-data-source="source"></div>
+            </div>
+        </div>
+    </div>
+</div>
