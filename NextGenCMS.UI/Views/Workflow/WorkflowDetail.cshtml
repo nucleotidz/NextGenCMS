@@ -14,7 +14,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-12">     
+    <div class="col-sm-12">
         <label>Title: Review And Approve (single reviewer)</label>
     </div>
 </div>
@@ -40,15 +40,25 @@
     </div>
     <div class="col-sm-8">
         <label>Message: Please approve and review the document</label>
-    </div>  
+    </div>
 </div>
 <div kendo-list-view id="listView" k-data-source="vm.taskDatasource">
     <div k-template>
-        <h3>Description:{{dataItem.description}}</h3>
-        <div>Title: {{dataItem.title}}</div>
-        <div>Status:{{dataItem.properties.bpm_status}}</div>
-        <div>Owner:{{dataItem.owner.userName}}</div>
-        <div>Created: {{dataItem.properties.cm_created}}</div>
+        <div style="border-bottom:1px solid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3>{{dataItem.description}}</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">Title: {{dataItem.title}}</div>
+                <div class="col-sm-6">Status: {{dataItem.properties.bpm_status}}</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">Owner: {{dataItem.owner.userName}}</div>
+                <div class="col-sm-6">Created: {{dataItem.properties.cm_created}}</div>
+            </div>
+        </div>
     </div>
 </div>
-<div kendo-pager k-data-source="source"></div>
+<div kendo-pager k-data-source="vm.taskDatasource"></div>

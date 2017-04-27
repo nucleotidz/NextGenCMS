@@ -73,6 +73,17 @@ label {
     clear: both;
 }
 
+.paddLeft {
+    padding-left:0px;
+}
+.paddRight {
+    padding-right:0px;
+}
+
+.checkbox input[type=checkbox] {
+    margin-left:-18px !important;
+}
+
 /*--Tree Menus---*/
 
 .twoCols .menuColumn {
