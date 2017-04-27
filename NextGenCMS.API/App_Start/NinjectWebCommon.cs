@@ -76,6 +76,7 @@ namespace NextGenCMS.API.App_Start
             kernel.Bind<IWorkflowBL>().To<WorkflowBL>();
             kernel.Bind<IAdministration>().To<Administration>();
             kernel.Bind<IAdministrationRepository>().To<AdministrationRepository>();
+            kernel.Bind<IWorkflowReport>().To<WorkflowReport>();
         }
     }
 }

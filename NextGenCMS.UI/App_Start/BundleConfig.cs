@@ -68,15 +68,16 @@ namespace NextGenCMS.UI
                "~/Scripts/controller/UserManagementController.js",
                "~/Scripts/controller/AddUserPopupController.js",
                "~/Scripts/controller/AddFolderPopupController.js",
-                  "~/Scripts/controller/SearchController.js",
-                 "~/Scripts/controller/FolderController.js",
-                 "~/Scripts/controller/HeaderController.js",
-                 "~/Scripts/controller/UploadController.js",
-                  "~/Scripts/controller/DeleteController.js",
-                  "~/Scripts/controller/DeleteUserController.js",
-                  "~/Scripts/controller/TaskListController.js",
-                     "~/Scripts/controller/CreateWorkflowController.js",                     
-                  "~/Scripts/controller/ViewEditWFController.js"
+               "~/Scripts/controller/SearchController.js",
+               "~/Scripts/controller/FolderController.js",
+               "~/Scripts/controller/HeaderController.js",
+               "~/Scripts/controller/UploadController.js",
+               "~/Scripts/controller/DeleteController.js",
+               "~/Scripts/controller/DeleteUserController.js",
+               "~/Scripts/controller/TaskListController.js",
+               "~/Scripts/controller/CreateWorkflowController.js",
+               "~/Scripts/controller/ViewEditWFController.js",
+               "~/Scripts/controller/WorkflowReportController.js"
              ));
         }
         private static void LoadDirective(BundleCollection bundles)
@@ -121,7 +122,8 @@ namespace NextGenCMS.UI
                    "~/Scripts/httpfactory/AdministrationApi.js",                   
                     "~/Scripts/httpfactory/SearchAPI.js"  ,
                     "~/Scripts/httpfactory/FileAPI.js",
-                    "~/Scripts/httpfactory/WorkFlowAPI.js"
+                    "~/Scripts/httpfactory/WorkFlowAPI.js",
+                    "~/Scripts/httpfactory/WorkflowReportApi.js"
                  ));
         }
         private static void LoadUnderscore(BundleCollection bundles)

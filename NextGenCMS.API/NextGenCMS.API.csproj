@@ -199,6 +199,7 @@
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\FolderController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\WorkflowReportController.cs" />
     <Compile Include="Controllers\WorkflowController.cs" />
     <Compile Include="Filters\Secure.cs" />
     <Compile Include="Global.asax.cs">

@@ -70,5 +70,11 @@ namespace NextGenCMS.Model.constants
         public static readonly string CreateProcessURL = AppConfigKeys.ServiceUrl + "/alfresco/api/-default-/public/workflow/versions/1/processes";
         public static readonly string CreateProcessItems = AppConfigKeys.ServiceUrl + "alfresco/api/-default-/public/workflow/versions/1/processes/";
         #endregion
+
+        #region "Workflow Report"
+        public static readonly string WorkflowReport = AppConfigKeys.ServiceUrl + "/alfresco/s/api/workflow-instances?exclude=jbpm$wcmwf:*,jbpm$wf:articleapproval,activiti$publishWebContent,jbpm$publishWebContent,jbpm$inwf:invitation-nominated,jbpm$imwf:invitation-moderated,activiti$activitiInvitationModerated,activiti$activitiInvitationNominated,activiti$activitiInvitationNominatedAddDirect&skipCount=0&maxItems=50";
+        public static readonly string WorkflowCompleted = "&pooledTasks=false&state=COMPLETED";
+        public static readonly string WorkflowInitiator = "&initiator=";
+        #endregion
     }
 }

@@ -7,7 +7,7 @@
     using System.Web;
     #endregion
 
-    public interface IAPIHelper
+    public interface IAPIHelper : IDisposable
     {
         /// <summary>
         /// Gets the specified URI.
