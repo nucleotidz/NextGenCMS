@@ -174,7 +174,7 @@
             filterable: true,
             footer: false,
             columns: [
-                { field: "status" ,"title":"Last Status"},
+                { field: "status", "title": "Last Status", hidden: true },
             {
                 field: "cm_owner", title: "Commented By"
             },
