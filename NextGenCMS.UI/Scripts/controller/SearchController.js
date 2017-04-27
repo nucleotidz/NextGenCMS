@@ -3,7 +3,7 @@
     app.controller('SearchController', ['SearchAPI', '$q',
     function (SearchAPI, $q) {
         var vm = this;
-        vm.searchKey = '';        
+        vm.searchKey = '';
         vm.IsContent = false;
         vm.SearchModel = {
             name: "",
@@ -12,10 +12,11 @@
             type: ""
         }
         vm.SearchFile = function () {
-            var data = SearchAPI.SearchFiles({ "searchKey": vm.searchKey, "IsContent": vm.IsContent
+            var data = SearchAPI.SearchFiles({
+                "searchKey": vm.searchKey, "IsContent": vm.IsContent
             });
             $q.all([data.$promise]).then(function (response) {
-                searchData = response[0].items;              
+                searchData = response[0].items;
                 vm.searchGridDataSourve.read();
             });
         };
@@ -58,8 +59,8 @@
             dataBound: function () {
             },
             sortable: {
-            mode: "multiple",
-            allowUnsort: true
+                mode: "multiple",
+                allowUnsort: true
             },
             toolbar: ["excel"],
             excel: {
@@ -70,10 +71,10 @@
             reorderable: true,
             resizable: true,
             navigatable: true,
-                scrollable: true,
-                height: 350,
-                    selectable: "row",
-                        filterable: true,
+            scrollable: true,
+            height: 350,
+            selectable: "row",
+            filterable: true,
             pageable: {
                 numeric: false,
                 previousNext: false,
@@ -86,9 +87,9 @@
             {
                 field: "displayName", title: "Name"
             },
-              {
+            {
                   field: "modifiedBy", title: "Modified By"
-              },
+            },
             {
                 field: "modifiedOn", title: "Modified On", template: "#= kendo.toString(kendo.parseDate(modifiedOn), 'dd MMM yyyy hh:mm') #"
             },

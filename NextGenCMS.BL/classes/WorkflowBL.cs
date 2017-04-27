@@ -180,7 +180,8 @@ namespace NextGenCMS.BL.classes
             if (wf.data != null && wf.data.Any())
             {
                 list.AddRange(wf.data);
-            }            
+            }   
+           
             return list;
         }
         public NextGenCMS.Model.Alfresco.workflow.WfRootObject GetCaseDetails(string wfid)
