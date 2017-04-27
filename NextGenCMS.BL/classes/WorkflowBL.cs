@@ -109,14 +109,7 @@ namespace NextGenCMS.BL.classes
                 objModel.workModel.items = new List<string>();
                 objModel.workModel.items.Add(objModel.docId);
                 data = this._apiHelper.Post(ServiceUrl.CreateProcessURL + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(objModel.workModel));
-                //var converter = new ExpandoObjectConverter();
-                //dynamic dataObject = JsonConvert.DeserializeObject<ExpandoObject>(data, converter);
-                //var ProcessId = dataObject.entry.id;
-                //ItemBodyModel item = new ItemBodyModel();
-                //item.id = objModel.docId;
-                //var retVal = this._apiHelper.Post(ServiceUrl.CreateProcessItems + ProcessId + "/items" + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(item));
             }
-
         }
 
         public FRootObject GetWorkflowFile(string id)
