@@ -8,7 +8,9 @@
 
         var tasks = WorkFlowAPI.GetWorkFlow();
         $q.all([tasks.$promise]).then(function (response) {
-            vm.taskCount = response.length;
+            if (response.length > 0) {
+                vm.taskCount = response[0].length;
+            }
         });
     }]);
 })();
