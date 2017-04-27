@@ -55,22 +55,6 @@
         {
             "text": "Low", "value": "3"
         }]
-
-        //$scope.priorityOptions = {
-        //    dataSource: $scope.priorityDataSrc,
-        //    dataTextField: "text",
-        //    dataValueField: "value"
-        //};
-        //$scope.grpdpOptions = {
-        //    dataSource: $scope.groupDataSource,
-        //    dataTextField: "displayName",
-        //    dataValueField: "fullName"
-        //}
-        //$scope.reviewOptions = {
-        //    dataSource: $scope.UserData,
-        //    dataTextField: "firstName",
-        //    dataValueField: "userName"
-        //}
         $scope.workfdpOptions = {
             dataSource: $scope.WdTypeDataSrc,
             dataTextField: "text",
