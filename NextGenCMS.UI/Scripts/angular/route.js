@@ -69,6 +69,7 @@
             }
         }
     }).state('Home.WorkflowDetail', {
+        params: { WorkFlowID: null },
         views: {
             'content@': {
                 templateUrl: 'Workflow/WorkflowDetail',
@@ -77,6 +78,8 @@
             }
         }
     }).state('Home.MyWorkflow', {
+        params: { WorkFlowID: null },
+       // params: ['WorkFlowID'],
         views: {
             'content@': {
                 templateUrl: 'Workflow/MyWorkFlow',

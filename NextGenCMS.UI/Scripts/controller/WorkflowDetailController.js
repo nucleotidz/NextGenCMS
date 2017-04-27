@@ -1,21 +1,21 @@
 ﻿(function () {
     'use strict';
-    app.controller('WorkflowDetailsController', ['$scope', 'WorkFlowAPI', '$q',
-    function ($scope, WorkFlowAPI, $q) {
+    app.controller('WorkflowDetailsController', ['$scope', 'WorkFlowAPI', '$q', '$stateParams', '$state',
+    function ($scope, WorkFlowAPI, $q, $stateParams, $state) {
         var vm = this;
-        var workflowInstanceId = 'activiti$3101';          
+        var workflowInstanceId = $stateParams.WorkFlowID;
         vm.taskdata = [];
-       
-        function init() {        
+        function init() {
             var data = WorkFlowAPI.GetWorkflowDetails({ 'wfid': workflowInstanceId });
             $q.all([data.$promise]).then(function (response) {
                 vm.taskdata = response[0].data.tasks;
                 vm.taskDatasource = new kendo.data.DataSource({
                     data: vm.taskdata,
-                    pageSize: 21   
+                    pageSize: 21
                 });
             });
         };
         init();
+
     }]);
 })();
