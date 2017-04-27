@@ -54,12 +54,14 @@
     <Compile Include="classes\Folder.cs" />
     <Compile Include="classes\SearchBL.cs" />
     <Compile Include="classes\WorkflowBL.cs" />
+    <Compile Include="classes\WorkflowReport.cs" />
     <Compile Include="interfaces\IAdministration.cs" />
     <Compile Include="interfaces\IAuthentication.cs" />
     <Compile Include="interfaces\IFile.cs" />
     <Compile Include="interfaces\IFolderNext.cs" />
     <Compile Include="interfaces\ISearchBL.cs" />
     <Compile Include="interfaces\IWorkflowBL.cs" />
+    <Compile Include="interfaces\IWorkflowReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

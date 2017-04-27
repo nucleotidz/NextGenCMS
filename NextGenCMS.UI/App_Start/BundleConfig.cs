@@ -76,9 +76,10 @@ namespace NextGenCMS.UI
                   "~/Scripts/controller/DeleteController.js",
                   "~/Scripts/controller/DeleteUserController.js",
                   "~/Scripts/controller/TaskListController.js",
-                     "~/Scripts/controller/CreateWorkflowController.js",
+                     "~/Scripts/controller/CreateWorkflowController.js",                     
                   "~/Scripts/controller/ViewEditWFController.js",
-                  "~/Scripts/controller/WorkflowController.js"
+                  "~/Scripts/controller/WorkflowController.js",
+               "~/Scripts/controller/WorkflowReportController.js"
              ));
         }
         private static void LoadDirective(BundleCollection bundles)
@@ -86,7 +87,7 @@ namespace NextGenCMS.UI
             bundles.Add(new ScriptBundle("~/Scripts/Directive/js").Include
              (
                "~/Scripts/Directive/FileDrop.js"
-
+              
              ));
         }
         private static void LoadFactory(BundleCollection bundles)
@@ -120,17 +121,18 @@ namespace NextGenCMS.UI
                  (
                    "~/Scripts/httpfactory/AuthenticationAPI.js",
                    "~/Scripts/httpfactory/FolderAPI.js",
-                   "~/Scripts/httpfactory/AdministrationApi.js",
+                   "~/Scripts/httpfactory/AdministrationApi.js",                   
                     "~/Scripts/httpfactory/SearchAPI.js",
                     "~/Scripts/httpfactory/FileAPI.js",
-                    "~/Scripts/httpfactory/WorkFlowAPI.js"
+                    "~/Scripts/httpfactory/WorkFlowAPI.js",
+                    "~/Scripts/httpfactory/WorkflowReportApi.js"
                  ));
         }
         private static void LoadUnderscore(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/Scripts/underscore/js").Include
                  (
-                   "~/Scripts/underscore/underscore-min.js"
+                   "~/Scripts/underscore/underscore-min.js"                   
                  ));
         }
         #endregion
