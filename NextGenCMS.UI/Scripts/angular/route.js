@@ -68,6 +68,22 @@
                 controllerAs: "vm"
             }
         }
+    }).state('Home.WorkflowDetail', {
+        views: {
+            'content@': {
+                templateUrl: 'Workflow/WorkflowDetail',
+                controller: 'TaskListController',
+                controllerAs: "vm"
+            }
+        }
+    }).state('Home.MyWorkflow', {
+        views: {
+            'content@': {
+                templateUrl: 'Workflow/MyWorkFlow',
+                controller: 'WorkflowController',
+                controllerAs: "vm"
+            }
+        }
     }).state('Home.Reports', {
         views: {
             'content@': {

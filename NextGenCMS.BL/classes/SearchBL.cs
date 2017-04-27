@@ -33,12 +33,22 @@ namespace NextGenCMS.BL.classes
             this._apiHelper = apiHelper;
         }
 
-        public dynamic SearchFile(string searchKey)
-        {           
+        public dynamic SearchFile(string searchKey, bool IsContent)
+        {
             string data = string.Empty;
+            string termKey = string.Empty;
+            string query = string.Empty;
             if (HttpContext.Current.Items[Filter.Token] != null)
             {
-                data = this._apiHelper.Get(ServiceUrl.SearchfileURL + "&term=" + searchKey + ServiceUrl.searchQuerystring + "&alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
+                if (!IsContent)
+                {
+                    query = "{\"prop_cm_name\":" + "\"*" + searchKey + "*\",\"datatype\":\"cm:content\"}";
+                }
+                else
+                {
+                    termKey = searchKey;                  
+                }
+                data = this._apiHelper.Get(ServiceUrl.SearchfileURL + "&term=" + termKey + "&query=" + query + ServiceUrl.searchQuerystring + "&alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
             }
 
             var converter = new ExpandoObjectConverter();

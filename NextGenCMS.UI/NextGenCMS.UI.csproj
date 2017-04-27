@@ -220,6 +220,8 @@
     <Content Include="Scripts\controller\AdministrationController.js" />
     <Content Include="Scripts\controller\DashboardController.js" />
     <Content Include="Scripts\controller\ViewEditWFController.js" />
+    <Content Include="Scripts\controller\WorkflowDetailController.js" />
+    <Content Include="Scripts\controller\WorkflowController.js" />
     <Content Include="Scripts\controller\WorkflowReportController.js" />
     <Content Include="Scripts\Directive\FileDrop.js" />
     <Content Include="Scripts\factory\Cache.js" />
@@ -232,6 +234,7 @@
     <Content Include="Scripts\httpfactory\WorkFlowAPI.js" />
     <Content Include="Scripts\httpfactory\WorkflowReportApi.js" />
     <Content Include="Scripts\jquery\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\kendo\jszip.min.js" />
     <Content Include="Scripts\kendo\kendo.all.min.js" />
     <Content Include="Scripts\underscore\underscore-min.js" />
     <Content Include="Web.config" />
@@ -294,6 +297,7 @@
     <Content Include="Views\Workflow\TaskList.cshtml" />
     <Content Include="Views\Workflow\ViewEditWorkFlow.cshtml" />
     <Content Include="Views\Workflow\CreateWorkflow.cshtml" />
+    <Content Include="Views\Workflow\MyWorkFlow.cshtml" />
     <Content Include="Views\Reports\WorkflowReport.cshtml" />
   </ItemGroup>
   <ItemGroup>

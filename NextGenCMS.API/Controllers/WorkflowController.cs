@@ -38,5 +38,48 @@ namespace NextGenCMS.API.Controllers
         {
             return Request.CreateResponse(HttpStatusCode.OK, this.workflowBl.GetWorkflowFile(Id));
         }
+
+        [HttpPost]
+        [Route("Update/Workflow/Activity")]
+        public HttpResponseMessage UpdateWf(WFUpdateModel updateModel)
+        {
+            workflowBl.WorkflowUpdate(updateModel);
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
+        [HttpPost]
+        [Route("Action")]
+        public HttpResponseMessage ApproveReject(WFApproveRejectModel model)
+        {
+            workflowBl.ApproveReject(model);
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
+
+        [HttpPost]
+        [Route("Done")]
+        public HttpResponseMessage DoneTask(WFDoneModel model)
+        {
+            workflowBl.DoneTask(model);
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
+
+        [HttpGet]
+        [Route("All/Task/{wfid}")]
+        public HttpResponseMessage GetAllTasks(string wfid)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, workflowBl.GetAllTasks(wfid));
+        }
+
+        [HttpGet]
+        [Route("WorkflowDetails")]
+        public HttpResponseMessage GetWorkflowDetails(string wfId)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, workflowBl.GetCaseDetails(wfId));
+        }
+        [HttpGet]
+        [Route("Get/WF/{username}")]
+        public HttpResponseMessage GetWf(string username)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, workflowBl.GetWorkFlow(username));
+        }
     }
 }

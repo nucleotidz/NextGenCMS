@@ -61,6 +61,7 @@
     </div>
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6">
+            
             <label><span class="glyphicon glyphicon-file">{{FileName}}</span></label>
         </div>   
     <div class="col-xs-12 col-sm-6 col-md-6">
@@ -68,7 +69,13 @@
         <input type="checkbox" name="emailNotif" ng-model="wf.variables.bpm_sendEMailNotifications">
     </div>
 </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <label for="Comment">Comment</label>
+            <textarea class="form-control" ng-model="wf.variables.bpm_comment" placeholder="Comment" />
+        </div>   
+    </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-primary" ng-click="createWorkflow();">StartWorkflow</button>
+    <button type="button" class="btn btn-primary" ng-click="createWorkflow();">Start Workflow</button>
     <button type="button" class="btn btn-default" ng-click="closeWorkflowPopup();">Cancel</button>
 </div>

@@ -10,6 +10,13 @@
             grddata = response[0]
             vm.wfGridDataSource.read();
         });
+        function Bind() {
+            var data = WorkFlowAPI.GetWorkFlow();
+            $q.all([data.$promise]).then(function (response) {
+                grddata = response[0]
+                vm.wfGridDataSource.read();
+            });
+        }
         vm.wfGridDataSource = new kendo.data.DataSource({
             type: "json",
             transport: {
@@ -29,6 +36,9 @@
                             type: "string", editable: false
                         },
                         status: {
+                            type: "string", editable: false
+                        },
+                        description: {
                             type: "string", editable: false
                         },
                         outcome: {
@@ -62,9 +72,7 @@
                         workflowid: {
                             type: "string", editable: false
                         },
-                        description: {
-                            type: "string", editable: false
-                        },
+                       
 
                     }
                 }
@@ -84,6 +92,11 @@
             scrollable: true,
             height: 300,
             selectable: "row",
+            toolbar: ["excel"],
+            excel: {
+                allPages: true
+            },          
+            groupable: true,
             filterable: true,
             footer: false,
             columns: [
@@ -96,6 +109,7 @@
             {
                 field: "status", title: "State"
             },
+             { field: "description", title: "description"},
             {
                 field: "outcome", title: "Outcome"
             },
@@ -124,7 +138,7 @@
                  field: "taskId", title: "taskId", hidden: true
              },
              { field: "workflowid", title: "workflowid", hidden: true },
-             { field: "description", title: "description", hidden: true }
+            
             ]
         }
         vm.OpenDetails = function () {
@@ -145,7 +159,7 @@
             modalInstance.result.then(function () {
             }, function (popupData) {
                 if (popupData === "success") {
-                    //refreshFileGrid();
+                    Bind();
                 }
             });
         }

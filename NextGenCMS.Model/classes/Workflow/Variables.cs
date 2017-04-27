@@ -14,5 +14,6 @@ namespace NextGenCMS.Model.classes.Workflow
         public int bpm_workflowPriority { get; set; }
         public DateTime bpm_workflowDueDate { get; set; }
         public string bpm_workflowDescription { get; set; }
+        public string bpm_comment { get; set; }
     }
 }

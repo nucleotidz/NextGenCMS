@@ -17,6 +17,36 @@
             method: "GET",
             url: Global.apiuri + "WorkFlow/Get/File/:Id",
             isArray: false                
+            },
+            UpdateWf: {
+                method: "POST",
+                url: Global.apiuri + "workflow/Update/Workflow/Activity",
+                isArray: false                
+            },
+            ApproveReject: {
+                method: "POST",
+                url: Global.apiuri + "workflow/Action",
+                isArray: false
+            },
+            DoneTask: {
+                method: "POST",
+                url: Global.apiuri + "workflow/Done",
+                isArray: false
+            },
+            GetAllTasks:{
+                method: "GET",
+                url: Global.apiuri + "workflow/All/Task/:wfid",
+                isArray: true
+            },
+            GetWorkflowDetails: {
+                method: "GET",
+                url: Global.apiuri + "workflow/WorkflowDetails/:wfid",
+                isArray: false
+            },
+            GetAllWf:{
+                method: "GET",
+                url: Global.apiuri + "workflow/Get/WF/:username",
+                isArray: true
             }
         });
     }]);

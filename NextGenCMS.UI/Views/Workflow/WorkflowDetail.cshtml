@@ -8,8 +8,39 @@
         <li>Task List</li>
     </ul>
 </div>
-<div id="userGrid">
+<div class="row">
+    <div class="col-sm-12">
+        <h4>Workflow Detail</h4>
+    </div>
 </div>
-@*kendo-grid
-    k-options="vm.userGridOptions"
-    k-data-source="vm.userDataSource"*@
+<div class="row">
+    <div class="col-sm-12">     
+        <label>Title: Review And Approve (single reviewer)</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <label>Description: Review And Approve (single reviewer)</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <label>Started By: Ahmar</label>
+    </div>
+    <div class="col-sm-4">
+        <label>Due Date: 12-04-17</label>
+    </div>
+    <div class="col-sm-4">
+        <label>Status: In Progress</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <label>Comment: Please approve</label>
+    </div>
+    <div class="col-sm-8">
+        <label>Message: Please approve and review the document</label>
+    </div>  
+</div>
+<div kendo-list-view id="listView" k-data-source="vm.taskDatasource">
+</div>

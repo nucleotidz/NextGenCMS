@@ -4,9 +4,8 @@
         return $resource('', {}, {
             SearchFiles: {
                 method: "GET",
-                url: Global.apiuri + "Search/File/:searchKey",
-                isArray: false,
-                param: {}
+                url: Global.apiuri + "Search/File/:searchKey/:IsContent",
+                isArray: false               
             }
         });
     }]);

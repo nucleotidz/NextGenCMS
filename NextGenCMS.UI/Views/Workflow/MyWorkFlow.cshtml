@@ -1,0 +1,16 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div class="row">
+    <ul class="breadcrumb">
+        <li><a ui-sref=".">Administration</a></li>
+        <li>My Workflows</li>
+    </ul>
+</div>
+<div kendo-grid id="wf_grd"
+     k-options="vm.wfGridOption"
+     k-data-source="vm.wfGridDataSource" 
+     ng-dblclick="vm.OpenDetails();">
+</div>

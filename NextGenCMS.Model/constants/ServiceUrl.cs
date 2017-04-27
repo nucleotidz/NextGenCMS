@@ -52,7 +52,7 @@ namespace NextGenCMS.Model.constants
 
         #region Folder File
         public static readonly string SearchfileURL = AppConfigKeys.ServiceUrl + "alfresco/s/slingshot/search?filters=&encodedFilters=";
-        public static readonly string searchQuerystring = "&tag=&startIndex=0&sort=&site=" + AppConfigKeys.Site + "&rootNode=alfresco://company/home&repo=false&query=&pageSize=25&maxResults=0&noCache=1492749618651&spellcheck=true&highlightPrefix=&highlightPostfix=&highlightFields=cm:name,cm:description,cm:title,content,ia:descriptionEvent,ia:whatEvent,lnk:title&highlightFragmentSize=100&highlightSnippetCount=255&highlightMergeContiguous=false&highlightUsePhraseHighlighter=true";
+        public static readonly string searchQuerystring = "&tag=&startIndex=0&sort=&site=" + AppConfigKeys.Site + "&rootNode=alfresco://company/home&repo=false&pageSize=25&maxResults=0&noCache=1492749618651&spellcheck=true&highlightPrefix=&highlightPostfix=&highlightFields=cm:name,cm:description,cm:title,content,ia:descriptionEvent,ia:whatEvent,lnk:title&highlightFragmentSize=100&highlightSnippetCount=255&highlightMergeContiguous=false&highlightUsePhraseHighlighter=true";
         public static readonly string Folder = AppConfigKeys.ServiceUrl + "alfresco/s/slingshot/datalists/lists/site/" + AppConfigKeys.Site + "/documentLibrary?alf_ticket=";
         public static readonly string SubFolder = AppConfigKeys.ServiceUrl + "alfresco/s/slingshot/doclib/treenode/site/" + AppConfigKeys.Site + "/documentLibrary/";
         public static readonly string AddFolder = AppConfigKeys.ServiceUrl + "alfresco/s/api/site/folder/" + AppConfigKeys.Site + "/documentLibrary/";
@@ -62,13 +62,18 @@ namespace NextGenCMS.Model.constants
         public static readonly string CMISApi = AppConfigKeys.ServiceUrl + "/alfresco/api/-default-/public/cmis/versions/1.0/atom/";
         public static readonly string DeleteFile = AppConfigKeys.ServiceUrl + "/alfresco/s/slingshot/doclib/action/file/site/" + AppConfigKeys.Site + "/documentLibrary/";
         public static readonly string DeleteFolder = AppConfigKeys.ServiceUrl + "alfresco/s/slingshot/doclib/action/folder/site/" + AppConfigKeys.Site + "/documentLibrary/";
-        public static readonly string TaskList = AppConfigKeys.ServiceUrl + "alfresco/s/api/task-instances";
-        public static readonly string WfFile = AppConfigKeys.ServiceUrl + "alfresco/api/-default-/public/workflow/versions/1/processes/";
+   
         #endregion
 
         #region WorkflowAPI
         public static readonly string CreateProcessURL = AppConfigKeys.ServiceUrl + "/alfresco/api/-default-/public/workflow/versions/1/processes";
         public static readonly string CreateProcessItems = AppConfigKeys.ServiceUrl + "alfresco/api/-default-/public/workflow/versions/1/processes/";
+        public static readonly string TaskList = AppConfigKeys.ServiceUrl + "alfresco/s/api/task-instances";
+        public static readonly string WfFile = AppConfigKeys.ServiceUrl + "alfresco/api/-default-/public/workflow/versions/1/processes/";
+        public static readonly string WFUpdate = AppConfigKeys.ServiceUrl + "alfresco/api/-default-/public/workflow/versions/1/tasks/";
+        public static readonly string ApproveReject = AppConfigKeys.ServiceUrl + "alfresco/service/api/task/";
+        public static readonly string AllWF = AppConfigKeys.ServiceUrl + "alfresco/s/api/workflow-instances/";
+        public static readonly string CompletedWF = AppConfigKeys.ServiceUrl + "alfresco/s/api/workflow-instances";
         #endregion
 
         #region "Workflow Report"
