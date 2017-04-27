@@ -17,5 +17,6 @@ namespace NextGenCMS.BL.interfaces
         void ApproveReject(WFApproveRejectModel model);
         void DoneTask(WFDoneModel model);
         List<AllTaskModel> GetAllTasks(string wfid);
+        List<NextGenCMS.Model.Alfresco.workflow.WorkflowInstance> GetWorkFlow(string username);
     }
 }

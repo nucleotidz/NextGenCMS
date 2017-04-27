@@ -73,6 +73,7 @@ namespace NextGenCMS.Model.constants
         public static readonly string WFUpdate = AppConfigKeys.ServiceUrl + "alfresco/api/-default-/public/workflow/versions/1/tasks/";
         public static readonly string ApproveReject = AppConfigKeys.ServiceUrl + "alfresco/service/api/task/";
         public static readonly string AllWF = AppConfigKeys.ServiceUrl + "alfresco/s/api/workflow-instances/";
+        public static readonly string CompletedWF = AppConfigKeys.ServiceUrl + "alfresco/s/api/workflow-instances";
         #endregion
     }
 }

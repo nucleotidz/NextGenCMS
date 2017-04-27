@@ -160,4 +160,9 @@ namespace NextGenCMS.Model.Alfresco.workflow
     {
         public Data data { get; set; }
     }
+
+    public class WfAllRootObject
+    {
+        public List<WorkflowInstance> data { get; set; }
+    }
 }

@@ -68,5 +68,11 @@ namespace NextGenCMS.API.Controllers
         {
             return Request.CreateResponse(HttpStatusCode.OK, workflowBl.GetAllTasks(wfid));
         }
+        [HttpGet]
+        [Route("Get/WF/{username}")]
+        public HttpResponseMessage GetWf(string username)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, workflowBl.GetWorkFlow(username));
+        }
     }
 }

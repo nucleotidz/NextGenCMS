@@ -162,7 +162,32 @@ namespace NextGenCMS.BL.classes
             }
             return this.MapAll(JsonConvert.DeserializeObject<NextGenCMS.Model.Alfresco.workflow.WfRootObject>(data));
         }
+        public List<NextGenCMS.Model.Alfresco.workflow.WorkflowInstance> GetWorkFlow(string username)
+        {
+            List<NextGenCMS.Model.Alfresco.workflow.WorkflowInstance> list = new List<NextGenCMS.Model.Alfresco.workflow.WorkflowInstance>();
+            string data = string.Empty;
+            string activeWf = string.Empty; 
+            if (HttpContext.Current.Items[Filter.Token] != null)
+            {
+                data = this._apiHelper.Get(ServiceUrl.CompletedWF +"?state=COMPLETED&initiator="+username+"&alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
+            } 
+            if (HttpContext.Current.Items[Filter.Token] != null)
+            {
+                activeWf = this._apiHelper.Get(ServiceUrl.CompletedWF + "?initiator=" + username + "&alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
+            }
+            NextGenCMS.Model.Alfresco.workflow.WfAllRootObject wf = JsonConvert.DeserializeObject<NextGenCMS.Model.Alfresco.workflow.WfAllRootObject>(data);
+            NextGenCMS.Model.Alfresco.workflow.WfAllRootObject wfActive = JsonConvert.DeserializeObject<NextGenCMS.Model.Alfresco.workflow.WfAllRootObject>(activeWf);
+            if (wfActive.data != null && wfActive.data.Any())
+            {
+                list.AddRange(wfActive.data);
+            }
 
+            if (wf.data != null && wf.data.Any())
+            {
+                list.AddRange(wf.data);
+            }            
+            return list;
+        }
         private List<AllTaskModel> MapAll(NextGenCMS.Model.Alfresco.workflow.WfRootObject dataObject)
         {
             List<AllTaskModel> model = new List<AllTaskModel>();

@@ -76,7 +76,8 @@ namespace NextGenCMS.UI
                   "~/Scripts/controller/DeleteUserController.js",
                   "~/Scripts/controller/TaskListController.js",
                      "~/Scripts/controller/CreateWorkflowController.js",                     
-                  "~/Scripts/controller/ViewEditWFController.js"
+                  "~/Scripts/controller/ViewEditWFController.js",
+                  "~/Scripts/controller/WorkflowController.js"
              ));
         }
         private static void LoadDirective(BundleCollection bundles)

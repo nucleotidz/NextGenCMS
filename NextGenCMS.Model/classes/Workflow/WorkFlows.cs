@@ -97,4 +97,9 @@ namespace NextGenCMS.Model.classes.Workflow
     {
         public List<Datum> data { get; set; }
     }
+
+    public class WfRootObject
+    {
+        public List<WorkflowInstance> data { get; set; }
+    }
 }

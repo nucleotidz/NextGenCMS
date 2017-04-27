@@ -219,6 +219,7 @@
     <Content Include="Scripts\controller\AdministrationController.js" />
     <Content Include="Scripts\controller\DashboardController.js" />
     <Content Include="Scripts\controller\ViewEditWFController.js" />
+    <Content Include="Scripts\controller\WorkflowController.js" />
     <Content Include="Scripts\Directive\FileDrop.js" />
     <Content Include="Scripts\factory\Cache.js" />
     <Content Include="Scripts\factory\Interceptor.js" />
@@ -291,6 +292,7 @@
     <Content Include="Views\Workflow\TaskList.cshtml" />
     <Content Include="Views\Workflow\ViewEditWorkFlow.cshtml" />
     <Content Include="Views\Workflow\CreateWorkflow.cshtml" />
+    <Content Include="Views\Workflow\MyWorkFlow.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NextGenCMS.APIHelper\NextGenCMS.APIHelper.csproj">

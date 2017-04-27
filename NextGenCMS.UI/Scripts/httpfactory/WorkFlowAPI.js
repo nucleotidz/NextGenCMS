@@ -37,6 +37,11 @@
                 method: "GET",
                 url: Global.apiuri + "workflow/All/Task/:wfid",
                 isArray: true
+            },
+            GetAllWf:{
+                method: "GET",
+                url: Global.apiuri + "workflow/Get/WF/:username",
+                isArray: true
             }
         });
     }]);
