@@ -72,7 +72,7 @@
         views: {
             'content@': {
                 templateUrl: 'Workflow/WorkflowDetail',
-                controller: 'TaskListController',
+                controller: 'WorkflowDetailsController',
                 controllerAs: "vm"
             }
         }

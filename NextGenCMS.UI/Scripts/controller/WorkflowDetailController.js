@@ -1,26 +1,21 @@
 ﻿(function () {
     'use strict';
-    app.controller('WorkflowDetailsController', ['$scope',  'WorkFlowAPI', 'AdministrationApi', '$q', 'Profile', 
-    function ($scope, $modalInstance, WorkFlowAPI, AdministrationApi, $q, Profile) {
-        vm = this;
-        var workflowInstanceId = 'activiti$3101'
-        vm.taskDatasource = new kendo.data.DataSource({
-            schema: {
-                model: {                  
-                    fields: {
-                        description: { type: "string" },
-                        title: { type: "string" },
-                        "properties.bpm_status": { type: "number" },
-                        "owner.userName": { type: "string" },
-                        "properties.cm_created": { type: "string" }                      
-                    }
-                }
-            }
-        });
-        function init() {
+    app.controller('WorkflowDetailsController', ['$scope', 'WorkFlowAPI', '$q',
+    function ($scope, WorkFlowAPI, $q) {
+        var vm = this;
+        var workflowInstanceId = 'activiti$3101';          
+        vm.taskdata = [];
+       
+        function init() {        
             var data = WorkFlowAPI.GetWorkflowDetails({ 'wfid': workflowInstanceId });
-
-        };     
+            $q.all([data.$promise]).then(function (response) {
+                vm.taskdata = response[0].data.tasks;
+                vm.taskDatasource = new kendo.data.DataSource({
+                    data: vm.taskdata,
+                    pageSize: 21   
+                });
+            });
+        };
         init();
     }]);
 })();

@@ -43,4 +43,12 @@
     </div>  
 </div>
 <div kendo-list-view id="listView" k-data-source="vm.taskDatasource">
+    <div k-template>
+        <h3>Description:{{dataItem.description}}</h3>
+        <div>Title: {{dataItem.title}}</div>
+        <div>Status:{{dataItem.properties.bpm_status}}</div>
+        <div>Owner:{{dataItem.owner.userName}}</div>
+        <div>Created: {{dataItem.properties.cm_created}}</div>
+    </div>
 </div>
+<div kendo-pager k-data-source="source"></div>
