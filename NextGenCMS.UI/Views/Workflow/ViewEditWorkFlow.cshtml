@@ -61,11 +61,21 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div kendo-grid id="C_grd"
+                 k-options="cGridOption"
+                 k-data-source="cGridDataSource">
+            </div>
+        </div>
+
+    </div>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-success" ng-if="wf.ActionOccured" ng-click="Approve();">Approve</button>
-    <button type="button" class="btn btn-danger"  ng-if="wf.ActionOccured" ng-click="Reject();">Reject</button>
-    <button type="button" class="btn btn-primary" ng-if="wf.TaskEnable" ng-click="EndTask();">End Task</button> 
-    <button type="button" class="btn btn-primary" ng-click="Save();">Save</button>      
+    <button type="button" class="btn btn-danger" ng-if="wf.ActionOccured" ng-click="Reject();">Reject</button>
+    <button type="button" class="btn btn-primary" ng-if="wf.TaskEnable" ng-click="EndTask();">Mark Complete</button>
+    <button type="button" class="btn btn-primary">Send Back</button>
+    <button type="button" class="btn btn-primary" ng-click="Save();">Save</button>
     <button type="button" class="btn btn-primary" ng-if="wf.ActionEnable" ng-click="closePopup();">Close</button>
 </div>

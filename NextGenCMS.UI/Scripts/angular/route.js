@@ -76,6 +76,14 @@
                 controllerAs: "vm"
             }
         }
+    }).state('Home.MyWorkflow', {
+        views: {
+            'content@': {
+                templateUrl: 'Workflow/MyWorkFlow',
+                controller: 'WorkflowController',
+                controllerAs: "vm"
+            }
+        }
     });
 
 });

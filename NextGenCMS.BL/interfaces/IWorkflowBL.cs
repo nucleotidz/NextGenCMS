@@ -19,5 +19,6 @@ namespace NextGenCMS.BL.interfaces
         void DoneTask(WFDoneModel model);
         List<AllTaskModel> GetAllTasks(string wfid);
         WfRootObject GetCaseDetails(string wfid);
+        List<NextGenCMS.Model.Alfresco.workflow.WorkflowInstance> GetWorkFlow(string username);
     }
 }

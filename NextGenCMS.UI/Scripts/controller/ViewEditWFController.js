@@ -1,7 +1,8 @@
 ﻿(function () {
     'use strict';
-    app.controller('ViewEditWfController', ['$scope', '$rootScope', '$modalInstance', 'items', 'Global', '$timeout', 'WorkFlowAPI', '$q', '$http','Profile',
+    app.controller('ViewEditWfController', ['$scope', '$rootScope', '$modalInstance', 'items', 'Global', '$timeout', 'WorkFlowAPI', '$q', '$http', 'Profile',
     function ($scope, $rootScope, $modalInstance, items, Global, $timeout, WorkFlowAPI, $q, $http, Profile) {
+        var grddata = [];
         $scope.wf = {
             TaskEnable: false,
             ActionEnable: true,
@@ -14,8 +15,8 @@
             fileName: "",
             fileId: "",
             desc: items.description,
-            comment: items.comment,
-            ActionOccured: true,          
+            comment: "",
+            ActionOccured: true,
         }
         if ((items.outcome == "Approved" || items.outcome == "Rejected") && items.ownerUsername == Profile.get('Profile').User.userName) {
             $scope.wf.ActionOccured = false;
@@ -31,7 +32,7 @@
             dataTextField: "text",
             dataValueField: "value"
         };
-        $timeout(function () {         
+        $timeout(function () {
             $scope.wf.Status = { "text": items.status, "value": items.status };
             $scope.wf.DueDate = items.dueDate
             $rootScope.$$phase = null
@@ -47,6 +48,8 @@
             var allTaks = WorkFlowAPI.GetAllTasks({ "wfid": items.workflowid });
             $q.all([data.$promise, allTaks.$promise]).then(function (response) {
                 if (response != undefined) {
+                    grddata = response[1]
+                    $scope.cGridDataSource.read();
                     $scope.wf.fileName = response[0].list.entries[0].entry.name
                     $scope.wf.fileId = response[0].list.entries[0].entry.id
                 }
@@ -76,7 +79,8 @@
             var WFAprroveReject = {
                 "prop_wf_reviewOutcome": "Reject",
                 "prop_bpm_comment": $scope.wf.comment,
-                "prop_transitions": "Next"
+                "prop_transitions": "Next",
+                "prop_bpm_status": $scope.wf.Status.value
             }
             var model = {
                 activitiid: items.pid,
@@ -91,9 +95,10 @@
             var WFAprroveReject = {
                 "prop_wf_reviewOutcome": "Approve",
                 "prop_bpm_comment": $scope.wf.comment,
-                "prop_transitions": "Next"
+                "prop_transitions": "Next",
+                "prop_bpm_status": $scope.wf.Status.value
             }
-            
+
             var model = {
                 activitiid: items.pid,
                 WFAprroveReject: WFAprroveReject
@@ -105,12 +110,12 @@
             });
         }
         $scope.EndTask = function () {
-            var wfDone=  {
-                "prop_bpm_status":"Not Yet Started",
-                "assoc_packageItems_added":"",
-                "assoc_packageItems_removed":"",
+            var wfDone = {
+                "assoc_packageItems_added": "",
+                "assoc_packageItems_removed": "",
                 "prop_bpm_comment": $scope.wf.comment,
-                "prop_transitions":"Next"
+                "prop_transitions": "Next",
+                "prop_bpm_status": $scope.wf.Status.value
             }
             var model = {
                 activitiid: items.pid,
@@ -122,5 +127,64 @@
             });
         }
         Bind();
+        $scope.cGridDataSource = new kendo.data.DataSource({
+            type: "json",
+            transport: {
+                read: function (o) {
+                    o.success(grddata);
+                }
+            },
+            pageSize: 1000,
+            schema: {
+                model: {
+                    action: "",
+                    fields: {
+                        status: {
+                            type: "string",
+                            editable: false
+                        },
+                        cm_owner: {
+                            type: "string", editable: false
+                        },
+                        bpm_comment: {
+                            type: "string", editable: false
+                        },
+                        cm_created: {
+                            type: "string", editable: false
+                        }
+
+                    }
+                }
+            },
+        });
+        $scope.cGridOption = {
+            dataSource: $scope.cGridDataSource,
+            dataBound: function () {
+            },
+            sortable: {
+                mode: "multiple",
+                allowUnsort: true
+            },
+            reorderable: true,
+            resizable: true,
+            navigatable: true,
+            scrollable: true,
+            height: 120,
+            selectable: "row",
+            filterable: true,
+            footer: false,
+            columns: [
+                { field: "status", "title": "Last Status", hidden: true },
+            {
+                field: "cm_owner", title: "Commented By"
+            },
+            {
+                field: "bpm_comment", title: "Comment"
+            },
+            {
+                field: "cm_created", title: "Commented On", template: "#= kendo.toString(kendo.parseDate(cm_created), 'dd MMM yyyy') #"
+            }
+            ]
+        }
     }]);
 })();
