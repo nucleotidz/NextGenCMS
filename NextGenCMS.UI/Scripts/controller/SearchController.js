@@ -60,7 +60,13 @@
             sortable: {
             mode: "multiple",
             allowUnsort: true
-        },
+            },
+            toolbar: ["excel"],
+            excel: {
+                allPages: true
+            },
+
+            groupable: true,
             reorderable: true,
             resizable: true,
             navigatable: true,

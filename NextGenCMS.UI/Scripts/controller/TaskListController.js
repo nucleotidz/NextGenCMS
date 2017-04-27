@@ -92,6 +92,11 @@
             scrollable: true,
             height: 300,
             selectable: "row",
+            toolbar: ["excel"],
+            excel: {
+                allPages: true
+            },          
+            groupable: true,
             filterable: true,
             footer: false,
             columns: [

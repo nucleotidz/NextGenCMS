@@ -231,6 +231,7 @@
     <Content Include="Scripts\httpfactory\SearchAPI.js" />
     <Content Include="Scripts\httpfactory\WorkFlowAPI.js" />
     <Content Include="Scripts\jquery\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\kendo\jszip.min.js" />
     <Content Include="Scripts\kendo\kendo.all.min.js" />
     <Content Include="Scripts\underscore\underscore-min.js" />
     <Content Include="Web.config" />
