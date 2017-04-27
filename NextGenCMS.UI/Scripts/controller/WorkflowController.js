@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
-    app.controller('WorkflowController', ['$scope', 'WorkFlowAPI', '$q', 'Profile',
-        function ($scope, WorkFlowAPI, $q, Profile) {
+    app.controller('WorkflowController', ['$scope', 'WorkFlowAPI', '$q', 'Profile','$state','$stateParams',
+        function ($scope, WorkFlowAPI, $q, Profile, $state, $stateParams) {
             var vm = this;
             var grddata = [];
             var WfData = WorkFlowAPI.GetAllWf({
@@ -13,6 +13,11 @@
                     vm.wfGridDataSource.read();
                 }
             });
+            vm.OpenDetails = function () {
+                var entityGrid = $("#wf_grd").data("kendoGrid")
+                var selectedItem = entityGrid.dataItem(entityGrid.select());
+                $state.go("Home.WorkflowDetail", { WorkFlowID: selectedItem.id });
+            }
             vm.wfGridDataSource = new kendo.data.DataSource({
                 type: "json",
                 transport: {
