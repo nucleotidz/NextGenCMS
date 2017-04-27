@@ -72,6 +72,12 @@ label {
 .clear {
     clear: both;
 }
+.badge-notify{
+   background:red;
+   position:relative;
+   top: -19px;
+   left: -35px;
+}
 
 .paddLeft {
     padding-left:0px;
