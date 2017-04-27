@@ -1,4 +1,5 @@
-﻿using NextGenCMS.Model.classes.Workflow;
+﻿using NextGenCMS.Model.Alfresco.workflow;
+using NextGenCMS.Model.classes.Workflow;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,5 +18,6 @@ namespace NextGenCMS.BL.interfaces
         void ApproveReject(WFApproveRejectModel model);
         void DoneTask(WFDoneModel model);
         List<AllTaskModel> GetAllTasks(string wfid);
+        WfRootObject GetCaseDetails(string wfid);
     }
 }

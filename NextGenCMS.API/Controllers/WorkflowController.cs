@@ -68,5 +68,12 @@ namespace NextGenCMS.API.Controllers
         {
             return Request.CreateResponse(HttpStatusCode.OK, workflowBl.GetAllTasks(wfid));
         }
+
+        [HttpGet]
+        [Route("WorkflowDetails")]
+        public HttpResponseMessage GetWorkflowDetails(string wfId)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, workflowBl.GetCaseDetails(wfId));
+        }
     }
 }

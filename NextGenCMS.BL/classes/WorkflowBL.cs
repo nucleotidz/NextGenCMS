@@ -5,6 +5,7 @@ using NextGenCMS.APIHelper.interfaces;
 using NextGenCMS.BL.interfaces;
 using NextGenCMS.Model.classes.Workflow;
 using NextGenCMS.Model.constants;
+using NextGenCMS.Model.Alfresco.workflow;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -162,6 +163,15 @@ namespace NextGenCMS.BL.classes
                 data = this._apiHelper.Get(ServiceUrl.AllWF + wfid + "?includeTasks=true&alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
             }
             return this.MapAll(JsonConvert.DeserializeObject<NextGenCMS.Model.Alfresco.workflow.WfRootObject>(data));
+        }
+        public WfRootObject GetCaseDetails(string wfid)
+        {
+            string data = string.Empty;
+            if (HttpContext.Current.Items[Filter.Token] != null)
+            {
+                data = this._apiHelper.Get(ServiceUrl.AllWF + wfid + "?includeTasks=true&alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
+            }
+            return JsonConvert.DeserializeObject<WfRootObject>(data);
         }
 
         private List<AllTaskModel> MapAll(NextGenCMS.Model.Alfresco.workflow.WfRootObject dataObject)
