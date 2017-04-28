@@ -8,7 +8,7 @@
                 isArray: true
             },
             getActiveWorkflows: {
-                method: "POST",
+                method: "GET",
                 url: Global.apiuri + "report/workflow/active/:username",
                 isArray: false,
                 params: {}

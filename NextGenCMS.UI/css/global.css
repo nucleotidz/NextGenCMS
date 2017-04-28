@@ -37,10 +37,13 @@ h2 {
 }
 
 label {
-    font-size: 11px !important;
-    font-weight: normal;
+    /*font-size: 11px;
+    font-weight: normal;*/
     display: block;
+     font-size: 12px;
+      /*text-shadow: 1px 1px #fff;*/
 }
+
 
 .form-control {
     height: 28px;
@@ -76,7 +79,7 @@ label {
 /*--Tree Menus---*/
 
 .twoCols .menuColumn {
-    padding:10px;
+    padding: 10px;
 }
 
 .twoCols .k-treeview .k-item {
@@ -94,35 +97,36 @@ ul.reportMenus li.k-item span.k-in {
     padding: 2px 0px !important;
 }
 
-ul.reportMenus li.k-item span.k-in.k-state-hover, ul.reportMenus li.k-item span.k-in.k-state-selected {
-    text-decoration: none !important;
-    color: #000 !important;
-    background-image: none !important;
-    padding: 2px 0px !important;
-}
+    ul.reportMenus li.k-item span.k-in.k-state-hover, ul.reportMenus li.k-item span.k-in.k-state-selected {
+        text-decoration: none !important;
+        color: #000 !important;
+        background-image: none !important;
+        padding: 2px 0px !important;
+    }
 
-ul.reportMenus li.k-item .k-top .k-in, ul.reportMenus li.k-item .k-mid .k-in, ul.reportMenus li.k-item .k-bot .k-in{
+ul.reportMenus li.k-item .k-top .k-in, ul.reportMenus li.k-item .k-mid .k-in, ul.reportMenus li.k-item .k-bot .k-in {
     font-weight: bold !important;
 }
 
 ul.reportMenus li ul.k-group li.k-item {
     padding: 0px !important;
 }
-ul.reportMenus li ul.k-group li.k-item span.k-in.k-state-hover {
-   text-decoration:underline !important;
-}
 
-ul.reportMenus li ul.k-group li.k-item span.k-in.k-state-selected {
-    color: #057FC2 !important;
-}
+    ul.reportMenus li ul.k-group li.k-item span.k-in.k-state-hover {
+        text-decoration: underline !important;
+    }
 
-ul.reportMenus li ul.k-group li.k-item .k-top .k-in, ul.reportMenus li ul.k-group li.k-item .k-mid .k-in, ul.reportMenus li ul.k-group li.k-item .k-bot .k-in{
-    font-weight: normal !important;
-    text-overflow: ellipsis;
-    width: 95%;
-    display: block;
-    overflow: hidden;
-}
+    ul.reportMenus li ul.k-group li.k-item span.k-in.k-state-selected {
+        color: #057FC2 !important;
+    }
+
+    ul.reportMenus li ul.k-group li.k-item .k-top .k-in, ul.reportMenus li ul.k-group li.k-item .k-mid .k-in, ul.reportMenus li ul.k-group li.k-item .k-bot .k-in {
+        font-weight: normal !important;
+        text-overflow: ellipsis;
+        width: 95%;
+        display: block;
+        overflow: hidden;
+    }
 
 ul.k-treeview-lines li.k-item span.k-in.k-state-hover {
     text-decoration: underline;
@@ -177,13 +181,6 @@ span.userField, span.passwordField {
 .row {
     margin-bottom: 15px;
 }
-
-label {
-    font-size: 12px;
-    text-shadow: 1px 1px #fff;
-}
-
-
 
 .navbar-nav .glyphicon {
     padding: 0px 7px 0px 0px;
@@ -469,20 +466,30 @@ ul.adminTools {
     border-radius: 5px;
 }
 
-    .btnPane .btn {
-        border-radius: 15px;
-        margin-right: 20px;
-    }
+/*.rptPane{
+    background: darkgrey !important;
+    padding: 0px !important;
+    margin: 0px !important;
+    height: 30px !important;
+    border-radius: 0px !important;
+}
+.rptPane h4{
+    margin: 5px !important;
+}*/
+.btnPane .btn {
+    border-radius: 15px;
+    margin-right: 20px;
+}
 
-        .btnPane .btn span {
-            margin-left: 5px;
-            width: 15px;
-            height: 15px;
-            border-radius: 13px;
-            background: #B2AEAF;
-            padding: 2px 0px 0px 0px;
-            font-size: 10px;
-        }
+    .btnPane .btn span {
+        margin-left: 5px;
+        width: 15px;
+        height: 15px;
+        border-radius: 13px;
+        background: #B2AEAF;
+        padding: 2px 0px 0px 0px;
+        font-size: 10px;
+    }
 
 .graybtn {
     background: #72716F;
@@ -624,7 +631,8 @@ h4.modal-title {
     background: #fff;
     border: solid 1px #ccc;
     border-radius: 4px;
-    min-height: 385px;
+    height: 500px;
+    overflow-y: scroll;
 }
 
 .gnrlInfoBox {
@@ -744,4 +752,20 @@ span.anoucement {
     height: 22px !important;
 }
 /* end kendo override*/
+
+ul.reportList {
+    border:solid 1px red;
+}
+ul.reportList li{
+    display:block;
+    border:solid 1px red;
+    clear:both;
+    font-size:12px;
+    padding:5px;
+}
+
+.reportList li label{
+    display:inline;
+}
+
 

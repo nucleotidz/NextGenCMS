@@ -17,44 +17,44 @@
             <li data-expanded="true">
                 Work Flow
                 <ul>
-                    <li>Active</li>
-                    <li>Completed</li>
+                    <li><span title="Active" ng-click="vm.getActiveWorkflows();">Active</span></li>
+                    <li><span title="Completed" ng-click="vm.getCompletedWorkflows();">Completed</span></li>
                 </ul>
             </li>
             <li data-expanded="true">
                 Due
                 <ul>
-                    <li>Today</li>
-                    <li>Tomorrow</li>
-                    <li>Next 7 Days</li>
-                    <li>Overdue</li>
-                    <li>No Date</li>
+                    <li><span title="Today" ng-click="vm.getWorkflowsDueToday();">Today</span></li>
+                    <li><span title="Tomorrow" ng-click="vm.getWorkflowsDueTomorrow();">Tomorrow</span></li>
+                    <li><span title="Next 7 Days" ng-click="vm.getWorkflowsDueNext7Days();">Next 7 Days</span></li>
+                    <li><span title="Overdue" ng-click="vm.getWorkflowsOverdue();">Overdue</span></li>
+                    <li><span title="No Date" ng-click="vm.getWorkflowsNoDueDate();">No Date</span></li>
                 </ul>
             </li>
             <li data-expanded="true">
                 Started
                 <ul>
-                    <li>Last 7 Days</li>
-                    <li>Last 14 Days</li>
-                    <li>Last 28 Days</li>
+                    <li><span title="Last 7 Days">Last 7 Days</span></li>
+                    <li><span title="Last 14 Days">Last 14 Days</span></li>
+                    <li><span title="Last 28 Days">Last 28 Days</span></li>
                 </ul>
             </li>
             <li data-expanded="true">
                 Priority
                 <ul>
-                    <li>High</li>
-                    <li>Medium</li>
-                    <li>Low</li>
+                    <li><span title="High">High</span></li>
+                    <li><span title="Medium">Medium</span></li>
+                    <li><span title="Low">Low</span></li>
                 </ul>
             </li>
             <li data-expanded="true">
                 Workflow Type
                 <ul>
                     <li>New Task</li>
-                    <li>Review and Approve (group review)</li>
-                    <li>Review and Approve (one or more reviewers)</li>
-                    <li>Review and Approve (pooled review)</li>
-                    <li>Review And Approve (single reviewer)</li>
+                    <li><span title="Review and Approve (group review)">Review and Approve (group review)</span></li>
+                    <li><span title="Review and Approve (one or more reviewers)">Review and Approve (one or more reviewers)</span></li>
+                    <li><span title="Review and Approve (pooled review)">Review and Approve (pooled review)</span></li>
+                    <li><span title="Review And Approve (single reviewer)">Review And Approve (single reviewer)</span></li>
                 </ul>
             </li>
         </ul>
@@ -68,50 +68,44 @@
                 </div>
             </div>*@
         <div class="row">
+            <div>{{vm.header}}</div>
+        </div>
+        <div class="row">
+            <div ng-show="vm.noRecordExist">{{vm.noWorkflows}}</div>
             <div kendo-list-view id="listView" k-data-source="source">
                 <div k-template>
-                    <div class="col-xs-12">
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <h2>Details: {{dataItem.message}}</h2>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <span>Title: {{dataItem.title}}</span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <span>Description: {{dataItem.description}}</span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-6 col-md-4">
-                                <span>Started by: {{dataItem.initiator.username}}</span>
-                            </div>
-                            <div class="col-xs-12 col-sm-6 col-md-4">
-                                <span>Due: {{dataItem.dueDate}}</span>
-                            </div>
-                            <div class="col-xs-12 col-sm-6 col-md-4">
-                                <<span>Completed: {{dataItem.endDate}}</span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-6 col-md-4">
-                                <span>Started: {{dataItem.startDate}}</span>
-                            </div>
-                            <div class="col-xs-12 col-sm-6 col-md-4">
-                                <span>Priority: {{dataItem.priority}}</span>
-                            </div>
-                            <div class="col-xs-12 col-sm-6 col-md-4">
-                                <<span>Status: "Workflow is in Progress"</span>
-                            </div>
+                    @*<div class="col-xs-12">*@
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h4>Details: {{dataItem.message}}</h4>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <ul class="reportList">
+                            <li><label>Title:</label><span>{{dataItem.title}}</span></li>
+                            <li><label>Description:</label><span>{{dataItem.description}}</span></li>
+                            <li class="clearfix">
+                                <div class="col-sm-3 padd0"><label>Started by:</label><span>{{dataItem.username}}</span></div>
+                                <div class="col-sm-3 padd0"><label>Due:</label><span>{{ dataItem.dueDate}}</span></div>
+                                <div class="col-sm-3 padd0"><label>Completed:</label><span>{{dataItem.endDate}}</span></div>                            
+                            </li>
+                            <li class="clearfix">
+                                <div class="col-sm-3 padd0"><label>Started:</label><span>{{ dataItem.startDate}}</span></div>
+                                <div class="col-sm-3 padd0"><label>Priority:</label><span>{{dataItem.priority}}</span></div>
+                                <div class="col-sm-3 padd0"><label>Status:</label><span>{{dataItem.status}}</span></div>
+                            </li>
+                           
+                          
+                        </ul>
+                    </div>
+                   
+                    
+                    
+                    @*</div>*@
                 </div>
                 <div kendo-pager k-data-source="source"></div>
             </div>
-        </div>
+        </div>        
     </div>
 </div>
