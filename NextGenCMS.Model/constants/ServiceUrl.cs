@@ -80,6 +80,17 @@ namespace NextGenCMS.Model.constants
         public static readonly string WorkflowReport = AppConfigKeys.ServiceUrl + "/alfresco/s/api/workflow-instances?exclude=jbpm$wcmwf:*,jbpm$wf:articleapproval,activiti$publishWebContent,jbpm$publishWebContent,jbpm$inwf:invitation-nominated,jbpm$imwf:invitation-moderated,activiti$activitiInvitationModerated,activiti$activitiInvitationNominated,activiti$activitiInvitationNominatedAddDirect&skipCount=0&maxItems=50";
         public static readonly string WorkflowCompleted = "&pooledTasks=false&state=COMPLETED";
         public static readonly string WorkflowInitiator = "&initiator=";
+        public static string WorkflowDueToday { get; set; }
+        public static string WorkflowDueTomorrow { get; set; }
+        public static string WorkflowDueNext7Days { get; set; }
+        public static string WorkflowOverdue { get; set; }
+        public static string WorkflowNoDueDate { get; set; }
+        public static string WorkflowStartedinLast7days { get; set; }
+        public static string WorkflowStartedinLast14days { get; set; }
+        public static string WorkflowStartedinLast28days { get; set; }
+        public static string WorkflowHighPriority { get; set; }
+        public static string WorkflowMediumPriority { get; set; }
+        public static string WorkflowLowPriority { get; set; }
         #endregion
     }
 }

@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
-    app.controller('WorkflowController', ['$scope', 'WorkFlowAPI', '$q', 'Profile',
-        function ($scope, WorkFlowAPI, $q, Profile) {
+    app.controller('WorkflowController', ['$scope', 'WorkFlowAPI', '$q', 'Profile','$state','$stateParams',
+        function ($scope, WorkFlowAPI, $q, Profile, $state, $stateParams) {
             var vm = this;
             var grddata = [];
             var WfData = WorkFlowAPI.GetAllWf({
@@ -13,6 +13,11 @@
                     vm.wfGridDataSource.read();
                 }
             });
+            vm.OpenDetails = function () {
+                var entityGrid = $("#wf_grd").data("kendoGrid")
+                var selectedItem = entityGrid.dataItem(entityGrid.select());
+                $state.go("Home.WorkflowDetail", { WorkFlowID: selectedItem.id });
+            }
             vm.wfGridDataSource = new kendo.data.DataSource({
                 type: "json",
                 transport: {
@@ -83,7 +88,7 @@
                 excel: {
                     allPages: true
                 },
-               
+
                 groupable: true,
                 filterable: true,
                 footer: false,
@@ -115,6 +120,17 @@
                             } else {
                                 return ""
                             }
+                        },
+                        groupHeaderTemplate: function (dataitem) {
+                            if (dataitem.value.toString() === "1") {
+                                return "High"
+                            } else if (dataitem.value.toString() === "2") {
+                                return "Medium"
+                            } else if (dataitem.value.toString() === "3") {
+                                return "Low"
+                            } else {
+                                return ""
+                            }
                         }
                     },
                     {
@@ -126,17 +142,31 @@
                             } else {
                                 return "No";
                             }
+                        },
+                        groupHeaderTemplate: function (dataitem) {
+                            if (dataitem.value.toString() === "true") {
+                                return "Yes"
+                            } else {
+                                return "No";
+                            }
                         }
                     },
                     {
                         field: "startDate",
                         title: "Start Date",
-                        template: "#= kendo.toString(kendo.parseDate(startDate), 'dd MMM yyyy') #"
+                        template: "#= kendo.toString(kendo.parseDate(startDate), 'dd MMM yyyy') #",
+                        groupHeaderTemplate:function (dataitem) {                            
+                                return kendo.toString(kendo.parseDate(dataitem.value), 'dd MMM yyyy')                            
+                        }
+                           
                     },
                     {
                         field: "dueDate",
                         title: "Due Date",
-                        template: "#= kendo.toString(kendo.parseDate(dueDate), 'dd MMM yyyy') #"
+                        template: "#= kendo.toString(kendo.parseDate(dueDate), 'dd MMM yyyy') #",
+                        groupHeaderTemplate: function (dataitem) {
+                            return kendo.toString(kendo.parseDate(dataitem.value), 'dd MMM yyyy')
+                        }
                     },
 
                 ]

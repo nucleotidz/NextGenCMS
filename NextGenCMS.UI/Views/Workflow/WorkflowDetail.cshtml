@@ -5,6 +5,7 @@
 <div class="row">
     <ul class="breadcrumb">
         <li><a ui-sref=".">Administration</a></li>
+        <li><a ui-sref="Home.MyWorkflow">My Workflow</a></li>
         <li>Task List</li>
     </ul>
 </div>
@@ -14,33 +15,67 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-12">     
-        <label>Title: Review And Approve (single reviewer)</label>
+    <div class="col-sm-12">
+        <label>Title: {{vm.WfModel.title}}</label>
     </div>
 </div>
 <div class="row">
     <div class="col-sm-12">
-        <label>Description: Review And Approve (single reviewer)</label>
+        <label>Description: {{vm.WfModel.description}}</label>
     </div>
 </div>
 <div class="row">
     <div class="col-sm-4">
-        <label>Started By: Ahmar</label>
+        <label>Started By: {{vm.WfModel.createdBy}}</label>
     </div>
     <div class="col-sm-4">
-        <label>Due Date: 12-04-17</label>
-    </div>
+        <label>Due Date: {{vm.WfModel.duedate}}</label>
+    </div>   
     <div class="col-sm-4">
-        <label>Status: In Progress</label>
+        <label>Completed: {{vm.WfModel.endDate}}</label>
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-4">
-        <label>Comment: Please approve</label>
-    </div>
     <div class="col-sm-8">
-        <label>Message: Please approve and review the document</label>
-    </div>  
+        <label>Message: {{vm.WfModel.message}}</label>
+    </div>
+    <div class="col-sm-4">
+        <label>Status: {{vm.WfModel.status}}</label>
+    </div>
 </div>
-<div kendo-list-view id="listView" k-data-source="vm.taskDatasource">
+@*<div kendo-list-view id="listView" k-data-source="vm.taskDatasource">
+        <div k-template>
+            <div style="border-bottom:1px solid">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3>{{dataItem.description}}</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">Title: {{dataItem.title}}</div>
+                    <div class="col-sm-6">Status: {{dataItem.properties.bpm_status}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">Owner: {{dataItem.owner.userName}}</div>
+                    <div class="col-sm-6">Created: {{dataItem.properties.cm_created}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div kendo-pager k-data-source="vm.taskDatasource"></div>*@
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <label for="File">File</label>
+            <span class="glyphicon glyphicon-file"></span><a href ng-click="DownloadFile(vm.WfModel.FileId)"> {{vm.WfModel.fileName}}</a>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <h4>Task History</h4>
+</div>
+<div id="taskGrid"
+     kendo-grid
+     k-options="vm.taskGridOptions"
+     k-data-source="vm.taskDatasource">
 </div>

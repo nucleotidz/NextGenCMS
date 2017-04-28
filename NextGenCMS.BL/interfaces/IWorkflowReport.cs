@@ -14,5 +14,27 @@ namespace NextGenCMS.BL.interfaces
         WorkflowReportResponse GetActiveWorkflows(string username);
 
         WorkflowReportResponse GetCompletedWorkflows(string username);
+
+        WorkflowReportResponse GetWorkflowsDueToday(string username);
+
+        WorkflowReportResponse GetWorkflowsDueTomorrow(string username);
+
+        WorkflowReportResponse GetWorkflowsDueNext7Days(string username);
+
+        WorkflowReportResponse GetWorkflowsOverdue(string username);
+
+        WorkflowReportResponse GetWorkflowsNoDueDate(string username);
+
+        WorkflowReportResponse GetWorkflowsStartedinLast7days(string username);
+
+        WorkflowReportResponse GetWorkflowsStartedinLast14days(string username);
+
+        WorkflowReportResponse GetWorkflowsStartedinLast28days(string username);
+
+        WorkflowReportResponse GetWorkflowsHighPriority(string username);
+
+        WorkflowReportResponse GetWorkflowsMediumPriority(string username);
+
+        WorkflowReportResponse GetWorkflowsLowPriority(string username);
     }
 }

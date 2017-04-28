@@ -19,6 +19,13 @@ ul {
     box-shadow: 4px 4px 5px grey;
 }
 
+.mainContent {
+    border:solid 1px #ccc;
+    border-radius:4px;
+    background:#fff;
+    min-height: 500px;
+}
+
 span.redStar {
     color: red;
 }
@@ -75,6 +82,31 @@ label {
 .clear {
     clear: both;
 }
+.badge-notify{
+    background: red;
+    position: relative;
+    top: -12px;
+    left: -6px
+}
+
+.paddLeft {
+    padding-left:0px;
+}
+.paddRight {
+    padding-right:0px;
+}
+.padd0 {
+    padding:0px !important;
+}
+
+.checkbox input[type=checkbox] {
+    margin-left:-18px !important;
+    top: -3px;
+}
+
+.checkbox, .radio {
+   margin-top: 8px;
+}
 
 /*--Tree Menus---*/
 
@@ -97,12 +129,12 @@ ul.reportMenus li.k-item span.k-in {
     padding: 2px 0px !important;
 }
 
-    ul.reportMenus li.k-item span.k-in.k-state-hover, ul.reportMenus li.k-item span.k-in.k-state-selected {
-        text-decoration: none !important;
-        color: #000 !important;
-        background-image: none !important;
-        padding: 2px 0px !important;
-    }
+ul.reportMenus li.k-item span.k-in.k-state-hover, ul.reportMenus li.k-item span.k-in.k-state-selected {
+    text-decoration: none !important;
+    color: #000 !important;
+    background-image: none !important;
+    padding: 2px 0px !important;
+}
 
 ul.reportMenus li.k-item .k-top .k-in, ul.reportMenus li.k-item .k-mid .k-in, ul.reportMenus li.k-item .k-bot .k-in {
     font-weight: bold !important;
@@ -112,21 +144,21 @@ ul.reportMenus li ul.k-group li.k-item {
     padding: 0px !important;
 }
 
-    ul.reportMenus li ul.k-group li.k-item span.k-in.k-state-hover {
+ul.reportMenus li ul.k-group li.k-item span.k-in.k-state-hover {
         text-decoration: underline !important;
-    }
+}
 
-    ul.reportMenus li ul.k-group li.k-item span.k-in.k-state-selected {
-        color: #057FC2 !important;
-    }
+ul.reportMenus li ul.k-group li.k-item span.k-in.k-state-selected {
+    color: #057FC2 !important;
+}
 
     ul.reportMenus li ul.k-group li.k-item .k-top .k-in, ul.reportMenus li ul.k-group li.k-item .k-mid .k-in, ul.reportMenus li ul.k-group li.k-item .k-bot .k-in {
-        font-weight: normal !important;
-        text-overflow: ellipsis;
-        width: 95%;
-        display: block;
-        overflow: hidden;
-    }
+    font-weight: normal !important;
+    text-overflow: ellipsis;
+    width: 95%;
+    display: block;
+    overflow: hidden;
+}
 
 ul.k-treeview-lines li.k-item span.k-in.k-state-hover {
     text-decoration: underline;
@@ -412,6 +444,7 @@ ul.logoutBox li {
 .toolPane {
     float: left;
     position: fixed;
+    top: 158px;
 }
 
     .toolPane ul {
@@ -427,7 +460,7 @@ ul.logoutBox li {
         .toolPane ul.pageTools li, ul.adminTools li {
             width: 25px;
             height: 25px;
-            background: #767676;
+            background: #057FC2;
             -moz-border-radius: 70px;
             -webkit-border-radius: 70px;
             border-radius: 70px;
@@ -476,20 +509,20 @@ ul.adminTools {
 .rptPane h4{
     margin: 5px !important;
 }*/
-.btnPane .btn {
-    border-radius: 15px;
-    margin-right: 20px;
-}
-
-    .btnPane .btn span {
-        margin-left: 5px;
-        width: 15px;
-        height: 15px;
-        border-radius: 13px;
-        background: #B2AEAF;
-        padding: 2px 0px 0px 0px;
-        font-size: 10px;
+    .btnPane .btn {
+        border-radius: 15px;
+        margin-right: 20px;
     }
+
+        .btnPane .btn span {
+            margin-left: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 13px;
+            background: #B2AEAF;
+            padding: 2px 0px 0px 0px;
+            font-size: 10px;
+        }
 
 .graybtn {
     background: #72716F;
@@ -751,21 +784,72 @@ span.anoucement {
 .k-dropdown-wrap .k-input {
     height: 22px !important;
 }
+.k-widget {
+    border-width: 0px !important;
+}
+
 /* end kendo override*/
 
 ul.reportList {
-    border:solid 1px red;
+   border-bottom: solid 1px #eee;
 }
 ul.reportList li{
-    display:block;
-    border:solid 1px red;
+    display:block;    
     clear:both;
     font-size:12px;
     padding:5px;
 }
 
 .reportList li label{
-    display:inline;
+    float:left;
+    margin-right: 10px !important;
+    width:75px ;
 }
 
+.mainContent h3{
+   font-size: 16px;
+    margin: 0px;
+    padding: 10px;
+    background: #999;
+    border-radius: 4px 4px 0px 0px;
+    color: #fff;
+}
+
+.noListItem {
+    padding:10px;
+}
+
+.reportList li h4 {
+    font-size:14px;
+}
+
+/*scroll bar*/
+
+.menuColumn::-webkit-scrollbar-track, .k-grid-content::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+	border-radius: 10px;
+}
+
+.menuColumn::-webkit-scrollbar, .k-grid-content::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+.menuColumn::-webkit-scrollbar-thumb, .k-grid-content::-webkit-scrollbar-thumb
+{
+	background-color: #AAA;
+	border-radius: 10px;
+	background-image: -webkit-linear-gradient(90deg,
+	                                          rgba(0, 0, 0, .2) 25%,
+											  transparent 25%,
+											  transparent 50%,
+											  rgba(0, 0, 0, .2) 50%,
+											  rgba(0, 0, 0, .2) 75%,
+											  transparent 75%,
+											  transparent)
+}
+/*end scroll bar*/
 

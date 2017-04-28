@@ -50,7 +50,76 @@ namespace NextGenCMS.BL.classes
         public WorkflowReportResponse GetCompletedWorkflows(string username)
         {
             string initiator = username == "all" ? string.Empty : ServiceUrl.WorkflowInitiator + username;
-            string uri = ServiceUrl.WorkflowReport + initiator + ServiceUrl.WorkflowCompleted;            
+            string uri = ServiceUrl.WorkflowReport + initiator + ServiceUrl.WorkflowCompleted;
+            return GetWorkflows(uri);
+        }
+
+        public WorkflowReportResponse GetWorkflowsDueToday(string username)
+        {
+            string initiator = username == "all" ? string.Empty : ServiceUrl.WorkflowInitiator + username;
+            string uri = ServiceUrl.WorkflowReport + initiator + ServiceUrl.WorkflowDueToday;
+            return GetWorkflows(uri);
+        }
+
+        public WorkflowReportResponse GetWorkflowsDueTomorrow(string username)
+        {
+            string initiator = username == "all" ? string.Empty : ServiceUrl.WorkflowInitiator + username;
+            string uri = ServiceUrl.WorkflowReport + initiator + ServiceUrl.WorkflowDueTomorrow;
+            return GetWorkflows(uri);
+        }
+
+        public WorkflowReportResponse GetWorkflowsDueNext7Days(string username)
+        {
+            string initiator = username == "all" ? string.Empty : ServiceUrl.WorkflowInitiator + username;
+            string uri = ServiceUrl.WorkflowReport + initiator + ServiceUrl.WorkflowDueNext7Days;
+            return GetWorkflows(uri);
+        }
+        public WorkflowReportResponse GetWorkflowsOverdue(string username)
+        {
+            string initiator = username == "all" ? string.Empty : ServiceUrl.WorkflowInitiator + username;
+            string uri = ServiceUrl.WorkflowReport + initiator + ServiceUrl.WorkflowOverdue;
+            return GetWorkflows(uri);
+        }
+        public WorkflowReportResponse GetWorkflowsNoDueDate(string username)
+        {
+            string initiator = username == "all" ? string.Empty : ServiceUrl.WorkflowInitiator + username;
+            string uri = ServiceUrl.WorkflowReport + initiator + ServiceUrl.WorkflowNoDueDate;
+            return GetWorkflows(uri);
+        }
+        public WorkflowReportResponse GetWorkflowsStartedinLast7days(string username)
+        {
+            string initiator = username == "all" ? string.Empty : ServiceUrl.WorkflowInitiator + username;
+            string uri = ServiceUrl.WorkflowReport + initiator + ServiceUrl.WorkflowStartedinLast7days;
+            return GetWorkflows(uri);
+        }
+        public WorkflowReportResponse GetWorkflowsStartedinLast14days(string username)
+        {
+            string initiator = username == "all" ? string.Empty : ServiceUrl.WorkflowInitiator + username;
+            string uri = ServiceUrl.WorkflowReport + initiator + ServiceUrl.WorkflowStartedinLast14days;
+            return GetWorkflows(uri);
+        }
+        public WorkflowReportResponse GetWorkflowsStartedinLast28days(string username)
+        {
+            string initiator = username == "all" ? string.Empty : ServiceUrl.WorkflowInitiator + username;
+            string uri = ServiceUrl.WorkflowReport + initiator + ServiceUrl.WorkflowStartedinLast28days;
+            return GetWorkflows(uri);
+        }
+        public WorkflowReportResponse GetWorkflowsHighPriority(string username)
+        {
+            string initiator = username == "all" ? string.Empty : ServiceUrl.WorkflowInitiator + username;
+            string uri = ServiceUrl.WorkflowReport + initiator + ServiceUrl.WorkflowHighPriority;
+            return GetWorkflows(uri);
+        }
+        public WorkflowReportResponse GetWorkflowsMediumPriority(string username)
+        {
+            string initiator = username == "all" ? string.Empty : ServiceUrl.WorkflowInitiator + username;
+            string uri = ServiceUrl.WorkflowReport + initiator + ServiceUrl.WorkflowMediumPriority;
+            return GetWorkflows(uri);
+        }
+        public WorkflowReportResponse GetWorkflowsLowPriority(string username)
+        {
+            string initiator = username == "all" ? string.Empty : ServiceUrl.WorkflowInitiator + username;
+            string uri = ServiceUrl.WorkflowReport + initiator + ServiceUrl.WorkflowLowPriority;
             return GetWorkflows(uri);
         }
         #endregion

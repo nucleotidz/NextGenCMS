@@ -24,6 +24,7 @@
         };
 
         vm.getActiveWorkflows = function () {
+            vm.header = "Active Workflows";
             var data = WorkflowReportApi.getActiveWorkflows({ "username": vm.userName });
             vm.loadWorkflows(data);
         };
@@ -36,32 +37,69 @@
 
         vm.getWorkflowsDueToday = function () {
             vm.header = "Workflows Due Today";
-            //var data = WorkflowReportApi.getCompletedWorkflows({ "username": vm.userName });
-            //vm.loadWorkflows(data);
+            var data = WorkflowReportApi.getWorkflowsDueToday({ "username": vm.userName });
+            vm.loadWorkflows(data);
         };
 
         vm.getWorkflowsDueTomorrow = function () {
             vm.header = "Workflows Due Tomorrow";
-            //var data = WorkflowReportApi.getCompletedWorkflows({ "username": vm.userName });
-            //vm.loadWorkflows(data);
+            var data = WorkflowReportApi.getWorkflowsDueTomorrow({ "username": vm.userName });
+            vm.loadWorkflows(data);
         };
 
         vm.getWorkflowsDueNext7Days = function () {
             vm.header = "Workflows Due in Next 7 Days";
-            //var data = WorkflowReportApi.getCompletedWorkflows({ "username": vm.userName });
-            //vm.loadWorkflows(data);
+            var data = WorkflowReportApi.getWorkflowsDueNext7Days({ "username": vm.userName });
+            vm.loadWorkflows(data);
         };
 
         vm.getWorkflowsOverdue = function () {
             vm.header = "Overdue Workflows";
-            //var data = WorkflowReportApi.getCompletedWorkflows({ "username": vm.userName });
-            //vm.loadWorkflows(data);
+            var data = WorkflowReportApi.getWorkflowsOverdue({ "username": vm.userName });
+            vm.loadWorkflows(data);
         };
 
         vm.getWorkflowsNoDueDate = function () {
             vm.header = "Workflows Without a Due Date";
-            //var data = WorkflowReportApi.getCompletedWorkflows({ "username": vm.userName });
-            //vm.loadWorkflows(data);
+            var data = WorkflowReportApi.getWorkflowsNoDueDate({ "username": vm.userName });
+            vm.loadWorkflows(data);
+        };
+
+        vm.getWorkflowsStartedinLast7days = function () {
+            vm.header = "Workflows Started in Last 7 days";
+            var data = WorkflowReportApi.getWorkflowsStartedinLast7days({ "username": vm.userName });
+            vm.loadWorkflows(data);
+        };
+
+        vm.getWorkflowsStartedinLast14days = function () {
+            vm.header = "Workflows Started in Last 14 days";
+            var data = WorkflowReportApi.getWorkflowsStartedinLast14days({ "username": vm.userName });
+            vm.loadWorkflows(data);
+        };
+
+        vm.getWorkflowsStartedinLast28days = function () {
+            vm.header = "Workflows Started in Last 28 days";
+            var data = WorkflowReportApi.getWorkflowsStartedinLast28days({ "username": vm.userName });
+            vm.loadWorkflows(data);
+        };
+
+        vm.getWorkflowsHighPriority = function () {
+            vm.header = "High Priority Workflows";
+            var data = WorkflowReportApi.getWorkflowsHighPriority({ "username": vm.userName });
+            vm.loadWorkflows(data);
+        };
+
+        vm.getWorkflowsMediumPriority = function () {
+            vm.header = "Medium Priority Workflows";
+            var data = WorkflowReportApi.getWorkflowsMediumPriority({ "username": vm.userName });
+            vm.loadWorkflows(data);
+        };
+
+
+        vm.getWorkflowsLowPriority = function () {
+            vm.header = "Low Priority Workflows";
+            var data = WorkflowReportApi.getWorkflowsLowPriority({ "username": vm.userName });
+            vm.loadWorkflows(data);
         };
 
         vm.loadWorkflows = function (data) {
@@ -74,6 +112,7 @@
                 if (response != null && response != undefined && response.length > 0 && response[0].data != null && response[0].data.length > 0) {
                     vm.listData = [];
                     angular.forEach(response[0].data, function (data) {
+                        vm.WorkflowData = {};
                         vm.WorkflowData.message = data.message;
                         vm.WorkflowData.title = data.title;
                         vm.WorkflowData.description = data.description;

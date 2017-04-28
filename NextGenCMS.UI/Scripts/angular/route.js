@@ -69,14 +69,17 @@
             }
         }
     }).state('Home.WorkflowDetail', {
+        params: { WorkFlowID: null },
         views: {
             'content@': {
                 templateUrl: 'Workflow/WorkflowDetail',
-                controller: 'TaskListController',
+                controller: 'WorkflowDetailsController',
                 controllerAs: "vm"
             }
         }
     }).state('Home.MyWorkflow', {
+        params: { WorkFlowID: null },
+       // params: ['WorkFlowID'],
         views: {
             'content@': {
                 templateUrl: 'Workflow/MyWorkFlow',

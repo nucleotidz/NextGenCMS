@@ -70,7 +70,7 @@ namespace NextGenCMS.API.Controllers
         }
 
         [HttpGet]
-        [Route("WorkflowDetails")]
+        [Route("WorkflowDetails/{wfId}")]
         public HttpResponseMessage GetWorkflowDetails(string wfId)
         {
             return Request.CreateResponse(HttpStatusCode.OK, workflowBl.GetCaseDetails(wfId));

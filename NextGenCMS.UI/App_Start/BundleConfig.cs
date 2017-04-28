@@ -79,6 +79,7 @@ namespace NextGenCMS.UI
                      "~/Scripts/controller/CreateWorkflowController.js",                     
                   "~/Scripts/controller/ViewEditWFController.js",
                   "~/Scripts/controller/WorkflowController.js",
+                  "~/Scripts/controller/WorkflowDetailController.js",               
                "~/Scripts/controller/WorkflowReportController.js"
              ));
         }

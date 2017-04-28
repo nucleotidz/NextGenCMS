@@ -17,7 +17,7 @@
             <li data-expanded="true">
                 Work Flow
                 <ul>
-                    <li><span title="Active" ng-click="vm.getActiveWorkflows();">Active</span></li>
+                    <li class="active"><span title="Active" ng-click="vm.getActiveWorkflows();">Active</span></li>
                     <li><span title="Completed" ng-click="vm.getCompletedWorkflows();">Completed</span></li>
                 </ul>
             </li>
@@ -47,7 +47,7 @@
                     <li><span title="Low">Low</span></li>
                 </ul>
             </li>
-            <li data-expanded="true">
+            @*<li data-expanded="true">
                 Workflow Type
                 <ul>
                     <li>New Task</li>
@@ -56,56 +56,44 @@
                     <li><span title="Review and Approve (pooled review)">Review and Approve (pooled review)</span></li>
                     <li><span title="Review And Approve (single reviewer)">Review And Approve (single reviewer)</span></li>
                 </ul>
-            </li>
+            </li>*@
         </ul>
     </div>
-    <div class="col-xs-12 col-md-9">
-        @*<div class="row">
-                <div id="workflowGrid"
-                     kendo-grid
-                     k-options="vm.workflowGridOptions"
-                     k-data-source="vm.workflowGridDataSource">
-                </div>
-            </div>*@
-        <div class="row">
-            <div>{{vm.header}}</div>
-        </div>
-        <div class="row">
-            <div ng-show="vm.noRecordExist">{{vm.noWorkflows}}</div>
-            <div kendo-list-view id="listView" k-data-source="source">
-                <div k-template>
-                    @*<div class="col-xs-12">*@
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <h4>Details: {{dataItem.message}}</h4>
-                        </div>
+    <div class="col-xs-12 col-md-9 paddRight">
+        <div class="mainContent">
+            @*<div class="row">
+                    <div id="workflowGrid"
+                         kendo-grid
+                         k-options="vm.workflowGridOptions"
+                         k-data-source="vm.workflowGridDataSource">
                     </div>
-
-                    <div class="row">
+                </div>*@
+            <div class="row margin0">
+                <h3>{{vm.header}}</h3>
+            </div>
+            <div class="row">
+                <div class="noListItem" ng-show="vm.noRecordExist">{{vm.noWorkflows}}</div>
+                <div kendo-list-view id="listView" k-data-source="source">
+                    <div k-template>
                         <ul class="reportList">
-                            <li><label>Title:</label><span>{{dataItem.title}}</span></li>
-                            <li><label>Description:</label><span>{{dataItem.description}}</span></li>
+                            <li><h4 class="margin0"><a href="">{{dataItem.message}}</a></h4></li>
+                            <li><label>Title</label><span>{{dataItem.title}}</span></li>
+                            <li><label>Description</label><span>{{dataItem.description}}</span></li>
                             <li class="clearfix">
-                                <div class="col-sm-3 padd0"><label>Started by:</label><span>{{dataItem.username}}</span></div>
+                                <div class="col-sm-4 padd0"><label>Started by</label><span>{{dataItem.username}}</span></div>
                                 <div class="col-sm-3 padd0"><label>Due:</label><span>{{ dataItem.dueDate}}</span></div>
-                                <div class="col-sm-3 padd0"><label>Completed:</label><span>{{dataItem.endDate}}</span></div>                            
+                                <div class="col-sm-5 padd0"><label>Completed</label><span>{{dataItem.endDate}}</span></div>
                             </li>
                             <li class="clearfix">
-                                <div class="col-sm-3 padd0"><label>Started:</label><span>{{ dataItem.startDate}}</span></div>
-                                <div class="col-sm-3 padd0"><label>Priority:</label><span>{{dataItem.priority}}</span></div>
-                                <div class="col-sm-3 padd0"><label>Status:</label><span>{{dataItem.status}}</span></div>
+                                <div class="col-sm-4 padd0"><label>Started</label><span>{{ dataItem.startDate}}</span></div>
+                                <div class="col-sm-3 padd0"><label>Priority</label><span>{{dataItem.priority}}</span></div>
+                                <div class="col-sm-5 padd0"><label>Status</label><span>{{dataItem.status}}</span></div>
                             </li>
-                           
-                          
                         </ul>
                     </div>
-                   
-                    
-                    
-                    @*</div>*@
+                    <div kendo-pager k-data-source="source"></div>
                 </div>
-                <div kendo-pager k-data-source="source"></div>
             </div>
-        </div>        
+        </div>
     </div>
 </div>
