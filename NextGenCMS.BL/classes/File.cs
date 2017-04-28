@@ -110,7 +110,7 @@ namespace NextGenCMS.BL.classes
                 SessionFactory factory = SessionFactory.NewInstance();
                 Dictionary<String, String> parameter = new Dictionary<String, String>();
                 parameter.Add(SessionParameter.User, "admin");
-                parameter.Add(SessionParameter.Password, "S!wan@246151");               
+                parameter.Add(SessionParameter.Password, "admin");               
                 parameter.Add(SessionParameter.AtomPubUrl, ServiceUrl.CMISApi);
                 parameter.Add(SessionParameter.BindingType, BindingType.AtomPub);
                 this.session = factory.GetRepositories(parameter)[0].CreateSession();
