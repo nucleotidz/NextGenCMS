@@ -84,10 +84,6 @@ namespace NextGenCMS.Model.constants
         public static readonly string WorkflowDueAfter = "&dueAfter=";
         public static readonly string WorkflowDueBefore = "&dueBefore=";
         public static readonly string WorkflowStartedAfter = "&startedAfter=";
-
-        public static readonly string WorkflowStartedinLast7days = "";
-        public static readonly string WorkflowStartedinLast14days = "";
-        public static readonly string WorkflowStartedinLast28days = "";
         public static readonly string WorkflowHighPriority = "&priority=1";
         public static readonly string WorkflowMediumPriority = "&priority=2";
         public static readonly string WorkflowLowPriority = "&priority=3";
