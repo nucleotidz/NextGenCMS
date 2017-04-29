@@ -20,6 +20,9 @@ namespace NextGenCMS.BL.classes
         /// api helper object
         /// </summary>
         private readonly IAPIHelper _apiHelper;
+
+        private DateTime _todaysDate;
+        private string isoFormat;
         #endregion
 
         #region Constructor
@@ -30,6 +33,8 @@ namespace NextGenCMS.BL.classes
         public WorkflowReport(IAPIHelper apiHelper)
         {
             _apiHelper = apiHelper;
+            _todaysDate = DateTime.Today;
+            isoFormat = "yyyy-MM-ddTHH:mm:ss.fffzzz";
         }
         #endregion
 
@@ -57,51 +62,70 @@ namespace NextGenCMS.BL.classes
         public WorkflowReportResponse GetWorkflowsDueToday(string username)
         {
             string initiator = username == "all" ? string.Empty : ServiceUrl.WorkflowInitiator + username;
-            string uri = ServiceUrl.WorkflowReport + initiator + ServiceUrl.WorkflowDueToday;
+            DateTime yesterdaysDate = new DateTime(_todaysDate.AddDays(-1).Year, _todaysDate.AddDays(-1).Month, _todaysDate.AddDays(-1).Day, 11, 59, 59, 999);
+            DateTime todaysDate = new DateTime(_todaysDate.Year, _todaysDate.Month, _todaysDate.Day, 11, 59, 59, 999);
+            string workflowDueToday = ServiceUrl.WorkflowDueAfter + yesterdaysDate.ToString(isoFormat) + ServiceUrl.WorkflowDueBefore + todaysDate.ToString(isoFormat);
+
+            string uri = ServiceUrl.WorkflowReport + initiator + workflowDueToday;
             return GetWorkflows(uri);
         }
 
         public WorkflowReportResponse GetWorkflowsDueTomorrow(string username)
         {
             string initiator = username == "all" ? string.Empty : ServiceUrl.WorkflowInitiator + username;
-            string uri = ServiceUrl.WorkflowReport + initiator + ServiceUrl.WorkflowDueTomorrow;
+            DateTime todaysDate = new DateTime(_todaysDate.Year, _todaysDate.Month, _todaysDate.Day, 11, 59, 59, 999);
+            DateTime tomorrowsDate = new DateTime(_todaysDate.AddDays(1).Year, _todaysDate.AddDays(1).Month, _todaysDate.AddDays(1).Day, 11, 59, 59, 999);
+            string workflowDueTomorrow = ServiceUrl.WorkflowDueAfter + todaysDate.ToString(isoFormat) + ServiceUrl.WorkflowDueBefore + tomorrowsDate.ToString(isoFormat);
+            string uri = ServiceUrl.WorkflowReport + initiator + workflowDueTomorrow;
             return GetWorkflows(uri);
         }
 
         public WorkflowReportResponse GetWorkflowsDueNext7Days(string username)
         {
             string initiator = username == "all" ? string.Empty : ServiceUrl.WorkflowInitiator + username;
-            string uri = ServiceUrl.WorkflowReport + initiator + ServiceUrl.WorkflowDueNext7Days;
+            DateTime todaysDate = new DateTime(_todaysDate.Year, _todaysDate.Month, _todaysDate.Day, 11, 59, 59, 999);
+            DateTime next7Days = new DateTime(_todaysDate.AddDays(8).Year, _todaysDate.AddDays(8).Month, _todaysDate.AddDays(8).Day, 11, 59, 59, 999);
+            string workflowDueNext7Days = ServiceUrl.WorkflowDueAfter + todaysDate.ToString(isoFormat) + ServiceUrl.WorkflowDueBefore + next7Days.ToString(isoFormat);
+            string uri = ServiceUrl.WorkflowReport + initiator + workflowDueNext7Days;
             return GetWorkflows(uri);
         }
         public WorkflowReportResponse GetWorkflowsOverdue(string username)
         {
             string initiator = username == "all" ? string.Empty : ServiceUrl.WorkflowInitiator + username;
-            string uri = ServiceUrl.WorkflowReport + initiator + ServiceUrl.WorkflowOverdue;
+            DateTime yesterdaysDate = new DateTime(_todaysDate.AddDays(-1).Year, _todaysDate.AddDays(-1).Month, _todaysDate.AddDays(-1).Day, 11, 59, 59, 999);
+            string workflowOverdue = ServiceUrl.WorkflowDueBefore + yesterdaysDate.ToString(isoFormat);
+            string uri = ServiceUrl.WorkflowReport + initiator + workflowOverdue;
             return GetWorkflows(uri);
         }
         public WorkflowReportResponse GetWorkflowsNoDueDate(string username)
         {
             string initiator = username == "all" ? string.Empty : ServiceUrl.WorkflowInitiator + username;
-            string uri = ServiceUrl.WorkflowReport + initiator + ServiceUrl.WorkflowNoDueDate;
+            string workflowNoDueDate = ServiceUrl.WorkflowDueBefore + "null";
+            string uri = ServiceUrl.WorkflowReport + initiator + workflowNoDueDate;
             return GetWorkflows(uri);
         }
         public WorkflowReportResponse GetWorkflowsStartedinLast7days(string username)
         {
             string initiator = username == "all" ? string.Empty : ServiceUrl.WorkflowInitiator + username;
-            string uri = ServiceUrl.WorkflowReport + initiator + ServiceUrl.WorkflowStartedinLast7days;
+            DateTime last7Days = new DateTime(_todaysDate.AddDays(-7).Year, _todaysDate.AddDays(-7).Month, _todaysDate.AddDays(-7).Day, 11, 59, 59, 999);
+            string workflowStartedinLast7days = ServiceUrl.WorkflowStartedAfter + last7Days.ToString(isoFormat);
+            string uri = ServiceUrl.WorkflowReport + initiator + workflowStartedinLast7days;
             return GetWorkflows(uri);
         }
         public WorkflowReportResponse GetWorkflowsStartedinLast14days(string username)
         {
             string initiator = username == "all" ? string.Empty : ServiceUrl.WorkflowInitiator + username;
-            string uri = ServiceUrl.WorkflowReport + initiator + ServiceUrl.WorkflowStartedinLast14days;
+            DateTime last14Days = new DateTime(_todaysDate.AddDays(-14).Year, _todaysDate.AddDays(-14).Month, _todaysDate.AddDays(-14).Day, 11, 59, 59, 999);
+            string workflowStartedinLast14days = ServiceUrl.WorkflowStartedAfter + last14Days.ToString(isoFormat);
+            string uri = ServiceUrl.WorkflowReport + initiator + workflowStartedinLast14days;
             return GetWorkflows(uri);
         }
         public WorkflowReportResponse GetWorkflowsStartedinLast28days(string username)
         {
             string initiator = username == "all" ? string.Empty : ServiceUrl.WorkflowInitiator + username;
-            string uri = ServiceUrl.WorkflowReport + initiator + ServiceUrl.WorkflowStartedinLast28days;
+            DateTime last28Days = new DateTime(_todaysDate.AddDays(-28).Year, _todaysDate.AddDays(-28).Month, _todaysDate.AddDays(-28).Day, 11, 59, 59, 999);
+            string workflowStartedinLast28days = ServiceUrl.WorkflowStartedAfter + last28Days.ToString(isoFormat);
+            string uri = ServiceUrl.WorkflowReport + initiator + workflowStartedinLast28days;
             return GetWorkflows(uri);
         }
         public WorkflowReportResponse GetWorkflowsHighPriority(string username)

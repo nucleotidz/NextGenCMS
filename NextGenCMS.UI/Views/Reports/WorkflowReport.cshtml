@@ -34,17 +34,17 @@
             <li data-expanded="true">
                 Started
                 <ul>
-                    <li><span title="Last 7 Days">Last 7 Days</span></li>
-                    <li><span title="Last 14 Days">Last 14 Days</span></li>
-                    <li><span title="Last 28 Days">Last 28 Days</span></li>
+                    <li><span title="Last 7 Days" ng-click="vm.getWorkflowsStartedinLast7days();">Last 7 Days</span></li>
+                    <li><span title="Last 14 Days" ng-click="vm.getWorkflowsStartedinLast14days();">Last 14 Days</span></li>
+                    <li><span title="Last 28 Days" ng-click="vm.getWorkflowsStartedinLast28days();">Last 28 Days</span></li>
                 </ul>
             </li>
             <li data-expanded="true">
                 Priority
                 <ul>
-                    <li><span title="High">High</span></li>
-                    <li><span title="Medium">Medium</span></li>
-                    <li><span title="Low">Low</span></li>
+                    <li><span title="High" ng-click="vm.getWorkflowsHighPriority();">High</span></li>
+                    <li><span title="Medium" ng-click="vm.getWorkflowsMediumPriority();">Medium</span></li>
+                    <li><span title="Low" ng-click="vm.getWorkflowsLowPriority();">Low</span></li>
                 </ul>
             </li>
             @*<li data-expanded="true">

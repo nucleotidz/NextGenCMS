@@ -95,7 +95,6 @@
             vm.loadWorkflows(data);
         };
 
-
         vm.getWorkflowsLowPriority = function () {
             vm.header = "Low Priority Workflows";
             var data = WorkflowReportApi.getWorkflowsLowPriority({ "username": vm.userName });
