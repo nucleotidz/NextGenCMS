@@ -14,7 +14,9 @@
 
             },
             'content': {
-                templateUrl: 'Home/Dashboard'
+                templateUrl: 'Home/Dashboard',
+                controller: 'DashboardController',
+                controllerAs: "vm"
             },
             'toolpane': {
                 templateUrl: 'Home/ToolPane'

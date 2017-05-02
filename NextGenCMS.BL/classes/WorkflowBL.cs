@@ -158,15 +158,45 @@ namespace NextGenCMS.BL.classes
             }
             return this.MapAll(JsonConvert.DeserializeObject<NextGenCMS.Model.Alfresco.workflow.WfRootObject>(data));
         }
+
+        public void Reassign(int taskId, string username, bool IsResolve)
+        {
+            WorkflowReassignModel objParams = new WorkflowReassignModel();
+
+            if (!IsResolve)
+            {
+                objParams.assignee = username;
+                objParams.state = "delegated";
+            }
+            else
+            {
+                objParams.state = "resolved";
+            }
+
+            string data = string.Empty;
+            if (HttpContext.Current.Items[Filter.Token] != null)
+            {
+                if (!IsResolve)
+                {
+                    data = this._apiHelper.Put(ServiceUrl.WFUpdate + taskId + "?select=state,assignee&alf_ticket=" + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(objParams));
+                }
+                else
+                {
+                    data = this._apiHelper.Put(ServiceUrl.WFUpdate + taskId + "?select=state&alf_ticket=" + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(objParams));
+
+                }
+            }
+        }
+
         public List<NextGenCMS.Model.Alfresco.workflow.WorkflowInstance> GetWorkFlow(string username)
         {
             List<NextGenCMS.Model.Alfresco.workflow.WorkflowInstance> list = new List<NextGenCMS.Model.Alfresco.workflow.WorkflowInstance>();
             string data = string.Empty;
-            string activeWf = string.Empty; 
+            string activeWf = string.Empty;
             if (HttpContext.Current.Items[Filter.Token] != null)
             {
-                data = this._apiHelper.Get(ServiceUrl.CompletedWF +"?state=COMPLETED&initiator="+username+"&alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
-            } 
+                data = this._apiHelper.Get(ServiceUrl.CompletedWF + "?state=COMPLETED&initiator=" + username + "&alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
+            }
             if (HttpContext.Current.Items[Filter.Token] != null)
             {
                 activeWf = this._apiHelper.Get(ServiceUrl.CompletedWF + "?initiator=" + username + "&alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
@@ -176,12 +206,12 @@ namespace NextGenCMS.BL.classes
             if (wfActive.data != null && wfActive.data.Any())
             {
                 list.AddRange(wfActive.data);
-            }       
+            }
             if (wf.data != null && wf.data.Any())
             {
                 list.AddRange(wf.data);
-            }   
-           
+            }
+
             return list;
         }
         public NextGenCMS.Model.Alfresco.workflow.WfRootObject GetCaseDetails(string wfid)

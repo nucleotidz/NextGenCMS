@@ -24,6 +24,11 @@ namespace NextGenCMS.Model.constants
         public const string Post = "POST";
 
         /// <summary>
+        /// String PUT
+        /// </summary>
+        public const string Put = "PUT";
+
+        /// <summary>
         /// string POST 
         /// </summary>
         public const string Delete = "DELETE";

@@ -20,5 +20,7 @@ namespace NextGenCMS.BL.interfaces
         List<AllTaskModel> GetAllTasks(string wfid);
         NextGenCMS.Model.Alfresco.workflow.WfRootObject GetCaseDetails(string wfid);
         List<NextGenCMS.Model.Alfresco.workflow.WorkflowInstance> GetWorkFlow(string username);
+        void Reassign(int taskId, string username, bool IsResolve);
+        
     }
 }

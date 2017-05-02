@@ -47,6 +47,11 @@
                 method: "GET",
                 url: Global.apiuri + "workflow/Get/WF/:username",
                 isArray: true
+            },
+            Reassign: {
+                method: "GET",
+                url: Global.apiuri + "workflow/Reassign/:taskId/:username/:Isresolved",
+                isArray: true
             }
         });
     }]);

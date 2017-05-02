@@ -45,7 +45,7 @@ namespace NextGenCMS.BL.classes
                     query = "{\"prop_cm_name\":" + "\"*" + searchKey + "*\",\"datatype\":\"cm:content\"}";
                 }
                 else
-                {
+                {                
                     termKey = searchKey;                  
                 }
                 data = this._apiHelper.Get(ServiceUrl.SearchfileURL + "&term=" + termKey + "&query=" + query + ServiceUrl.searchQuerystring + "&alf_ticket=" + HttpContext.Current.Items[Filter.Token]);

@@ -142,6 +142,55 @@ namespace NextGenCMS.APIHelper.classes
         /// <param name="uri">Address of api</param>
         /// <param name="parameters">json object</param>
         /// <returns>response</returns>
+        public string Put(string uri, string parameters)
+        {
+            try
+            {
+                ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(delegate { return true; });
+                WebRequest req = WebRequest.Create(uri);
+                req.ContentType = ApiHelper.application_json;
+                req.Timeout = 1000000;
+                req.Method = ApiHelper.Put;
+                if (!string.IsNullOrEmpty(parameters))
+                {
+                    using (var streamWriter = new StreamWriter(req.GetRequestStream()))
+                    {
+                        streamWriter.Write(parameters);
+                    }
+                }
+                using (WebResponse resp = req.GetResponse())
+                {
+                    StreamReader sr = new StreamReader(resp.GetResponseStream());
+                    string response = sr.ReadToEnd().Trim();
+                    return response;
+                }
+            }
+            catch (WebException wex)
+            {
+                if (wex.Response != null)
+                {
+                    using (var errorResponse = (HttpWebResponse)wex.Response)
+                    {
+                        using (var reader = new StreamReader(errorResponse.GetResponseStream()))
+                        {
+                            var response = new WebResponseModel
+                            {
+                                status = NextGenCMS.Model.constants.ApiHelper.StatusCode.Exception,
+                                message = reader.ReadToEnd().Trim()
+                            };
+                        }
+                    }
+                }
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Used for posting to API
+        /// </summary>
+        /// <param name="uri">Address of api</param>
+        /// <param name="parameters">json object</param>
+        /// <returns>response</returns>
         public WebResponseModel Submit(string uri, string parameters)
         {
             try

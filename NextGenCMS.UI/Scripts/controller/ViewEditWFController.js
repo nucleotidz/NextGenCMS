@@ -126,6 +126,15 @@
                 $modalInstance.dismiss("success");
             });
         }
+        $scope.ReassignTask = function () {
+            var data = WorkFlowAPI.Reassign({
+                taskId: items.taskId,
+                username: items.ownerUsername, Isresolved: false
+            });
+            $q.all([data.$promise]).then(function (response) {
+                $modalInstance.dismiss("success");
+            });
+        }
         Bind();
         $scope.cGridDataSource = new kendo.data.DataSource({
             type: "json",

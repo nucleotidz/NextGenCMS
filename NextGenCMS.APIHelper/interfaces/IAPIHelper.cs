@@ -30,6 +30,14 @@
         /// <param name="uri">Address of api</param>
         /// <param name="parameters">json object</param>
         /// <returns>response</returns>
+        string Put(string uri, string parameters);
+
+        /// <summary>
+        /// Used for posting to API
+        /// </summary>
+        /// <param name="uri">Address of api</param>
+        /// <param name="parameters">json object</param>
+        /// <returns>response</returns>
         WebResponseModel Submit(string uri, string parameters);
 
         void DownLoad(string uri, string fileName);

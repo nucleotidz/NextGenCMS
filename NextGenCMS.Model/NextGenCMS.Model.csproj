@@ -93,6 +93,7 @@
     <Compile Include="classes\Workflow\WorkflowDefinitionModel.cs" />
     <Compile Include="classes\Workflow\WorkFlowFileModel.cs" />
     <Compile Include="classes\Workflow\WorkFlowModel.cs" />
+    <Compile Include="classes\Workflow\WorkflowReassignModel.cs" />
     <Compile Include="classes\Workflow\WorkFlows.cs" />
     <Compile Include="constants\ApiHelper.cs" />
     <Compile Include="constants\AppConfigKeys.cs" />
