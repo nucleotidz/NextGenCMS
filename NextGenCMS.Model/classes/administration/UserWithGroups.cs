@@ -38,7 +38,7 @@ namespace NextGenCMS.Model.classes.administration
         public bool isAdminAuthority { get; set; }
         public Capabilities capabilities { get; set; }
         public List<Group> groups { get; set; }
-        //public Immutability immutability { get; set; }
+        public string role { get; set; }
     }
     public class Capabilities
     {

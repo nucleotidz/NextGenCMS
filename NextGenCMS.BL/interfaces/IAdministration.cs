@@ -39,6 +39,13 @@ namespace NextGenCMS.BL.interfaces
         UserSites GetUserSites(string username);
 
         /// <summary>
+        /// This method will fetch user of site
+        /// </summary>
+        /// <param name="username">username</param>
+        /// <returns>user details</returns>
+        List<SiteUsers> GetSiteUsers();
+
+        /// <summary>
         /// This method will return all the groups
         /// </summary>
         /// <returns>list of groups</returns>

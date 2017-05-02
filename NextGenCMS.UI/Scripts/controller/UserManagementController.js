@@ -51,6 +51,9 @@
                         },
                         jobtitle: {
                             type: "string", editable: false
+                        },
+                        role: {
+                            type: "string", editable: false
                         }
                     }
                 }
@@ -111,6 +114,9 @@
             },
             {
                 field: "jobtitle", title: "Job Title"
+            },
+            {
+                field: "role", title: "Role"
             }
             ]
         };

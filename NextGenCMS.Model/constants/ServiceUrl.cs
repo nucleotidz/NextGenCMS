@@ -42,6 +42,8 @@ namespace NextGenCMS.Model.constants
         public static readonly string AddUserRole = AppConfigKeys.ServiceUrl + "/alfresco/s/api/sites/" + AppConfigKeys.Site + "/invitations?alf_ticket=";
 
         public static readonly string GetUserSites = AppConfigKeys.ServiceUrl + "alfresco/s/api/people/";
+
+        public static readonly string GetSiteUsers = AppConfigKeys.ServiceUrl + "alfresco/s/api/sites/" + AppConfigKeys.Site + "/memberships?size=250&nf=&authorityType=USER&alf_ticket=";
         #endregion
 
         #region "Administration - Groups"

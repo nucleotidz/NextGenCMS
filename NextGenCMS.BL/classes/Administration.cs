@@ -17,10 +17,7 @@ namespace NextGenCMS.BL.classes
     using NextGenCMS.Model.constants;
     using NextGenCMS.Model.classes.administration;
     using NextGenCMS.Model.classes.administration.GetUsers;
-    using NextGenCMS.Model;
     using NextGenCMS.Model.classes.administration.CreateUser;
-    using System.Dynamic;
-    using Newtonsoft.Json.Converters;
     #endregion
 
     public class Administration : IAdministration
@@ -121,6 +118,19 @@ namespace NextGenCMS.BL.classes
                                                                 user.userName.IndexOf(searchText) != -1) &&
                                                                 user.userName != username && !user.isDeleted).OrderBy(x => x.firstName).ToList();
             }
+
+            //get site users
+            var siteUsers = GetSiteUsers();
+            //filter usernames of site users
+            var userList = siteUsers.Select(user => user.authority.userName);
+            //filter search users - only site users should be fetched
+            response.people = response.people.Where(user => userList.Contains(user.userName)).ToList();
+            response.people.ForEach(user =>
+                {
+                    user.role = siteUsers.FirstOrDefault(suser => suser.authority.userName == user.userName).role.Replace("Site", string.Empty);
+                });
+
+            response.paging.totalItems = response.people.Count();
             return response;
         }
 
@@ -168,10 +178,27 @@ namespace NextGenCMS.BL.classes
             {
                 data = this._apiHelper.Get(ServiceUrl.GetUserSites + username + "/sites?roles=user&alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
             }
-            //var converter = new ExpandoObjectConverter();
+
             List<UserSites> response = JsonConvert.DeserializeObject<List<UserSites>>(data);
-            //var response = JsonConvert.DeserializeObject<UserSites>(dataObject.);
+
             return response.FirstOrDefault(site => site.shortName == AppConfigKeys.Site);
+        }
+
+        /// <summary>
+        /// This method will fetch user of site
+        /// </summary>
+        /// <param name="username">username</param>
+        /// <returns>user details</returns>
+        public List<SiteUsers> GetSiteUsers()
+        {
+            string data = string.Empty;
+            if (HttpContext.Current.Items[Filter.Token] != null)
+            {
+                data = this._apiHelper.Get(ServiceUrl.GetSiteUsers + HttpContext.Current.Items[Filter.Token]);
+            }
+
+            var response = JsonConvert.DeserializeObject<List<SiteUsers>>(data);
+            return response;
         }
         #endregion
 

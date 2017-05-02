@@ -121,7 +121,7 @@
                         vm.WorkflowData.endDate = data.endDate === null || data.endDate === "" ? "<in progress>" : kendo.toString(kendo.parseDate(data.endDate), 'dd MMM yyyy hh:mm:ss');
                         vm.WorkflowData.startDate = kendo.toString(kendo.parseDate(data.startDate), 'dd MMM yyyy hh:mm:ss');
                         vm.WorkflowData.priority = data.priority === "1" ? "High" : (data.priority === "2" ? "Medium" : "Low");
-                        vm.WorkflowData.status = data.isActive ? "Workflow is in Progress" : "Workflow completed";
+                        vm.WorkflowData.status = data.isActive ? "Workflow is in Progress" : "Workflow is Complete";
                         vm.listData.push(vm.WorkflowData);
                     });
                     //vm.workflowGridDataSource.read();

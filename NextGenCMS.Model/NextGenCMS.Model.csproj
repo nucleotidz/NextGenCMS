@@ -55,7 +55,7 @@
     <Compile Include="classes\administration\CreateUser\AddUser.cs" />
     <Compile Include="classes\administration\CreateUser\AddUserRole.cs" />
     <Compile Include="classes\administration\CreateUser\UserRoleResponse.cs" />
-    <Compile Include="classes\administration\GetUsers\SiteUserList.cs" />
+    <Compile Include="classes\administration\GetUsers\SiteUsers.cs" />
     <Compile Include="classes\administration\Person.cs" />
     <Compile Include="classes\administration\UserSites.cs" />
     <Compile Include="classes\administration\UserWithGroups.cs" />

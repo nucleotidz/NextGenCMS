@@ -65,11 +65,12 @@ namespace NextGenCMS.BL.classes
         {
             string token = _apiHelper.Post(ServiceUrl.Login, JsonConvert.SerializeObject(loginModel));
             LoginToken loginToken = JsonConvert.DeserializeObject<LoginToken>(token);
-            HttpContext.Current.Items[Filter.Token] = loginToken.data.ticket;
-            //var data = this._apiHelper.Get(ServiceUrl.GetUser + loginModel.username + "?alf_ticket=" + );
-            //User user = JsonConvert.DeserializeObject<User>(data);
-            var user = _administration.GetUser(loginModel.username);
 
+            //set token
+            HttpContext.Current.Items[Filter.Token] = loginToken.data.ticket;
+            //get user details
+            var user = _administration.GetUser(loginModel.username);
+            //get user sites
             var userSites = _administration.GetUserSites(loginModel.username);
             var response = new LoginResponse
             {
@@ -78,9 +79,6 @@ namespace NextGenCMS.BL.classes
                 UserSites = userSites
             };
 
-            //var data = _apiHelper.Get("http://127.0.0.1:8080/alfresco/s/api/workflow-instances/activiti$1545?includeTasks=true&alf_ticket=" + loginToken.data.ticket);
-
-            //var workflow = JsonConvert.DeserializeObject<WorkflowTasks>(data);
             return response;
         }
 
