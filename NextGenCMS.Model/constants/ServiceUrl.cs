@@ -1,9 +1,10 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Web;
 
 namespace NextGenCMS.Model.constants
 {
-    public class ServiceUrl
+    public static class ServiceUrl
     {
         #region "Authentication"
         /// <summary>
@@ -62,7 +63,7 @@ namespace NextGenCMS.Model.constants
         public static readonly string CMISApi = AppConfigKeys.ServiceUrl + "/alfresco/api/-default-/public/cmis/versions/1.0/atom/";
         public static readonly string DeleteFile = AppConfigKeys.ServiceUrl + "/alfresco/s/slingshot/doclib/action/file/site/" + AppConfigKeys.Site + "/documentLibrary/";
         public static readonly string DeleteFolder = AppConfigKeys.ServiceUrl + "alfresco/s/slingshot/doclib/action/folder/site/" + AppConfigKeys.Site + "/documentLibrary/";
-   
+
         #endregion
 
         #region WorkflowAPI
@@ -80,6 +81,12 @@ namespace NextGenCMS.Model.constants
         public static readonly string WorkflowReport = AppConfigKeys.ServiceUrl + "/alfresco/s/api/workflow-instances?exclude=jbpm$wcmwf:*,jbpm$wf:articleapproval,activiti$publishWebContent,jbpm$publishWebContent,jbpm$inwf:invitation-nominated,jbpm$imwf:invitation-moderated,activiti$activitiInvitationModerated,activiti$activitiInvitationNominated,activiti$activitiInvitationNominatedAddDirect&skipCount=0&maxItems=50";
         public static readonly string WorkflowCompleted = "&pooledTasks=false&state=COMPLETED";
         public static readonly string WorkflowInitiator = "&initiator=";
+        public static readonly string WorkflowDueAfter = "&dueAfter=";
+        public static readonly string WorkflowDueBefore = "&dueBefore=";
+        public static readonly string WorkflowStartedAfter = "&startedAfter=";
+        public static readonly string WorkflowHighPriority = "&priority=1";
+        public static readonly string WorkflowMediumPriority = "&priority=2";
+        public static readonly string WorkflowLowPriority = "&priority=3";
         #endregion
     }
 }

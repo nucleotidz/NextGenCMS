@@ -30,22 +30,24 @@
         </div>
     </div>
 
-    <div class="column col-xs-12 col-md-9">
-        <div class="row">
-            <div id="userGrid"
-                 kendo-grid
-                 k-options="vm.FileGridOptions"
-                 k-data-source="vm.FileGridDataSource">
+    <div class="col-xs-12 col-md-9 paddRight">
+        <div class="mainContent">
+            <div class="row">
+                <div id="userGrid"
+                     kendo-grid
+                     k-options="vm.FileGridOptions"
+                     k-data-source="vm.FileGridDataSource">
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="fileZone" file-dropzone file="rawFile" upload="upload();" file-name="rawFileName">
+                    Drag & Drop file to upload ...
+                </div>
             </div>
         </div>
-        <div class="row">  
-
-            <div class="fileZone" file-dropzone file="rawFile" upload="upload();" file-name="rawFileName">
-                Drag & Drop file to upload ...
-            </div>         
-        </div>        
     </div>
-    </div>
+</div>
 
  <ul kendo-context-menu k-filter="'#userGrid tbody tr[aria-selected=true]'"
         k-on-open="vm.open(kendoEvent);"

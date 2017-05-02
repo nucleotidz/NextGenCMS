@@ -19,6 +19,13 @@ ul {
     box-shadow: 4px 4px 5px grey;
 }
 
+.mainContent {
+    border:solid 1px #ccc;
+    border-radius:4px;
+    background:#fff;
+    min-height: 500px;
+}
+
 span.redStar {
     color: red;
 }
@@ -37,10 +44,13 @@ h2 {
 }
 
 label {
-    /*font-size: 11px !important;*/
-    font-weight: normal;
+    /*font-size: 11px;
+    font-weight: normal;*/
     display: block;
+     font-size: 12px;
+      /*text-shadow: 1px 1px #fff;*/
 }
+
 
 .form-control {
     height: 28px;
@@ -73,10 +83,10 @@ label {
     clear: both;
 }
 .badge-notify{
-   background:red;
-   position:relative;
-   top: -19px;
-   left: -35px;
+    background: red;
+    position: relative;
+    top: -12px;
+    left: -6px
 }
 
 .paddLeft {
@@ -101,7 +111,7 @@ label {
 /*--Tree Menus---*/
 
 .twoCols .menuColumn {
-    padding:10px;
+    padding: 10px;
 }
 
 .twoCols .k-treeview .k-item {
@@ -126,22 +136,23 @@ ul.reportMenus li.k-item span.k-in.k-state-hover, ul.reportMenus li.k-item span.
     padding: 2px 0px !important;
 }
 
-ul.reportMenus li.k-item .k-top .k-in, ul.reportMenus li.k-item .k-mid .k-in, ul.reportMenus li.k-item .k-bot .k-in{
+ul.reportMenus li.k-item .k-top .k-in, ul.reportMenus li.k-item .k-mid .k-in, ul.reportMenus li.k-item .k-bot .k-in {
     font-weight: bold !important;
 }
 
 ul.reportMenus li ul.k-group li.k-item {
     padding: 0px !important;
 }
+
 ul.reportMenus li ul.k-group li.k-item span.k-in.k-state-hover {
-   text-decoration:underline !important;
+        text-decoration: underline !important;
 }
 
 ul.reportMenus li ul.k-group li.k-item span.k-in.k-state-selected {
     color: #057FC2 !important;
 }
 
-ul.reportMenus li ul.k-group li.k-item .k-top .k-in, ul.reportMenus li ul.k-group li.k-item .k-mid .k-in, ul.reportMenus li ul.k-group li.k-item .k-bot .k-in{
+    ul.reportMenus li ul.k-group li.k-item .k-top .k-in, ul.reportMenus li ul.k-group li.k-item .k-mid .k-in, ul.reportMenus li ul.k-group li.k-item .k-bot .k-in {
     font-weight: normal !important;
     text-overflow: ellipsis;
     width: 95%;
@@ -202,13 +213,6 @@ span.userField, span.passwordField {
 .row {
     margin-bottom: 15px;
 }
-
-label {
-    font-size: 12px;
-    /*text-shadow: 1px 1px #fff;*/
-}
-
-
 
 .navbar-nav .glyphicon {
     padding: 0px 7px 0px 0px;
@@ -440,6 +444,7 @@ ul.logoutBox li {
 .toolPane {
     float: left;
     position: fixed;
+    top: 158px;
 }
 
     .toolPane ul {
@@ -455,7 +460,7 @@ ul.logoutBox li {
         .toolPane ul.pageTools li, ul.adminTools li {
             width: 25px;
             height: 25px;
-            background: #767676;
+            background: #057FC2;
             -moz-border-radius: 70px;
             -webkit-border-radius: 70px;
             border-radius: 70px;
@@ -494,6 +499,16 @@ ul.adminTools {
     border-radius: 5px;
 }
 
+/*.rptPane{
+    background: darkgrey !important;
+    padding: 0px !important;
+    margin: 0px !important;
+    height: 30px !important;
+    border-radius: 0px !important;
+}
+.rptPane h4{
+    margin: 5px !important;
+}*/
     .btnPane .btn {
         border-radius: 15px;
         margin-right: 20px;
@@ -650,7 +665,7 @@ h4.modal-title {
     border: solid 1px #ccc;
     border-radius: 4px;
     height: 500px;
-    overflow-y:scroll;
+    overflow-y: scroll;
 }
 
 .gnrlInfoBox {
@@ -769,5 +784,72 @@ span.anoucement {
 .k-dropdown-wrap .k-input {
     height: 22px !important;
 }
+.k-widget {
+    border-width: 0px !important;
+}
+
 /* end kendo override*/
+
+ul.reportList {
+   border-bottom: solid 1px #eee;
+}
+ul.reportList li{
+    display:block;    
+    clear:both;
+    font-size:12px;
+    padding:5px;
+}
+
+.reportList li label{
+    float:left;
+    margin-right: 10px !important;
+    width:75px ;
+}
+
+.mainContent h3{
+   font-size: 16px;
+    margin: 0px;
+    padding: 10px;
+    background: #999;
+    border-radius: 4px 4px 0px 0px;
+    color: #fff;
+}
+
+.noListItem {
+    padding:10px;
+}
+
+.reportList li h4 {
+    font-size:14px;
+}
+
+/*scroll bar*/
+
+.menuColumn::-webkit-scrollbar-track, .k-grid-content::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+	border-radius: 10px;
+}
+
+.menuColumn::-webkit-scrollbar, .k-grid-content::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+.menuColumn::-webkit-scrollbar-thumb, .k-grid-content::-webkit-scrollbar-thumb
+{
+	background-color: #AAA;
+	border-radius: 10px;
+	background-image: -webkit-linear-gradient(90deg,
+	                                          rgba(0, 0, 0, .2) 25%,
+											  transparent 25%,
+											  transparent 50%,
+											  rgba(0, 0, 0, .2) 50%,
+											  rgba(0, 0, 0, .2) 75%,
+											  transparent 75%,
+											  transparent)
+}
+/*end scroll bar*/
 
