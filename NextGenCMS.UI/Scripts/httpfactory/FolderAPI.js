@@ -50,6 +50,11 @@
                 isArray: false,
                 params: {}
             },
+            CheckOutCountByUser: {
+                method: "GET",
+                url: Global.apiuri + "Folder/CheckOutCount/:userName",
+                isArray: false               
+            }
         });
     }]);
 })();

@@ -79,5 +79,12 @@ namespace NextGenCMS.API.Controllers
         {
             return Request.CreateResponse(HttpStatusCode.OK, _folder.DeleteFolder(folderPath));
         }
+
+        [HttpGet]
+        [Route("CheckOutCount/{userName}")]
+        public HttpResponseMessage GetCheckedOutCount(string userName)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, _folder.CheckOutCountbyUser(userName));
+        }
     }
 }
