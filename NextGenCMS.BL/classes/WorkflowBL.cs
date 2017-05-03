@@ -195,11 +195,11 @@ namespace NextGenCMS.BL.classes
             string activeWf = string.Empty;
             if (HttpContext.Current.Items[Filter.Token] != null)
             {
-                data = this._apiHelper.Get(ServiceUrl.CompletedWF + "?state=COMPLETED&initiator=" + username + "&alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
+                data = this._apiHelper.Get(ServiceUrl.WorkflowReport + ServiceUrl.WorkflowCompleted + "&initiator=" + username + "&alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
             }
             if (HttpContext.Current.Items[Filter.Token] != null)
             {
-                activeWf = this._apiHelper.Get(ServiceUrl.CompletedWF + "?initiator=" + username + "&alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
+                activeWf = this._apiHelper.Get(ServiceUrl.WorkflowReport + "&initiator=" + username + "&alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
             }
             NextGenCMS.Model.Alfresco.workflow.WfAllRootObject wf = JsonConvert.DeserializeObject<NextGenCMS.Model.Alfresco.workflow.WfAllRootObject>(data);
             NextGenCMS.Model.Alfresco.workflow.WfAllRootObject wfActive = JsonConvert.DeserializeObject<NextGenCMS.Model.Alfresco.workflow.WfAllRootObject>(activeWf);

@@ -1,11 +1,12 @@
 ﻿(function () {
     'use strict';
-    app.controller('WorkflowReportController', ['$scope', 'WorkflowReportApi', '$q',
-    function ($scope, WorkflowReportApi, $q) {
+    app.controller('WorkflowReportController', ['$scope', 'WorkflowReportApi', '$q', '$state',
+    function ($scope, WorkflowReportApi, $q, $state) {
         var vm = this;
         vm.userName = "all";
         vm.groupDataSource = new kendo.data.DataSource();
         vm.WorkflowData = {
+            id : "",
             message: "",
             title: "",
             description: "",
@@ -20,6 +21,7 @@
         vm.noWorkflows = "No workflows";
         vm.noRecordExist = false;
         function init() {
+            $(".loader").show();
             vm.getActiveWorkflows();
         };
 
@@ -101,10 +103,14 @@
             vm.loadWorkflows(data);
         };
 
+        vm.openWorkflowDetail =  function (workflowId) {
+            $state.go("Home.WorkflowDetail", { WorkFlowID: workflowId });
+        };
+
         vm.loadWorkflows = function (data) {
             $scope.source = new kendo.data.DataSource({
                 data: [],
-                pageSize: 21
+                pageSize: 10
             });
             vm.noRecordExist = false;
             $q.all([data.$promise]).then(function (response) {
@@ -113,6 +119,7 @@
                     angular.forEach(response[0].data, function (data) {
                         vm.WorkflowData = {};
                         vm.WorkflowData.message = data.message;
+                        vm.WorkflowData.id = data.id;
                         vm.WorkflowData.title = data.title;
                         vm.WorkflowData.description = data.description;
                         var lastName = data.initiator.lastName;
@@ -124,18 +131,19 @@
                         vm.WorkflowData.status = data.isActive ? "Workflow is in Progress" : "Workflow is Complete";
                         vm.listData.push(vm.WorkflowData);
                     });
-                    //vm.workflowGridDataSource.read();
 
                     $scope.source = new kendo.data.DataSource({
                         data: vm.listData,
-                        pageSize: 21
+                        pageSize: 10
                     });
                 }
                 else {
                     vm.noRecordExist = true;
                 }
+                $(".loader").hide();
             });
         }
+
         //vm.workflowGridDataSource = new kendo.data.DataSource({
         //    type: "json",
         //    transport: {

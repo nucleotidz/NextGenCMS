@@ -60,6 +60,7 @@
             },
         });
         vm.SearchUser = function () {
+             $(".loader").show();
             vm.searchClicked = true;
             var data;
             if (vm.searchText == "") {
@@ -72,6 +73,7 @@
             $q.all([data.$promise]).then(function (response) {
                 vm.UserData = response[0].people;
                 vm.userDataSource.read();
+                $(".loader").hide();
             });
         }
 
@@ -147,7 +149,11 @@
             });
 
             var usernames = $scope.users.join(", ");
-            var message = "Do you want to delete users " + usernames + " ?";
+            var message = "";
+            if ($scope.users.length > 1)
+                message = "Do you want to delete users " + usernames + " ?";
+            else
+                message = "Do you want to delete user " + usernames + " ?";
             var modalInstance = $modal.open({
                 backdrop: 'static',
                 keyboard: false,
@@ -162,6 +168,7 @@
             modalInstance.result.then(function () {
             }, function (popupData) {
                 if (popupData === "yes") {
+                    $(".loader").show();
                     var data = AdministrationApi.deleteUsers($scope.users);
                     $q.all([data.$promise]).then(function (response) {
                         if ($scope.users.length > 1) {
@@ -169,6 +176,7 @@
                         }
                         else if ($scope.users.length == 1) alert("User deleted successfuly.");
                         if (vm.searchClicked) vm.SearchUser();
+                        $(".loader").hide();
                     });
                 }
             });

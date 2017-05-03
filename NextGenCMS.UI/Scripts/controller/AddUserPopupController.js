@@ -6,9 +6,11 @@
 
         $scope.groupDataSource = new kendo.data.DataSource();
         function init() {
+            $(".loader").show();
             var data = AdministrationApi.getGroups();
             $q.all([data.$promise]).then(function (response) {
                 $scope.groupDataSource = response[0].data;
+                $(".loader").hide();
             });
         };
 
@@ -62,6 +64,7 @@
         };
 
         $scope.createUser = function () {
+            $(".loader").show();
             if (validateForm()) {
                 $scope.user.groups = _.pluck($scope.user.groupList, "fullName");
                 $scope.userRole.inviteeUserName =$scope.user.userName ;
@@ -85,8 +88,10 @@
                             $modalInstance.dismiss(result.result.message);
                         }
                     }
+                    $(".loader").hide();
                 });
             }
+            else $(".loader").hide();
         };
 
         $scope.closePopup = function () {

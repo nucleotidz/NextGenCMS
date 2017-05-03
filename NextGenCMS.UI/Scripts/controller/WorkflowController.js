@@ -4,6 +4,7 @@
         function ($scope, WorkFlowAPI, $q, Profile, $state, $stateParams) {
             var vm = this;
             var grddata = [];
+            $(".loader").show();
             var WfData = WorkFlowAPI.GetAllWf({
                 "username": Profile.get('Profile').User.userName
             });
@@ -12,6 +13,7 @@
                     grddata = response[0]
                     vm.wfGridDataSource.read();
                 }
+                $(".loader").hide();
             });
             vm.OpenDetails = function () {
                 var entityGrid = $("#wf_grd").data("kendoGrid")

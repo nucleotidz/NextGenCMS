@@ -92,6 +92,7 @@
         }
 
         function init() {
+             $(".loader").show();
             var data = WorkFlowAPI.GetWorkflowDetails({ 'wfid': workflowInstanceId });
             var data1 = WorkFlowAPI.GetWorkFlowFile({ "Id": workflowInstanceId.split("$")[1] });
             $q.all([data.$promise, data1.$promise]).then(function (response) {
@@ -112,6 +113,8 @@
                     vm.WfModel.FileId = fileData.id;
                 }
                 vm.WfModel.endDate = WFDATa.isActive === true ? "<In Progress>" : kendo.toString(kendo.parseDate(WFDATa.endDate), 'dd MMM yyyy');
+
+                $(".loader").hide();
             });
         };
         init();
