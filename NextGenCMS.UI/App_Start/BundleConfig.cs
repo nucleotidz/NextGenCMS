@@ -96,7 +96,8 @@ namespace NextGenCMS.UI
             bundles.Add(new ScriptBundle("~/Scripts/factory/js").Include
              (
                "~/Scripts/factory/Interceptor.js",
-               "~/Scripts/factory/Cache.js"
+               "~/Scripts/factory/Cache.js",
+               "~/Scripts/factory/DataSharingService.js"
 
              ));
         }

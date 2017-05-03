@@ -1,16 +1,10 @@
 ﻿(function () {
     'use strict';
-    app.controller('HeaderController', ['$scope', 'Cache','WorkFlowAPI','$q',
-    function ($scope, Cache, WorkFlowAPI, $q) {
+    app.controller('HeaderController', ['$scope', 'Cache','WorkFlowAPI','$q','DataSharingService',
+    function ($scope, Cache, WorkFlowAPI, $q, DataSharingService) {
         var vm = this;
+        vm.data = DataSharingService.data;
         var displayName = Cache.get('displayName');
         vm.Name = displayName;
-
-        var tasks = WorkFlowAPI.GetWorkFlow();
-        $q.all([tasks.$promise]).then(function (response) {
-            if (response.length > 0) {
-                vm.taskCount = response[0].length;
-            }
-        });
     }]);
 })();

@@ -225,6 +225,7 @@
     <Content Include="Scripts\controller\WorkflowReportController.js" />
     <Content Include="Scripts\Directive\FileDrop.js" />
     <Content Include="Scripts\factory\Cache.js" />
+    <Content Include="Scripts\factory\DataSharingService.js" />
     <Content Include="Scripts\factory\Interceptor.js" />
     <Content Include="Scripts\httpfactory\AdministrationApi.js" />
     <Content Include="Scripts\httpfactory\AuthenticationApi.js" />
