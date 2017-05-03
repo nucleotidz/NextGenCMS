@@ -1,5 +1,6 @@
 ﻿using NextGenCMS.Model.Alfresco.Common;
 using NextGenCMS.Model.classes;
+using NextGenCMS.Model.classes.administration.GetUsers;
 using NextGenCMS.Model.classes.Folder;
 using System.Collections.Generic;
 
@@ -15,5 +16,6 @@ namespace NextGenCMS.BL.interfaces
         void CancelCheckout(string docId);
         void CheckIn(string docId);
         DeleteRootObject DeleteFolder(FolderPath folderPath);
+        Paging CheckOutCountbyUser(string userId);
     }
 }

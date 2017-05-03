@@ -18,6 +18,7 @@ using DotCMIS.Client.Impl;
 using DotCMIS;
 using DotCMIS.Client;
 using NextGenCMS.Model.Alfresco.Common;
+using NextGenCMS.Model.classes.administration.GetUsers;
 
 namespace NextGenCMS.BL.classes
 {
@@ -109,7 +110,7 @@ namespace NextGenCMS.BL.classes
                 data = this._apiHelper.Delete(ServiceUrl.DeleteFolder + folderPath.path + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
             }
             return JsonConvert.DeserializeObject<DeleteRootObject>(data);
-           
+
         }
         public void CheckOutFile(CheckoutParamsModel objParams)
         {
@@ -136,7 +137,15 @@ namespace NextGenCMS.BL.classes
             properties["cmis:description"] = "New change";
             var contentStream = session.GetContentStream(obj);
             string checkinComment = "test change";
-            IObjectId newId = pwc.CheckIn(false, properties, contentStream, checkinComment);           
+            IObjectId newId = pwc.CheckIn(false, properties, contentStream, checkinComment);
+        }
+
+        public Paging CheckOutCountbyUser(string userId)
+        {
+            this.session = this.GetSession();
+            var queryResult = session.GetCheckedOutDocs();
+            int count = queryResult.Where(a => a.VersionSeriesCheckedOutBy == userId).Count();
+            return new Paging { totalItems = count };
         }
 
         private List<FolderModel> MapFolder(List<Datalist> dataObject)

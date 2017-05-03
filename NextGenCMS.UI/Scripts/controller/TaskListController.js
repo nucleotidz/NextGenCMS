@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
-    app.controller('TaskListController', ['$scope', 'WorkFlowAPI', '$q', '$modal',
-    function ($scope, WorkFlowAPI, $q, $modal) {
+    app.controller('TaskListController', ['$scope', 'WorkFlowAPI', '$q', '$modal', 'DataSharingService',
+    function ($scope, WorkFlowAPI, $q, $modal, DataSharingService) {
         var vm = this;
         var grddata = [];
 
@@ -15,6 +15,7 @@
             $q.all([data.$promise]).then(function (response) {
                 grddata = response[0]
                 vm.wfGridDataSource.read();
+                DataSharingService.data.taskCount = response[0].length;
             });
         }
         vm.wfGridDataSource = new kendo.data.DataSource({
@@ -72,7 +73,7 @@
                         workflowid: {
                             type: "string", editable: false
                         },
-                       
+
 
                     }
                 }
@@ -95,7 +96,7 @@
             toolbar: ["excel"],
             excel: {
                 allPages: true
-            },          
+            },
             groupable: true,
             filterable: true,
             footer: false,
@@ -109,7 +110,7 @@
             {
                 field: "status", title: "State"
             },
-             { field: "description", title: "description"},
+             { field: "description", title: "description" },
             {
                 field: "outcome", title: "Outcome"
             },
@@ -144,7 +145,7 @@
                  field: "taskId", title: "taskId", hidden: true
              },
              { field: "workflowid", title: "workflowid", hidden: true },
-            
+
             ]
         }
         vm.OpenDetails = function () {
