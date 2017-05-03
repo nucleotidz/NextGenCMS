@@ -15,9 +15,11 @@
             var data = SearchAPI.SearchFiles({
                 "searchKey": vm.searchKey, "IsContent": vm.IsContent
             });
+            $(".loader").show();
             $q.all([data.$promise]).then(function (response) {
                 searchData = response[0].items;
                 vm.searchGridDataSourve.read();
+                $(".loader").hide();
             });
         };
 

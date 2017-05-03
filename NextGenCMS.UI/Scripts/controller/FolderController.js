@@ -20,6 +20,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
     vm.orientation = "vertical";
     function Bind() {
         var data = FolderAPI.GetRootFolders();
+        $(".loader").show();
         $q.all([data.$promise]).then(function (response) {
             for (var i = 0; i < response[0].length; i++) {
                 nodeRefs.push(response[0][i].noderef)
@@ -28,6 +29,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
                 data: response[0]
 
             });
+            $(".loader").hide();
         });
     };
     vm.selectedItem = function (data) {
@@ -46,6 +48,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
         var apiData = FolderAPI.GetSubFolderFolders(SubFolderModel)
         var fileDate = FileAPI.GetFiles(SubFolderModel);
         vm.TreeSelect = false;
+        $(".loader").show();
         $q.all([apiData.$promise, fileDate.$promise]).then(function (response) {
             if (response[1].items !== undefined && response[1].items.length > 0) {
                 Files = _.where(response[1].items, {
@@ -68,6 +71,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
                 vm.tree.append(response[0], vm.tree.select());
 
             }
+            $(".loader").hide();
         });
     }
     function refreshFileGrid() {
@@ -75,6 +79,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
             path: path
         }
         var fileDate = FileAPI.GetFiles(SubFolderModel);
+        $(".loader").show();
         $q.all([fileDate.$promise]).then(function (response) {
             if (response[0].items !== undefined && response[0].items.length > 0) {
                 Files = _.where(response[0].items, {
@@ -86,6 +91,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
                 Files = [];
                 vm.FileGridDataSource.read();
             }
+            $(".loader").hide();
         });
     }
 
@@ -99,11 +105,13 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
         modalInstance.result.then(function (item) {
             var FolderModel = item;
             var apiData = FolderAPI.CreateFolder(FolderModel)
+            $(".loader").show();
             $q.all([apiData.$promise]).then(function (response) {
                 vm.tree.append({
                     "name": response[0].name, "title": response[0].title, "description": response[0].description, "noderef": response[0].noderef, hasChildren: response[0].hasChildren
                 });
                 nodeRefs.push(response[0].noderef)
+                $(".loader").hide();
             });
 
         });
@@ -142,10 +150,11 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
                 folder: modaldata
             }
             var apiData = FolderAPI.CreateSubFolder(FolderModel)
+            $(".loader").show();
             $q.all([apiData.$promise]).then(function (response) {
                 vm.tree.append({ "name": response[0].name, "title": response[0].title, "description": response[0].description, "noderef": response[0].noderef, hasChildren: response[0].hasChildren }, vm.tree.select());
                 nodeRefs.push(response[0].noderef);
-
+                $(".loader").hide();
             });
         });
     }
@@ -389,8 +398,10 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
         }
         CheckoutParamsModel.path = path + "/" + name;
         var apiData = FolderAPI.CheckOutFile(CheckoutParamsModel);
+        $(".loader").show();
         $q.all([apiData.$promise]).then(function (response) {
             refreshFileGrid();
+            $(".loader").hide();
         });
     }
     function showAlert(msg, type) {
@@ -409,8 +420,10 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
         var apiData = FolderAPI.CheckInFile({
             "objectId": objId
         })
+        $(".loader").show();
         $q.all([apiData.$promise]).then(function (response) {
             refreshFileGrid();
+            $(".loader").hide();
         });
     }
 
@@ -425,9 +438,11 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
             var objId = splitList[splitList.length -1];
         var apiData = FolderAPI.CancelCheckOut({
             "objectId": objId
-            })
+        })
+        $(".loader").show();
         $q.all([apiData.$promise]).then(function (response) {
             refreshFileGrid();
+            $(".loader").hide();
             });
           };
     vm.open = function (evt) {
