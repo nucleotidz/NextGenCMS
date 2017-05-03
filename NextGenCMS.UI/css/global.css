@@ -101,6 +101,10 @@ label {
     padding: 0px !important;
 }
 
+.padd10 {
+    padding: 10px !important;
+}
+
 .checkbox input[type=checkbox] {
     margin-left: -18px !important;
     top: -3px;
@@ -131,12 +135,12 @@ ul.reportMenus li.k-item span.k-in {
     padding: 2px 0px !important;
 }
 
-ul.reportMenus li.k-item span.k-in.k-state-hover, ul.reportMenus li.k-item span.k-in.k-state-selected {
-    text-decoration: none !important;
-    color: #000 !important;
-    background-image: none !important;
-    padding: 2px 0px !important;
-}
+    ul.reportMenus li.k-item span.k-in.k-state-hover, ul.reportMenus li.k-item span.k-in.k-state-selected {
+        text-decoration: none !important;
+        color: #000 !important;
+        background-image: none !important;
+        padding: 2px 0px !important;
+    }
 
 ul.reportMenus li.k-item .k-top .k-in, ul.reportMenus li.k-item .k-mid .k-in, ul.reportMenus li.k-item .k-bot .k-in {
     font-weight: bold !important;
@@ -146,21 +150,21 @@ ul.reportMenus li ul.k-group li.k-item {
     padding: 0px !important;
 }
 
-ul.reportMenus li ul.k-group li.k-item span.k-in.k-state-hover {
-    text-decoration: underline !important;
-}
+    ul.reportMenus li ul.k-group li.k-item span.k-in.k-state-hover {
+        text-decoration: underline !important;
+    }
 
-ul.reportMenus li ul.k-group li.k-item span.k-in.k-state-selected {
-    color: #057FC2 !important;
-}
+    ul.reportMenus li ul.k-group li.k-item span.k-in.k-state-selected {
+        color: #057FC2 !important;
+    }
 
-ul.reportMenus li ul.k-group li.k-item .k-top .k-in, ul.reportMenus li ul.k-group li.k-item .k-mid .k-in, ul.reportMenus li ul.k-group li.k-item .k-bot .k-in {
-    font-weight: normal !important;
-    text-overflow: ellipsis;
-    width: 95%;
-    display: block;
-    overflow: hidden;
-}
+    ul.reportMenus li ul.k-group li.k-item .k-top .k-in, ul.reportMenus li ul.k-group li.k-item .k-mid .k-in, ul.reportMenus li ul.k-group li.k-item .k-bot .k-in {
+        font-weight: normal !important;
+        text-overflow: ellipsis;
+        width: 95%;
+        display: block;
+        overflow: hidden;
+    }
 
 ul.k-treeview-lines li.k-item span.k-in.k-state-hover {
     text-decoration: underline;
@@ -291,9 +295,9 @@ label.userLogin {
     color: #0978C0;
 }
 
-.navbar-nav > li > a:focus, .navbar-nav > li > a:hover {
-    text-decoration: underline;
-}
+    .navbar-nav > li > a:focus, .navbar-nav > li > a:hover {
+        text-decoration: underline;
+    }
 
 .navbar-nav > li.active {
     color: #0978C0;
@@ -356,18 +360,18 @@ ul.emailIcons {
     padding-top: 8px;
 }
 
-ul.emailIcons li a span.glyphicon {
-    color: #fff;
-}
+    ul.emailIcons li a span.glyphicon {
+        color: #fff;
+    }
 
-ul.emailIcons li {
-    width: auto;
-    height: 15px;
-    margin: 0px 20px 0px 0px;
-    display: inline;
-    border-right: solid 1px #fff;
-    padding-right: 10px;
-}
+    ul.emailIcons li {
+        width: auto;
+        height: 15px;
+        margin: 0px 20px 0px 0px;
+        display: inline;
+        border-right: solid 1px #fff;
+        padding-right: 10px;
+    }
 
 ul.logoutBox li {
     display: inline-block;
@@ -377,19 +381,19 @@ ul.logoutBox li {
     line-height: 14px;
 }
 
-ul.logoutBox li:last-child {
-    border-right: solid 0px #ccc;
-    padding-right: 0px;
-    margin-right: 0px;
-}
+    ul.logoutBox li:last-child {
+        border-right: solid 0px #ccc;
+        padding-right: 0px;
+        margin-right: 0px;
+    }
 
-ul.logoutBox li.blueText {
-    min-width: 127px !important;
-}
+    ul.logoutBox li.blueText {
+        min-width: 127px !important;
+    }
 
-ul.logoutBox li a {
-    color: #777;
-}
+    ul.logoutBox li a {
+        color: #777;
+    }
 
 .clearfix:after {
     content: "";
@@ -424,13 +428,13 @@ ul.logoutBox li a {
     border-radius: 70px;
 }
 
-.settingicon span {
-    position: relative;
-    top: 6px;
-    left: 8px;
-    font-size: 25px;
-    color: #fff;
-}
+    .settingicon span {
+        position: relative;
+        top: 6px;
+        left: 8px;
+        font-size: 25px;
+        color: #fff;
+    }
 
 .row {
     margin-right: 0px;
@@ -449,45 +453,45 @@ ul.logoutBox li a {
     top: 158px;
 }
 
-.toolPane ul {
-    list-style: none;
-    padding: 0px 4px;
-    margin: 0px;
-    width: 36px;
-    border: solid 1px #ccc;
-    border-radius: 26px;
-    background: #fff;
-}
+    .toolPane ul {
+        list-style: none;
+        padding: 0px 4px;
+        margin: 0px;
+        width: 36px;
+        border: solid 1px #ccc;
+        border-radius: 26px;
+        background: #fff;
+    }
 
-.toolPane ul.pageTools li, ul.adminTools li {
-    width: 25px;
-    height: 25px;
-    background: #057FC2;
-    -moz-border-radius: 70px;
-    -webkit-border-radius: 70px;
-    border-radius: 70px;
-    font-size: 14px;
-    margin: 10px 0px;
-    padding: 3px 5px;
-}
+        .toolPane ul.pageTools li, ul.adminTools li {
+            width: 25px;
+            height: 25px;
+            background: #057FC2;
+            -moz-border-radius: 70px;
+            -webkit-border-radius: 70px;
+            border-radius: 70px;
+            font-size: 14px;
+            margin: 10px 0px;
+            padding: 3px 5px;
+        }
 
 ul.adminTools {
     margin-top: 15px;
     background: #fff;
 }
 
-ul.adminTools li {
-    background: #057FC2;
-}
+    ul.adminTools li {
+        background: #057FC2;
+    }
 
 .toolPane ul li a {
     color: #fff;
 }
 
-.toolPane ul li a:hover, .toolPane ul li a:focus {
-    text-decoration: none;
-    color: #ddd;
-}
+    .toolPane ul li a:hover, .toolPane ul li a:focus {
+        text-decoration: none;
+        color: #ddd;
+    }
 
 .rightPane {
     margin-left: 60px;
@@ -511,20 +515,20 @@ ul.adminTools li {
 .rptPane h4{
     margin: 5px !important;
 }*/
-.btnPane .btn {
-    border-radius: 15px;
-    margin-right: 20px;
-}
+    .btnPane .btn {
+        border-radius: 15px;
+        margin-right: 20px;
+    }
 
-.btnPane .btn span {
-    margin-left: 5px;
-    width: 15px;
-    height: 15px;
-    border-radius: 13px;
-    background: #B2AEAF;
-    padding: 2px 0px 0px 0px;
-    font-size: 10px;
-}
+        .btnPane .btn span {
+            margin-left: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 13px;
+            background: #B2AEAF;
+            padding: 2px 0px 0px 0px;
+            font-size: 10px;
+        }
 
 .graybtn {
     background: #72716F;
@@ -533,11 +537,11 @@ ul.adminTools li {
     box-shadow: 2px 1px 2px grey;
 }
 
-.graybtn:hover, .graybtn:active:hover, .graybtn:active:focus, .graybtn:focus {
-    color: #fff;
-    background-color: #898887;
-    border-color: #72716F;
-}
+    .graybtn:hover, .graybtn:active:hover, .graybtn:active:focus, .graybtn:focus {
+        color: #fff;
+        background-color: #898887;
+        border-color: #72716F;
+    }
 
 .bluebtn {
     padding: 2px 10px 2px 10px;
@@ -584,24 +588,24 @@ ul.iconLinks li {
     margin: 5px 50px 50px 8px;
 }
 
-ul.iconLinks li a:before {
-    content: "";
-    display: block;
-    background: #fff;
-    border: 2px solid #ddd;
-    position: absolute;
-    top: -8px;
-    left: -8px;
-    bottom: -8px;
-    right: -8px;
-    z-index: -1;
-    border-radius: 50%;
-    box-shadow: inset 0px 8px 48px #fff;
-}
-    
-ul.iconLinks li a span.glyphicon {
-    display: block;
-}
+    ul.iconLinks li a:before {
+        content: "";
+        display: block;
+        background: #fff;
+        border: 2px solid #ddd;
+        position: absolute;
+        top: -8px;
+        left: -8px;
+        bottom: -8px;
+        right: -8px;
+        z-index: -1;
+        border-radius: 50%;
+        box-shadow: inset 0px 8px 48px #fff;
+    }
+
+    ul.iconLinks li a span.glyphicon {
+        display: block;
+    }
 /*---- End Button Style-------*/
 
 /* --Modal Window------*/
@@ -640,13 +644,13 @@ h4.modal-title {
     top: -3px;
 }
 
-.modal-header .settingicon span {
-    position: relative;
-    top: 22%;
-    left: 18%;
-    font-size: 18px;
-    color: #E0E4E7;
-}
+    .modal-header .settingicon span {
+        position: relative;
+        top: 22%;
+        left: 18%;
+        font-size: 18px;
+        color: #E0E4E7;
+    }
 
 .modal-body h2 {
     background: #eee;
@@ -683,22 +687,22 @@ h4.modal-title {
     border-radius: 4px 4px 0px 0px;
 }
 
-.gnrlInfoBoxHead span.crossX {
-    font-size: 16px;
-    display: block;
-    float: left;
-}
+    .gnrlInfoBoxHead span.crossX {
+        font-size: 16px;
+        display: block;
+        float: left;
+    }
 
-.gnrlInfoBoxHead h5 {
-    position: relative;
-    top: 1px;
-    padding: 0px;
-    font-size: 17px;
-    margin-left: 20px;
-    font-weight: bold;
-    margin-bottom: 0px !important;
-    margin-top: 0px !important;
-}
+    .gnrlInfoBoxHead h5 {
+        position: relative;
+        top: 1px;
+        padding: 0px;
+        font-size: 17px;
+        margin-left: 20px;
+        font-weight: bold;
+        margin-bottom: 0px !important;
+        margin-top: 0px !important;
+    }
 
 .gnrlInfoBox p.infoContent {
     margin: 10px;
@@ -751,9 +755,9 @@ span.anoucement {
     font-weight: bold;
 }
 
-.k-grid-header th.k-header > .k-link {
-    color: #000;
-}
+    .k-grid-header th.k-header > .k-link {
+        color: #000;
+    }
 
 .form-group .k-widget.k-dropdown.k-header {
     padding: 0 !important;
@@ -767,24 +771,24 @@ span.anoucement {
     border-width: 0px !important;
 }
 
-.k-widget.k-header.k-dropdown .k-dropdown-wrap, .k-widget.k-header.k-multiselect {
-    background-color: #fff !important;
-    border-width: 1px !important;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    border: 1px solid #ccc;
-    color: #555;
-}
+    .k-widget.k-header.k-dropdown .k-dropdown-wrap, .k-widget.k-header.k-multiselect {
+        background-color: #fff !important;
+        border-width: 1px !important;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+        -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+        -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        border: 1px solid #ccc;
+        color: #555;
+    }
 
-.k-widget.k-header.k-dropdown .k-dropdown-wrap.k-state-focused, .k-widget.k-header.k-multiselect.k-state-focused, .k-multiselect.k-state-focused, .k-multiselect.k-state-focused.k-state-hover {
-    border-color: #66afe9;
-    outline: 0;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
-}
+        .k-widget.k-header.k-dropdown .k-dropdown-wrap.k-state-focused, .k-widget.k-header.k-multiselect.k-state-focused, .k-multiselect.k-state-focused, .k-multiselect.k-state-focused.k-state-hover {
+            border-color: #66afe9;
+            outline: 0;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
+        }
 
 .k-multiselect.k-header.k-state-hover {
     border-color: #ccc !important;
@@ -824,12 +828,12 @@ ul.reportList {
     border-bottom: solid 1px #eee;
 }
 
-ul.reportList li {
-    display: block;
-    clear: both;
-    font-size: 12px;
-    padding: 5px;
-}
+    ul.reportList li {
+        display: block;
+        clear: both;
+        font-size: 12px;
+        padding: 5px 10px;
+    }
 
 .reportList li label {
     float: left;
@@ -850,8 +854,10 @@ ul.reportList li {
     padding: 10px;
 }
 
-.reportList li h4 {
+.reportList li h4, .mainContent h4 {
     font-size: 14px;
+    margin: 3px 0px;
+    font-weight: bold;
 }
 
 /*scroll bar*/

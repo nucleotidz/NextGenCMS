@@ -14,7 +14,9 @@
             message: "",
             fileName: "",
             FileId: "",
-            endDate: ""
+            endDate: "",
+            startDate: "",
+            priority: ""
         }
         vm.taskDatasource = new kendo.data.DataSource({
             type: "json",
@@ -102,6 +104,8 @@
                 vm.WfModel.duedate = kendo.toString(kendo.parseDate(WFDATa.dueDate), 'dd MMM yyyy')
                 vm.WfModel.status = WFDATa.isActive === true ? "Workflow is in progress" : "Completed";
                 vm.WfModel.message = WFDATa.message;
+                vm.WfModel.startDate = kendo.toString(kendo.parseDate(WFDATa.startDate), 'dd MMM yyyy hh:mm:ss');
+                vm.WfModel.priority = WFDATa.priority === "1" ? "High" : (WFDATa.priority === "2" ? "Medium" : "Low");
                 if (response[1].list != undefined && response[1].list.entries.length > 0) {
                     var fileData = response[1].list.entries[0].entry;
                     vm.WfModel.fileName = fileData.name;

@@ -6,11 +6,8 @@
         $("#treeview").kendoTreeView();
 
     });
-
-
-
-
 </script>
+
 <div class="twoCols clearfix">
     <div class="menuColumn col-xs-12 col-md-3">
         <ul id="treeview" class="reportMenus">
@@ -48,26 +45,19 @@
                 </ul>
             </li>
             @*<li data-expanded="true">
-                Workflow Type
-                <ul>
-                    <li>New Task</li>
-                    <li><span title="Review and Approve (group review)">Review and Approve (group review)</span></li>
-                    <li><span title="Review and Approve (one or more reviewers)">Review and Approve (one or more reviewers)</span></li>
-                    <li><span title="Review and Approve (pooled review)">Review and Approve (pooled review)</span></li>
-                    <li><span title="Review And Approve (single reviewer)">Review And Approve (single reviewer)</span></li>
-                </ul>
-            </li>*@
+                    Workflow Type
+                    <ul>
+                        <li>New Task</li>
+                        <li><span title="Review and Approve (group review)">Review and Approve (group review)</span></li>
+                        <li><span title="Review and Approve (one or more reviewers)">Review and Approve (one or more reviewers)</span></li>
+                        <li><span title="Review and Approve (pooled review)">Review and Approve (pooled review)</span></li>
+                        <li><span title="Review And Approve (single reviewer)">Review And Approve (single reviewer)</span></li>
+                    </ul>
+                </li>*@
         </ul>
     </div>
     <div class="col-xs-12 col-md-9 paddRight">
         <div class="mainContent">
-            @*<div class="row">
-                    <div id="workflowGrid"
-                         kendo-grid
-                         k-options="vm.workflowGridOptions"
-                         k-data-source="vm.workflowGridDataSource">
-                    </div>
-                </div>*@
             <div class="row margin0">
                 <h3>{{vm.header}}</h3>
             </div>
@@ -76,18 +66,18 @@
                 <div kendo-list-view id="listView" k-data-source="source">
                     <div k-template>
                         <ul class="reportList">
-                            <li><h4 class="margin0"><a href="">{{dataItem.message}}</a></h4></li>
-                            <li><label>Title</label><span>{{dataItem.title}}</span></li>
-                            <li><label>Description</label><span>{{dataItem.description}}</span></li>
+                            <li><h4><a href="">{{dataItem.message}}</a></h4></li>
+                            <li><label>Title</label><span>: {{dataItem.title}}</span></li>
+                            <li><label>Description</label><span>: {{dataItem.description}}</span></li>
                             <li class="clearfix">
-                                <div class="col-sm-4 padd0"><label>Started by</label><span>{{dataItem.username}}</span></div>
-                                <div class="col-sm-3 padd0"><label>Due:</label><span>{{ dataItem.dueDate}}</span></div>
-                                <div class="col-sm-5 padd0"><label>Completed</label><span>{{dataItem.endDate}}</span></div>
+                                <div class="col-sm-4 padd0"><label>Started by</label><span>: {{dataItem.username}}</span></div>
+                                <div class="col-sm-3 padd0"><label>Due Date</label><span>: {{ dataItem.dueDate}}</span></div>
+                                <div class="col-sm-5 padd0"><label>Completed</label><span>: {{dataItem.endDate}}</span></div>
                             </li>
                             <li class="clearfix">
-                                <div class="col-sm-4 padd0"><label>Started</label><span>{{ dataItem.startDate}}</span></div>
-                                <div class="col-sm-3 padd0"><label>Priority</label><span>{{dataItem.priority}}</span></div>
-                                <div class="col-sm-5 padd0"><label>Status</label><span>{{dataItem.status}}</span></div>
+                                <div class="col-sm-4 padd0"><label>Started</label><span>: {{ dataItem.startDate}}</span></div>
+                                <div class="col-sm-3 padd0"><label>Priority</label><span>: {{dataItem.priority}}</span></div>
+                                <div class="col-sm-5 padd0"><label>Status</label><span>: {{dataItem.status}}</span></div>
                             </li>
                         </ul>
                     </div>

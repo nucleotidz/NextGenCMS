@@ -9,73 +9,49 @@
         <li>Task List</li>
     </ul>
 </div>
-<div class="row">
-    <div class="col-sm-12">
-        <h4>Workflow Detail</h4>
-    </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
-        <label>Title: {{vm.WfModel.title}}</label>
-    </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
-        <label>Description: {{vm.WfModel.description}}</label>
-    </div>
-</div>
-<div class="row">
-    <div class="col-sm-4">
-        <label>Started By: {{vm.WfModel.createdBy}}</label>
-    </div>
-    <div class="col-sm-4">
-        <label>Due Date: {{vm.WfModel.duedate}}</label>
-    </div>   
-    <div class="col-sm-4">
-        <label>Completed: {{vm.WfModel.endDate}}</label>
-    </div>
-</div>
-<div class="row">
-    <div class="col-sm-8">
-        <label>Message: {{vm.WfModel.message}}</label>
-    </div>
-    <div class="col-sm-4">
-        <label>Status: {{vm.WfModel.status}}</label>
-    </div>
-</div>
-@*<div kendo-list-view id="listView" k-data-source="vm.taskDatasource">
-        <div k-template>
-            <div style="border-bottom:1px solid">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <h3>{{dataItem.description}}</h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">Title: {{dataItem.title}}</div>
-                    <div class="col-sm-6">Status: {{dataItem.properties.bpm_status}}</div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">Owner: {{dataItem.owner.userName}}</div>
-                    <div class="col-sm-6">Created: {{dataItem.properties.cm_created}}</div>
+<div class="col-xs-12 col-md-12 paddRight">
+    <div class="mainContent">
+        <div class="row margin0">
+            <h3>Workflow Detail</h3>
+        </div>
+        <div class="row">
+            <ul class="reportList">
+                <li><label>Message</label><span>: {{vm.WfModel.message}}</span></li>
+                <li><label>Title</label><span>: {{vm.WfModel.title}}</span></li>
+                <li><label>Description</label><span>: {{vm.WfModel.description}}</span></li>
+                <li class="clearfix">
+                    <div class="col-sm-4 padd0"><label>Started by</label><span>: {{vm.WfModel.createdBy}}</span></div>
+                    <div class="col-sm-3 padd0"><label>Due Date</label><span>: {{ vm.WfModel.duedate}}</span></div>
+                    <div class="col-sm-5 padd0"><label>Completed</label><span>: {{vm.WfModel.endDate}}</span></div>
+                </li>
+                <li class="clearfix">
+                    <div class="col-sm-4 padd0"><label>Started</label><span>: {{ vm.WfModel.startDate}}</span></div>
+                    <div class="col-sm-3 padd0"><label>Priority</label><span>: {{vm.WfModel.priority}}</span></div>
+                    <div class="col-sm-5 padd0"><label>Status</label><span>: {{vm.WfModel.status}}</span></div>
+                </li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 padd10">
+
+                <h4>File</h4>
+                <span class="glyphicon glyphicon-file"></span><a href ng-click="DownloadFile(vm.WfModel.FileId)"> {{vm.WfModel.fileName}}</a>
+
+            </div>
+        </div>
+        <div class="row margin0">
+            <div class="col-xs-12 col-sm-12 col-md-12 padd10">
+                <h4>Task History</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 padd10">
+                <div id="taskGrid"
+                     kendo-grid
+                     k-options="vm.taskGridOptions"
+                     k-data-source="vm.taskDatasource">
                 </div>
             </div>
         </div>
     </div>
-    <div kendo-pager k-data-source="vm.taskDatasource"></div>*@
-<div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group">
-            <label for="File">File</label>
-            <span class="glyphicon glyphicon-file"></span><a href ng-click="DownloadFile(vm.WfModel.FileId)"> {{vm.WfModel.fileName}}</a>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <h4>Task History</h4>
-</div>
-<div id="taskGrid"
-     kendo-grid
-     k-options="vm.taskGridOptions"
-     k-data-source="vm.taskDatasource">
 </div>
