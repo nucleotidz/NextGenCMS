@@ -86,6 +86,7 @@
     <Compile Include="classes\Workflow\AllTaskModel.cs" />
     <Compile Include="classes\Workflow\CreateWorkflowModel.cs" />
     <Compile Include="classes\Workflow\ItemBodyModel.cs" />
+    <Compile Include="classes\Workflow\ReassignVariableModel.cs" />
     <Compile Include="classes\Workflow\Variables.cs" />
     <Compile Include="classes\Workflow\WFAprroveReject.cs" />
     <Compile Include="classes\Workflow\WFDone.cs" />

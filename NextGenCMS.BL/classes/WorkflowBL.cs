@@ -74,6 +74,7 @@ namespace NextGenCMS.BL.classes
                     status = obj.properties.bpm_status,
                     comment = obj.properties.bpm_comment,
                     OwnerUsername = obj.owner != null ? obj.owner.userName : obj.workflowInstance.initiator.userName,
+                    creatorUserName = obj.workflowInstance.initiator != null ? obj.workflowInstance.initiator.userName : string.Empty,
                     fullName = obj.workflowInstance.initiator != null ? obj.workflowInstance.initiator.firstName + " " + obj.workflowInstance.initiator.lastName : string.Empty,
                     priority = GetPriority(obj.properties.bpm_priority),
                     taskId = obj.properties.bpm_taskId,
@@ -159,30 +160,49 @@ namespace NextGenCMS.BL.classes
             return this.MapAll(JsonConvert.DeserializeObject<NextGenCMS.Model.Alfresco.workflow.WfRootObject>(data));
         }
 
-        public void Reassign(int taskId, string username, bool IsResolve)
+        public void Reassign(int taskId, string username, bool IsResolve, string comment)
         {
             WorkflowReassignModel objParams = new WorkflowReassignModel();
+             WorkflowReassignModel OjbCommentParams = new WorkflowReassignModel();
 
             if (!IsResolve)
             {
                 objParams.assignee = username;
                 objParams.state = "delegated";
+                OjbCommentParams.state = "resolved";
+                OjbCommentParams.variables = new List<ReassignVariableModel>();
+                OjbCommentParams.variables.Add(new ReassignVariableModel
+                {
+                    name = "bpm_comment",
+                    type = "d:text",
+                    scope = "global",
+                    value = comment
+                });
             }
             else
             {
-                objParams.state = "resolved";
-            }
+            objParams.state = "resolved";
+            objParams.variables = new List<ReassignVariableModel>();
+            objParams.variables.Add(new ReassignVariableModel
+            {
+                name = "bpm_comment",
+                type = "d:text",
+                scope = "global",
+                value = comment
+            });
+           }
 
             string data = string.Empty;
             if (HttpContext.Current.Items[Filter.Token] != null)
             {
                 if (!IsResolve)
                 {
-                    data = this._apiHelper.Put(ServiceUrl.WFUpdate + taskId + "?select=state,assignee&alf_ticket=" + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(objParams));
+                    data = this._apiHelper.Put(ServiceUrl.WFUpdate + taskId + "?select=state,variables&alf_ticket=" + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(OjbCommentParams));
+                    data = this._apiHelper.Put(ServiceUrl.WFUpdate + taskId + "?select=state,assignee,variables&alf_ticket=" + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(objParams));
                 }
                 else
                 {
-                    data = this._apiHelper.Put(ServiceUrl.WFUpdate + taskId + "?select=state&alf_ticket=" + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(objParams));
+                data = this._apiHelper.Put(ServiceUrl.WFUpdate + taskId + "?select=state,variables&alf_ticket=" + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(objParams));
 
                 }
             }
@@ -234,12 +254,13 @@ namespace NextGenCMS.BL.classes
                     bpm_comment = task.properties.bpm_comment,
                     cm_owner = task.properties.cm_owner,
                     cm_created = task.properties.cm_created,
-                    Created = Convert.ToDateTime(task.properties.bpm_startDate),
-                    status = task.properties.bpm_status
+                    Created = Convert.ToDateTime(task.properties.cm_created),
+                    status = task.properties.bpm_status,
+                    outcome = task.outcome,
+                    title = task.title
                 });
             }
             List<AllTaskModel> modelList = model.OrderByDescending(item => item.Created).ToList();
-            modelList.Remove(modelList.Take(1).FirstOrDefault());
             return modelList;
         }
     }

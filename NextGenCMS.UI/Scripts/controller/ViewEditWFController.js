@@ -18,7 +18,7 @@
             comment: "",
             ActionOccured: true,
         }
-        if ((items.outcome == "Approved" || items.outcome == "Rejected") && items.ownerUsername == Profile.get('Profile').User.userName) {
+        if (items.creatorUserName == Profile.get('Profile').User.userName) {
             $scope.wf.ActionOccured = false;
             $scope.wf.TaskEnable = true;
         }
@@ -127,9 +127,15 @@
             });
         }
         $scope.ReassignTask = function () {
+            var IsResolved = false;
+            if (Profile.get('Profile').User.userName == items.creatorUserName) {
+                IsResolved = true;
+            }
             var data = WorkFlowAPI.Reassign({
                 taskId: items.taskId,
-                username: items.ownerUsername, Isresolved: false
+                username: items.creatorUserName,
+                Isresolved: IsResolved,
+                comment: $scope.wf.comment
             });
             $q.all([data.$promise]).then(function (response) {
                 $modalInstance.dismiss("success");
@@ -143,25 +149,31 @@
                     o.success(grddata);
                 }
             },
+            sort: {
+                field: "cm_created",
+                dir: "desc"
+            },
             pageSize: 1000,
             schema: {
                 model: {
                     action: "",
                     fields: {
+                        "title": {
+                            type: "string", editable: false
+                        },
+                        "cm_owner": {
+                            type: "string", editable: false
+                        },
                         status: {
                             type: "string",
                             editable: false
                         },
-                        cm_owner: {
-                            type: "string", editable: false
+                        "cm_created": {
+                            type: "date", editable: false
                         },
-                        bpm_comment: {
-                            type: "string", editable: false
-                        },
-                        cm_created: {
+                        "bpm_comment": {
                             type: "string", editable: false
                         }
-
                     }
                 }
             },
@@ -183,15 +195,17 @@
             filterable: true,
             footer: false,
             columns: [
-                { field: "status", "title": "Last Status", hidden: true },
+                     { field: "title", "title": "Type" },
+
+                { field: "cm_owner", "title": "Assigned to"},
             {
-                field: "cm_owner", title: "Commented By"
+                field: "status", title: "Status"
             },
             {
                 field: "bpm_comment", title: "Comment"
             },
             {
-                field: "cm_created", title: "Commented On", template: "#= kendo.toString(kendo.parseDate(cm_created), 'dd MMM yyyy') #"
+                field: "cm_created", title: "Created", template: "#= kendo.toString(kendo.parseDate(cm_created), 'dd MMM yyyy hh:mm:ss') #"
             }
             ]
         }
