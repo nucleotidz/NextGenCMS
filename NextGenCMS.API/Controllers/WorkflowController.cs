@@ -83,10 +83,10 @@ namespace NextGenCMS.API.Controllers
         }
 
         [HttpGet]
-        [Route("Reassign/{taskId}/{username}/{Isresolved}")]
-        public HttpResponseMessage Reassign(int taskId, string username, bool Isresolved)
+        [Route("Reassign/{taskId}/{username}/{Isresolved}/{comment}")]
+        public HttpResponseMessage Reassign(int taskId, string username, bool Isresolved, string comment)
         {
-            workflowBl.Reassign(taskId, username, Isresolved);
+            workflowBl.Reassign(taskId, username, Isresolved, comment);
             return Request.CreateResponse(HttpStatusCode.OK);
         }
     }

@@ -8,9 +8,9 @@ namespace NextGenCMS.Model.classes.Workflow
 {
     public class WorkflowReassignModel
     {
-
         public string state { get; set; }
         public string assignee { get; set; }
+        public List<ReassignVariableModel> variables { get; set; }
     }
 }
 

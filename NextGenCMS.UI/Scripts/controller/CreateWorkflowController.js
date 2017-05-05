@@ -6,7 +6,7 @@
         $scope.UserData = new kendo.data.DataSource();
         $scope.DocID = items.docId;
         $scope.FileName = items.FileName;
-        $scope.isgroupreview = false;
+        $scope.isgroupreview = false;       
         $scope.WdTypeDataSrc = [{
             "text": "Assign a review task to a single reviewer", "value": "activitiReview"
         },
@@ -19,15 +19,15 @@
             var userdata = AdministrationApi.getUsers({ "username": $scope.userName });
             $q.all([data.$promise, userdata.$promise]).then(function (response) {
                 $scope.groupDataSource = response[0].data;
-                $scope.UserData = response[1].people;
+                $scope.UserData = response[1].people;               
             });
         };
         $scope.WFModelWrapper = {
             workModel: '',
             docId : ''
-        }
+        }      
         $scope.wf = {
-            processDefinitionKey: "",
+            processDefinitionKey: "activitiReview",
             variables: {
                 bpm_assignee: "",
                 bpm_assigneeGrp: "",
@@ -38,7 +38,7 @@
                 bpm_groupAssignee: "",
                 bpm_comment: ""
             }
-        }
+        }      
         $scope.OnWofklowTypeChange = function (e) {
             var item = e.sender.dataItem();
             if (item.value === 'activitiReviewPooled') {
@@ -58,7 +58,7 @@
         $scope.workfdpOptions = {
             dataSource: $scope.WdTypeDataSrc,
             dataTextField: "text",
-            dataValueField: "value"
+            dataValueField: "value"           
         }
 
         $scope.createWorkflow = function () {

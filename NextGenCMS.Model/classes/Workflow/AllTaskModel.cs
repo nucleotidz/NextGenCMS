@@ -13,5 +13,7 @@ namespace NextGenCMS.Model.classes.Workflow
         public string cm_created { get; set; }
         public DateTime Created { get; set; }
         public string status { get; set; }
+        public string title { get; set; }
+        public string outcome { get; set; }
     }
 }

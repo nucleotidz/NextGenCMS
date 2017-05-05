@@ -230,7 +230,14 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
                 },
             },
         {
-            field: "version", title: "Version"
+            field: "version", title: "Version", template: function (dataitem) {
+                               if(dataitem.lockedBy !=='') {
+                                   return '';
+                               }
+                                   else {
+                                   return dataitem.version;
+                                   }
+                }
         },
         {
             field: "status", title: "Checked Out", template: "#if (lockedBy !== '') {# yes #} else {# no #}  #"
