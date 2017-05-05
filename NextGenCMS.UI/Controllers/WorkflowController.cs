@@ -31,5 +31,11 @@ namespace NextGenCMS.UI.Controllers
 
             return View();
         }
+
+        public ActionResult ProcessDiagram()
+        {
+
+            return View();
+        }
     }
 }

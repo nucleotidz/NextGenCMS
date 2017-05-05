@@ -841,13 +841,24 @@ ul.reportList {
     width: 75px;
 }
 
-.mainContent h3 {
-    font-size: 16px;
-    margin: 0px;
-    padding: 10px;
+.mainContent .contentHeader{    
     background: #999;
     border-radius: 4px 4px 0px 0px;
     color: #fff;
+}
+
+.contentHeader h3 {
+    font-size: 16px;
+    float:left;
+    margin: 0px;
+    padding: 10px;
+}
+.contentBtn {
+    float: right;
+    padding: 5px 10px 5px 0px;
+}
+.contentBtn button {
+    border-radius:15px;
 }
 
 .noListItem {
@@ -894,4 +905,14 @@ ul.reportList {
     position: absolute;
     top: 50%;
     left: 50%;
+}
+
+.myiframe .modal-dialog {
+   width: 50%!important;
+} 
+
+.iframe {
+    width: 650px;
+    height: 400px;
+    border: 0px;
 }

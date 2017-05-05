@@ -1,0 +1,12 @@
+﻿@{
+    Layout = null;
+}
+
+<div class="modal-header">
+    <button type="button" class="close" ng-click="closePopup();"><span aria-hidden="true">&times;</span></button>
+    <div class="settingicon pull-left"><span class="glyphicon glyphicon-picture"></span></div><h4 class="modal-title" id="myModalLabel">Process Diagram</h4>
+</div>
+<div class="modal-body">
+    <iframe src='' name='myIframe' id="myIframe" class="iframe"></iframe>
+    <div ng-init="init();"></div>
+</div>

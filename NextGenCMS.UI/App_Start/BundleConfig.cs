@@ -37,27 +37,27 @@ namespace NextGenCMS.UI
         private static void LoadJquery(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/Scripts/Jquery/js").Include(
-                      "~/Scripts/Jquery/jquery-1.10.2.min.js"
-                      ));
+                "~/Scripts/Jquery/jquery-1.10.2.min.js"
+            ));
         }
 
         private static void LoadAngular(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/Scripts/Angular/js").Include
              (
-               "~/Scripts/Angular/angular.min.js",
-              "~/Scripts/Angular/angular-resource.min.js",
-              "~/Scripts/Angular/angular-ui-router.js",
-                   "~/Scripts/Angular/app.js",
-                  "~/Scripts/Angular/route.js"
+                "~/Scripts/Angular/angular.min.js",
+                "~/Scripts/Angular/angular-resource.min.js",
+                "~/Scripts/Angular/angular-ui-router.js",
+                "~/Scripts/Angular/app.js",
+                "~/Scripts/Angular/route.js"
              ));
         }
         private static void LoadKendo(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/Scripts/kendo/js").Include(
-                          "~/Scripts/kendo/kendo.all.min.js",
-                          "~/Scripts/kendo/jszip.min.js"
-                          ));
+                "~/Scripts/kendo/kendo.all.min.js",
+                "~/Scripts/kendo/jszip.min.js"
+            ));
         }
         private static void LoadController(BundleCollection bundles)
         {
@@ -69,36 +69,35 @@ namespace NextGenCMS.UI
                "~/Scripts/controller/UserManagementController.js",
                "~/Scripts/controller/AddUserPopupController.js",
                "~/Scripts/controller/AddFolderPopupController.js",
-                  "~/Scripts/controller/SearchController.js",
-                 "~/Scripts/controller/FolderController.js",
-                 "~/Scripts/controller/HeaderController.js",
-                 "~/Scripts/controller/UploadController.js",
-                  "~/Scripts/controller/DeleteController.js",
-                  "~/Scripts/controller/DeleteUserController.js",
-                  "~/Scripts/controller/TaskListController.js",
-                     "~/Scripts/controller/CreateWorkflowController.js",                     
-                  "~/Scripts/controller/ViewEditWFController.js",
-                  "~/Scripts/controller/WorkflowController.js",
-                  "~/Scripts/controller/WorkflowDetailController.js",               
-               "~/Scripts/controller/WorkflowReportController.js"
+               "~/Scripts/controller/SearchController.js",
+               "~/Scripts/controller/FolderController.js",
+               "~/Scripts/controller/HeaderController.js",
+               "~/Scripts/controller/UploadController.js",
+               "~/Scripts/controller/DeleteController.js",
+               "~/Scripts/controller/DeleteUserController.js",
+               "~/Scripts/controller/TaskListController.js",
+               "~/Scripts/controller/CreateWorkflowController.js",
+               "~/Scripts/controller/ViewEditWFController.js",
+               "~/Scripts/controller/WorkflowController.js",
+               "~/Scripts/controller/WorkflowDetailController.js",               
+               "~/Scripts/controller/WorkflowReportController.js",
+               "~/Scripts/controller/ProcessDiagramController.js"
              ));
         }
         private static void LoadDirective(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/Scripts/Directive/js").Include
              (
-               "~/Scripts/Directive/FileDrop.js"
-              
+                "~/Scripts/Directive/FileDrop.js"              
              ));
         }
         private static void LoadFactory(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/Scripts/factory/js").Include
              (
-               "~/Scripts/factory/Interceptor.js",
-               "~/Scripts/factory/Cache.js",
-               "~/Scripts/factory/DataSharingService.js"
-
+                "~/Scripts/factory/Interceptor.js",
+                "~/Scripts/factory/Cache.js",
+                "~/Scripts/factory/DataSharingService.js"
              ));
         }
         private static void LoadConstant(BundleCollection bundles)
@@ -106,7 +105,6 @@ namespace NextGenCMS.UI
             bundles.Add(new ScriptBundle("~/Scripts/constants/js").Include
              (
                "~/Scripts/constants/Global.js"
-
              ));
         }
         private static void LoadBoostrap(BundleCollection bundles)
@@ -123,11 +121,11 @@ namespace NextGenCMS.UI
                  (
                    "~/Scripts/httpfactory/AuthenticationAPI.js",
                    "~/Scripts/httpfactory/FolderAPI.js",
-                   "~/Scripts/httpfactory/AdministrationApi.js",                   
-                    "~/Scripts/httpfactory/SearchAPI.js",
-                    "~/Scripts/httpfactory/FileAPI.js",
-                    "~/Scripts/httpfactory/WorkFlowAPI.js",
-                    "~/Scripts/httpfactory/WorkflowReportApi.js"
+                   "~/Scripts/httpfactory/AdministrationApi.js",
+                   "~/Scripts/httpfactory/SearchAPI.js",
+                   "~/Scripts/httpfactory/FileAPI.js",
+                   "~/Scripts/httpfactory/WorkFlowAPI.js",
+                   "~/Scripts/httpfactory/WorkflowReportApi.js"
                  ));
         }
         private static void LoadUnderscore(BundleCollection bundles)

@@ -214,6 +214,7 @@
     <Content Include="Scripts\controller\FolderController.js" />
     <Content Include="Scripts\controller\GroupManagementController.js" />
     <Content Include="Scripts\controller\HeaderController.js" />
+    <Content Include="Scripts\controller\ProcessDiagramController.js" />
     <Content Include="Scripts\controller\SearchController.js" />
     <Content Include="Scripts\controller\TaskListController.js" />
     <Content Include="Scripts\controller\UploadController.js" />
@@ -301,6 +302,7 @@
     <Content Include="Views\Workflow\CreateWorkflow.cshtml" />
     <Content Include="Views\Workflow\MyWorkFlow.cshtml" />
     <Content Include="Views\Reports\WorkflowReport.cshtml" />
+    <Content Include="Views\Workflow\ProcessDiagram.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NextGenCMS.APIHelper\NextGenCMS.APIHelper.csproj">

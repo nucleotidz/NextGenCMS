@@ -1,10 +1,11 @@
 ﻿(function () {
     'use strict';
-    app.controller('WorkflowDetailsController', ['$scope', 'WorkFlowAPI', '$q', '$stateParams', '$state', 'Global',
-    function ($scope, WorkFlowAPI, $q, $stateParams, $state, Global) {
+    app.controller('WorkflowDetailsController', ['$scope', 'WorkFlowAPI', '$q', '$stateParams', '$state', 'Global', '$modal',
+    function ($scope, WorkFlowAPI, $q, $stateParams, $state, Global, $modal) {
         var vm = this;
         var workflowInstanceId = $stateParams.WorkFlowID;
         vm.taskdata = [];
+        vm.IsActiveWorkflow = false;
         vm.WfModel = {
             title: "",
             description: "",
@@ -83,6 +84,23 @@
              }
             ]
         };
+
+        vm.processDiagram = function () {
+           $(".loader").show();
+           var modalInstance = $modal.open({
+                backdrop: 'static',
+                keyboard : false,
+                templateUrl: './Workflow/ProcessDiagram',
+                controller: 'ProcessDiagramController',
+                windowClass: "myiframe",
+                resolve: {
+                    items: function () {
+                        return workflowInstanceId;
+                    }
+                }
+            });
+         };
+
         $scope.DownloadFile = function (id) {
             var formId = "formFile";
             angular.element("body").append("<form  method='POST' id='" + formId + "' action='" + Global.apiuri + "File/Download/By/Id" + "' target='_tab' >");
@@ -102,7 +120,8 @@
                 vm.WfModel.title = WFDATa.title;
                 vm.WfModel.description = WFDATa.description;
                 vm.WfModel.createdBy = WFDATa.initiator.firstName + ' ' + WFDATa.initiator.lastName;
-                vm.WfModel.duedate = kendo.toString(kendo.parseDate(WFDATa.dueDate), 'dd MMM yyyy')
+                vm.WfModel.duedate = kendo.toString(kendo.parseDate(WFDATa.dueDate), 'dd MMM yyyy');
+                vm.IsActiveWorkflow = WFDATa.isActive;
                 vm.WfModel.status = WFDATa.isActive === true ? "Workflow is in progress" : "Completed";
                 vm.WfModel.message = WFDATa.message;
                 vm.WfModel.startDate = kendo.toString(kendo.parseDate(WFDATa.startDate), 'dd MMM yyyy hh:mm:ss');

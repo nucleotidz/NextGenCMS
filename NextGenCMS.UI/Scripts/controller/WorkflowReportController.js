@@ -103,7 +103,8 @@
             vm.loadWorkflows(data);
         };
 
-        vm.openWorkflowDetail =  function (workflowId) {
+        vm.openWorkflowDetail = function (workflowId) {
+            $(".loader").show();
             $state.go("Home.WorkflowDetail", { WorkFlowID: workflowId });
         };
 
