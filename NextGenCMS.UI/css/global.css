@@ -916,3 +916,8 @@ ul.reportList {
     height: 400px;
     border: 0px;
 }
+
+.listView{
+    height: 450px; 
+    overflow-y: scroll;
+}

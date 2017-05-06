@@ -18,7 +18,7 @@
             status: ""
         };
         vm.header = "Active Workflows";
-        vm.noWorkflows = "No workflows";
+        vm.noWorkflows = "No Workflows";
         vm.noRecordExist = false;
         function init() {
             $(".loader").show();
@@ -119,16 +119,16 @@
                     vm.listData = [];
                     angular.forEach(response[0].data, function (data) {
                         vm.WorkflowData = {};
-                        vm.WorkflowData.message = data.message;
+                        vm.WorkflowData.message = data.message === null || data.message === "" ? "(No Message)" : data.message;
                         vm.WorkflowData.id = data.id;
                         vm.WorkflowData.title = data.title;
                         vm.WorkflowData.description = data.description;
                         var lastName = data.initiator.lastName;
                         vm.WorkflowData.username = data.initiator.firstName + (lastName === null && lastName === "" ? "" : " " + lastName);
-                        vm.WorkflowData.dueDate = kendo.toString(kendo.parseDate(data.dueDate), 'dd MMM yyyy');
+                        vm.WorkflowData.dueDate = data.dueDate === null || data.dueDate === "" ? "(None)" : kendo.toString(kendo.parseDate(data.dueDate), 'dd MMM yyyy');
                         vm.WorkflowData.endDate = data.endDate === null || data.endDate === "" ? "<in progress>" : kendo.toString(kendo.parseDate(data.endDate), 'dd MMM yyyy hh:mm:ss');
                         vm.WorkflowData.startDate = kendo.toString(kendo.parseDate(data.startDate), 'dd MMM yyyy hh:mm:ss');
-                        vm.WorkflowData.priority = data.priority === "1" ? "High" : (data.priority === "2" ? "Medium" : "Low");
+                        vm.WorkflowData.priority = data.priority === 1 ? "High" : (data.priority === 2 ? "Medium" : "Low");
                         vm.WorkflowData.status = data.isActive ? "Workflow is in Progress" : "Workflow is Complete";
                         vm.listData.push(vm.WorkflowData);
                     });

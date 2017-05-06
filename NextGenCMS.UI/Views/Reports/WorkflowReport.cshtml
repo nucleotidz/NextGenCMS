@@ -4,7 +4,6 @@
 <script>
     $(document).ready(function () {
         $("#treeview").kendoTreeView();
-
     });
 </script>
 
@@ -61,7 +60,7 @@
             <div class="row margin0 contentHeader">
                 <h3>{{vm.header}}</h3>
             </div>
-            <div class="row">
+            <div class="row listView">
                 <div class="noListItem" ng-show="vm.noRecordExist">{{vm.noWorkflows}}</div>
                 <div kendo-list-view id="listView" k-data-source="source">
                     <div k-template>
@@ -81,7 +80,6 @@
                             </li>
                         </ul>
                     </div>
-                    <div kendo-pager k-data-source="source"></div>
                 </div>
             </div>
         </div>
