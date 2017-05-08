@@ -124,9 +124,26 @@ namespace NextGenCMS.BL.classes
             return JsonConvert.DeserializeObject<FRootObject>(data);
         }
 
-        public void WorkflowUpdate(WFUpdateModel updateModel)
+        public void WorkflowUpdate(WFUpdateModel updateModel, string oldcomment, string user)
         {
             string data = string.Empty;
+            if (updateModel.WFUpdate.Any(a => a.name == "bpm_comment"))
+            {
+                var commentObj = updateModel.WFUpdate.Where(a => a.name == "bpm_comment").FirstOrDefault();
+                commentObj.value = this.FormatCommentHistory(oldcomment, user, commentObj.value);
+            }
+            else
+            {
+                updateModel.WFUpdate.Add(new WFUpdate
+                {
+                    name = "bpm_comment",
+                    scope = "local",
+                    type = "d:text",
+                    value = this.FormatCommentHistory(oldcomment, user, string.Empty)
+
+                });
+            }
+
             if (HttpContext.Current.Items[Filter.Token] != null)
             {
                 data = this._apiHelper.Post(ServiceUrl.WFUpdate + updateModel.wfId + "/variables" + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(updateModel.WFUpdate));
@@ -254,7 +271,15 @@ namespace NextGenCMS.BL.classes
             {
                 data = this._apiHelper.Get(ServiceUrl.AllWF + wfid + "?includeTasks=true&alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
             }
-            return JsonConvert.DeserializeObject<NextGenCMS.Model.Alfresco.workflow.WfRootObject>(data);
+            NextGenCMS.Model.Alfresco.workflow.WfRootObject objDetail = JsonConvert.DeserializeObject<NextGenCMS.Model.Alfresco.workflow.WfRootObject>(data);
+            foreach (var item in objDetail.data.tasks)
+            {
+                if (item.owner == null)
+                {
+                    item.owner = new Model.Alfresco.workflow.Owner();
+                }
+            }
+            return objDetail;
         }
 
         private List<AllTaskModel> MapAll(NextGenCMS.Model.Alfresco.workflow.WfRootObject dataObject)
@@ -283,14 +308,30 @@ namespace NextGenCMS.BL.classes
             AllTaskModel review = modelList.Where(a => a.title == "Review").FirstOrDefault();
             AllTaskModel approved = modelList.Where(a => a.title == "Approved").FirstOrDefault();
             AllTaskModel rejected = modelList.Where(a => a.title == "Rejected").FirstOrDefault();
-            if (approved != null && approved.bpm_comment.IndexOf(';') > 0)
+            if (approved != null && approved.bpm_comment != null && approved.bpm_comment.IndexOf(';') > 0)
             {
-                review.bpm_comment = approved.bpm_comment;
+                string newReviewComment = review.bpm_comment;
+                if (!string.IsNullOrWhiteSpace(newReviewComment))
+                {
+                    review.bpm_comment = approved.bpm_comment + "," + review.cm_owner + ";" + newReviewComment;
+                }
+                else
+                {
+                    review.bpm_comment = approved.bpm_comment;
+                }
                 approved.bpm_comment = string.Empty;
             }
-            if (rejected != null && rejected.bpm_comment.IndexOf(';') > 0)
+            if (rejected != null && rejected.bpm_comment != null && rejected.bpm_comment.IndexOf(';') > 0)
             {
-                review.bpm_comment = rejected.bpm_comment;
+                string newReviewComment = review.bpm_comment;
+                if (!string.IsNullOrWhiteSpace(newReviewComment))
+                {
+                    review.bpm_comment = rejected.bpm_comment + "," + review.cm_owner + ";" + newReviewComment;
+                }
+                else
+                {
+                    review.bpm_comment = rejected.bpm_comment;
+                }
                 rejected.bpm_comment = string.Empty;
             }
             string comment = review.bpm_comment;
@@ -308,17 +349,35 @@ namespace NextGenCMS.BL.classes
                         taskModel.title = review.title;
                         taskModel.status = review.status;
                         taskModel.outcome = review.outcome;
-                        taskModel.bpm_comment = commList[1];
-                        taskModel.cm_owner = commList[0];
+                        if (commList.Length > 1)
+                        {
+                            taskModel.bpm_comment = commList[1];
+                            taskModel.cm_owner = commList[0];
+                        }
+                        else
+                        {
+                            taskModel.bpm_comment = commList[0];
+                        }
                         taskModel.cm_created = review.cm_created;
                         taskModel.Created = review.Created;
                         taskModel.id = i;
-                        modelList.Add(taskModel);
+                        // Add history if commentpresent
+                        if (!string.IsNullOrEmpty(commList[1]))
+                        {
+                            modelList.Add(taskModel);
+                        }
                     }
                     else
                     {
-                        firstComm = commList[1];
-                        firstUser = commList[0];
+                        if (commList.Length > 1)
+                        {
+                            firstComm = commList[1];
+                            firstUser = commList[0];
+                        }
+                        else
+                        {
+                            firstComm = commList[0];
+                        }
                     }
                 }
                 review.bpm_comment = firstComm;

@@ -39,7 +39,14 @@
                             type: "string", editable: false
                         },
                         "owner.userName": {
-                            type: "string", editable: false
+                            type: "string", editable: false, template: function (dataitem) {
+                                if (dataitem.owner !== null) {
+                                    return owner.userName;
+                                }
+                                else {
+                                    return '';
+                                }
+                            }
                         },
                         "properties.cm_created": {
                             type: "date", editable: false

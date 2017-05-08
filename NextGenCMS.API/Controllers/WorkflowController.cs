@@ -41,9 +41,9 @@ namespace NextGenCMS.API.Controllers
 
         [HttpPost]
         [Route("Update/Workflow/Activity")]
-        public HttpResponseMessage UpdateWf(WFUpdateModel updateModel)
+        public HttpResponseMessage UpdateWf(WorkflowUpdateWrapper objWrapper)
         {
-            workflowBl.WorkflowUpdate(updateModel);
+            workflowBl.WorkflowUpdate(objWrapper.workflowModel, objWrapper.oldComment, objWrapper.assignee);
             return Request.CreateResponse(HttpStatusCode.OK);
         }
         [HttpPost]

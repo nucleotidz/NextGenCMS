@@ -19,4 +19,11 @@ namespace NextGenCMS.Model.classes.Workflow
         public string wfId { get; set; }
         public List<WFUpdate> WFUpdate { get; set; }
     }
+
+    public class WorkflowUpdateWrapper
+    {
+        public WFUpdateModel workflowModel { get; set; }
+        public string oldComment { get; set; }
+        public string assignee { get; set; }
+    }
 }

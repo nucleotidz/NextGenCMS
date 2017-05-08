@@ -74,8 +74,10 @@
             }
             $scope.WFModelWrapper.workModel = $scope.wf;
             $scope.WFModelWrapper.docId = $scope.DocID;
+             $(".loader").show();
             var submitdata = WorkFlowAPI.CreateWorkflow($scope.WFModelWrapper);
-            $q.all(submitdata.$promise).then(function (response){
+            $q.all(submitdata.$promise).then(function (response) {
+                 $(".loader").hide();
                 $modalInstance.dismiss("success");
             });
         }

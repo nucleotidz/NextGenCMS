@@ -75,16 +75,25 @@
         }
         $scope.Save = function () {
             var WFUpdate = [];
-            WFUpdate.push({ "name": "bpm_comment", "value": $scope.wf.comment, "type": "d:text", "scope": "local" })
+            if ($scope.wf.comment !== '') {
+                WFUpdate.push({ "name": "bpm_comment", "value": $scope.wf.comment, "type": "d:text", "scope": "local" });
+            }
             WFUpdate.push({ "name": "bpm_status", "value": $scope.wf.Status.value, "type": "d:text", "scope": "local" })
             var WFUpdateModel = {
                 wfId: items.taskId,
                 WFUpdate: WFUpdate
             }
-            var data = WorkFlowAPI.UpdateWf(WFUpdateModel)
+            var WorkflowUpdateWrapper = {
+                workflowModel: WFUpdateModel,
+                oldComment: ReassignModel.oldComment,
+                assignee: ReassignModel.assigneeName
+            }
+            $(".loader").show();
+            var data = WorkFlowAPI.UpdateWf(WorkflowUpdateWrapper);
             $q.all([data.$promise]).then(function (response) {
+                $(".loader").hide();
                 $modalInstance.dismiss("success");
-            });
+        });
         }
         $scope.Reject = function () {
             var WFAprroveReject = {
@@ -97,8 +106,10 @@
                 activitiid: items.pid,
                 WFAprroveReject: WFAprroveReject
             }
+            $(".loader").show();
             var data = WorkFlowAPI.ApproveReject(model)
             $q.all([data.$promise]).then(function (response) {
+             $(".loader").hide();
                 $modalInstance.dismiss("success");
             });
         }
@@ -114,9 +125,10 @@
                 activitiid: items.pid,
                 WFAprroveReject: WFAprroveReject
             }
-
+                  $(".loader").show();
             var data = WorkFlowAPI.ApproveReject(model)
             $q.all([data.$promise]).then(function (response) {
+                  $(".loader").hide();
                 $modalInstance.dismiss("success");
             });
         }
@@ -132,8 +144,10 @@
                 activitiid: items.pid,
                 wfDone: wfDone
             }
+                 $(".loader").show();
             var data = WorkFlowAPI.DoneTask(model);
             $q.all([data.$promise]).then(function (response) {
+                $(".loader").hide();
                 $modalInstance.dismiss("success");
             });
         }
@@ -145,10 +159,12 @@
             ReassignModel.taskId = items.taskId;
             ReassignModel.username = items.creatorUserName;
             ReassignModel.IsResolve = IsResolved;
-            ReassignModel.comment = $scope.wf.comment;           
+            ReassignModel.comment = $scope.wf.comment;
+                 $(".loader").show();
             var data = WorkFlowAPI.Reassign(ReassignModel);
             $q.all([data.$promise]).then(function (response) {
                 $modalInstance.dismiss("success");
+                    $(".loader").hide();
             });
         }
         Bind();

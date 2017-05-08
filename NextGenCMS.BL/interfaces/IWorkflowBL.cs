@@ -13,7 +13,7 @@ namespace NextGenCMS.BL.interfaces
         List<WorkFlowModel> GetAllTask();
         void CreateWorkflow(CreateWorkflowModel objModel);
         FRootObject GetWorkflowFile(string id);
-        void WorkflowUpdate(WFUpdateModel updateModel);
+        void WorkflowUpdate(WFUpdateModel updateModel, string oldcomment, string user);
         void ApproveReject(WFApproveRejectModel model);
         void DoneTask(WFDoneModel model);
         List<AllTaskModel> GetAllTasks(string wfid);
