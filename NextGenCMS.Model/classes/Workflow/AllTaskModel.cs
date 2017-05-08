@@ -8,6 +8,7 @@ namespace NextGenCMS.Model.classes.Workflow
 {
     public class AllTaskModel
     {
+        public int id { get; set; }
         public string cm_owner { get; set; }
         public string bpm_comment { get; set; }
         public string cm_created { get; set; }

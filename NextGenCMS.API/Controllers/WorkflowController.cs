@@ -82,11 +82,11 @@ namespace NextGenCMS.API.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, workflowBl.GetWorkFlow(username));
         }
 
-        [HttpGet]
-        [Route("Reassign/{taskId}/{username}/{Isresolved}/{comment}")]
-        public HttpResponseMessage Reassign(int taskId, string username, bool Isresolved, string comment)
+        [HttpPost]
+        [Route("Reassign")]
+        public HttpResponseMessage Reassign(ReassignModel objReassign)
         {
-            workflowBl.Reassign(taskId, username, Isresolved, comment);
+            workflowBl.Reassign(objReassign);
             return Request.CreateResponse(HttpStatusCode.OK);
         }
     }

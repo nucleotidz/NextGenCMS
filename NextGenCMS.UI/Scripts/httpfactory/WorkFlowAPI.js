@@ -49,8 +49,8 @@
                 isArray: true
             },
             Reassign: {
-                method: "GET",
-                url: Global.apiuri + "workflow/Reassign/:taskId/:username/:Isresolved/:comment",
+                method: "POST",
+                url: Global.apiuri + "workflow/Reassign",
                 isArray: true
             }
         });

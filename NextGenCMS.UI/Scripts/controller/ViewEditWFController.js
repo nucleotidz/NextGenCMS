@@ -25,6 +25,14 @@
                   $scope.wf.TaskEnable = true;
             }
         }
+        var ReassignModel = {
+            taskId: '',
+            username: '',
+            IsResolve: '',
+            comment: '',
+            oldComment: items.comment,
+            assigneeName: Profile.get('Profile').User.userName
+            }
         $scope.wf.StatusDataSource.push({ "text": "Not Yet Started", "value": "Not Yet Started" })
         $scope.wf.StatusDataSource.push({ "text": "In Progress", "value": "In Progress" })
         $scope.wf.StatusDataSource.push({ "text": "On Hold", "value": "On Hold" })
@@ -134,12 +142,11 @@
             if (Profile.get('Profile').User.userName == items.creatorUserName) {
                 IsResolved = true;
             }
-            var data = WorkFlowAPI.Reassign({
-                taskId: items.taskId,
-                username: items.creatorUserName,
-                Isresolved: IsResolved,
-                comment: $scope.wf.comment
-            });
+            ReassignModel.taskId = items.taskId;
+            ReassignModel.username = items.creatorUserName;
+            ReassignModel.IsResolve = IsResolved;
+            ReassignModel.comment = $scope.wf.comment;           
+            var data = WorkFlowAPI.Reassign(ReassignModel);
             $q.all([data.$promise]).then(function (response) {
                 $modalInstance.dismiss("success");
             });
@@ -152,15 +159,21 @@
                     o.success(grddata);
                 }
             },
-            sort: {
-                field: "cm_created",
-                dir: "desc"
-            },
+            sort:  [
+        {
+            field: "cm_created", dir: "desc"
+        },
+        {field: "id", dir: "desc"}
+        ],
+            
             pageSize: 1000,
             schema: {
                 model: {
                     action: "",
-                    fields: {
+                        fields: {
+                         "id":{ 
+                            type:'int'
+                         },
                         "title": {
                             type: "string", editable: false
                         },

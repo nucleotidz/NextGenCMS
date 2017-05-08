@@ -4,12 +4,12 @@
     function ($scope, WorkFlowAPI, $q, $modal, DataSharingService) {
         var vm = this;
         var grddata = [];
-
         var data = WorkFlowAPI.GetWorkFlow();
         $q.all([data.$promise]).then(function (response) {
             grddata = response[0]
             vm.wfGridDataSource.read();
-        });
+            DataSharingService.data.taskCount = response[0].length;
+        });       
         function Bind() {
             var data = WorkFlowAPI.GetWorkFlow();
             $q.all([data.$promise]).then(function (response) {

@@ -160,14 +160,14 @@ namespace NextGenCMS.BL.classes
             return this.MapAll(JsonConvert.DeserializeObject<NextGenCMS.Model.Alfresco.workflow.WfRootObject>(data));
         }
 
-        public void Reassign(int taskId, string username, bool IsResolve, string comment)
+        public void Reassign(ReassignModel objReassign)
         {
             WorkflowReassignModel objParams = new WorkflowReassignModel();
-             WorkflowReassignModel OjbCommentParams = new WorkflowReassignModel();
-
-            if (!IsResolve)
+            WorkflowReassignModel OjbCommentParams = new WorkflowReassignModel();
+            objReassign.comment = this.FormatCommentHistory(objReassign.oldComment, objReassign.assigneeName, objReassign.comment);
+            if (!objReassign.IsResolve)
             {
-                objParams.assignee = username;
+                objParams.assignee = objReassign.username;
                 objParams.state = "delegated";
                 OjbCommentParams.state = "resolved";
                 OjbCommentParams.variables = new List<ReassignVariableModel>();
@@ -176,36 +176,49 @@ namespace NextGenCMS.BL.classes
                     name = "bpm_comment",
                     type = "d:text",
                     scope = "global",
-                    value = comment
+                    value = objReassign.comment
                 });
             }
             else
             {
-            objParams.state = "resolved";
-            objParams.variables = new List<ReassignVariableModel>();
-            objParams.variables.Add(new ReassignVariableModel
-            {
-                name = "bpm_comment",
-                type = "d:text",
-                scope = "global",
-                value = comment
-            });
-           }
-
+                objParams.state = "resolved";
+                objParams.variables = new List<ReassignVariableModel>();
+                objParams.variables.Add(new ReassignVariableModel
+                {
+                    name = "bpm_comment",
+                    type = "d:text",
+                    scope = "global",
+                    value = objReassign.comment
+                });
+            }
             string data = string.Empty;
             if (HttpContext.Current.Items[Filter.Token] != null)
             {
-                if (!IsResolve)
+                if (!objReassign.IsResolve)
                 {
-                    data = this._apiHelper.Put(ServiceUrl.WFUpdate + taskId + "?select=state,variables&alf_ticket=" + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(OjbCommentParams));
-                    data = this._apiHelper.Put(ServiceUrl.WFUpdate + taskId + "?select=state,assignee,variables&alf_ticket=" + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(objParams));
+                    data = this._apiHelper.Put(ServiceUrl.WFUpdate + objReassign.taskId + "?select=state,variables&alf_ticket=" + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(OjbCommentParams));
+                    data = this._apiHelper.Put(ServiceUrl.WFUpdate + objReassign.taskId + "?select=state,assignee,variables&alf_ticket=" + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(objParams));
                 }
                 else
                 {
-                data = this._apiHelper.Put(ServiceUrl.WFUpdate + taskId + "?select=state,variables&alf_ticket=" + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(objParams));
+                    data = this._apiHelper.Put(ServiceUrl.WFUpdate + objReassign.taskId + "?select=state,variables&alf_ticket=" + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(objParams));
 
                 }
             }
+        }
+
+        private string FormatCommentHistory(string oldComment, string user, string newComment)
+        {
+            string retVal = string.Empty;
+            if (string.IsNullOrEmpty(oldComment))
+            {
+                retVal = user + ';' + newComment;
+            }
+            else
+            {
+                retVal = oldComment + ',' + user + ';' + newComment;
+            }
+            return retVal.Length <= 250 ? retVal : retVal.Substring(0, 250);
         }
 
         public List<NextGenCMS.Model.Alfresco.workflow.WorkflowInstance> GetWorkFlow(string username)
@@ -261,7 +274,70 @@ namespace NextGenCMS.BL.classes
                 });
             }
             List<AllTaskModel> modelList = model.OrderByDescending(item => item.Created).ToList();
+            modelList = AddTaskHistory(modelList);
             return modelList;
+        }
+        private List<AllTaskModel> AddTaskHistory(List<AllTaskModel> modelList)
+        {
+            List<AllTaskModel> retList = modelList;
+            AllTaskModel review = modelList.Where(a => a.title == "Review").FirstOrDefault();
+            AllTaskModel approved = modelList.Where(a => a.title == "Approved").FirstOrDefault();
+            AllTaskModel rejected = modelList.Where(a => a.title == "Rejected").FirstOrDefault();
+            if (approved != null && approved.bpm_comment.IndexOf(';') > 0)
+            {
+                review.bpm_comment = approved.bpm_comment;
+                approved.bpm_comment = string.Empty;
+            }
+            if (rejected != null && rejected.bpm_comment.IndexOf(';') > 0)
+            {
+                review.bpm_comment = rejected.bpm_comment;
+                rejected.bpm_comment = string.Empty;
+            }
+            string comment = review.bpm_comment;
+            string firstComm = string.Empty;
+            string firstUser = string.Empty;
+            if (comment.IndexOf(',') > 0)
+            {
+                var commenthistory = comment.Split(',');
+                for (int i = 0; i < commenthistory.Length; i++)
+                {
+                    var commList = commenthistory[i].Split(';');
+                    if (i > 0)
+                    {
+                        AllTaskModel taskModel = new AllTaskModel();
+                        taskModel.title = review.title;
+                        taskModel.status = review.status;
+                        taskModel.outcome = review.outcome;
+                        taskModel.bpm_comment = commList[1];
+                        taskModel.cm_owner = commList[0];
+                        taskModel.cm_created = review.cm_created;
+                        taskModel.Created = review.Created;
+                        taskModel.id = i;
+                        modelList.Add(taskModel);
+                    }
+                    else
+                    {
+                        firstComm = commList[1];
+                        firstUser = commList[0];
+                    }
+                }
+                review.bpm_comment = firstComm;
+                review.cm_owner = firstUser;
+                retList = modelList;
+            }
+            else if (!string.IsNullOrEmpty(comment))
+            {
+                var comList = comment.Split(';');
+                if (comList.Length > 1)
+                {
+                    firstComm = comList[1];
+                    firstUser = comList[0];
+                }
+                review.bpm_comment = firstComm;
+                review.cm_owner = firstUser;
+                retList = modelList;
+            }
+            return retList;
         }
     }
 }
