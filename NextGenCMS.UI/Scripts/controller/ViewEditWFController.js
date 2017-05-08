@@ -19,8 +19,11 @@
             ActionOccured: true,
         }
         if (items.creatorUserName == Profile.get('Profile').User.userName) {
-            $scope.wf.ActionOccured = false;
-            $scope.wf.TaskEnable = true;
+            $scope.wf.ActionOccured = false;           
+          
+            if (items.cm_name === "wf:approvedTask" || items.cm_name === "wf:rejectedTask") {
+                  $scope.wf.TaskEnable = true;
+            }
         }
         $scope.wf.StatusDataSource.push({ "text": "Not Yet Started", "value": "Not Yet Started" })
         $scope.wf.StatusDataSource.push({ "text": "In Progress", "value": "In Progress" })

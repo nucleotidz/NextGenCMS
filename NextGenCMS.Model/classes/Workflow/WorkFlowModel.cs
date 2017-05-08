@@ -26,5 +26,6 @@ namespace NextGenCMS.Model.classes.Workflow
         public string workflowid { get; set; }
         public string description { get; set; }
         public string creatorUserName { get; set; }
+        public string cm_name { get; set; }
     }
 }

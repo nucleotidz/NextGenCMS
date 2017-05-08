@@ -19,9 +19,12 @@
             var userdata = AdministrationApi.getUsers({ "username": $scope.userName });
             $q.all([data.$promise, userdata.$promise]).then(function (response) {
                 $scope.groupDataSource = response[0].data;
-                $scope.UserData = response[1].people;               
+                $scope.UserData = response[1].people;
+                 var dropdownlist =  $('#dpworkfType').data('kendoDropDownList');
+                dropdownlist.value('activitiReview')
+                dropdownlist.trigger("change");
             });
-        };
+        };      
         $scope.WFModelWrapper = {
             workModel: '',
             docId : ''

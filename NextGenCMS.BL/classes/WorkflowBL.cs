@@ -79,7 +79,8 @@ namespace NextGenCMS.BL.classes
                     priority = GetPriority(obj.properties.bpm_priority),
                     taskId = obj.properties.bpm_taskId,
                     workflowid = obj.workflowInstance.id,
-                    description = obj.description
+                    description = obj.description,
+                    cm_name = obj.properties.cm_name
                 });
             }
             return dataObject.OrderBy(x => x.priority).ToList();
@@ -137,7 +138,6 @@ namespace NextGenCMS.BL.classes
             string data = string.Empty;
             if (HttpContext.Current.Items[Filter.Token] != null)
             {
-
                 data = this._apiHelper.Post(ServiceUrl.ApproveReject + model.activitiid + "/formprocessor" + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(model.WFAprroveReject));
             }
         }
