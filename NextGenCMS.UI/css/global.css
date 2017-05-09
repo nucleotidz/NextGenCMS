@@ -725,13 +725,15 @@ div.supportTicket {
 }
 
 div.fileZone {
-    border: 2px dashed #057FC2;
+    border: 2px dashed black;
     border-radius: 5px;
     padding: 25px;
     text-align: center;
+    vertical-align: central;
+    background-color: #e7e7e7;
     font: 13pt bold;
-    color: #057FC2;
-    height: 10px;
+    color: black;
+    height: 120px;
     margin: 10px;
 }
 

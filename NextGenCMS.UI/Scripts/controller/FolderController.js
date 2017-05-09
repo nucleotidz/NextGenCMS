@@ -469,8 +469,10 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
         formdata.append("path", path);
         formdata.append($scope.rawFileName, $scope.rawFile);
         var xhr = new XMLHttpRequest();
+        $(".loader").show();
         xhr.open("POST", Global.apiuri + "File/Upload", false);
         xhr.send(formdata);
+        $(".loader").hide();
         refreshFileGrid();
     }
     Bind();
