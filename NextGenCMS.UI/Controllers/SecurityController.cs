@@ -32,8 +32,10 @@ namespace NextGenCMS.UI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Authenticate(string username, string password)
+        public ActionResult Authenticate(string username, string password, string tenant)
         {
+            if (!string.IsNullOrEmpty(tenant))
+                username = username + "@" + tenant.Trim();
             NextGenCMS.APIHelper.classes.APIHelper apiCaller = new NextGenCMS.APIHelper.classes.APIHelper();
             LoginModel _loginModel = new LoginModel
             {
@@ -43,6 +45,7 @@ namespace NextGenCMS.UI.Controllers
             string response = apiCaller.Post(ConfigurationManager.AppSettings["API:URL"] + "authentication/login", JsonConvert.SerializeObject(_loginModel));
             LoginResponse result = JsonConvert.DeserializeObject<LoginResponse>(response);
             Session["SessionContext"] = result;
+            Session["tenant"] = tenant;
             return new RedirectResult(BaseURL);
         }
 

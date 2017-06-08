@@ -16,10 +16,16 @@ namespace NextGenCMS.API.Filters
     {
         protected override bool IsAuthorized(System.Web.Http.Controllers.HttpActionContext actionContext)
         {
+            if (actionContext.Request.Headers.Contains(Filter.Tenant))
+            {
+                string tenant = actionContext.Request.Headers.FirstOrDefault(header => header.Key == Filter.Tenant).Value.ToList()[0].ToString();
+                HttpContext.Current.Items[Filter.Tenant] = tenant;
+            }
             if (actionContext.Request.Headers.Contains(Filter.Token))
             {
                 string token= actionContext.Request.Headers.FirstOrDefault(header => header.Key == Filter.Token).Value.ToList()[0].ToString();
                 HttpContext.Current.Items[Filter.Token] = token;
+
                 return true;
             }
             return false;

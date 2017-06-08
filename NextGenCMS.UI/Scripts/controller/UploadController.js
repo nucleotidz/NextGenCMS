@@ -31,6 +31,7 @@
         $scope.UploadFile = function () {
             var formdata = new FormData();
             formdata.append("path", items);
+            formdata.append("tenant", tenant);
             for (var i = 0; i < FileArray.length; i++) {
                 formdata.append(FileArray[i].File.name, FileArray[i].File.rawFile);
             }

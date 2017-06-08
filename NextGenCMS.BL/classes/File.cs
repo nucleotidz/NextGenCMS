@@ -78,13 +78,14 @@ namespace NextGenCMS.BL.classes
                     MimeType = mime,
                     Length = 100,
                     Stream = HttpContext.Current.Request.Files[i].InputStream
-                };               
+                };
                 folder.CreateDocument(properties, contentStream, null);
             }
         }
 
         public void Download(string docId)
         {
+
             this.session = this.GetSession();
             IObjectId obj = this.session.CreateObjectId(docId);
             IDocument doc = (IDocument)this.session.GetObject(obj);
@@ -107,10 +108,15 @@ namespace NextGenCMS.BL.classes
         {
             if (session == null)
             {
+                string username = "admin";
+                if (HttpContext.Current.Request.Form != null && HttpContext.Current.Request.Form["tenant"] != null)
+                {
+                    username = username + "@" + HttpContext.Current.Request.Form["tenant"].ToString();
+                }
                 SessionFactory factory = SessionFactory.NewInstance();
                 Dictionary<String, String> parameter = new Dictionary<String, String>();
-                parameter.Add(SessionParameter.User, "admin");
-                parameter.Add(SessionParameter.Password, "admin");               
+                parameter.Add(SessionParameter.User, username);
+                parameter.Add(SessionParameter.Password, "admin");
                 parameter.Add(SessionParameter.AtomPubUrl, ServiceUrl.CMISApi);
                 parameter.Add(SessionParameter.BindingType, BindingType.AtomPub);
                 this.session = factory.GetRepositories(parameter)[0].CreateSession();

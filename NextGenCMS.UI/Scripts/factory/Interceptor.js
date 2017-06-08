@@ -4,6 +4,7 @@
         var TokenInjector = {
             request: function (config) {
                 config.headers['xsrf-token'] = Cache.get("token");
+                config.headers['xsrf-tenant'] = tenant;
                 return config;
             }
         };

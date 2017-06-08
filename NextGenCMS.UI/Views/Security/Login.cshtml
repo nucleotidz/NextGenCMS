@@ -18,13 +18,25 @@
             <div class="col-xs-12"><label class="userLogin" for="username"><span class="glyphicon glyphicon-user"></span>User Login</label></div>
         </div>
         <div class="row">
-            <div class="col-xs-6">
+            <div class="col-xs-4">
                 @*<span class="userField glyphicon glyphicon-user"></span>*@
                 <input type="text" id="username" name="userName" class="userLoginName" autofocus placeholder="User Name" />
             </div>
-            <div class="col-xs-6">
+          
+            <div class="col-xs-4">
                 @*<span class="passwordField glyphicon glyphicon-eye-close"></span>*@
                 <input type="password" name="Password" id="password" placeholder="Password" />
+            </div>
+
+            <div class="col-xs-4">
+                @*<span class="passwordField glyphicon glyphicon-eye-close"></span>*@
+                <select class="tenant" name="tenant">
+                    <option value="">Select Tenant</option>
+                    <option value="testtenant1.com">
+                        testtenant1.com
+                    </option>
+                    <option value="testtenant2.com">testtenant2.com</option>
+                </select>
             </div>
         </div>
         <div class="row">

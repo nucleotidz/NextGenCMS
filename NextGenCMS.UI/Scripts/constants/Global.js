@@ -1,8 +1,8 @@
 ﻿(function () {
     'use strict'
     app.constant('Global', {
-        apiuri: 'http://localhost:82/api/',
-        Alfresco: 'http://127.0.0.1:8080/alfresco/',
+        apiuri: 'http://cscindag964207:82/api/',
+        Alfresco: 'http://20.198.152.16:8080/',
     });
 })();
 

@@ -6,6 +6,7 @@
 <div ng-controller="IndexController"></div>
 <script type="text/javascript">
     var loginResponse = @Html.Raw(Json.Encode((NextGenCMS.UI.Model.LoginResponse)Session["SessionContext"]));
+    var tenant=@Html.Raw(Json.Encode( @HttpContext.Current.Session["tenant"].ToString()));
     (function () {
         'use strict';
         app.controller('IndexController', ['$scope', 'Cache','Profile',

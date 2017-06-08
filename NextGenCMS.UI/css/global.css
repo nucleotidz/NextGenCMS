@@ -923,3 +923,10 @@ ul.reportList {
     height: 450px; 
     overflow-y: scroll;
 }
+.tenant{
+        border: solid 8px #ccc;
+    border-radius: 5px;
+    padding: 2px 2px 2px 2px;
+    width: 100%;
+    font-size: 12px;
+}
