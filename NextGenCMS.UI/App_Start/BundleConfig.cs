@@ -81,7 +81,8 @@ namespace NextGenCMS.UI
                "~/Scripts/controller/WorkflowController.js",
                "~/Scripts/controller/WorkflowDetailController.js",               
                "~/Scripts/controller/WorkflowReportController.js",
-               "~/Scripts/controller/ProcessDiagramController.js"
+               "~/Scripts/controller/ProcessDiagramController.js",
+                "~/Scripts/controller/MetaDataController.js"
              ));
         }
         private static void LoadDirective(BundleCollection bundles)

@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
-    app.controller('FolderController', ['$scope', '$rootScope', 'FolderAPI', 'FileAPI', '$q', '$modal', 'Global', 'Cache',
-function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
+    app.controller('FolderController', ['$scope', '$rootScope', 'FolderAPI', 'FileAPI', '$q', '$modal', 'Global', 'Cache','$state',
+function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, $state) {
     var vm = this;
     var node;
     var path
@@ -295,7 +295,20 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
         }
         if (evt.item.textContent.trim() === "Start Workflow") {
         OpenCreateWFPopup();
-}
+        }
+        if (evt.item.textContent.trim() === "Metadata") {
+            OpenMeta();
+        }
+    }
+
+    function OpenMeta() {
+        var entityGrid = $("#userGrid").data("kendoGrid")
+        var selectedItem = entityGrid.dataItem(entityGrid.select());
+        var fileName = selectedItem.displayName;
+        var fileMeta = _.where(Files, {
+            displayName: fileName
+        });
+        $state.go("Home.Metadata", { fileMeta: fileMeta });
     }
 
     function OpenCreateWFPopup() {

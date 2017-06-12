@@ -1,0 +1,39 @@
+﻿@{
+    Layout = null;
+}
+
+<div class="twoCols clearfix">
+    <div class="col-xs-12 col-md-12">
+        <div class="mainContent">
+            <div class="row margin0 contentHeader">
+                <h3>{{meta[0].displayName}}</h3>
+            </div>
+            <div class="row listView">
+                <ul class="reportList">
+                   
+                    <li class="clearfix">
+                        <div class="col-sm-4 padd0"><label>Created by</label><span>: {{meta[0].createdBy}}</span></div>
+                        <div class="col-sm-3 padd0"><label>Created On</label><span>:{{meta[0].createdOn}}</span></div>
+                        <div class="col-sm-5 padd0"><label>Mime Type</label><span>{{meta[0].mimetype}} </span></div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="col-sm-4 padd0"><label>Modified By</label><span>:{{meta[0].modifiedBy}} </span></div>
+                        <div class="col-sm-3 padd0"><label>Modified On</label><span>: {{meta[0].modifiedOn}}</span></div>
+                        <div class="col-sm-5 padd0"><label>Type</label><span>: {{meta[0].type}}</span></div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="col-sm-4 padd0"><label>LockedBy</label><span>:{{meta[0].lockedBy}} </span></div>
+                        <div class="col-sm-3 padd0"><label>Size</label><span>: {{meta[0].size}}</span></div>
+                        <div class="col-sm-5 padd0"><label>Location</label><span>:{{meta[0].location.path}} </span></div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="col-sm-4 padd0"><label>Is Linked</label><span>: {{meta[0].isLink}}</span></div>   
+                        <div class="col-sm-3 padd0"><label>Active Workflows</label><span>: {{meta[0].activeWorkflows}}</span></div>
+                        <div class="col-sm-5 padd0"><label>Version</label><span>: {{meta[0].version}}</span></div>
+                    </li>                    
+                </ul>
+
+            </div>
+            </div>
+    </div>
+</div>

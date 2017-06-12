@@ -97,6 +97,15 @@
                 controllerAs: "vm"
             }
         }
+    }).state('Home.Metadata', {
+        params: { fileMeta: null },
+        views: {
+            'content@': {
+                templateUrl: 'Folder/Metadata',
+                controller: 'MetaDataController',
+                controllerAs: "vm"
+            }
+        }
     });
 
 });

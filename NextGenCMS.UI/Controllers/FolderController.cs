@@ -27,5 +27,9 @@ namespace NextGenCMS.UI.Controllers
         {
             return View();
         }
+        public ActionResult Metadata()
+        {
+            return View();
+        }
     }
 }
