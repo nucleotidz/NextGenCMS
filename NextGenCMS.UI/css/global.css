@@ -25,7 +25,9 @@ ul {
     background: #fff;
     min-height: 500px;
 }
-
+.mainContent.noheight{
+    min-height:auto;
+}
 span.redStar {
     color: red;
 }

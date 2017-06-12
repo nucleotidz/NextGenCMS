@@ -296,7 +296,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, $st
         if (evt.item.textContent.trim() === "Start Workflow") {
         OpenCreateWFPopup();
         }
-        if (evt.item.textContent.trim() === "Metadata") {
+        if (evt.item.textContent.trim() === "Properties") {
             OpenMeta();
         }
     }
@@ -308,7 +308,18 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, $st
         var fileMeta = _.where(Files, {
             displayName: fileName
         });
-        $state.go("Home.Metadata", { fileMeta: fileMeta });
+        var modalInstance = $modal.open({
+            backdrop: 'static',
+            keyboard: false,
+            templateUrl: 'Folder/Metadata',
+            controller: 'MetaDataController',
+            resolve: {
+                items: function () {
+                    return fileMeta;
+                }
+            }
+        });
+       // $state.go("Home.Metadata", { fileMeta: fileMeta });
     }
 
     function OpenCreateWFPopup() {
