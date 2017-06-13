@@ -50,6 +50,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, $st
         vm.TreeSelect = false;
         $(".loader").show();
         $q.all([apiData.$promise, fileDate.$promise]).then(function (response) {
+            $(".loader").hide();
             if (response[1].items !== undefined && response[1].items.length > 0) {
                 Files = _.where(response[1].items, {
                     isFolder: false
@@ -70,8 +71,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, $st
                 }
                 vm.tree.append(response[0], vm.tree.select());
 
-            }
-            $(".loader").hide();
+            }           
         });
     }
     function refreshFileGrid() {
