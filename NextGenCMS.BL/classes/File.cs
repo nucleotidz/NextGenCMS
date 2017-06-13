@@ -14,6 +14,7 @@ using DotCMIS;
 using DotCMIS.Data.Impl;
 using NextGenCMS.Model.Alfresco.Common;
 using System.IO;
+using NextGenCMS.DL.interfaces;
 
 namespace NextGenCMS.BL.classes
 {
@@ -30,10 +31,11 @@ namespace NextGenCMS.BL.classes
         /// api helper object
         /// </summary>
         private readonly IAPIHelper _apiHelper;
-
-        public File(IAPIHelper apiHelper)
+        private readonly IFileRepository _fileRepository;
+        public File(IAPIHelper apiHelper,IFileRepository fileRepository)
         {
             this._apiHelper = apiHelper;
+            this._fileRepository = fileRepository;
         }
 
         public dynamic GetFiles(FilePath filePath)
@@ -79,7 +81,9 @@ namespace NextGenCMS.BL.classes
                     Length = 100,
                     Stream = HttpContext.Current.Request.Files[i].InputStream
                 };
-                folder.CreateDocument(properties, contentStream, null);
+                IDocument doc = folder.CreateDocument(properties, contentStream, null);
+                _fileRepository.SaveMeta(doc.VersionSeriesId);
+                _fileRepository.Commit();
             }
         }
 
@@ -144,7 +148,7 @@ namespace NextGenCMS.BL.classes
             {
                 if (disposing)
                 {
-
+                    this._fileRepository.Dispose();
                 }
             }
 

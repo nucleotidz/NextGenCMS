@@ -1,17 +1,13 @@
-﻿// <summary file="UnitOfWork.cs">
-// Description : Generic class to handle multiple transaction as a single unit of work.
-//               This class implements all the methods of interface IUnitOfWork, and IDisposable.
-// </summary>
+﻿using NextGenCMS.UnitOfWork.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace NextGenCMS.DL
+namespace NextGenCMS.UnitOfWork.Classes
 {
-    #region Namespaces
-    using System;
-    using System.Collections.Generic;
-    using System.Data.Entity;
-    using System.Linq;
-    #endregion
-
     /// <summary>
     /// Generic class to handle multiple local transactions as a single unit of work.
     /// </summary>
@@ -32,17 +28,7 @@ namespace NextGenCMS.DL
         /// object of Dictionary of Type and Object
         /// </summary>
         private Dictionary<Type, object> _repositories;
-
-        ///// <summary>
-        ///// Initializes a new instance of the <see cref="UnitOfWork{TContext}" /> class.
-        ///// </summary>
-        //public UnitOfWork()
-        //{
-        //    _disposed = false;
-        //    _dbContext = new TContext();
-        //    _repositories = new Dictionary<Type, object>();
-        //}
-
+      
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UnitOfWork{TContext}" /> class.
@@ -68,18 +54,18 @@ namespace NextGenCMS.DL
         /// Gets the repository.
         /// </summary>
         /// <typeparam name="TEntity">The type of the entity.</typeparam>
-        /// <returns>IGenericRepository of the Entity</returns>
-        public IGenericRepository<TEntity> GetRepository<TEntity>() where TEntity : class
+        /// <returns>IRepository of the Entity</returns>
+        public IRepository<TEntity> GetRepository<TEntity>() where TEntity : class
         {
             // Checks if the Dictionary Key contains the Model class
             if (_repositories.Keys.Contains(typeof(TEntity)))
             {
                 // Return the repository for that Model class
-                return _repositories[typeof(TEntity)] as IGenericRepository<TEntity>;
+                return _repositories[typeof(TEntity)] as IRepository<TEntity>;
             }
 
             // If the repository for that Model class doesn't exist, create it
-            var repository = new GenericRepository<TEntity>(_dbContext);
+            var repository = new Repository<TEntity>(_dbContext);
 
             // Add it to the dictionary
             _repositories.Add(typeof(TEntity), repository);

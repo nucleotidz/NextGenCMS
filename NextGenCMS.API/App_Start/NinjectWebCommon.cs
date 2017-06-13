@@ -16,6 +16,10 @@ namespace NextGenCMS.API.App_Start
     using NextGenCMS.DL.classes;
     using NextGenCMS.APIHelper.interfaces;
     using NextGenCMS.APIHelper.classes;
+    using NextGenCMS.UnitOfWork.Interfaces;
+    using NextGenCMS.UnitOfWork.Classes;
+    using NextGenCMS.ORM;
+    using System.Data.Entity;
 
     public static class NinjectWebCommon
     {
@@ -67,6 +71,9 @@ namespace NextGenCMS.API.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<IUnitOfWork>().To<UnitOfWork<NextgenModel>>().InRequestScope();
+            kernel.Bind<NextgenModel>().ToSelf().InRequestScope();
+            kernel.Bind<DbContext>().To<NextgenModel>();
             kernel.Bind<IAuthentication>().To<Authentication>();
             kernel.Bind<IAuthenticationRepository>().To<AuthenticationRepository>();
             kernel.Bind<IAPIHelper>().To<APIHelper>();
@@ -77,6 +84,7 @@ namespace NextGenCMS.API.App_Start
             kernel.Bind<IAdministration>().To<Administration>();
             kernel.Bind<IAdministrationRepository>().To<AdministrationRepository>();
             kernel.Bind<IWorkflowReport>().To<WorkflowReport>();
+            kernel.Bind<IFileRepository>().To<FileRepository>();
         }
     }
 }

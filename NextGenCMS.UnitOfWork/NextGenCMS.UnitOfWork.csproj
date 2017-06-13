@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{82E4415E-C48E-4B0D-9F33-CD5E6E7C3DEB}</ProjectGuid>
+    <ProjectGuid>{0B82D11F-3254-4E96-8084-7B39183869D4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NextGenCMS.DL</RootNamespace>
-    <AssemblyName>NextGenCMS.DL</AssemblyName>
+    <RootNamespace>NextGenCMS.UnitOfWork</RootNamespace>
+    <AssemblyName>NextGenCMS.UnitOfWork</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -29,14 +31,15 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+    <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+    <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -48,32 +51,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="classes\AdministrationRepository.cs" />
-    <Compile Include="classes\AuthenticationRepository.cs" />
-    <Compile Include="classes\FileRepository.cs" />
-    <Compile Include="interfaces\IAdministrationRepository.cs" />
-    <Compile Include="interfaces\IAuthenticationRepository.cs" />
-    <Compile Include="interfaces\IFileRepository.cs" />
+    <Compile Include="Classes\BaseRepository.cs" />
+    <Compile Include="Classes\Repository.cs" />
+    <Compile Include="Classes\UnitOfWork.cs" />
+    <Compile Include="Interfaces\IBaseRepository.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\NextGenCMS.Model\NextGenCMS.Model.csproj">
-      <Project>{4b3f69b5-216c-490a-9f05-b6ae63378799}</Project>
-      <Name>NextGenCMS.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\NextGenCMS.ORM\NextGenCMS.ORM.csproj">
-      <Project>{88651450-af00-4d99-8d9f-e96c9d97abd8}</Project>
-      <Name>NextGenCMS.ORM</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\NextGenCMS.UnitOfWork\NextGenCMS.UnitOfWork.csproj">
-      <Project>{0b82d11f-3254-4e96-8084-7b39183869d4}</Project>
-      <Name>NextGenCMS.UnitOfWork</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
