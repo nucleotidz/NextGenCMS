@@ -82,8 +82,8 @@ namespace NextGenCMS.BL.classes
                     Stream = HttpContext.Current.Request.Files[i].InputStream
                 };
                 IDocument doc = folder.CreateDocument(properties, contentStream, null);
-                _fileRepository.SaveMeta(doc.VersionSeriesId);
-                _fileRepository.Commit();
+               // _fileRepository.SaveMeta(doc.VersionSeriesId);
+              //  _fileRepository.Commit();
             }
         }
 
