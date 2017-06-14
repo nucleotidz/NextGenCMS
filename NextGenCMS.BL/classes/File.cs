@@ -111,9 +111,9 @@ namespace NextGenCMS.BL.classes
         private ISession GetSession()
         {
             if (session == null)
-            {
+            {  
                 string username = "admin";
-                if (HttpContext.Current.Request.Form != null && HttpContext.Current.Request.Form["tenant"] != null)
+                if (HttpContext.Current.Request.Form != null && HttpContext.Current.Request.Form["tenant"] != null && !string.IsNullOrEmpty(HttpContext.Current.Request.Form["tenant"].ToString()))
                 {
                     username = username + "@" + HttpContext.Current.Request.Form["tenant"].ToString();
                 }
