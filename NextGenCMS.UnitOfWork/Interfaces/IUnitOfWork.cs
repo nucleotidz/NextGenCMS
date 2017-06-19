@@ -1,12 +1,8 @@
-﻿// <summary file="IUnitOfWork.cs">
-// Description : Generic interface to handle multiple local transaction as a single unit of work.
-// </summary>
-using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-
-namespace NextGenCMS.DL
+﻿
+namespace NextGenCMS.UnitOfWork.Interfaces
 {
+    using System;
+    using System.Data.Entity;
     /// <summary>
     /// Generic interface to handle multiple local transaction as a single unit of work.
     /// </summary>
@@ -17,7 +13,7 @@ namespace NextGenCMS.DL
         /// </summary>
         /// <typeparam name="TEntity">The type of the entity.</typeparam>
         /// <returns>IRepository object of TEntity class</returns>
-        IGenericRepository<TEntity> GetRepository<TEntity>() where TEntity : class;
+        IRepository<TEntity> GetRepository<TEntity>() where TEntity : class;
 
         /// <summary>
         /// Commits this instance.
@@ -31,4 +27,5 @@ namespace NextGenCMS.DL
         /// <returns>db Context</returns>
         DbContext GetDbContext();
     }
+
 }

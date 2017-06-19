@@ -1,16 +1,19 @@
-﻿using System;
+﻿using NextGenCMS.UnitOfWork.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace NextGenCMS.DL
+namespace NextGenCMS.UnitOfWork.Classes
 {
-    public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
+    /// <summary>
+    /// Generic class for Repositories.
+    /// </summary>
+    /// <typeparam name="TEntity">The type of the entity.</typeparam>
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        
         /// <summary>
         /// DBcontext object
         /// </summary>
@@ -25,7 +28,7 @@ namespace NextGenCMS.DL
         /// Initializes a new instance of the <see cref="Repository{TEntity}" /> class.
         /// </summary>
         /// <param name="dbContext">The context.</param>
-        public GenericRepository(DbContext dbContext)
+        public Repository(DbContext dbContext)
         {
             this._dbContext = dbContext;
             this._dbSet = dbContext.Set<TEntity>();
@@ -43,7 +46,7 @@ namespace NextGenCMS.DL
         {
             IQueryable<TEntity> query = _dbSet;
 
-            foreach (var includeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+            foreach (var includeProperty in includeProperties.Split(new char[] {',' }, StringSplitOptions.RemoveEmptyEntries))
             {
                 query = query.Include(includeProperty);
             }
@@ -128,8 +131,8 @@ namespace NextGenCMS.DL
         public virtual TEntity GetById(object id)
         {
             return _dbSet.Find(id);
-        }
-      
+        }       
+
         /// <summary>
         /// Inserts the specified entity.
         /// </summary>
@@ -155,47 +158,8 @@ namespace NextGenCMS.DL
         public virtual void Update(TEntity entity)
         {
             _dbSet.Attach(entity);
-            _dbContext.Entry(entity).State = EntityState.Modified;
-            MarkPropertiesDirty(entity);
-        }
-        /// <summary>
-        /// As in the parent function we have marked entire entity as dirty, this function Marks the required properties as dirty. Which will be sent to database for updation
-        /// </summary>
-        /// <param name="entity">The entity.</param>
-        private void MarkPropertiesDirty(TEntity entity)
-        {
-            DbPropertyValues original;
-            ObjectContext _objectContext = ((IObjectContextAdapter)_dbContext).ObjectContext;
-            List<DbEntityEntry> changeList = _dbContext.ChangeTracker.Entries().ToList().Where(x => x.State == EntityState.Modified).ToList();
-            foreach (var changeEntry in changeList)
-            {
-                List<string> PKs = GetPrimaryKeyValue(changeEntry);
-                ObjectStateEntry stateEntry = _objectContext.ObjectStateManager.GetObjectStateEntry(changeEntry.Entity);
-                List<string> ModifiedProperties = stateEntry.GetModifiedProperties().ToList();
-                original = changeEntry.GetDatabaseValues();
-                if (ModifiedProperties != null)
-                {
-                    foreach (string propertyName in ModifiedProperties)
-                    {
-                        original.GetValue<object>(propertyName);
-                        object newValueObject = changeEntry.CurrentValues.GetValue<object>(propertyName);
-                        object oldValueObject = original.GetValue<object>(propertyName);
-                        string newValueString = Convert.ToString(newValueObject);
-                        string oldValueString = Convert.ToString(oldValueObject);
-                        if (oldValueObject != null && newValueObject != null && oldValueObject.GetType() == typeof(byte[])
-                                                       && newValueObject.GetType() == typeof(byte[]))
-                        {
-                            continue;
-                        }
-                        else if (oldValueString == newValueString)
-                        {
-                            if (!PKs.Contains(propertyName))
-                                _dbContext.Entry(entity).Property(propertyName).IsModified = false;
-                        }
-                    }
-                }
-            }
-        }
+            _dbContext.Entry(entity).State = EntityState.Modified;            
+        }   
 
         /// <summary>
         /// Gets the primary key value.

@@ -1,11 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
+﻿
 
-namespace NextGenCMS.DL
+namespace NextGenCMS.UnitOfWork.Interfaces
 {
-     public interface IGenericRepository<TEntity>
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Linq.Expressions;
+
+
+    /// <summary>
+    /// Generic Repository Inteface
+    /// </summary>
+    /// <typeparam name="TEntity">The type of the entity.</typeparam>
+    public interface IRepository<TEntity>
     {
         /// <summary>
         /// Get all the entities from the db context.

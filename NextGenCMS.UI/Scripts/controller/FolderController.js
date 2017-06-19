@@ -68,7 +68,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, $st
          };
     $scope.rawFile = null;
     $scope.rawFileName = '';
-
+   
     vm.treeData = null;
     var nodeRefs = [];
     var Files = [];
@@ -106,6 +106,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, $st
         vm.TreeSelect = false;
         $(".loader").show();
         $q.all([apiData.$promise, fileDate.$promise]).then(function (response) {
+            $(".loader").hide();
             if (response[1].items !== undefined && response[1].items.length > 0) {
                 Files = _.where(response[1].items, {
                     isFolder: false
@@ -115,7 +116,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, $st
             else {
                 Files = [];
                 vm.FileGridDataSource.read();
-            }         
+            }
             if (response[0].length > 0) {
 
                 for (var i = 0; i < response[0].length; i++) {
@@ -127,7 +128,6 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, $st
                 vm.tree.append(response[0], vm.tree.select());
 
             }
-            $(".loader").hide();
         });
     }
     function refreshFileGrid() {
@@ -146,7 +146,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, $st
             else {
                 Files = [];
                 vm.FileGridDataSource.read();
-            }           
+            }
             $(".loader").hide();
         });
     }
@@ -261,7 +261,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, $st
                     },
                     status: {
                         type: "string", editable: false
-                    }                   
+                    }
                 }
             }
         },
@@ -282,28 +282,28 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, $st
         scrollable: true,
         height: 300,
         selectable: "row",
-        filterable: true,
-        footer: false,
+            filterable: true,
+            footer: false,      
         columns: [
         {
             field: "displayName", title: "Name", filterable: true, template: function (dataitem) {
                 if (dataitem.lockedBy !== '') {
                     return dataitem.displayName + "&nbsp<span class='glyphicon glyphicon-tags'></span>";
-                }
-                else {
-                    return dataitem.displayName;
-                }
+                               }
+                                   else {
+                                   return dataitem.displayName;
+                                   }
+                },
             },
-        },
         {
             field: "version", title: "Version", template: function (dataitem) {
                 if (dataitem.lockedBy !== '') {
-                    return '';
+                                   return '';
+                               }
+                                   else {
+                                   return dataitem.version;
+                                   }
                 }
-                else {
-                    return dataitem.version;
-                }
-            }
         },
         {
             field: "status", title: "Checked Out", template: "#if (lockedBy !== '') {# yes #} else {# no #}  #"
@@ -327,50 +327,50 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, $st
                 field: "contentUrl", hidden: true
             }     
         ]
-    }
+     }
 
 
-        function addLock(displayName) {
+     function addLock(displayName) {
             return "<span class='glyphicon glyphicon-lock' > </span> " + displayName;
-        }
-        function Download() {
-            var entityGrid = $("#userGrid").data("kendoGrid")
-            var selectedItem = entityGrid.dataItem(entityGrid.select());
-            var formId = "formFile";
-            angular.element("body").append("<form  method='POST' id='" + formId + "' action='" + Global.apiuri + "File/Download" + "' target='_tab' >");
-            $("#" + formId + "").append("<input type='hidden' value='" + selectedItem.contentUrl + "'  name='path' >");
-            $("#" + formId + "").append("<input type='hidden' value='" + selectedItem.displayName + "'  name='name' >");
-            $("#" + formId + "").append("<input type='hidden' value='" + Cache.get("token") + "'  name='ticket' >");
-            angular.element("#" + formId + "").submit();
-            angular.element("#" + formId + "").remove();
+     }
+    function Download() {
+        var entityGrid = $("#userGrid").data("kendoGrid")
+        var selectedItem = entityGrid.dataItem(entityGrid.select());              
+        var formId = "formFile";
+        angular.element("body").append("<form  method='POST' id='" + formId + "' action='" + Global.apiuri + "File/Download" + "' target='_tab' >");
+        $("#" + formId + "").append("<input type='hidden' value='" + selectedItem.contentUrl + "'  name='path' >");
+        $("#" + formId + "").append("<input type='hidden' value='" + selectedItem.displayName + "'  name='name' >");
+        $("#" + formId + "").append("<input type='hidden' value='" + Cache.get("token") + "'  name='ticket' >");
+        angular.element("#" + formId + "").submit();
+        angular.element("#" + formId + "").remove();
 
+    }
+    vm.onSelect = function (evt) {
+        if (evt.item.textContent.trim() === "Download") {
+            Download();
         }
-        vm.onSelect = function (evt) {
-            if (evt.item.textContent.trim() === "Download") {
-                Download();
-            }
-            if (evt.item.textContent.trim() === "Check-Out") {
-                Checkout();
-            }
-            if (evt.item.textContent.trim() === "Check-In") {
-                Checkin();
-            }
-            if (evt.item.textContent.trim() === "Delete") {
-                DeleteFile();
-            }
-            if (evt.item.textContent.trim() === "Cancel Check-Out") {
-                CancelCheckOut();
-            }
-            if (evt.item.textContent.trim() === "Start Workflow") {
-                OpenCreateWFPopup();
-            }
-            if (evt.item.textContent.trim() === "Properties") {
-                OpenMeta();
-            }
+        if (evt.item.textContent.trim() === "Check-Out") {
+            Checkout();
+        }
+        if (evt.item.textContent.trim() === "Check-In") {
+            Checkin();
+        }
+        if (evt.item.textContent.trim() === "Delete") {
+            DeleteFile();
+        }
+        if (evt.item.textContent.trim() === "Cancel Check-Out") {
+            CancelCheckOut();
+        }
+        if (evt.item.textContent.trim() === "Start Workflow") {
+        OpenCreateWFPopup();
+        }
+        if (evt.item.textContent.trim() === "Properties") {
+            OpenMeta();
+        }
             if (evt.item.textContent.trim() === "Edit in office") {
                 EditFile();
             }
-        }
+    }
         function EditFile() {
             var entityGrid = $("#userGrid").data("kendoGrid")
             var selectedItem = entityGrid.dataItem(entityGrid.select());
@@ -381,205 +381,206 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, $st
             refreshFileGrid();
 
         }
-        function OpenMeta() {
-            var entityGrid = $("#userGrid").data("kendoGrid")
-            var selectedItem = entityGrid.dataItem(entityGrid.select());
-            var fileName = selectedItem.displayName;
-            var fileMeta = _.where(Files, {
-                displayName: fileName
-            });
-            var modalInstance = $modal.open({
-                backdrop: 'static',
-                keyboard: false,
-                templateUrl: 'Folder/Metadata',
-                controller: 'MetaDataController',
-                resolve: {
-                    items: function () {
-                        return fileMeta;
-                    }
+    function OpenMeta() {
+        var entityGrid = $("#userGrid").data("kendoGrid")
+        var selectedItem = entityGrid.dataItem(entityGrid.select());
+        var fileName = selectedItem.displayName;
+        var fileMeta = _.where(Files, {
+            displayName: fileName
+        });
+        var modalInstance = $modal.open({
+            backdrop: 'static',
+            keyboard: false,
+            templateUrl: 'Folder/Metadata',
+            controller: 'MetaDataController',
+            resolve: {
+                items: function () {
+                    return fileMeta;
                 }
-            });
-            // $state.go("Home.Metadata", { fileMeta: fileMeta });
-        }
+            }
+        });
+       // $state.go("Home.Metadata", { fileMeta: fileMeta });
+    }
 
-        function OpenCreateWFPopup() {
-            var entityGrid = $("#userGrid").data("kendoGrid")
-            var selectedItem = entityGrid.dataItem(entityGrid.select());
-            var fileName = selectedItem.displayName;
-            var splitList = selectedItem.nodeRef.split("/");
+    function OpenCreateWFPopup() {
+      var entityGrid = $("#userGrid").data("kendoGrid")
+      var selectedItem = entityGrid.dataItem(entityGrid.select());
+      var fileName = selectedItem.displayName;
+     var splitList = selectedItem.nodeRef.split("/");
             var objId = splitList[splitList.length - 1];
-            var modalInstance = $modal.open({
+      var modalInstance = $modal.open({
                 backdrop: 'static',
-                keyboard: false,
-                templateUrl: './Workflow/CreateWorkflow',
-                controller: 'CreateWorkflowController',
-                resolve: {
+        keyboard: false,
+        templateUrl: './Workflow/CreateWorkflow',
+        controller: 'CreateWorkflowController',
+        resolve: {
                     items: function () {
                         return {
                             "docId": objId,
-                            "FileName": fileName
-                        }
-                    }
-                }
-            });
-            modalInstance.result.then(function () {
-            }, function (popupData) {
-                if (popupData === "success") {
-                    refreshFileGrid();
-                }
-            });
-        }
-
-        function DeleteFile() {
-            var entityGrid = $("#userGrid").data("kendoGrid")
-            var selectedItem = entityGrid.dataItem(entityGrid.select());
-            deleteData.path = path;
-            deleteData.entity = "file"
-            deleteData.data = selectedItem.displayName
-            var modalInstance = $modal.open({
-                backdrop: 'static',
-                keyboard: false,
-                templateUrl: './Folder/Delete',
-                controller: 'DeleteController',
-                resolve: {
-                    items: function () {
-                        return deleteData;
-                    }
-                }
-            });
-            modalInstance.result.then(function () {
-            }, function (popupData) {
-                if (popupData === "success") {
-                    refreshFileGrid();
-                }
-            });
-        };
-        vm.DeleteFolder = function () {
-            deleteData.path = path;
-            deleteData.entity = "folder"
-            deleteData.data = node
-            var modalInstance = $modal.open({
-                backdrop: 'static',
-                keyboard: false,
-                templateUrl: './Folder/Delete',
-                controller: 'DeleteController',
-                resolve: {
-                    items: function () {
-                        return deleteData;
-                    }
-                }
-            });
-            modalInstance.result.then(function () {
-            }, function (popupData) {
-                if (popupData === "success") {
-                    var array = node.parent();
-                    var index = array.indexOf(node);
-                    array.splice(index, 1);
-                    remove(node.noderef)
-                    node = null;
-                    path = '';
-                    vm.TreeSelect = true;
-                    Files = [];
-                    vm.FileGridDataSource.read();
-                    if (vm.treeData._data.length < 1) {
-                        nodeRefs = [];
-                    }
-                }
-            });
-        };
-        function remove(item) {
-            for (var i = nodeRefs.length; i--;) {
-                if (nodeRefs[i] === item) {
-                    nodeRefs.splice(i, 1);
-                    break;
-                }
+                       "FileName": fileName
+              }
             }
-        }
-        function Checkout() {
-            var entityGrid = $("#userGrid").data("kendoGrid")
-            var selectedItem = entityGrid.dataItem(entityGrid.select());
-            if (selectedItem.lockedBy !== '') {
-                showAlert("File already checked out by " + selectedItem.lockedBy, "danger");
-                return;
-            }
-            var name = selectedItem.displayName;
-            var CheckoutParamsModel = {
-                path: '',
-                site: "ahmar",
-                container: "documentLibrary"
-            }
-            CheckoutParamsModel.path = path + "/" + name;
-            var apiData = FolderAPI.CheckOutFile(CheckoutParamsModel);
-            $(".loader").show();
-            $q.all([apiData.$promise]).then(function (response) {
+              }
+                  });
+                        modalInstance.result.then(function () { 
+        }, function (popupData) {
+            if (popupData === "success") {
                 refreshFileGrid();
-                $(".loader").hide();
-            });
-        }
-        function showAlert(msg, type) {
-            alert(msg);
-        }
+                  }
+                  });
+                  }
 
-        function Checkin() {
-            var entityGrid = $("#userGrid").data("kendoGrid")
-            var selectedItem = entityGrid.dataItem(entityGrid.select());
-            if (selectedItem.lockedBy === '') {
-                showAlert("File not checked out", "danger");
-                return;
+    function DeleteFile() {
+        var entityGrid = $("#userGrid").data("kendoGrid")
+        var selectedItem = entityGrid.dataItem(entityGrid.select());
+        deleteData.path = path;
+        deleteData.entity = "file"
+        deleteData.data = selectedItem.displayName
+        var modalInstance = $modal.open({
+            backdrop: 'static',
+            keyboard: false,
+            templateUrl: './Folder/Delete',
+            controller: 'DeleteController',
+            resolve: {
+                items: function () {
+                    return deleteData;
+                }
             }
-            var splitList = selectedItem.nodeRef.split("/");
-            var objId = splitList[splitList.length - 1];
-            var apiData = FolderAPI.CheckInFile({
-                "objectId": objId
-            })
-            $(".loader").show();
-            $q.all([apiData.$promise]).then(function (response) {
+        });
+        modalInstance.result.then(function () {
+        }, function (popupData) {
+            if (popupData === "success") {
                 refreshFileGrid();
-                $(".loader").hide();
-            });
+            }
+        });
+    };
+    vm.DeleteFolder = function () { 
+        deleteData.path = path;
+        deleteData.entity = "folder"
+        deleteData.data = node
+        var modalInstance = $modal.open({
+            backdrop: 'static',
+            keyboard: false,
+            templateUrl: './Folder/Delete',
+            controller: 'DeleteController',
+            resolve: {
+                items: function () {
+                    return deleteData;
+                }
+            }
+        });
+        modalInstance.result.then(function () {
+        }, function (popupData) {
+            if (popupData === "success") {
+                var array = node.parent();
+                var index = array.indexOf(node);
+                array.splice(index, 1);
+                remove(node.noderef)
+                node = null;
+                path = '';
+                vm.TreeSelect = true;
+                Files = [];
+                vm.FileGridDataSource.read();
+                if (vm.treeData._data.length < 1) {
+                    nodeRefs = [];
+                }
+            }
+        });
+    };
+    function remove(item) {
+        for (var i = nodeRefs.length; i--;) {
+            if (nodeRefs[i] === item) {
+                nodeRefs.splice(i, 1);
+                break;
+            }
         }
-
-        function CancelCheckOut() {
-            var entityGrid = $("#userGrid").data("kendoGrid")
-            var selectedItem = entityGrid.dataItem(entityGrid.select());
-            if (selectedItem.lockedBy === '') {
-                showAlert("File not checked out", "danger");
-                return;
-            }
-            var splitList = selectedItem.nodeRef.split("/");
-            var objId = splitList[splitList.length - 1];
-            var apiData = FolderAPI.CancelCheckOut({
-                "objectId": objId
-            })
-            $(".loader").show();
-            $q.all([apiData.$promise]).then(function (response) {
-                refreshFileGrid();
-                $(".loader").hide();
-            });
-        };
-        vm.open = function (evt) {
-            var entityGrid = $("#userGrid").data("kendoGrid")
-            var selectedItem = entityGrid.dataItem(entityGrid.select());
-            if (selectedItem == null) {
-                evt.preventDefault();
-                return;
-            }
-
+    }
+    function Checkout() {
+        var entityGrid = $("#userGrid").data("kendoGrid")
+        var selectedItem = entityGrid.dataItem(entityGrid.select());
+        if (selectedItem.lockedBy !== '') {
+            showAlert("File already checked out by " + selectedItem.lockedBy, "danger");
+            return;
+            }      
+        var name = selectedItem.displayName;
+        var CheckoutParamsModel = {
+            path: '',
+            site: "ahmar",
+            container: "documentLibrary"
         }
-        $scope.upload = function () {
-            if (path == undefined) {
-                return;
-            }
-            var formdata = new FormData();
-            formdata.append("path", path);
-            formdata.append($scope.rawFileName, $scope.rawFile);
-            var xhr = new XMLHttpRequest();
-            $(".loader").show();
-            xhr.open("POST", Global.apiuri + "File/Upload", false);
-            xhr.send(formdata);
-            $(".loader").hide();
+        CheckoutParamsModel.path = path + "/" + name;
+        var apiData = FolderAPI.CheckOutFile(CheckoutParamsModel);
+        $(".loader").show();
+        $q.all([apiData.$promise]).then(function (response) {
             refreshFileGrid();
+            $(".loader").hide();
+        });
+    }
+    function showAlert(msg, type) {
+        alert(msg);
+    }
+
+    function Checkin() {
+        var entityGrid = $("#userGrid").data("kendoGrid")
+        var selectedItem = entityGrid.dataItem(entityGrid.select());
+        if (selectedItem.lockedBy === '') {
+          showAlert("File not checked out", "danger");
+          return;
+       }
+        var splitList = selectedItem.nodeRef.split("/");
+        var objId = splitList[splitList.length - 1];
+        var apiData = FolderAPI.CheckInFile({
+            "objectId": objId
+        })
+        $(".loader").show();
+        $q.all([apiData.$promise]).then(function (response) {
+            refreshFileGrid();
+            $(".loader").hide();
+        });
+    }
+
+   function CancelCheckOut() {
+        var entityGrid = $("#userGrid").data("kendoGrid")
+        var selectedItem = entityGrid.dataItem(entityGrid.select());
+        if (selectedItem.lockedBy === '') {
+          showAlert("File not checked out", "danger");
+              return;
+              }
+            var splitList = selectedItem.nodeRef.split("/");
+            var objId = splitList[splitList.length - 1];
+        var apiData = FolderAPI.CancelCheckOut({
+            "objectId": objId
+        })
+        $(".loader").show();
+        $q.all([apiData.$promise]).then(function (response) {
+            refreshFileGrid();
+            $(".loader").hide();
+            });
+          };
+    vm.open = function (evt) {
+        var entityGrid = $("#userGrid").data("kendoGrid")
+        var selectedItem = entityGrid.dataItem(entityGrid.select());
+        if (selectedItem == null) {
+            evt.preventDefault();
+            return;
         }
-        Bind();
-    }])
+
+    }
+    $scope.upload = function () {
+        if (path == undefined) {
+            return;
+        }
+        var formdata = new FormData();
+        formdata.append("tenant", tenant);
+        formdata.append("path", path);
+        formdata.append($scope.rawFileName, $scope.rawFile);
+        var xhr = new XMLHttpRequest();
+        $(".loader").show();
+        xhr.open("POST", Global.apiuri + "File/Upload", false);
+        xhr.send(formdata);
+        $(".loader").hide();
+        refreshFileGrid();
+    }
+    Bind();
+}])
 })();
