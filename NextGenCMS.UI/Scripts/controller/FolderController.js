@@ -231,7 +231,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, $st
                     if (pos > -1) {
                         var proto = msProtocolNames[this.displayName.split('.').pop()]
                         var path = this.webdavUrl.replace('/webdav', '');
-                        return proto + ':ofe%7Cu%7C' + Global.Alfresco + 'aos' + path;
+                        return proto + ':ofe%7Cu%7C' + Global.Alfresco + 'alfresco/aos' + path;
                     }
                 },
                 fields: {
