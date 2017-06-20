@@ -1,6 +1,6 @@
 ﻿(function () {
     'use strict';
-    app.controller('FolderController', ['$scope', '$rootScope', 'FolderAPI', 'FileAPI', '$q', '$modal', 'Global', 'Cache','$state',
+    app.controller('FolderController', ['$scope', '$rootScope', 'FolderAPI', 'FileAPI', '$q', '$modal', 'Global', 'Cache', '$state',
 function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, $state) {
     var vm = this;
     var node;
@@ -8,8 +8,64 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, $st
     var deleteData = {
         path: "",
         entity: "",
-        data:"",
+        data: "",
     }
+    var officeExtentionList = [
+        'doc',
+        'docx',
+        'docm',
+        'dot',
+        'dotx',
+        'dotm',
+        'xls',
+        'xlsx',
+        'xlsb',
+        'xlsm',
+        'xlt',
+        'xltx',
+        'xltm',
+        'xlsm',
+        'ppt',
+        'pptx',
+        'pot',
+        'potx',
+        'potm',
+        'pptm',
+        'potm',
+        'pps',
+        'ppsx',
+        'ppam',
+        'ppsm',
+        'sldx',
+        'sldm'];
+    var msProtocolNames =
+         {
+             'doc': 'ms-word',
+             'docx': 'ms-word',
+             'docm': 'ms-word',
+             'dot': 'ms-word',
+             'dotx': 'ms-word',
+             'dotm': 'ms-word',
+             'xls': 'ms-excel',
+             'xlsx': 'ms-excel',
+             'xlsb': 'ms-excel',
+             'xlsm': 'ms-excel',
+             'xlt': 'ms-excel',
+             'xltx': 'ms-excel',
+             'xltm': 'ms-excel',
+             'ppt': 'ms-powerpoint',
+             'pptx': 'ms-powerpoint',
+             'pot': 'ms-powerpoint',
+             'potx': 'ms-powerpoint',
+             'potm': 'ms-powerpoint',
+             'pptm': 'ms-powerpoint',
+             'pps': 'ms-powerpoint',
+             'ppsx': 'ms-powerpoint',
+             'ppam': 'ms-powerpoint',
+             'ppsm': 'ms-powerpoint',
+             'sldx': 'ms-powerpoint',
+             'sldm': 'ms-powerpoint',
+         };
     $scope.rawFile = null;
     $scope.rawFileName = '';
    
@@ -71,7 +127,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, $st
                 }
                 vm.tree.append(response[0], vm.tree.select());
 
-            }           
+            }
         });
     }
     function refreshFileGrid() {
@@ -170,6 +226,14 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, $st
         schema: {
             model: {
                 action: "",
+                OfficeURL:  function calculateOfficeURL() {
+                    var pos = officeExtentionList.indexOf(this.displayName.split('.').pop());
+                    if (pos > -1) {
+                        var proto = msProtocolNames[this.displayName.split('.').pop()]
+                        var path = this.webdavUrl.replace('/webdav', '');
+                        return proto + ':ofe%7Cu%7C' + Global.Alfresco + 'aos' + path;
+                    }
+                },
                 fields: {
                     displayName: {
                         type: "string", editable: false
@@ -202,6 +266,8 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, $st
             }
         },
     });
+
+
     vm.FileGridOptions = {
         dataSource: vm.FileGridDataSource,
         dataBound: function () {
@@ -213,16 +279,16 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, $st
         reorderable: true,
         resizable: true,
         navigatable: true,
-        scrollable:true,
-        height:300,
+        scrollable: true,
+        height: 300,
         selectable: "row",
             filterable: true,
             footer: false,      
         columns: [
         {
             field: "displayName", title: "Name", filterable: true, template: function (dataitem) {
-                               if(dataitem.lockedBy !=='') {
-                                   return dataitem.displayName +"&nbsp<span class='glyphicon glyphicon-tags'></span>";
+                if (dataitem.lockedBy !== '') {
+                    return dataitem.displayName + "&nbsp<span class='glyphicon glyphicon-tags'></span>";
                                }
                                    else {
                                    return dataitem.displayName;
@@ -231,7 +297,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, $st
             },
         {
             field: "version", title: "Version", template: function (dataitem) {
-                               if(dataitem.lockedBy !=='') {
+                if (dataitem.lockedBy !== '') {
                                    return '';
                                }
                                    else {
@@ -259,8 +325,10 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, $st
         },
             {
                 field: "contentUrl", hidden: true
-            }]
+            }     
+        ]
      }
+
 
      function addLock(displayName) {
             return "<span class='glyphicon glyphicon-lock' > </span> " + displayName;
@@ -299,8 +367,20 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, $st
         if (evt.item.textContent.trim() === "Properties") {
             OpenMeta();
         }
+            if (evt.item.textContent.trim() === "Edit in office") {
+                EditFile();
+            }
     }
+        function EditFile() {
+            var entityGrid = $("#userGrid").data("kendoGrid")
+            var selectedItem = entityGrid.dataItem(entityGrid.select());
+            var anchorID = "anchor";
+            angular.element("body").append("<a  id='" + anchorID + "' href='" + selectedItem.OfficeURL() + "' target='_tab' >");
+            angular.element("#" + anchorID + "")[0].click();
+            angular.element("#" + anchorID + "").remove();
+            refreshFileGrid();
 
+        }
     function OpenMeta() {
         var entityGrid = $("#userGrid").data("kendoGrid")
         var selectedItem = entityGrid.dataItem(entityGrid.select());
@@ -327,15 +407,16 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, $st
       var selectedItem = entityGrid.dataItem(entityGrid.select());
       var fileName = selectedItem.displayName;
      var splitList = selectedItem.nodeRef.split("/");
-     var objId = splitList[splitList.length -1];
+            var objId = splitList[splitList.length - 1];
       var modalInstance = $modal.open({
-        backdrop : 'static',
+                backdrop: 'static',
         keyboard: false,
         templateUrl: './Workflow/CreateWorkflow',
         controller: 'CreateWorkflowController',
         resolve: {
-          items: function() {
-              return { "docId": objId,
+                    items: function () {
+                        return {
+                            "docId": objId,
                        "FileName": fileName
               }
             }
@@ -466,7 +547,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, $st
               return;
               }
             var splitList = selectedItem.nodeRef.split("/");
-            var objId = splitList[splitList.length -1];
+            var objId = splitList[splitList.length - 1];
         var apiData = FolderAPI.CancelCheckOut({
             "objectId": objId
         })
