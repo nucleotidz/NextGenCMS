@@ -6,52 +6,74 @@
     <div class="settingicon pull-left"><span class="glyphicon glyphicon-list-alt"></span></div><h4 class="modal-title">View Properties</h4>
 </div>
 <div class="modal-body">
-    <div class="twoCols clearfix">
-        <div class="col-xs-12 col-md-12">
-            <div class="mainContent noheight">
-                <div class="row margin0 contentHeader">
-                    <h3>{{meta[0].displayName}}</h3>
-                </div>
-                <div class="row">
-                    <ul class="reportList">
-                        <li class="clearfix">
-                            <div class="col-sm-6 padd0"><label>Created by</label><span>: {{meta[0].createdBy}}</span></div>
-                            <div class="col-sm-6 padd0"><label>Created On</label><span>:{{meta[0].createdOn}}</span></div>
+   
+        <div class="twoCols clearfix">
+           
+                <div class="col-xs-12 col-md-12">
+                    <div class="mainContent noheight">
+                        <div kendo-tab-strip k-content-urls="[ null, null]">
+                            <ul>
+                                <li class="k-state-active">Properties</li>
+                                <li>Version History</li>
+                            </ul>
+                            <div>
+                                <div class="row margin0 contentHeader">
+                                    <h3>{{meta[0].displayName}}</h3>
+                                </div>
+                                <div class="row">
+                                    <ul class="reportList">
+                                        <li class="clearfix">
+                                            <div class="col-sm-6 padd0"><label>Created by</label><span>: {{meta[0].createdBy}}</span></div>
+                                            <div class="col-sm-6 padd0"><label>Created On</label><span>:{{meta[0].createdOn}}</span></div>
 
-                        </li>
-                        <li class="clearfix">
-                            <div class="col-sm-6 padd0"><label>Modified By</label><span>:{{meta[0].modifiedBy}} </span></div>
-                            <div class="col-sm-6 padd0"><label>Modified On</label><span>: {{meta[0].modifiedOn}}</span></div>
+                                        </li>
+                                        <li class="clearfix">
+                                            <div class="col-sm-6 padd0"><label>Modified By</label><span>:{{meta[0].modifiedBy}} </span></div>
+                                            <div class="col-sm-6 padd0"><label>Modified On</label><span>: {{meta[0].modifiedOn}}</span></div>
 
-                        </li>
+                                        </li>
 
-                        <li class="clearfix">
-                            <div class="col-sm-6 padd0"><label>LockedBy</label><span>:{{meta[0].lockedBy}} </span></div>
-                            <div class="col-sm-6 padd0"><label>Size</label><span>: {{meta[0].size}}</span></div>
+                                        <li class="clearfix">
+                                            <div class="col-sm-6 padd0"><label>LockedBy</label><span>:{{meta[0].lockedBy}} </span></div>
+                                            <div class="col-sm-6 padd0"><label>Size</label><span>: {{meta[0].size}}</span></div>
 
-                        </li>
-                        <li class="clearfix">
-                            <div class="col-sm-6 padd0"><label>Location</label><span>:{{meta[0].location.path}} </span></div>
-                            <div class="col-sm-6 padd0"><label>Version</label><span>: {{meta[0].version}}</span></div>
-                        </li>
-                        <li class="clearfix">
-                            <div class="col-sm-6 padd0"><label>Type</label><span>: {{meta[0].type}}</span></div>
-                            <div class="col-sm-6 padd0"><label>Is Linked</label><span>: {{meta[0].isLink}}</span></div>
+                                        </li>
+                                        <li class="clearfix">
+                                            <div class="col-sm-6 padd0"><label>Location</label><span>:{{meta[0].location.path}} </span></div>
+                                            <div class="col-sm-6 padd0"><label>Version</label><span>: {{meta[0].version}}</span></div>
+                                        </li>
+                                        <li class="clearfix">
+                                            <div class="col-sm-6 padd0"><label>Type</label><span>: {{meta[0].type}}</span></div>
+                                            <div class="col-sm-6 padd0"><label>Is Linked</label><span>: {{meta[0].isLink}}</span></div>
 
-                        </li>
-                        <li class="clearfix">
-                            <div class="col-sm-6 padd0"><label>Workflows</label><span>: {{meta[0].activeWorkflows}}</span></div>
-                        </li>
-                        <li class="clearfix">
-                            <div class="col-sm-12 padd0"><label>Mime Type</label><span>{{meta[0].mimetype}} </span></div>
-                        </li>
-                    </ul>
+                                        </li>
+                                        <li class="clearfix">
+                                            <div class="col-sm-6 padd0"><label>Workflows</label><span>: {{meta[0].activeWorkflows}}</span></div>
+                                        </li>
+                                        <li class="clearfix">
+                                            <div class="col-sm-12 padd0"><label>Mime Type</label><span>{{meta[0].mimetype}} </span></div>
+                                        </li>
+                                    </ul>
 
+                                </div>
+                            </div>
+                            <div>
+                                <div kendo-grid id="version_grd"
+                                     k-options="versionGridOption"
+                                     k-data-source="versionGridDataSource"
+                                     ng-dblclick="vm.OpenDetails();">
+                                </div>
+
+                            </div>
+                        </div>
                 </div>
             </div>
-        </div>
+        
     </div>
-</div>
+    </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-default" ng-click="closePopup();">Close</button>
 </div>
+
+
+@*<div>second one</div>*@

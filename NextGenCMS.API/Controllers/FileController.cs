@@ -63,5 +63,12 @@ namespace NextGenCMS.API.Controllers
             _file.Download(HttpContext.Current.Request.Form[0]);
             return Request.CreateResponse(HttpStatusCode.OK);
         }
+
+        [Route("Get/Version")]        
+        [HttpPost]
+        public HttpResponseMessage GetVesrion(NextGenCMS.Model.classes.File.Version version)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK,_file.GetVesrion(version.nodeRef));
+        }
     }
 }

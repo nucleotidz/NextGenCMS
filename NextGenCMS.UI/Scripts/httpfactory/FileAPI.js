@@ -13,6 +13,12 @@
                 url: Global.apiuri + "File/Delete/",
                 isArray: false,
                 params: {}
+            },
+            GetVersion: {
+                method: "POST",
+                url: Global.apiuri + "File/Get/Version",
+                isArray: true,
+                params: {}
             }
            
         });

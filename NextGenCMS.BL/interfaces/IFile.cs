@@ -1,5 +1,6 @@
 ﻿using NextGenCMS.Model.Alfresco.Common;
 using NextGenCMS.Model.classes.File;
+using System.Collections.Generic;
 
 namespace NextGenCMS.BL.interfaces
 {
@@ -10,5 +11,6 @@ namespace NextGenCMS.BL.interfaces
         void Upload();
         DeleteRootObject DeleteFile(FilePath filePath);
         void Download(string docId);
+        List<object> GetVesrion(string nodeRef);
     }
 }

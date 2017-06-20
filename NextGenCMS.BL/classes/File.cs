@@ -38,6 +38,17 @@ namespace NextGenCMS.BL.classes
             this._fileRepository = fileRepository;
         }
 
+        public List<object> GetVesrion(string nodeRef)
+        {
+            string data = string.Empty;
+            if (HttpContext.Current.Items[Filter.Token] != null)
+            {
+                data = this._apiHelper.Get(ServiceUrl.GetVersion + nodeRef+ "&alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
+            }
+
+            List<object> dataObject = JsonConvert.DeserializeObject<List<object>>(data);
+            return dataObject;
+        }
         public dynamic GetFiles(FilePath filePath)
         {
             string data = string.Empty;
