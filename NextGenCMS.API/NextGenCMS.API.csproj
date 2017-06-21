@@ -241,6 +241,14 @@
       <Project>{4b3f69b5-216c-490a-9f05-b6ae63378799}</Project>
       <Name>NextGenCMS.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\NextGenCMS.ORM\NextGenCMS.ORM.csproj">
+      <Project>{88651450-af00-4d99-8d9f-e96c9d97abd8}</Project>
+      <Name>NextGenCMS.ORM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NextGenCMS.UnitOfWork\NextGenCMS.UnitOfWork.csproj">
+      <Project>{0b82d11f-3254-4e96-8084-7b39183869d4}</Project>
+      <Name>NextGenCMS.UnitOfWork</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

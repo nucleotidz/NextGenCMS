@@ -123,8 +123,13 @@
                         vm.WorkflowData.id = data.id;
                         vm.WorkflowData.title = data.title;
                         vm.WorkflowData.description = data.description;
-                        var lastName = data.initiator.lastName;
-                        vm.WorkflowData.username = data.initiator.firstName + (lastName === null && lastName === "" ? "" : " " + lastName);
+                        if (data.initiator != null) {
+                            var lastName = data.initiator.lastName;
+                            vm.WorkflowData.username = data.initiator.firstName + (lastName === null && lastName === "" ? "" : " " + lastName);
+                        }
+                        else {
+                            vm.WorkflowData.username = "";
+                        }
                         vm.WorkflowData.dueDate = data.dueDate === null || data.dueDate === "" ? "(None)" : kendo.toString(kendo.parseDate(data.dueDate), 'dd MMM yyyy');
                         vm.WorkflowData.endDate = data.endDate === null || data.endDate === "" ? "<in progress>" : kendo.toString(kendo.parseDate(data.endDate), 'dd MMM yyyy hh:mm:ss');
                         vm.WorkflowData.startDate = kendo.toString(kendo.parseDate(data.startDate), 'dd MMM yyyy hh:mm:ss');

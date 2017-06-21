@@ -70,6 +70,7 @@
             var formId = "formFile";
             angular.element("body").append("<form  method='POST' id='" + formId + "' action='" + Global.apiuri + "File/Download/By/Id" + "' target='_tab' >");
             $("#" + formId + "").append("<input type='hidden' value='" + id + "'  name='id' >");
+            $("#" + formId + "").append("<input type='hidden' value='" + tenant + "'  name='tenant' >");
             angular.element("#" + formId + "").submit();
             angular.element("#" + formId + "").remove();
         }

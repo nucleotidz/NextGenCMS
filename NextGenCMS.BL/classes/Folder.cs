@@ -187,7 +187,7 @@ namespace NextGenCMS.BL.classes
             if (session == null)
             {
                 string user = "admin";
-                if (HttpContext.Current.Items[Filter.Tenant] != null)
+                if (HttpContext.Current.Items[Filter.Tenant] != null && !string.IsNullOrEmpty(HttpContext.Current.Items[Filter.Tenant].ToString()))
                 {
                     user = user + "@" + HttpContext.Current.Items[Filter.Tenant].ToString();
                 }

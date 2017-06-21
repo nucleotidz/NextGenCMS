@@ -80,12 +80,13 @@ namespace NextGenCMS.UI
                "~/Scripts/controller/CreateWorkflowController.js",
                "~/Scripts/controller/ViewEditWFController.js",
                "~/Scripts/controller/WorkflowController.js",
-               "~/Scripts/controller/WorkflowDetailController.js",
+               "~/Scripts/controller/WorkflowDetailController.js",               
                "~/Scripts/controller/WorkflowReportController.js",
                "~/Scripts/controller/ProcessDiagramController.js",
                "~/Scripts/controller/ToolPaneController.js",
                "~/Scripts/controller/MenuController.js",
-               "~/Scripts/controller/ManagePermissionsPopupController.js"
+               "~/Scripts/controller/ManagePermissionsPopupController.js",
+                "~/Scripts/controller/MetaDataController.js"
              ));
         }
         private static void LoadDirective(BundleCollection bundles)
@@ -136,7 +137,7 @@ namespace NextGenCMS.UI
         {
             bundles.Add(new ScriptBundle("~/Scripts/underscore/js").Include
                  (
-                   "~/Scripts/underscore/underscore-min.js"
+                   "~/Scripts/underscore/underscore-min.js"                   
                  ));
         }
         private static void LoadService(BundleCollection bundles)
