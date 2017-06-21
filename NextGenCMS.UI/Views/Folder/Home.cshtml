@@ -15,6 +15,7 @@
         <button type="button" class="btn btn-primary btn-sm bluebtn whiteText" ng-click="vm.DeleteFolder();" ng-disabled="vm.TreeSelect">Delete Folder<span class="glyphicon glyphicon-trash"></span></button>
         <button type="button" class="btn btn-primary btn-sm bluebtn whiteText" ng-click="vm.AddFolder();">New Folder<span class="glyphicon glyphicon-plus"></span></button>
         <button type="button" class="btn btn-primary btn-sm bluebtn whiteText" ng-click="vm.AddSubFolder();" ng-disabled="vm.TreeSelect">Sub Folder<span class="glyphicon glyphicon-plus"></span></button>
+        <button type="button" class="btn btn-primary btn-sm bluebtn whiteText" ng-click="vm.ManagePermissions();" ng-if="vm.isManager" ng-disabled="vm.TreeSelect">Manage Permissions<span class="glyphicon glyphicon-cog"></span></button>
     </div>
 </div>
 
@@ -49,20 +50,20 @@
     </div>
 </div>
 
- <ul kendo-context-menu k-filter="'#userGrid tbody tr[aria-selected=true]'"
-        k-on-open="vm.open(kendoEvent);"
-        k-orientation="vm.orientation"
-        k-on-select="vm.onSelect(kendoEvent);">
-        <li><span class="glyphicon glyphicon-download-alt"> </span> Download</li>
-        <li><span class="glyphicon glyphicon-edit"> </span> Edit</li>
-        <li><span class="glyphicon glyphicon-link"> </span>Link File</li>
-        <li><span class="glyphicon glyphicon-move"> </span> Move To...</li>
-        <li><span class="glyphicon glyphicon-trash"> </span> Delete</li>
-        <li><span class="glyphicon glyphicon-floppy-open"></span> Check-Out</li>
-       <li><span class="glyphicon glyphicon-floppy-remove"> </span> Cancel Check-Out</li>
-        <li><span class="glyphicon glyphicon-floppy-save"> </span> Check-In</li>
-        <li><span class="glyphicon glyphicon-transfer"> </span> Start Workflow</li>
-        <li><span class="glyphicon glyphicon-cog"> </span> Manage Permissions</li>
-        <li><span class="glyphicon glyphicon-list-alt"> </span> Properties</li>
-        <li><span class="glyphicon glyphicon-envelope"> </span> Email</li>
-    </ul>
+<ul kendo-context-menu k-filter="'#userGrid tbody tr[aria-selected=true]'"
+    k-on-open="vm.open(kendoEvent);"
+    k-orientation="vm.orientation"
+    k-on-select="vm.onSelect(kendoEvent);">
+    <li><span class="glyphicon glyphicon-download-alt"> </span> Download</li>
+    <li><span class="glyphicon glyphicon-edit"> </span> Edit</li>
+    <li><span class="glyphicon glyphicon-link"> </span>Link File</li>
+    <li><span class="glyphicon glyphicon-move"> </span> Move To...</li>
+    <li><span class="glyphicon glyphicon-trash"> </span> Delete</li>
+    <li><span class="glyphicon glyphicon-floppy-open"></span> Check-Out</li>
+    <li><span class="glyphicon glyphicon-floppy-remove"> </span> Cancel Check-Out</li>
+    <li><span class="glyphicon glyphicon-floppy-save"> </span> Check-In</li>
+    <li><span class="glyphicon glyphicon-transfer"> </span> Start Workflow</li>
+    <li ng-show="vm.isManager"><span class="glyphicon glyphicon-cog"> </span> Manage Permissions</li>
+    <li><span class="glyphicon glyphicon-list-alt"> </span> Properties</li>
+    <li><span class="glyphicon glyphicon-envelope"> </span> Email</li>
+</ul>

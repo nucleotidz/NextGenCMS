@@ -32,6 +32,11 @@
             url: Global.apiuri + "administration/groups",
             isArray: false,
             param: {}
+        },
+        getPermissions: {
+            method: "GET",
+            url: Global.apiuri + "administration/permissions/:nodeId",
+            isArray: false
         }
     });
 }]);

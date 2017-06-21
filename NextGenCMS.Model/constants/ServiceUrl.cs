@@ -44,6 +44,8 @@ namespace NextGenCMS.Model.constants
         public static readonly string GetUserSites = AppConfigKeys.ServiceUrl + "alfresco/s/api/people/";
 
         public static readonly string GetSiteUsers = AppConfigKeys.ServiceUrl + "alfresco/s/api/sites/" + AppConfigKeys.Site + "/memberships?size=250&nf=&authorityType=USER&alf_ticket=";
+
+        public static readonly string GetPermissions = AppConfigKeys.ServiceUrl + "alfresco/s/slingshot/doclib/permissions/workspace/SpacesStore/";
         #endregion
 
         #region "Administration - Groups"
@@ -73,7 +75,7 @@ namespace NextGenCMS.Model.constants
         public static readonly string CreateProcessItems = AppConfigKeys.ServiceUrl + "alfresco/api/-default-/public/workflow/versions/1/processes/";
         public static readonly string TaskList = AppConfigKeys.ServiceUrl + "alfresco/s/api/task-instances";
         public static readonly string WfFile = AppConfigKeys.ServiceUrl + "alfresco/api/-default-/public/workflow/versions/1/processes/";
-        public static readonly string WFUpdate = AppConfigKeys.ServiceUrl + "alfresco/api/-default-/public/workflow/versions/1/tasks/";        
+        public static readonly string WFUpdate = AppConfigKeys.ServiceUrl + "alfresco/api/-default-/public/workflow/versions/1/tasks/";
         public static readonly string ApproveReject = AppConfigKeys.ServiceUrl + "alfresco/service/api/task/";
         public static readonly string AllWF = AppConfigKeys.ServiceUrl + "alfresco/s/api/workflow-instances/";
         public static readonly string CompletedWF = AppConfigKeys.ServiceUrl + "alfresco/s/api/workflow-instances";

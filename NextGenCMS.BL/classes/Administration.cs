@@ -18,6 +18,7 @@ namespace NextGenCMS.BL.classes
     using NextGenCMS.Model.classes.administration;
     using NextGenCMS.Model.classes.administration.GetUsers;
     using NextGenCMS.Model.classes.administration.CreateUser;
+    using NextGenCMS.Model.classes.permissions;
     #endregion
 
     public class Administration : IAdministration
@@ -220,6 +221,23 @@ namespace NextGenCMS.BL.classes
             return response;
         }
         #endregion
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nodeId"></param>
+        /// <returns></returns>
+        public Permissions GetPermissions(string nodeId)
+        {
+            string data = string.Empty;
+            if (HttpContext.Current.Items[Filter.Token] != null)
+            {
+                data = this._apiHelper.Get(ServiceUrl.GetPermissions + nodeId + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
+            }
+
+            Permissions response = JsonConvert.DeserializeObject<Permissions>(data);
+            return response;
+        }
 
         #region Dispose
         /// <summary>

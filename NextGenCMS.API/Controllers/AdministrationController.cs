@@ -101,12 +101,21 @@ namespace NextGenCMS.API.Controllers
         }
         #endregion
 
-        #region "Groups
+        #region "Groups"
         [HttpGet]
         [Route("groups")]
         public HttpResponseMessage GetGroups()
         {
             return Request.CreateResponse(HttpStatusCode.OK, this._administration.GetGroups());
+        }
+        #endregion
+
+        #region "Permissions"
+        [HttpGet]
+        [Route("permissions/{nodeId}")]
+        public HttpResponseMessage GetPermissions(string nodeId)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, this._administration.GetPermissions(nodeId));
         }
         #endregion
     }

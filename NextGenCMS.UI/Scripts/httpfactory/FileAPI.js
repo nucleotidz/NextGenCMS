@@ -13,8 +13,7 @@
                 url: Global.apiuri + "File/Delete/",
                 isArray: false,
                 params: {}
-            }
-           
+            }         
         });
     }]);
 })();

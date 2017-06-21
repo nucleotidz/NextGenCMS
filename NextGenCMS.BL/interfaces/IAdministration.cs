@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using NextGenCMS.Model.classes.administration;
 using NextGenCMS.Model.classes.administration.GetUsers;
 using NextGenCMS.Model.classes.administration.CreateUser;
+using NextGenCMS.Model.classes.permissions;
 
 namespace NextGenCMS.BL.interfaces
 {
@@ -50,5 +51,7 @@ namespace NextGenCMS.BL.interfaces
         /// </summary>
         /// <returns>list of groups</returns>
         GetGroupsResponse GetGroups();
+
+        Permissions GetPermissions(string nodeId);
     }
 }

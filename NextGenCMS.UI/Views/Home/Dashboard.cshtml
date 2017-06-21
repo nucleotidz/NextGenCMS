@@ -27,8 +27,8 @@
             <li>
                 <a ui-sref=".Folder"><span class="glyphicon glyphicon-file"></span><span class="iconText">Document Library</span></a>
             </li>
-            <li>
-                <a ui-sref=".Admin"><span class="glyphicon glyphicon-user"></span><span class="iconText">Admin</span></a>
+            <li ng-if="vm.isAdminUser">
+                <a ui-sref=".Admin"><span class="glyphicon glyphicon-user"></span><span class="iconText">Administration</span></a>
             </li>
             <li>
                 <a ui-sref=".Search"><span class="glyphicon glyphicon-search"></span><span class="iconText">Search</span></a>

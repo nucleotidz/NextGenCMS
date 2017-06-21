@@ -2,8 +2,6 @@
     'use strict';
     app.controller('AddUserPopupController', ['$scope', '$modalInstance', 'AdministrationApi', '$q',//'Cache','$http',
     function ($scope, $modalInstance, AdministrationApi, $q) {
-        var vm = this;
-
         $scope.groupDataSource = new kendo.data.DataSource();
         function init() {
             $(".loader").show();

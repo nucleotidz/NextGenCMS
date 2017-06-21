@@ -1,23 +1,26 @@
 ﻿(function () {
     'use strict';
-    app.controller('FolderController', ['$scope', '$rootScope', 'FolderAPI', 'FileAPI', '$q', '$modal', 'Global', 'Cache',
-function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
+    app.controller('FolderController', ['$scope', '$rootScope', 'FolderAPI', 'FileAPI', '$q', '$modal', 'Global', 'Cache', 'UserProfile',
+function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, UserProfile) {
     var vm = this;
     var node;
     var path
     var deleteData = {
         path: "",
         entity: "",
-        data:"",
+        data: ""
     }
+
     $scope.rawFile = null;
     $scope.rawFileName = '';
-   
+
     vm.treeData = null;
     var nodeRefs = [];
     var Files = [];
     vm.TreeSelect = true;
     vm.orientation = "vertical";
+    vm.isManager = UserProfile.isManager();
+
     function Bind() {
         var data = FolderAPI.GetRootFolders();
         $(".loader").show();
@@ -32,6 +35,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
             $(".loader").hide();
         });
     };
+
     vm.selectedItem = function (data) {
         if (data === undefined) {
             return;
@@ -213,31 +217,31 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
         reorderable: true,
         resizable: true,
         navigatable: true,
-        scrollable:true,
-        height:300,
+        scrollable: true,
+        height: 300,
         selectable: "row",
-            filterable: true,
-            footer: false,      
+        filterable: true,
+        footer: false,
         columns: [
         {
             field: "displayName", title: "Name", filterable: true, template: function (dataitem) {
-                               if(dataitem.lockedBy !=='') {
-                                   return dataitem.displayName +"&nbsp<span class='glyphicon glyphicon-tags'></span>";
-                               }
-                                   else {
-                                   return dataitem.displayName;
-                                   }
-                },
+                if (dataitem.lockedBy !== '') {
+                    return dataitem.displayName + "&nbsp<span class='glyphicon glyphicon-tags'></span>";
+                }
+                else {
+                    return dataitem.displayName;
+                }
             },
+        },
         {
             field: "version", title: "Version", template: function (dataitem) {
-                               if(dataitem.lockedBy !=='') {
-                                   return '';
-                               }
-                                   else {
-                                   return dataitem.version;
-                                   }
+                if (dataitem.lockedBy !== '') {
+                    return '';
                 }
+                else {
+                    return dataitem.version;
+                }
+            }
         },
         {
             field: "status", title: "Checked Out", template: "#if (lockedBy !== '') {# yes #} else {# no #}  #"
@@ -260,14 +264,14 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
             {
                 field: "contentUrl", hidden: true
             }]
-     }
+    }
 
-     function addLock(displayName) {
-            return "<span class='glyphicon glyphicon-lock' > </span> " + displayName;
-     }
+    function addLock(displayName) {
+        return "<span class='glyphicon glyphicon-lock' > </span> " + displayName;
+    }
     function Download() {
         var entityGrid = $("#userGrid").data("kendoGrid")
-        var selectedItem = entityGrid.dataItem(entityGrid.select());              
+        var selectedItem = entityGrid.dataItem(entityGrid.select());
         var formId = "formFile";
         angular.element("body").append("<form  method='POST' id='" + formId + "' action='" + Global.apiuri + "File/Download" + "' target='_tab' >");
         $("#" + formId + "").append("<input type='hidden' value='" + selectedItem.contentUrl + "'  name='path' >");
@@ -294,36 +298,40 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
             CancelCheckOut();
         }
         if (evt.item.textContent.trim() === "Start Workflow") {
-        OpenCreateWFPopup();
-}
+            OpenCreateWFPopup();
+        }
+        if (evt.item.textContent.trim() === "Manage Permissions") {
+            vm.ManagePermissions();
+        }
     }
 
     function OpenCreateWFPopup() {
-      var entityGrid = $("#userGrid").data("kendoGrid")
-      var selectedItem = entityGrid.dataItem(entityGrid.select());
-      var fileName = selectedItem.displayName;
-     var splitList = selectedItem.nodeRef.split("/");
-     var objId = splitList[splitList.length -1];
-      var modalInstance = $modal.open({
-        backdrop : 'static',
-        keyboard: false,
-        templateUrl: './Workflow/CreateWorkflow',
-        controller: 'CreateWorkflowController',
-        resolve: {
-          items: function() {
-              return { "docId": objId,
-                       "FileName": fileName
-              }
+        var entityGrid = $("#userGrid").data("kendoGrid")
+        var selectedItem = entityGrid.dataItem(entityGrid.select());
+        var fileName = selectedItem.displayName;
+        var splitList = selectedItem.nodeRef.split("/");
+        var objId = splitList[splitList.length - 1];
+        var modalInstance = $modal.open({
+            backdrop: 'static',
+            keyboard: false,
+            templateUrl: './Workflow/CreateWorkflow',
+            controller: 'CreateWorkflowController',
+            resolve: {
+                items: function () {
+                    return {
+                        "docId": objId,
+                        "FileName": fileName
+                    }
+                }
             }
-              }
-                  });
-                        modalInstance.result.then(function () { 
+        });
+        modalInstance.result.then(function () {
         }, function (popupData) {
             if (popupData === "success") {
                 refreshFileGrid();
-                  }
-                  });
-                  }
+            }
+        });
+    }
 
     function DeleteFile() {
         var entityGrid = $("#userGrid").data("kendoGrid")
@@ -349,7 +357,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
             }
         });
     };
-    vm.DeleteFolder = function () { 
+    vm.DeleteFolder = function () {
         deleteData.path = path;
         deleteData.entity = "folder"
         deleteData.data = node
@@ -396,7 +404,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
         if (selectedItem.lockedBy !== '') {
             showAlert("File already checked out by " + selectedItem.lockedBy, "danger");
             return;
-            }      
+        }
         var name = selectedItem.displayName;
         var CheckoutParamsModel = {
             path: '',
@@ -419,9 +427,9 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
         var entityGrid = $("#userGrid").data("kendoGrid")
         var selectedItem = entityGrid.dataItem(entityGrid.select());
         if (selectedItem.lockedBy === '') {
-          showAlert("File not checked out", "danger");
-          return;
-       }
+            showAlert("File not checked out", "danger");
+            return;
+        }
         var splitList = selectedItem.nodeRef.split("/");
         var objId = splitList[splitList.length - 1];
         var apiData = FolderAPI.CheckInFile({
@@ -434,15 +442,15 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
         });
     }
 
-   function CancelCheckOut() {
+    function CancelCheckOut() {
         var entityGrid = $("#userGrid").data("kendoGrid")
         var selectedItem = entityGrid.dataItem(entityGrid.select());
         if (selectedItem.lockedBy === '') {
-          showAlert("File not checked out", "danger");
-              return;
-              }
-            var splitList = selectedItem.nodeRef.split("/");
-            var objId = splitList[splitList.length -1];
+            showAlert("File not checked out", "danger");
+            return;
+        }
+        var splitList = selectedItem.nodeRef.split("/");
+        var objId = splitList[splitList.length - 1];
         var apiData = FolderAPI.CancelCheckOut({
             "objectId": objId
         })
@@ -450,8 +458,8 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
         $q.all([apiData.$promise]).then(function (response) {
             refreshFileGrid();
             $(".loader").hide();
-            });
-          };
+        });
+    };
     vm.open = function (evt) {
         var entityGrid = $("#userGrid").data("kendoGrid")
         var selectedItem = entityGrid.dataItem(entityGrid.select());
@@ -475,6 +483,46 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache) {
         $(".loader").hide();
         refreshFileGrid();
     }
+
+    vm.ManagePermissions = function () {
+        $(".loader").show();
+        if (vm.isManager) {
+            deleteData.path = path;
+            deleteData.entity = "folder"
+            deleteData.data = node.noderef
+            var modalInstance = $modal.open({
+                backdrop: 'static',
+                keyboard: false,
+                templateUrl: './Administration/ManagePermissionsPopup',
+                controller: 'ManagePermissionsPopupController',
+                resolve: {
+                    items: function () {
+                        return deleteData;
+                    }
+                }
+            });
+            modalInstance.result.then(function () {
+            }, function (popupData) {
+                if (popupData === "success") {
+                    //var array = node.parent();
+                    //var index = array.indexOf(node);
+                    //array.splice(index, 1);
+                    //remove(node.noderef)
+                    //node = null;
+                    //path = '';
+                    //vm.TreeSelect = true;
+                    //Files = [];
+                    //vm.FileGridDataSource.read();
+                    //if (vm.treeData._data.length < 1) {
+                    //    nodeRefs = [];
+                    //}
+                }
+            });
+        }
+        else {
+            $(".loader").hide();
+        }
+    };
     Bind();
 }])
 })();
