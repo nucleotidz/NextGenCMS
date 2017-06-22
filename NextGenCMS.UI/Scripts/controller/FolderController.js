@@ -1,14 +1,14 @@
 ﻿(function () {
     'use strict';
-    app.controller('FolderController', ['$scope', '$rootScope', 'FolderAPI', 'FileAPI', '$q', '$modal', 'Global', 'Cache', '$state',
-function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, $state) {
+    app.controller('FolderController', ['$scope', '$rootScope', 'FolderAPI', 'FileAPI', '$q', '$modal', 'Global', 'Cache', 'UserProfile', '$state',
+function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, UserProfile, $state) {
     var vm = this;
     var node;
     var path
     var deleteData = {
         path: "",
         entity: "",
-        data: "",
+        data: ""
     }
     var officeExtentionList = [
         'doc',
@@ -74,6 +74,8 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, $st
     var Files = [];
     vm.TreeSelect = true;
     vm.orientation = "vertical";
+    vm.isManager = UserProfile.isManager();
+
     function Bind() {
         var data = FolderAPI.GetRootFolders();
         $(".loader").show();
@@ -88,6 +90,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, $st
             $(".loader").hide();
         });
     };
+
     vm.selectedItem = function (data) {
         if (data === undefined) {
             return;
@@ -231,7 +234,7 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, $st
                     if (pos > -1) {
                         var proto = msProtocolNames[this.displayName.split('.').pop()]
                         var path = this.webdavUrl.replace('/webdav', '');
-                        return proto + ':ofe%7Cu%7C' + Global.Alfresco + 'aos' + path;
+                        return proto + ':ofe%7Cu%7C' + Global.Alfresco + 'alfresco/aos' + path;
                     }
                 },
                 fields: {
@@ -363,12 +366,15 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, $st
         }
         if (evt.item.textContent.trim() === "Start Workflow") {
         OpenCreateWFPopup();
-        }
+}
         if (evt.item.textContent.trim() === "Properties") {
             OpenMeta();
         }
             if (evt.item.textContent.trim() === "Edit in office") {
                 EditFile();
+            }
+            if (evt.item.textContent.trim() === "Manage Permissions") {
+                vm.ManagePermissions();
             }
     }
         function EditFile() {
@@ -581,6 +587,46 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, $st
         $(".loader").hide();
         refreshFileGrid();
     }
+
+    vm.ManagePermissions = function () {
+        $(".loader").show();
+        if (vm.isManager) {
+            deleteData.path = path;
+            deleteData.entity = "folder"
+            deleteData.data = node.noderef
+            var modalInstance = $modal.open({
+                backdrop: 'static',
+                keyboard: false,
+                templateUrl: './Administration/ManagePermissionsPopup',
+                controller: 'ManagePermissionsPopupController',
+                resolve: {
+                    items: function () {
+                        return deleteData;
+                    }
+                }
+            });
+            modalInstance.result.then(function () {
+            }, function (popupData) {
+                if (popupData === "success") {
+                    //var array = node.parent();
+                    //var index = array.indexOf(node);
+                    //array.splice(index, 1);
+                    //remove(node.noderef)
+                    //node = null;
+                    //path = '';
+                    //vm.TreeSelect = true;
+                    //Files = [];
+                    //vm.FileGridDataSource.read();
+                    //if (vm.treeData._data.length < 1) {
+                    //    nodeRefs = [];
+                    //}
+                }
+            });
+        }
+        else {
+            $(".loader").hide();
+        }
+    };
     Bind();
 }])
 })();

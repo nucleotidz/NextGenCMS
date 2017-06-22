@@ -7,7 +7,7 @@
         <li><a ui-sref=".TaskList" title="Work List"><span class="glyphicon glyphicon-th-list"></span></a></li>
         <li><a ui-sref=".MyWorkflow" title="My Workflows"><span class="glyphicon glyphicon-th-list"></span></a></li>
         <li><a ui-sref=".Folder" title="Documnent Library"><span class="glyphicon glyphicon-file"></span></a></li>
-        <li><a ui-sref=".Admin" title="Admin"><span class="glyphicon glyphicon-user"></span></a></li>
+        <li ng-if="vm.isAdminUser"><a ui-sref=".Admin" title="Administration"><span class="glyphicon glyphicon-user"></span></a></li>
         <li><a ui-sref=".Search" title="Search"><span class="glyphicon glyphicon-search"></span></a></li>
         <li><a ui-sref=".Reports" title="Reports"><span class="glyphicon glyphicon-list-alt"></span></a></li>
         @*<li><a href="#" title="Settings"><span class="glyphicon glyphicon-envelope"></span></a></li>*@

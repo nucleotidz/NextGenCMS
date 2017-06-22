@@ -31,6 +31,7 @@ namespace NextGenCMS.UI
             LoadAPI(bundles);
             LoadUnderscore(bundles);
             LoadDirective(bundles);
+            LoadService(bundles);
         }
 
         #region Javascripts
@@ -82,6 +83,9 @@ namespace NextGenCMS.UI
                "~/Scripts/controller/WorkflowDetailController.js",               
                "~/Scripts/controller/WorkflowReportController.js",
                "~/Scripts/controller/ProcessDiagramController.js",
+               "~/Scripts/controller/ToolPaneController.js",
+               "~/Scripts/controller/MenuController.js",
+               "~/Scripts/controller/ManagePermissionsPopupController.js",
                 "~/Scripts/controller/MetaDataController.js"
              ));
         }
@@ -134,6 +138,13 @@ namespace NextGenCMS.UI
             bundles.Add(new ScriptBundle("~/Scripts/underscore/js").Include
                  (
                    "~/Scripts/underscore/underscore-min.js"                   
+                 ));
+        }
+        private static void LoadService(BundleCollection bundles)
+        {
+            bundles.Add(new ScriptBundle("~/Scripts/service/js").Include
+                 (
+                   "~/Scripts/service/UserProfile.js"
                  ));
         }
         #endregion

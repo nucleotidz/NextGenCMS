@@ -206,6 +206,7 @@
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap\ui-bootstrap-tpls-2.5.0.min.js" />
     <Content Include="Scripts\constants\Global.js" />
+    <Content Include="Scripts\controller\ManagePermissionsPopupController.js" />
     <Content Include="Scripts\controller\AddFolderPopupController.js" />
     <Content Include="Scripts\controller\AddUserPopupController.js" />
     <Content Include="Scripts\controller\CreateWorkflowController.js" />
@@ -213,11 +214,13 @@
     <Content Include="Scripts\controller\DeleteController.js" />
     <Content Include="Scripts\controller\FolderController.js" />
     <Content Include="Scripts\controller\GroupManagementController.js" />
+    <Content Include="Scripts\controller\MenuController.js" />
     <Content Include="Scripts\controller\HeaderController.js" />
     <Content Include="Scripts\controller\MetaDataController.js" />
     <Content Include="Scripts\controller\ProcessDiagramController.js" />
     <Content Include="Scripts\controller\SearchController.js" />
     <Content Include="Scripts\controller\TaskListController.js" />
+    <Content Include="Scripts\controller\ToolPaneController.js" />
     <Content Include="Scripts\controller\UploadController.js" />
     <Content Include="Scripts\controller\UserManagementController.js" />
     <Content Include="Scripts\controller\AdministrationController.js" />
@@ -230,6 +233,7 @@
     <Content Include="Scripts\factory\Cache.js" />
     <Content Include="Scripts\factory\DataSharingService.js" />
     <Content Include="Scripts\factory\Interceptor.js" />
+    <Content Include="Scripts\service\UserProfile.js" />
     <Content Include="Scripts\httpfactory\AdministrationApi.js" />
     <Content Include="Scripts\httpfactory\AuthenticationApi.js" />
     <Content Include="Scripts\httpfactory\FileAPI.js" />
@@ -254,7 +258,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\service\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\fonts\glyphicons-halflings-regular.woff" />
@@ -304,6 +307,7 @@
     <Content Include="Views\Workflow\MyWorkFlow.cshtml" />
     <Content Include="Views\Reports\WorkflowReport.cshtml" />
     <Content Include="Views\Workflow\ProcessDiagram.cshtml" />
+    <Content Include="Views\Administration\ManagePermissionsPopup.cshtml" />
     <Content Include="Views\Folder\Metadata.cshtml" />
   </ItemGroup>
   <ItemGroup>

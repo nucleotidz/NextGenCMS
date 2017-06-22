@@ -1,10 +1,11 @@
 ﻿(function () {
     'use strict';
-    app.controller('DashboardController', ['$scope', 'WorkFlowAPI', '$q', 'DataSharingService', 'FolderAPI', 'Profile', 'Cache',
-    function ($scope, WorkFlowAPI, $q, DataSharingService, FolderAPI, Profile, Cache) {
+    app.controller('DashboardController', ['$scope', 'WorkFlowAPI', '$q', 'DataSharingService', 'FolderAPI', 'UserProfile',
+    function ($scope, WorkFlowAPI, $q, DataSharingService, FolderAPI, UserProfile) {
         var vm = this;
-        var userName = Profile.get('Profile').User.userName;
-        vm.Name = Cache.get('displayName');
+        var userName = UserProfile.getUserName();
+        vm.Name = UserProfile.getUserDisplayName();
+        vm.isAdminUser = UserProfile.isAdminUser();
         vm.data = DataSharingService.data;
         var tasks = WorkFlowAPI.GetWorkFlow();
         var checkoutCount = FolderAPI.CheckOutCountByUser({ userName: userName });

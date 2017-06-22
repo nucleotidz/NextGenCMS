@@ -20,7 +20,6 @@
                 isArray: true,
                 params: {}
             }
-           
         });
     }]);
 })();

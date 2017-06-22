@@ -11,7 +11,8 @@
                 controllerAs: "vm"
             }, 'menu': {
                 templateUrl: 'Home/Menu',
-
+                controller: 'MenuController',
+                controllerAs: "vm"
             },
             'content': {
                 templateUrl: 'Home/Dashboard',
@@ -19,7 +20,9 @@
                 controllerAs: "vm"
             },
             'toolpane': {
-                templateUrl: 'Home/ToolPane'
+                templateUrl: 'Home/ToolPane',
+                controller: 'ToolPaneController',
+                controllerAs: "vm"
             }
         }
     }).state('Home.Admin', {      
