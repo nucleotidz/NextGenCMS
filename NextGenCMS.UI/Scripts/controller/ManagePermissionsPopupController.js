@@ -266,6 +266,7 @@
         }
 
         $scope.showRoles = function (val) {
+            $scope.closeSearchWindow();
             $scope.showRoleInfo = true;
             if (val === 1) {
                 $('#roles').addClass('rolesTop').removeClass('rolesBtm');
@@ -366,16 +367,17 @@
         }
 
         $scope.addUserGroup = function () {
+            $scope.closeRoleWindow();
+            $scope.errorSearch = false;
+            $scope.noRecordExist = false;
+            $scope.showStartSearch = false;
             if ($scope.isWindowOpen) {
-                $scope.isWindowOpen = false;
                 $scope.closeSearchWindow();
-                $scope.showStartSearch = false;
             }
             else {
 
                 $scope.isWindowOpen = true;
                 $scope.showSearchGrid = true;
-                $scope.noRecordExist = false;
                 $scope.showStartSearch = true;
             }
         };
@@ -424,6 +426,7 @@
 
         $scope.closeSearchWindow = function () {
             $scope.showSearchGrid = false;
+            $scope.isWindowOpen = false;
             $scope.search.text = "";
             $scope.source = new kendo.data.DataSource({
                 data: [],
