@@ -26,9 +26,9 @@ ul {
     min-height: 500px;
 }
 
-.mainContent.noheight {
-    min-height: auto;
-}
+    .mainContent.noheight {
+        min-height: auto;
+    }
 
 span.redStar {
     color: red;
@@ -614,7 +614,7 @@ ul.iconLinks li {
 
 /* --Modal Window------*/
 
-.modal .modal-header button.close {
+.modal .modal-header button.close, button.close {
     margin-left: 5px;
     width: 20px;
     height: 20px;
@@ -626,6 +626,11 @@ ul.iconLinks li {
     border-color: #2e6da4;
     color: #fff;
     font-size: 19px;
+}
+
+.close:focus, .close:hover {
+    color: #fff !important;
+    opacity: 1 !important;
 }
 
 h4.modal-title {
@@ -865,9 +870,9 @@ ul.reportList {
     padding: 5px 10px 5px 0px;
 }
 
-.contentBtn button {
-    border-radius: 15px;
-}
+    .contentBtn button {
+        border-radius: 15px;
+    }
 
 .noListItem {
     padding: 10px;
@@ -881,18 +886,18 @@ ul.reportList {
 
 /*scroll bar*/
 
-.menuColumn::-webkit-scrollbar-track, .k-grid-content::-webkit-scrollbar-track {
+.menuColumn::-webkit-scrollbar-track, .k-grid-content::-webkit-scrollbar-track, .gridScrollDiv::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     background-color: #F5F5F5;
     border-radius: 10px;
 }
 
-.menuColumn::-webkit-scrollbar, .k-grid-content::-webkit-scrollbar {
+.menuColumn::-webkit-scrollbar, .k-grid-content::-webkit-scrollbar, .gridScrollDiv::-webkit-scrollbar {
     width: 10px;
     background-color: #F5F5F5;
 }
 
-.menuColumn::-webkit-scrollbar-thumb, .k-grid-content::-webkit-scrollbar-thumb {
+.menuColumn::-webkit-scrollbar-thumb, .k-grid-content::-webkit-scrollbar-thumb, .gridScrollDiv::-webkit-scrollbar-thumb {
     background-color: #AAA;
     border-radius: 10px;
     background-image: -webkit-linear-gradient(90deg, rgba(0, 0, 0, .2) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, .2) 50%, rgba(0, 0, 0, .2) 75%, transparent 75%, transparent);
@@ -909,11 +914,11 @@ ul.reportList {
     background: rgba(0,0,0,0.5);
 }
 
-.loader img {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-}
+    .loader img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+    }
 
 .myiframe .modal-dialog {
     width: 50% !important;
@@ -943,14 +948,28 @@ ul.reportList {
 }
 
 #search {
-    width: 48%;
+    width: 40%;
     position: absolute;
     z-index: 10;
-    background-color: white;
-    border: solid 1px black;
-    margin-left: 50%;
+    right: 0px;
+    top: 38px;
+    background-color: #f0f3f7;
+    border: solid 1px #ccc;
     margin-right: 15px;
-    max-height: 90%;
+    padding: 10px;
+}
+
+.searchSmlWin {
+    width: 100%;
+    float: left;
+    margin-right: 10px;
+}
+
+.sizeBtn {
+    width: 17px !important;
+    height: 18px !important;
+    font-size: 16px !important;
+    margin-top: 5px !important;
 }
 
 .k-grid-norecords-template {
@@ -958,21 +977,25 @@ ul.reportList {
 }
 
 .searchlistView {
-    background-color: white;
-    overflow: auto;
-    max-height:100pt;
+    overflow-y: auto;
+    max-height: 150px;
+    overflow-x: hidden;
+}
+
+.searchlistView .k-listview {
+    background-color: transparent !important;
 }
 
 ul.searchList {
     border-bottom: solid 1px #eee;
 }
 
-ul.searchList li {
-    display: block;
-    clear: both;
-    font-size: 12px;
-    padding: 5px 10px;
-}
+    ul.searchList li {
+        display: block;
+        clear: both;
+        font-size: 12px;
+        padding: 5px 10px;
+    }
 
 .searchList li label {
     float: left;
@@ -986,4 +1009,19 @@ ul.searchList li {
     font-weight: bold;
 }
 
+.scrollHeight {
+    overflow-y: scroll;
+    max-height: 150px;
+    overflow-x: hidden;
+}
 
+.listviewGlyph {
+    font-size: 10px;
+}
+
+.fontRole {
+    font-size: 14px !important;
+    position: relative;
+    top: 2px;
+    color: #337ab7 !important;
+}

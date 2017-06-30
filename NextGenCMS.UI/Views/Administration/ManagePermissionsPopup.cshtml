@@ -14,7 +14,8 @@
                 Update Permissions
                 <span class="pull-right" style="padding-right:10px;">
                     <a href ng-click="addUserGroup();">
-                        <span class="glyphicon glyphicon-plus"></span> Add User/Group
+                        <span class="glyphicon glyphicon-plus-sign" ng-show="!isWindowOpen"></span>
+                        <span class="glyphicon glyphicon-minus-sign" ng-show="isWindowOpen"></span> Add User/Group
                     </a>
                 </span>
             </h2>
@@ -22,18 +23,17 @@
     </div>
     <div id="search" ng-show="showSearchGrid">
         <div class="row">
-            <div class="col-xs-11">
-                <div class="input-group" style="margin-top:10px;">
+            <div class="col-xs-12 padd0">
+                <div class="input-group searchSmlWin">
                     <input type="text" class="form-control" ng-model="search.text" placeholder="Search User/Group" />
                     <div class="input-group-addon" ng-click="searchUser();" style="cursor:pointer;"><span class="glyphicon glyphicon-search" /></div>
                 </div>
+                @*<button type="button" class="close sizeBtn" ng-click="closeSearchWindow();"><span>×</span></button>*@
             </div>
-            <div class="col-xs-1">
-                <a href class="pull-right padd10" style="font-size:14px;text-align:center;" ng-click="closeSearchWindow();"><span class="glyphicon glyphicon-remove-sign" /></a>
-            </div>
+
         </div>
-        <div class="row searchlistView">
-            <div class="col-xs-12">
+        <div class="row searchlistView gridScrollDiv">
+            <div class="col-xs-12 padd0">
                 <div style="padding:5px;font-size:14px;" ng-show="noRecordExist">No results</div>
                 <div kendo-list-view k-data-source="source">
                     <div k-template>
@@ -41,8 +41,8 @@
                             <li class="clearfix" style="font-size:11px;">
                                 <div class="col-sm-10 padd0"><span>{{dataItem.displayName}}</span> (<span>{{dataItem.authorityType}}</span>)</div>
                                 <div class="col-sm-2 padd0">
-                                    <a id="add" class="glyphicon glyphicon-plus" href ng-click="addItem(dataItem);"></a>
-                                    <a id="remove" class="glyphicon glyphicon-remove" style="display:none;" href ng-click="removeItem(dataItem);"></a>
+                                    <a id="add" href ng-click="addItem(dataItem);"><span class="glyphicon glyphicon-plus listviewGlyph"></span> Add</a>
+                                    @*<a id="remove" style="display:none;" href ng-click="removeItem(dataItem);"><span class="glyphicon glyphicon-remove listviewGlyph"></span>Remove</a>*@
                                 </div>
                             </li>
                         </ul>
@@ -57,7 +57,7 @@
                  kendo-grid
                  k-options="localPermissionGridOptions"
                  k-data-source="localPermissionDataSource"
-                 style="overflow:auto;max-height:150px;">
+                 class="gridScrollDiv scrollHeight">
             </div>
         </div>
     </div>
@@ -66,9 +66,9 @@
             <h2>
                 Default Permissions
                 <span class="pull-right" style="padding-right:10px;">
-                    <a href ng-show="!Permissions.isInherited" ng-click="inheritPermission(true);"><span class="glyphicon glyphicon-minus"></span> Turn on Default Permissions</a>
+                    <a href ng-show="!Permissions.isInherited" ng-click="inheritPermission(true);"><span class="glyphicon glyphicon-minus-sign"></span> Turn on Default Permissions</a>
                     <a href ng-show="Permissions.isInherited" ng-click="inheritPermission(false);">
-                        <span class="glyphicon glyphicon-ok"></span> Turn off Default Permissions
+                        <span class="glyphicon glyphicon-ok-sign"></span> Turn off Default Permissions
                     </a>
                 </span>
             </h2>
@@ -80,7 +80,7 @@
                  kendo-grid
                  k-options="permissionGridOptions"
                  k-data-source="permissionDataSource"
-                 style="overflow:auto;">
+                 class="gridScrollDiv scrollHeight">
             </div>
         </div>
     </div>

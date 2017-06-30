@@ -6,6 +6,7 @@
         $scope.localPermissionDataSource = new kendo.data.DataSource();
         $scope.showSearchGrid = false;
         $scope.noRecordExist = false;
+        $scope.isWindowOpen = false;
         $scope.search = {
             text: ""
         }
@@ -169,7 +170,7 @@
                     field: "displayName", title: "Groups", width: "70%"
                 },
                 {
-                    field: "role.text", headerTemplate: 'Role <i class="glyphicon glyphicon-info-sign"/>', width: "30%"
+                    field: "role.text", headerTemplate: 'Role <a href><span class="glyphicon glyphicon-info-sign fontRole"></span></a>', width: "30%"
                 }
             ]
         }
@@ -220,7 +221,7 @@
                 },
                 {
                     field: "", title: "Action",
-                    template: "<a href='\\#' class='glyphicon glyphicon-remove' ng-click='deleteItems(this)'></a>"
+                    template: "<a href='\\#' ng-click='deleteItems(this)'><span class='glyphicon glyphicon-remove'></span> Delete</a>"
                 },
                 //{
                 //    command: [{
@@ -348,8 +349,16 @@
         }
 
         $scope.addUserGroup = function () {
-            $scope.showSearchGrid = true;
-            $scope.noRecordExist= true;
+            if ($scope.isWindowOpen) {
+                $scope.isWindowOpen = false;
+                $scope.closeSearchWindow();
+            }
+            else {
+
+                $scope.isWindowOpen = true;
+                $scope.showSearchGrid = true;
+                $scope.noRecordExist = true;
+            }
         };
 
         $scope.searchUser = function () {
@@ -397,8 +406,8 @@
         }
 
         $scope.addItem = function (e) {
-            $("div[data-uid='" + e.uid + "']").find("a#add").hide();
-            $("div[data-uid='" + e.uid + "']").find("a#remove").show();
+            $("div[data-uid='" + e.uid + "']").hide();
+            //$("div[data-uid='" + e.uid + "']").find("a#remove").show();
 
             $scope.localPermissionList.push(setPermissionData(e));
             $scope.localPermissionDataSource.read();
