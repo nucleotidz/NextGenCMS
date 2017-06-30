@@ -81,6 +81,7 @@
     <Compile Include="classes\authentication\LoginToken.cs" />
     <Compile Include="classes\authentication\LoginResponse.cs" />
     <Compile Include="classes\permissions\Permissions.cs" />
+    <Compile Include="classes\permissions\SavePermission.cs" />
     <Compile Include="classes\permissions\SiteGroupAndUsers.cs" />
     <Compile Include="classes\Search\SearchItemModel.cs" />
     <Compile Include="classes\Search\SearchResultModel.cs" />

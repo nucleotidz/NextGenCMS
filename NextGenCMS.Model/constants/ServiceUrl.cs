@@ -16,6 +16,11 @@ namespace NextGenCMS.Model.constants
         /// DELETE - This api will delete the ticket and logout the user
         /// </summary>
         public static readonly string Logout = AppConfigKeys.ServiceUrl + "/alfresco/s/api/login/ticket/";
+
+        /// <summary>
+        /// DELETE - This api will delete the ticket and logout the user
+        /// </summary>
+        public static readonly string AlfTicket = "&alf_ticket=";
         #endregion
 
         #region "Administration - User"
@@ -43,9 +48,8 @@ namespace NextGenCMS.Model.constants
 
         public static readonly string GetUserSites = AppConfigKeys.ServiceUrl + "alfresco/s/api/people/";
 
-        public static readonly string GetSiteUsers = AppConfigKeys.ServiceUrl + "alfresco/s/api/sites/" + AppConfigKeys.Site + "/memberships?size=250&nf=&authorityType=USER&alf_ticket=";
+        public static readonly string GetSiteUsers = AppConfigKeys.ServiceUrl + "alfresco/s/api/sites/" + AppConfigKeys.Site + "/memberships?size=250&authorityType=USER&nf=";
 
-        public static readonly string GetPermissions = AppConfigKeys.ServiceUrl + "alfresco/s/slingshot/doclib/permissions/workspace/SpacesStore/";
         #endregion
 
         #region "Administration - Groups"
@@ -53,6 +57,10 @@ namespace NextGenCMS.Model.constants
         /// GET - This api will return all groups
         /// </summary>
         public static readonly string GetGroups = AppConfigKeys.ServiceUrl + "alfresco/s/api/groups?alf_ticket=";
+        /// <summary>
+        /// GET - This api will return all groups
+        /// </summary>
+        public static readonly string SearchGroups = AppConfigKeys.ServiceUrl + "alfresco/s/api/groups?maxItems=250&sortBy=displayName&shortNameFilter=";
         #endregion
 
         #region Folder File
@@ -92,6 +100,11 @@ namespace NextGenCMS.Model.constants
         public static readonly string WorkflowHighPriority = "&priority=1";
         public static readonly string WorkflowMediumPriority = "&priority=2";
         public static readonly string WorkflowLowPriority = "&priority=3";
+        #endregion
+
+        #region "Manage Permissions"
+        public static readonly string SearchUserAndGroups = AppConfigKeys.ServiceUrl + "share/service/components/people-finder/authority-query?authorityType=all&maxResults=100&defGroupsFor=ahmar&filter=";
+        public static readonly string Permissions = AppConfigKeys.ServiceUrl + "alfresco/s/slingshot/doclib/permissions/workspace/SpacesStore/";
         #endregion
     }
 }

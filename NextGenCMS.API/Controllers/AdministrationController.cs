@@ -12,6 +12,7 @@ namespace NextGenCMS.API.Controllers
     using NextGenCMS.BL.interfaces;
     using NextGenCMS.API.Filters;
     using NextGenCMS.Model.classes.administration.CreateUser;
+    using NextGenCMS.Model.classes.permissions;
     #endregion
 
     /// <summary>
@@ -108,6 +109,13 @@ namespace NextGenCMS.API.Controllers
         {
             return Request.CreateResponse(HttpStatusCode.OK, this._administration.GetGroups());
         }
+
+        [HttpGet]
+        [Route("groups/search/{searchText}")]
+        public HttpResponseMessage SearchGroups(string searchText)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, this._administration.SearchGroups(searchText));
+        }
         #endregion
 
         #region "Permissions"
@@ -116,6 +124,25 @@ namespace NextGenCMS.API.Controllers
         public HttpResponseMessage GetPermissions(string nodeId)
         {
             return Request.CreateResponse(HttpStatusCode.OK, this._administration.GetPermissions(nodeId));
+        }
+
+        [HttpGet]
+        [Route("search/userandgroups/{searchText}")]
+        public HttpResponseMessage SearchUserAndGroups(string searchText)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, this._administration.SearchUserAndGroups(searchText));
+        }
+
+        /// <summary>
+        /// This method will save the folder or file permissions
+        /// </summary>
+        /// <param name="createUser">createUser</param>
+        /// <returns>HttpResponseMessage</returns>
+        [HttpPost]
+        [Route("permissions/save")]
+        public HttpResponseMessage SavePermissions(SavePermission permissions)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, this._administration.SavePermissions(permissions));
         }
         #endregion
     }

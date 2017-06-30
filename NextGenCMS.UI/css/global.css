@@ -25,9 +25,11 @@ ul {
     background: #fff;
     min-height: 500px;
 }
-.mainContent.noheight{
-    min-height:auto;
+
+.mainContent.noheight {
+    min-height: auto;
 }
+
 span.redStar {
     color: red;
 }
@@ -845,7 +847,7 @@ ul.reportList {
     width: 75px;
 }
 
-.mainContent .contentHeader{    
+.mainContent .contentHeader {
     background: #999;
     border-radius: 4px 4px 0px 0px;
     color: #fff;
@@ -853,16 +855,18 @@ ul.reportList {
 
 .contentHeader h3 {
     font-size: 16px;
-    float:left;
+    float: left;
     margin: 0px;
     padding: 10px;
 }
+
 .contentBtn {
     float: right;
     padding: 5px 10px 5px 0px;
 }
+
 .contentBtn button {
-    border-radius:15px;
+    border-radius: 15px;
 }
 
 .noListItem {
@@ -912,8 +916,8 @@ ul.reportList {
 }
 
 .myiframe .modal-dialog {
-   width: 50%!important;
-} 
+    width: 50% !important;
+}
 
 .iframe {
     width: 650px;
@@ -921,14 +925,65 @@ ul.reportList {
     border: 0px;
 }
 
-.listView{
-    height: 450px; 
+.listView {
+    height: 450px;
     overflow-y: scroll;
 }
-.tenant{
-        border: solid 8px #ccc;
+
+.tenant {
+    border: solid 8px #ccc;
     border-radius: 5px;
     padding: 2px 2px 2px 2px;
     width: 100%;
     font-size: 12px;
 }
+
+.Width-ManagePermission .modal-dialog {
+    width: 60% !important;
+}
+
+#search {
+    width: 48%;
+    position: absolute;
+    z-index: 10;
+    background-color: white;
+    border: solid 1px black;
+    margin-left: 50%;
+    margin-right: 15px;
+    max-height: 90%;
+}
+
+.k-grid-norecords-template {
+    border: 0px solid black !important;
+}
+
+.searchlistView {
+    background-color: white;
+    overflow: auto;
+    max-height:100pt;
+}
+
+ul.searchList {
+    border-bottom: solid 1px #eee;
+}
+
+ul.searchList li {
+    display: block;
+    clear: both;
+    font-size: 12px;
+    padding: 5px 10px;
+}
+
+.searchList li label {
+    float: left;
+    margin-right: 10px !important;
+    width: 75px;
+}
+
+.searchList li h4, .mainContent h4 {
+    font-size: 14px;
+    margin: 3px 0px;
+    font-weight: bold;
+}
+
+

@@ -44,7 +44,7 @@ namespace NextGenCMS.BL.interfaces
         /// </summary>
         /// <param name="username">username</param>
         /// <returns>user details</returns>
-        List<SiteUsers> GetSiteUsers();
+        List<SiteUsers> GetSiteUsers(string searchText = "");
 
         /// <summary>
         /// This method will return all the groups
@@ -53,5 +53,20 @@ namespace NextGenCMS.BL.interfaces
         GetGroupsResponse GetGroups();
 
         Permissions GetPermissions(string nodeId);
+        
+        /// <summary>
+        /// Folder permissions - This method will return users and groups that can be added
+        /// </summary>
+        /// <param name="searchText">searchText</param>
+        /// <returns></returns>
+        SiteGroupAndUsers SearchUserAndGroups(string searchText);
+
+        /// <summary>
+        /// This method will return all the groups
+        /// </summary>
+        /// <returns>list of groups</returns>
+        GetGroupsResponse SearchGroups(string searchText);
+
+        bool SavePermissions(SavePermission permissions);
     }
 }

@@ -37,6 +37,17 @@
             method: "GET",
             url: Global.apiuri + "administration/permissions/:nodeId",
             isArray: false
+        },
+        searchUserAndGroups: {
+            method: "GET",
+            url: Global.apiuri + "administration/search/userandgroups/:searchText",
+            isArray: false
+        },
+        savePermissions: {
+            method: "POST",
+            url: Global.apiuri + "administration/permissions/save",
+            isArray: false,
+            param: {}
         }
     });
 }]);

@@ -592,13 +592,14 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, Use
         $(".loader").show();
         if (vm.isManager) {
             deleteData.path = path;
-            deleteData.entity = "folder"
-            deleteData.data = node.noderef
+            deleteData.entity = "folder";
+            deleteData.data = node.noderef;
             var modalInstance = $modal.open({
                 backdrop: 'static',
                 keyboard: false,
                 templateUrl: './Administration/ManagePermissionsPopup',
                 controller: 'ManagePermissionsPopupController',
+                windowClass: "Width-ManagePermission",
                 resolve: {
                     items: function () {
                         return deleteData;
@@ -607,20 +608,8 @@ function ($scope, $rootScope, FolderAPI, FileAPI, $q, $modal, Global, Cache, Use
             });
             modalInstance.result.then(function () {
             }, function (popupData) {
-                if (popupData === "success") {
-                    //var array = node.parent();
-                    //var index = array.indexOf(node);
-                    //array.splice(index, 1);
-                    //remove(node.noderef)
-                    //node = null;
-                    //path = '';
-                    //vm.TreeSelect = true;
-                    //Files = [];
-                    //vm.FileGridDataSource.read();
-                    //if (vm.treeData._data.length < 1) {
-                    //    nodeRefs = [];
-                    //}
-                }
+                //if (popupData === "success") {
+                //}
             });
         }
         else {

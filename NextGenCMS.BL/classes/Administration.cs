@@ -190,12 +190,15 @@ namespace NextGenCMS.BL.classes
         /// </summary>
         /// <param name="username">username</param>
         /// <returns>user details</returns>
-        public List<SiteUsers> GetSiteUsers()
+        public List<SiteUsers> GetSiteUsers(string searchText = "")
         {
             string data = string.Empty;
             if (HttpContext.Current.Items[Filter.Token] != null)
             {
-                data = this._apiHelper.Get(ServiceUrl.GetSiteUsers + HttpContext.Current.Items[Filter.Token]);
+                if (string.IsNullOrEmpty(searchText))
+                    data = this._apiHelper.Get(ServiceUrl.GetSiteUsers + HttpContext.Current.Items[Filter.Token]);
+                else
+                    data = this._apiHelper.Get(ServiceUrl.GetSiteUsers + searchText + ServiceUrl.AlfTicket + HttpContext.Current.Items[Filter.Token]);
             }
 
             var response = JsonConvert.DeserializeObject<List<SiteUsers>>(data);
@@ -220,6 +223,23 @@ namespace NextGenCMS.BL.classes
             response.data = response.data.Where(group => group.zones.Contains("APP.DEFAULT")).ToList();
             return response;
         }
+
+        /// <summary>
+        /// This method will return all the groups
+        /// </summary>
+        /// <returns>list of groups</returns>
+        public GetGroupsResponse SearchGroups(string searchText)
+        {
+            string data = string.Empty;
+            if (HttpContext.Current.Items[Filter.Token] != null)
+            {
+                data = this._apiHelper.Get(ServiceUrl.SearchGroups + searchText + ServiceUrl.AlfTicket + HttpContext.Current.Items[Filter.Token]);
+            }
+
+            GetGroupsResponse response = JsonConvert.DeserializeObject<GetGroupsResponse>(data);
+            //response.data = response.data.Where(group => group.zones.Contains("APP.DEFAULT")).ToList();
+            return response;
+        }
         #endregion
 
         /// <summary>
@@ -232,11 +252,56 @@ namespace NextGenCMS.BL.classes
             string data = string.Empty;
             if (HttpContext.Current.Items[Filter.Token] != null)
             {
-                data = this._apiHelper.Get(ServiceUrl.GetPermissions + nodeId + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
+                data = this._apiHelper.Get(ServiceUrl.Permissions + nodeId + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
             }
 
             Permissions response = JsonConvert.DeserializeObject<Permissions>(data);
             return response;
+        }
+
+        /// <summary>
+        /// Folder permissions - This method will return users and groups that can be added
+        /// </summary>
+        /// <param name="searchText">searchText</param>
+        /// <returns></returns>
+        public SiteGroupAndUsers SearchUserAndGroups(string searchText)
+        {
+            var users = GetSiteUsers(searchText);
+            var groups = SearchGroups(searchText);
+            var response = new SiteGroupAndUsers { authorities = new List<NextGenCMS.Model.classes.permissions.Authority>() };
+            users.ForEach(user =>
+            {
+                var authority = new NextGenCMS.Model.classes.permissions.Authority();
+                authority.authorityType = user.authority.authorityType;
+                authority.displayName = user.authority.firstName + (string.IsNullOrWhiteSpace(user.authority.lastName) ? "" : " " + user.authority.lastName);
+                authority.fullName = user.authority.fullName;
+                authority.name = user.authority.userName;
+                authority.role = user.role;
+                response.authorities.Add(authority);
+            });
+
+            groups.data.Where(x => x.shortName != "site_" + AppConfigKeys.Site).ToList().ForEach(group =>
+            {
+                var authority = new NextGenCMS.Model.classes.permissions.Authority();
+                authority.authorityType = group.authorityType;
+                authority.displayName = group.displayName;
+                authority.fullName = group.fullName;
+                authority.role = group.zones.FirstOrDefault();
+                response.authorities.Add(authority);
+            });
+
+           return response;
+        }
+
+        public bool SavePermissions(SavePermission permissions)
+        {
+            WebResponseModel response = new WebResponseModel();
+            if (HttpContext.Current.Items[Filter.Token] != null)
+            {
+                response = this._apiHelper.Submit(ServiceUrl.Permissions + permissions.nodeId + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(permissions));
+            }
+
+            return true;
         }
 
         #region Dispose

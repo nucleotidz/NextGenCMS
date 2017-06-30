@@ -50,7 +50,8 @@ namespace NextGenCMS.UI
                 "~/Scripts/Angular/angular-resource.min.js",
                 "~/Scripts/Angular/angular-ui-router.js",
                 "~/Scripts/Angular/app.js",
-                "~/Scripts/Angular/route.js"
+                "~/Scripts/Angular/route.js",
+                "~/Scripts/Angular/underscore.js"
              ));
         }
         private static void LoadKendo(BundleCollection bundles)

@@ -9,6 +9,7 @@ namespace NextGenCMS.Model.classes.permissions
         public string shortName { get; set; }
         public string fullName { get; set; }
         public string displayName { get; set; }
+        public string role { get; set; }
     }
 
     public class Inherited
