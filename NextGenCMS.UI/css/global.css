@@ -956,6 +956,11 @@ ul.reportList {
     background-color: #f0f3f7;
     border: solid 1px #ccc;
     margin-right: 15px;
+}
+
+.searchTop {
+    /*background-color: #F5F5F5 !important;*/
+    border-bottom: 1px dashed #c0c0c0;
     padding: 10px;
 }
 
@@ -965,11 +970,15 @@ ul.reportList {
     margin-right: 10px;
 }
 
+.searchSmlWinMsg {
+    font-size: 12px;
+    padding: 0px 10px 0px 10px;
+}
+
 .sizeBtn {
-    width: 17px !important;
-    height: 18px !important;
+    width: 14px !important;
+    height: 14px !important;
     font-size: 16px !important;
-    margin-top: 5px !important;
 }
 
 .k-grid-norecords-template {
@@ -982,9 +991,9 @@ ul.reportList {
     overflow-x: hidden;
 }
 
-.searchlistView .k-listview {
-    background-color: transparent !important;
-}
+    .searchlistView .k-listview {
+        background-color: transparent !important;
+    }
 
 ul.searchList {
     border-bottom: solid 1px #eee;
@@ -1024,4 +1033,30 @@ ul.searchList {
     position: relative;
     top: 2px;
     color: #337ab7 !important;
+}
+
+#roles {
+    width: 40%;
+    position: absolute;
+    z-index: 10;
+    right: 0px;
+    background-color: #f0f3f7;
+    border: solid 1px #ccc;
+    margin-right: 15px;
+    padding: 5px;
+    font-size: 11px;
+    font-family: Arial, Helvetica, sans-serif;
+    /*top: 53px;*/
+}
+
+.rolesTop {
+    top: 53px !important;
+}
+
+.rolesBtm {
+    top: 256px !important;
+}
+
+.font10 {
+    font-size: 10px;
 }

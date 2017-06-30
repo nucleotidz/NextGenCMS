@@ -7,6 +7,9 @@
         $scope.showSearchGrid = false;
         $scope.noRecordExist = false;
         $scope.isWindowOpen = false;
+        $scope.showRoleInfo = false;
+        $scope.showStartSearch = false;
+        $scope.errorSearch = false;
         $scope.search = {
             text: ""
         }
@@ -167,10 +170,10 @@
             footer: false,
             columns: [
                 {
-                    field: "displayName", title: "Groups", width: "70%"
+                    field: "displayName", title: "Groups", width: "50%"
                 },
                 {
-                    field: "role.text", headerTemplate: 'Role <a href><span class="glyphicon glyphicon-info-sign fontRole"></span></a>', width: "30%"
+                    field: "role.text", headerTemplate: 'Role <a href ng-click="showRoles(0);"><span class="glyphicon glyphicon-info-sign fontRole"></span></a>', width: "50%"
                 }
             ]
         }
@@ -217,12 +220,12 @@
                     field: "displayName", title: "Users and Groups", width: "50%"
                 },
                 {
-                    field: "role.text", title: "Role", width: "30%", editor: roleDropDown, template: "#=role.text#"
+                    field: "role.text", headerTemplate: 'Role <a href ng-click="showRoles(1);"><span class="glyphicon glyphicon-info-sign fontRole"></span></a>', width: "30%", editor: roleDropDown, template: "#=role.text#"
                 },
                 {
                     field: "", title: "Action",
                     template: "<a href='\\#' ng-click='deleteItems(this)'><span class='glyphicon glyphicon-remove'></span> Delete</a>"
-                },
+                }
                 //{
                 //    command: [{
                 //        name: "Delete", text: "Delete", //visible: hideDelete,
@@ -261,6 +264,20 @@
                 //}
             ]
         }
+
+        $scope.showRoles = function (val) {
+            $scope.showRoleInfo = true;
+            if (val === 1) {
+                $('#roles').addClass('rolesTop').removeClass('rolesBtm');
+            }
+            else {
+                $('#roles').addClass('rolesBtm').removeClass('rolesTop');
+            }
+        };
+
+        $scope.closeRoleWindow = function () {
+            $scope.showRoleInfo = false;
+        };
 
         $scope.deleteItems = function (e) {
             //get the row for deletion
@@ -352,18 +369,27 @@
             if ($scope.isWindowOpen) {
                 $scope.isWindowOpen = false;
                 $scope.closeSearchWindow();
+                $scope.showStartSearch = false;
             }
             else {
 
                 $scope.isWindowOpen = true;
                 $scope.showSearchGrid = true;
-                $scope.noRecordExist = true;
+                $scope.noRecordExist = false;
+                $scope.showStartSearch = true;
             }
         };
 
         $scope.searchUser = function () {
+            $scope.errorSearch = false;
+            $scope.showStartSearch = false;
+            $scope.noRecordExist = false;
             if ($scope.search.text === "") {
-                alert("Please enter atleast one character");
+                $scope.source = new kendo.data.DataSource({
+                    data: [],
+                    pageSize: 10
+                });
+                $scope.errorSearch = true;
                 return;
             }
 

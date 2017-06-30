@@ -256,6 +256,7 @@ namespace NextGenCMS.BL.classes
             }
 
             Permissions response = JsonConvert.DeserializeObject<Permissions>(data);
+            response.direct = response.direct.OrderBy(x => x.authority.displayName).ToList();
             return response;
         }
 
@@ -289,8 +290,8 @@ namespace NextGenCMS.BL.classes
                 authority.role = group.zones.FirstOrDefault();
                 response.authorities.Add(authority);
             });
-
-           return response;
+            response.authorities = response.authorities.OrderBy(x => x.displayName).ToList();
+            return response;
         }
 
         public bool SavePermissions(SavePermission permissions)

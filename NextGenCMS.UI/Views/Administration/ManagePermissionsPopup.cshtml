@@ -7,7 +7,6 @@
     <div class="settingicon pull-left"><span class="glyphicon glyphicon-cog"></span></div><h4 class="modal-title" id="modalManagePermissions">Manage Permissions: {{folder}}</h4>
 </div>
 <div class="modal-body">
-
     <div class="row">
         <div class="col-xs-12">
             <h2>
@@ -22,7 +21,7 @@
         </div>
     </div>
     <div id="search" ng-show="showSearchGrid">
-        <div class="row">
+        <div class="row searchTop">
             <div class="col-xs-12 padd0">
                 <div class="input-group searchSmlWin">
                     <input type="text" class="form-control" ng-model="search.text" placeholder="Search User/Group" />
@@ -34,7 +33,9 @@
         </div>
         <div class="row searchlistView gridScrollDiv">
             <div class="col-xs-12 padd0">
-                <div style="padding:5px;font-size:14px;" ng-show="noRecordExist">No results</div>
+                <div class="searchSmlWinMsg" ng-show="showStartSearch">Enter a search term to start</div>
+                <span class="searchSmlWinMsg redStar" ng-show="errorSearch">Please enter atleast one character</span>
+                <div class="searchSmlWinMsg" ng-show="noRecordExist">No results</div>
                 <div kendo-list-view k-data-source="source">
                     <div k-template>
                         <ul class="searchList">
@@ -72,6 +73,30 @@
                     </a>
                 </span>
             </h2>
+        </div>
+    </div>
+    <div id="roles" ng-show="showRoleInfo">
+        <div class="">
+            <p>
+                <b>About Roles</b>
+                <button type="button" class="close sizeBtn" ng-click="closeRoleWindow();"><span>×</span></button>
+            </p>
+            <p>
+                <b>Collaborator</b>
+                <span class="font10">has full rights to the site content that they own; they have rights to edit but not delete content created by other site members.</span>
+            </p>
+            <p>
+                <b>Consumer</b>
+                <span class="font10">has view-only rights in a site; they cannot create their own content.</span>
+            </p>
+            <p>
+                <b>Manager</b>
+                <span class="font10">has full rights to all site content - what they have created themselves and what other site members have created.</span>
+            </p>
+            <p>
+                <b>Contributor</b>
+                <span class="font10">has full rights to the site content that they own; they cannot edit or delete content created by other site members.</span>
+            </p>
         </div>
     </div>
     <div class="row" ng-if="Permissions.isInherited">
