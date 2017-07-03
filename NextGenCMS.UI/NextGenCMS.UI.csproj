@@ -207,6 +207,7 @@
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
     <Content Include="Scripts\bootstrap\ui-bootstrap-tpls-2.5.0.min.js" />
     <Content Include="Scripts\constants\Global.js" />
+    <Content Include="Scripts\controller\AddGroupPopupController.js" />
     <Content Include="Scripts\controller\ManagePermissionsPopupController.js" />
     <Content Include="Scripts\controller\AddFolderPopupController.js" />
     <Content Include="Scripts\controller\AddUserPopupController.js" />
@@ -310,6 +311,7 @@
     <Content Include="Views\Workflow\ProcessDiagram.cshtml" />
     <Content Include="Views\Administration\ManagePermissionsPopup.cshtml" />
     <Content Include="Views\Folder\Metadata.cshtml" />
+    <Content Include="Views\Administration\AddGroupPopup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NextGenCMS.APIHelper\NextGenCMS.APIHelper.csproj">

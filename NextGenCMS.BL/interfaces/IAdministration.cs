@@ -4,6 +4,7 @@ using NextGenCMS.Model.classes.administration;
 using NextGenCMS.Model.classes.administration.GetUsers;
 using NextGenCMS.Model.classes.administration.CreateUser;
 using NextGenCMS.Model.classes.permissions;
+using NextGenCMS.Model.classes;
 
 namespace NextGenCMS.BL.interfaces
 {
@@ -46,11 +47,21 @@ namespace NextGenCMS.BL.interfaces
         /// <returns>user details</returns>
         List<SiteUsers> GetSiteUsers(string searchText = "");
 
+        WebResponseModel CreateGroup(Group group);
+
+        bool DeleteGroup(List<string> groups);
+
         /// <summary>
         /// This method will return all the groups
         /// </summary>
         /// <returns>list of groups</returns>
         GetGroupsResponse GetGroups();
+
+        /// <summary>
+        /// This method will return all the groups
+        /// </summary>
+        /// <returns>list of groups</returns>
+        GetGroupsResponse SearchGroups(string searchText);
 
         Permissions GetPermissions(string nodeId);
         
@@ -60,12 +71,6 @@ namespace NextGenCMS.BL.interfaces
         /// <param name="searchText">searchText</param>
         /// <returns></returns>
         SiteGroupAndUsers SearchUserAndGroups(string searchText);
-
-        /// <summary>
-        /// This method will return all the groups
-        /// </summary>
-        /// <returns>list of groups</returns>
-        GetGroupsResponse SearchGroups(string searchText);
 
         bool SavePermissions(SavePermission permissions);
     }

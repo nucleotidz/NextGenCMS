@@ -6,6 +6,8 @@ namespace NextGenCMS.BL.classes
     using System.Web;
     using System.Linq;
     using System.Collections.Generic;
+    using System.Net;
+    using System.IO;
     using Newtonsoft.Json;
     #endregion
 
@@ -19,6 +21,7 @@ namespace NextGenCMS.BL.classes
     using NextGenCMS.Model.classes.administration.GetUsers;
     using NextGenCMS.Model.classes.administration.CreateUser;
     using NextGenCMS.Model.classes.permissions;
+    using NextGenCMS.Model.classes.administration.GetGroups;
     #endregion
 
     public class Administration : IAdministration
@@ -196,7 +199,7 @@ namespace NextGenCMS.BL.classes
             if (HttpContext.Current.Items[Filter.Token] != null)
             {
                 if (string.IsNullOrEmpty(searchText))
-                    data = this._apiHelper.Get(ServiceUrl.GetSiteUsers + HttpContext.Current.Items[Filter.Token]);
+                    data = this._apiHelper.Get(ServiceUrl.GetSiteUsers + ServiceUrl.AlfTicket + HttpContext.Current.Items[Filter.Token]);
                 else
                     data = this._apiHelper.Get(ServiceUrl.GetSiteUsers + searchText + ServiceUrl.AlfTicket + HttpContext.Current.Items[Filter.Token]);
             }
@@ -220,7 +223,7 @@ namespace NextGenCMS.BL.classes
             }
 
             GetGroupsResponse response = JsonConvert.DeserializeObject<GetGroupsResponse>(data);
-            response.data = response.data.Where(group => group.zones.Contains("APP.DEFAULT")).ToList();
+            //response.data = response.data.Where(group => group.zones.Contains("APP.DEFAULT")).ToList();
             return response;
         }
 
@@ -239,6 +242,83 @@ namespace NextGenCMS.BL.classes
             GetGroupsResponse response = JsonConvert.DeserializeObject<GetGroupsResponse>(data);
             //response.data = response.data.Where(group => group.zones.Contains("APP.DEFAULT")).ToList();
             return response;
+        }
+
+        /// <summary>
+        /// This method delete the ticket and logout the user
+        /// </summary>
+        /// <param name="createUser">createUser</param>
+        /// <returns>string</returns>
+        public WebResponseModel CreateGroup(Group group)
+        {
+            WebResponseModel response = new WebResponseModel();
+            GroupExistResponse responseNotExist = new GroupExistResponse();
+            GetGroupsResponse responseExist = new GetGroupsResponse();
+            if (HttpContext.Current.Items[Filter.Token] != null)
+            {
+                string uri = System.Web.HttpUtility.UrlPathEncode(ServiceUrl.Groups + group.fullName + ServiceUrl.GroupExistSuffix + ServiceUrl.AlfTicket + HttpContext.Current.Items[Filter.Token]);
+                try
+                {
+                    var data = this._apiHelper.Get(uri);
+                    responseExist = JsonConvert.DeserializeObject<GetGroupsResponse>(data);
+                }
+                catch (WebException wex)
+                {
+                    if (wex.Response != null)
+                    {
+                        using (var errorResponse = (HttpWebResponse)wex.Response)
+                        {
+                            using (var reader = new StreamReader(errorResponse.GetResponseStream()))
+                            {
+                                string message = reader.ReadToEnd().Trim();
+                                responseNotExist = JsonConvert.DeserializeObject<GroupExistResponse>(message);
+                            }
+                        }
+                    }
+                }
+                finally
+                {
+                    if (responseNotExist.status != null && responseNotExist.status.code == 404)
+                    {
+                        response = this._apiHelper.Submit(ServiceUrl.AddGroups + group.fullName + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(group));
+                    }
+                    else
+                    {
+                        response.status = NextGenCMS.Model.constants.ApiHelper.StatusCode.Exception;
+                    }
+                }
+            }
+            return response;
+        }
+
+        public bool DeleteGroup(List<string> groups)
+        {
+            string data = string.Empty;
+            if (HttpContext.Current.Items[Filter.Token] != null)
+            {
+                foreach (var group in groups)
+                {
+                    data = this._apiHelper.Delete(ServiceUrl.Groups + group + ServiceUrl.AlfTicket + HttpContext.Current.Items[Filter.Token]);
+                }
+            }
+
+            return true;
+        }
+
+        public void AddGroupUser(string username)
+        {
+            if (HttpContext.Current.Items[Filter.Token] != null)
+            {
+                var response = this._apiHelper.Submit(ServiceUrl.AddDeleteGroupUser + username + ServiceUrl.Alf_Ticket + HttpContext.Current.Items[Filter.Token], "");
+            }
+        }
+
+        public void DeleteGroupUser(string username)
+        {
+            if (HttpContext.Current.Items[Filter.Token] != null)
+            {
+                var response = this._apiHelper.Delete(ServiceUrl.AddDeleteGroupUser + username + ServiceUrl.Alf_Ticket + HttpContext.Current.Items[Filter.Token]);
+            }
         }
         #endregion
 

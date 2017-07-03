@@ -64,5 +64,14 @@ namespace NextGenCMS.UI.Controllers
         {
             return View();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult AddGroupPopup()
+        {
+            return View();
+        }
     }
 }

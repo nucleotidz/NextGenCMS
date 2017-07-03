@@ -13,6 +13,7 @@ namespace NextGenCMS.API.Controllers
     using NextGenCMS.API.Filters;
     using NextGenCMS.Model.classes.administration.CreateUser;
     using NextGenCMS.Model.classes.permissions;
+    using NextGenCMS.Model.classes.administration;
     #endregion
 
     /// <summary>
@@ -103,6 +104,18 @@ namespace NextGenCMS.API.Controllers
         #endregion
 
         #region "Groups"
+        /// <summary>
+        /// This method will create the group
+        /// </summary>
+        /// <param name="group">group</param>
+        /// <returns>HttpResponseMessage</returns>
+        [HttpPost]
+        [Route("group/create")]
+        public HttpResponseMessage CreateGroup(Group group)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, this._administration.CreateGroup(group));
+        }
+
         [HttpGet]
         [Route("groups")]
         public HttpResponseMessage GetGroups()
@@ -115,6 +128,18 @@ namespace NextGenCMS.API.Controllers
         public HttpResponseMessage SearchGroups(string searchText)
         {
             return Request.CreateResponse(HttpStatusCode.OK, this._administration.SearchGroups(searchText));
+        }
+
+        /// <summary>
+        /// This method will delete the groups
+        /// </summary>
+        /// <param name="groups">groups</param>
+        /// <returns>HttpResponseMessage</returns>
+        [HttpPost]
+        [Route("group/delete")]
+        public HttpResponseMessage DeleteGroup(List<string> groups)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, this._administration.DeleteGroup(groups));
         }
         #endregion
 

@@ -31,7 +31,18 @@
         };
 
         vm.addGroup = function () {
-
+            var modalInstance = $modal.open({
+                backdrop: 'static',
+                keyboard: false,
+                templateUrl: './Administration/AddGroupPopup',
+                controller: 'AddGroupPopupController'
+            });
+            modalInstance.result.then(function () {
+            }, function (popupData) {
+                if (popupData !== "close") {
+                    alert(popupData);
+                }
+            });
         };
         vm.goToUser = function () {
             $state.go("Home.User");

@@ -33,6 +33,24 @@
             isArray: false,
             param: {}
         },
+        searchGroups: {
+            method: "GET",
+            url: Global.apiuri + "administration/groups/search/:searchText",
+            isArray: false,
+            param: {}
+        },
+        createGroup: {
+            method: "POST",
+            url: Global.apiuri + "administration/group/create",
+            isArray: false,
+            param: {}
+        },
+        deleteGroups: {
+            method: "POST",
+            url: Global.apiuri + "administration/group/delete",
+            isArray: false,
+            param: {}
+        },
         getPermissions: {
             method: "GET",
             url: Global.apiuri + "administration/permissions/:nodeId",

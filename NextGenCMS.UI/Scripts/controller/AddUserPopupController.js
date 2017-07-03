@@ -1,6 +1,6 @@
 ﻿(function () {
     'use strict';
-    app.controller('AddUserPopupController', ['$scope', '$modalInstance', 'AdministrationApi', '$q',//'Cache','$http',
+    app.controller('AddUserPopupController', ['$scope', '$modalInstance', 'AdministrationApi', '$q',
     function ($scope, $modalInstance, AdministrationApi, $q) {
         $scope.groupDataSource = new kendo.data.DataSource();
         function init() {
@@ -12,7 +12,7 @@
             });
         };
 
-       $scope.user = {
+        $scope.user = {
             userName: "",           //mandatory - the user name for the new user
             firstName: "",          //mandatory - the given Name
             lastName: "",           //mandatory - the family name
@@ -41,9 +41,9 @@
             rejectURL: "page/reject-invite"
         };
 
-        $scope.rolesDataSource =[];
+        $scope.rolesDataSource = [];
         $scope.rolesDataSource.push({
-            "text": "Manager", "value" : "SiteManager"
+            "text": "Manager", "value": "SiteManager"
         });
         $scope.rolesDataSource.push({
             "text": "Collaborator", "value": "SiteCollaborator"
@@ -56,34 +56,34 @@
         });
 
         $scope.customOptions = {
-               dataSource: $scope.rolesDataSource,
-               dataTextField: "text",
-               dataValueField: "value"
+            dataSource: $scope.rolesDataSource,
+            dataTextField: "text",
+            dataValueField: "value"
         };
 
         $scope.createUser = function () {
             $(".loader").show();
             if (validateForm()) {
                 $scope.user.groups = _.pluck($scope.user.groupList, "fullName");
-                $scope.userRole.inviteeUserName =$scope.user.userName ;
-                $scope.userRole.inviteeFirstName= $scope.user.firstName    ;   
-                $scope.userRole.inviteeLastName=$scope.user.lastName;
-                $scope.userRole.inviteeEmail =$scope.user.email;
+                $scope.userRole.inviteeUserName = $scope.user.userName;
+                $scope.userRole.inviteeFirstName = $scope.user.firstName;
+                $scope.userRole.inviteeLastName = $scope.user.lastName;
+                $scope.userRole.inviteeEmail = $scope.user.email;
                 $scope.userRole.inviteeRoleName = $scope.userRole.inviteeRole.value;
 
-                 $scope.createUserRequest ={
+                $scope.createUserRequest = {
                     User: $scope.user,
                     UserRole: $scope.userRole
                 };
                 var data = AdministrationApi.createUser($scope.createUserRequest);
                 $q.all([data.$promise]).then(function (response) {
-                    if (response !== null && response.length == 1) {
+                    if (response !== null && response.length === 1) {
                         var result = response[0];
                         if (result.status === 200) {
                             $modalInstance.dismiss("User created successful.");
                         }
                         else {
-                            $modalInstance.dismiss(result.result.message);
+                            alert(result.result.message);
                         }
                     }
                     $(".loader").hide();
@@ -97,35 +97,49 @@
         };
 
         function validateForm() {
-            if ($scope.user.firstName == undefined || $scope.user.firstName == "") {
+            if ($scope.user.firstName === undefined || $scope.user.firstName === "") {
                 alert("First name is required.");
                 return false;
             }
-            if ($scope.user.lastName == undefined || $scope.user.lastName == "") {
+            if ($scope.user.lastName === undefined || $scope.user.lastName === "") {
                 alert("Last name is required.");
                 return false;
             }
-            if ($scope.user.email == undefined || $scope.user.email == "") {
+            if ($scope.user.email === undefined || $scope.user.email === "") {
                 alert("Email is required.");
                 return false;
             }
-            if ($scope.user.userName == undefined || $scope.user.userName == "") {
+            if ($scope.user.userName === undefined || $scope.user.userName === "") {
                 alert("User name is required.");
                 return false;
             }
-            if ($scope.user.password == undefined || $scope.user.password == "") {
+            else {
+                var usernameArr = $scope.user.userName.split("@");
+                if (usernameArr.length === 1) {
+                    $scope.user.userName = $scope.user.userName + "@" + tenant;
+                }
+                else if (usernameArr.length === 2 && usernameArr[1] != tenant) {
+                    alert("User must belong to same domain as admin: '" + tenant + "'");
+                    return false;
+                }
+                else if (usernameArr.length > 2) {
+                    alert("Invalid user name.");
+                    return false;
+                }
+            }
+            if ($scope.user.password === undefined || $scope.user.password === "") {
                 alert("Password is required.");
                 return false;
             }
-            if ($scope.user.confirmPassword == undefined || $scope.user.confirmPassword == "") {
+            if ($scope.user.confirmPassword === undefined || $scope.user.confirmPassword === "") {
                 alert("Confirm Password is required");
                 return false;
             }
-            if ($scope.user.password != $scope.user.confirmPassword) {
+            if ($scope.user.password !== $scope.user.confirmPassword) {
                 alert("Password do not match.");
                 return false;
             }
-            if ($scope.userRole.inviteeRole == undefined || $scope.userRole.inviteeRole == null || $scope.userRole.inviteeRole.length == 0) {
+            if ($scope.userRole.inviteeRole === undefined || $scope.userRole.inviteeRole === null || $scope.userRole.inviteeRole.length === 0) {
                 alert("Please select role.");
                 return false;
             }

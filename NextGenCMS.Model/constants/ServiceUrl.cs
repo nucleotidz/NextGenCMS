@@ -18,9 +18,14 @@ namespace NextGenCMS.Model.constants
         public static readonly string Logout = AppConfigKeys.ServiceUrl + "/alfresco/s/api/login/ticket/";
 
         /// <summary>
-        /// DELETE - This api will delete the ticket and logout the user
+        /// Token
         /// </summary>
         public static readonly string AlfTicket = "&alf_ticket=";
+        
+        /// <summary>
+        /// Token
+        /// </summary>
+        public static readonly string Alf_Ticket = "/alf_ticket=";
         #endregion
 
         #region "Administration - User"
@@ -58,9 +63,16 @@ namespace NextGenCMS.Model.constants
         /// </summary>
         public static readonly string GetGroups = AppConfigKeys.ServiceUrl + "alfresco/s/api/groups?alf_ticket=";
         /// <summary>
-        /// GET - This api will return all groups
+        /// GET - This api will return all groups based on search text
         /// </summary>
-        public static readonly string SearchGroups = AppConfigKeys.ServiceUrl + "alfresco/s/api/groups?maxItems=250&sortBy=displayName&shortNameFilter=";
+        public static readonly string SearchGroups = AppConfigKeys.ServiceUrl + "alfresco/s/api/groups?maxItems=250&skipCount=0&sortBy=displayName&shortNameFilter=";
+
+        public static readonly string AddGroups = AppConfigKeys.ServiceUrl + "alfresco/s/api/rootgroups/";
+
+        public static readonly string GroupExistSuffix = "/parents?level=ALL&maxSize=10";
+        public static readonly string Groups = AppConfigKeys.ServiceUrl + "alfresco/s/api/groups/";
+
+        public static readonly string AddDeleteGroupUser = AppConfigKeys.ServiceUrl + "alfresco/s/api/groups/Swanesh/children/";
         #endregion
 
         #region Folder File
