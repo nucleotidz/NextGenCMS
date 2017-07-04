@@ -76,7 +76,7 @@ namespace NextGenCMS.UI
                "~/Scripts/controller/HeaderController.js",
                "~/Scripts/controller/UploadController.js",
                "~/Scripts/controller/DeleteController.js",
-               "~/Scripts/controller/DeleteUserController.js",
+               "~/Scripts/controller/DeletePopupController.js",
                "~/Scripts/controller/TaskListController.js",
                "~/Scripts/controller/CreateWorkflowController.js",
                "~/Scripts/controller/ViewEditWFController.js",

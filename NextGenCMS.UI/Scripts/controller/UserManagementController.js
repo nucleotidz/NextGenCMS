@@ -129,6 +129,7 @@
                 deleteUser();
             }
         }
+
         vm.open = function (evt) {
             var entityGrid = $("#userGrid").data("kendoGrid")
             var selectedItems = entityGrid.select();
@@ -157,8 +158,8 @@
             var modalInstance = $modal.open({
                 backdrop: 'static',
                 keyboard: false,
-                templateUrl: './Administration/DeleteUser',
-                controller: 'DeleteUserController',
+                templateUrl: './Administration/DeletePopup',
+                controller: 'DeletePopupController',
                 resolve: {
                     items: function () {
                         return message;
@@ -172,9 +173,9 @@
                     var data = AdministrationApi.deleteUsers($scope.users);
                     $q.all([data.$promise]).then(function (response) {
                         if ($scope.users.length > 1) {
-                            alert("Users deleted successfuly.");
+                            alert("Users deleted successfully.");
                         }
-                        else if ($scope.users.length == 1) alert("User deleted successfuly.");
+                        else if ($scope.users.length == 1) alert("User deleted successfully.");
                         if (vm.searchClicked) vm.SearchUser();
                         $(".loader").hide();
                     });

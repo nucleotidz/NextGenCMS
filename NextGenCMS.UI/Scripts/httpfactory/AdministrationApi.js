@@ -51,6 +51,12 @@
             isArray: false,
             param: {}
         },
+        updateGroup: {
+            method: "POST",
+            url: Global.apiuri + "administration/group/update",
+            isArray: false,
+            param: {}
+        },
         getPermissions: {
             method: "GET",
             url: Global.apiuri + "administration/permissions/:nodeId",

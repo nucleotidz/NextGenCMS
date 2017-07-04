@@ -141,6 +141,18 @@ namespace NextGenCMS.API.Controllers
         {
             return Request.CreateResponse(HttpStatusCode.OK, this._administration.DeleteGroup(groups));
         }
+
+        /// <summary>
+        /// This method will update the group
+        /// </summary>
+        /// <param name="group">group</param>
+        /// <returns>HttpResponseMessage</returns>
+        [HttpPost]
+        [Route("group/update")]
+        public HttpResponseMessage UpdateGroup(Group group)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, this._administration.UpdateGroup(group));
+        }
         #endregion
 
         #region "Permissions"

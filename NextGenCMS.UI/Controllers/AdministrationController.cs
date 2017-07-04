@@ -51,7 +51,7 @@ namespace NextGenCMS.UI.Controllers
         /// 
         /// </summary>
         /// <returns></returns>
-        public ActionResult DeleteUser()
+        public ActionResult DeletePopup()
         {
             return View();
         }

@@ -3,8 +3,15 @@
     app.controller('GroupManagementController', ['$scope', '$modal', 'AdministrationApi', '$q',
     function ($scope, $modal, AdministrationApi, $q) {
         var vm = this;
+        vm.editData = {
+            fullName: "",
+            displayName: "",
+            editMode: false
+        }
         vm.searchClicked = false;
         vm.searchText = "";
+        vm.orientation = "vertical";
+        vm.editGroup = true;
         vm.groupData = [];
         vm.groupDataSource = new kendo.data.DataSource({
             type: "json",
@@ -62,12 +69,17 @@
             ]
         };
 
-        vm.addGroup = function () {
+        vm.addGroup = function (obj) {
             var modalInstance = $modal.open({
                 backdrop: 'static',
                 keyboard: false,
                 templateUrl: './Administration/AddGroupPopup',
-                controller: 'AddGroupPopupController'
+                controller: 'AddGroupPopupController',
+                resolve: {
+                    items: function () {
+                        return obj;
+                    }
+                }
             });
             modalInstance.result.then(function () {
             }, function (popupData) {
@@ -78,7 +90,6 @@
             });
         };
 
-
         vm.searchGroup = function () {
             $(".loader").show();
             vm.searchClicked = true;
@@ -87,13 +98,87 @@
                 data = AdministrationApi.getGroups();
             }
             else {
-                data = AdministrationApi.searchGroups({ "searchText": vm.searchText});
+                data = AdministrationApi.searchGroups({ "searchText": vm.searchText });
             }
 
             $q.all([data.$promise]).then(function (response) {
                 vm.groupData = response[0].data;
                 vm.groupDataSource.read();
                 $(".loader").hide();
+            });
+        }
+
+        vm.onSelect = function (evt) {
+            var action = evt.item.textContent.trim();
+            if (action === "Delete") {
+                deleteUser();
+            }
+            else if (action === "Edit") {
+                var entityGrid = $("#groupGrid").data("kendoGrid");
+                var selectedItems = entityGrid.select();
+                if (selectedItems == null) {
+                    evt.preventDefault();
+                    return;
+                }
+                var data = entityGrid.dataItem(selectedItems);
+                vm.editData = {};
+                vm.editData.fullName = data.fullName;
+                vm.editData.displayName = data.displayName;
+                vm.editData.editMode = true;
+                vm.addGroup(vm.editData);
+            }
+        };
+
+        vm.open = function (evt) {
+            var entityGrid = $("#groupGrid").data("kendoGrid")
+            var selectedItems = entityGrid.select();
+            if (selectedItems == null) {
+                evt.preventDefault();
+                return;
+            }
+            vm.editGroup = selectedItems.length == 1;
+        };
+
+        function deleteUser() {
+            var entityGrid = $("#groupGrid").data("kendoGrid");
+            var selectedRows = entityGrid.select();
+            $scope.groups = [];
+            angular.forEach(selectedRows, function (group) {
+                var groupName = entityGrid.dataItem(group).fullName;
+                $scope.groups.push(groupName);
+            });
+
+            var groupNames = $scope.groups.join(", ");
+            var message = "";
+            if ($scope.groups.length > 1)
+                message = "Do you want to delete groups: " + groupNames + " ?";
+            else
+                message = "Do you want to delete group: " + groupNames + " ?";
+            var modalInstance = $modal.open({
+                backdrop: 'static',
+                keyboard: false,
+                templateUrl: './Administration/DeletePopup',
+                controller: 'DeletePopupController',
+                resolve: {
+                    items: function () {
+                        return message;
+                    }
+                }
+            });
+            modalInstance.result.then(function () {
+            }, function (popupData) {
+                if (popupData === "yes") {
+                    $(".loader").show();
+                    var data = AdministrationApi.deleteGroups($scope.groups);
+                    $q.all([data.$promise]).then(function (response) {
+                        if ($scope.groups.length > 1) {
+                            alert("Groups deleted successfully.");
+                        }
+                        else if ($scope.groups.length == 1) alert("Group deleted successfully.");
+                        if (vm.searchClicked) vm.searchGroup();
+                        $(".loader").hide();
+                    });
+                }
             });
         }
     }]);

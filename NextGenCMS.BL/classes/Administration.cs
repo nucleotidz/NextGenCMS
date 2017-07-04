@@ -291,6 +291,17 @@ namespace NextGenCMS.BL.classes
             return response;
         }
 
+        public bool UpdateGroup(Group group)
+        {
+            string data = string.Empty;
+            if (HttpContext.Current.Items[Filter.Token] != null)
+            {
+                data = this._apiHelper.Put(ServiceUrl.Groups + group.fullName + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token], JsonConvert.SerializeObject(group));
+            }
+
+            return true;
+        }
+
         public bool DeleteGroup(List<string> groups)
         {
             string data = string.Empty;
@@ -298,7 +309,7 @@ namespace NextGenCMS.BL.classes
             {
                 foreach (var group in groups)
                 {
-                    data = this._apiHelper.Delete(ServiceUrl.Groups + group + ServiceUrl.AlfTicket + HttpContext.Current.Items[Filter.Token]);
+                    data = this._apiHelper.Delete(ServiceUrl.Groups + group + "?alf_ticket=" + HttpContext.Current.Items[Filter.Token]);
                 }
             }
 

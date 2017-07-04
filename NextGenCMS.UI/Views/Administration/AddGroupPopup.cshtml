@@ -22,7 +22,7 @@
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="form-group">
-                <input type="text" class="form-control" ng-model="group.fullName" autofocus />
+                <input type="text" class="form-control" ng-model="group.fullName" autofocus ng-disabled="group.editMode" />
             </div>
         </div>
     </div>
@@ -43,5 +43,6 @@
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-default" ng-click="closePopup();">Close</button>
-    <button type="button" class="btn btn-primary" ng-click="createGroup();">Save</button>
+    <button type="button" class="btn btn-primary" ng-show="!group.editMode" ng-click="createGroup();">Save</button>
+    <button type="button" class="btn btn-primary" ng-show="group.editMode" ng-click="updateGroup();">Update</button>
 </div>

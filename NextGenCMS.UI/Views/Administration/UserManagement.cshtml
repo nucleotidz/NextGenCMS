@@ -10,14 +10,14 @@
 </div>
 <div class="btnPane">
     <div class="row">
+        <div class="col-xs-8 padd0">
+            <button type="button" class="btn btn-primary btn-sm bluebtn whiteText" ng-click="vm.addUser();">Create User<span class="glyphicon glyphicon-plus"></span></button>
+        </div>
         <div class="col-xs-4 pull-right">
             <div class="input-group">
                 <input type="text" class="form-control" ng-model="vm.searchText" placeholder="Search User">
                 <div class="input-group-addon" ng-click="vm.SearchUser();" style="cursor:pointer;"><span class="glyphicon glyphicon-search" /></div>
             </div>
-        </div>
-        <div class="col-xs-8">
-            <button type="button" class="btn btn-primary btn-sm bluebtn whiteText pull-left" ng-click="vm.addUser();">Create User<span class="glyphicon glyphicon-plus"></span></button>
         </div>
     </div>
 </div>
@@ -34,6 +34,6 @@
     k-on-open="vm.open(kendoEvent);"
     k-orientation="vm.orientation"
     k-on-select="vm.onSelect(kendoEvent);">
-    <li ng-show="vm.editUser"><span class="glyphicon glyphicon-edit"></span>Edit</li>
-    <li><span class="glyphicon glyphicon-trash"></span>Delete</li>
+    <li ng-show="vm.editUser"><span class="glyphicon glyphicon-edit"></span> Edit</li>
+    <li><span class="glyphicon glyphicon-trash"></span> Delete</li>
 </ul>

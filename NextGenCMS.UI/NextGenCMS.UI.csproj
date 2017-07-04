@@ -212,7 +212,7 @@
     <Content Include="Scripts\controller\AddFolderPopupController.js" />
     <Content Include="Scripts\controller\AddUserPopupController.js" />
     <Content Include="Scripts\controller\CreateWorkflowController.js" />
-    <Content Include="Scripts\controller\DeleteUserController.js" />
+    <Content Include="Scripts\controller\DeletePopupController.js" />
     <Content Include="Scripts\controller\DeleteController.js" />
     <Content Include="Scripts\controller\FolderController.js" />
     <Content Include="Scripts\controller\GroupManagementController.js" />
@@ -301,7 +301,7 @@
     <None Include="Properties\PublishProfiles\NextGenCMS.pubxml" />
     <Content Include="Views\Folder\Upload.cshtml" />
     <Content Include="Views\Folder\Delete.cshtml" />
-    <Content Include="Views\Administration\DeleteUser.cshtml" />
+    <Content Include="Views\Administration\DeletePopup.cshtml" />
     <Content Include="Views\Workflow\WorkflowDetail.cshtml" />
     <Content Include="Views\Workflow\TaskList.cshtml" />
     <Content Include="Views\Workflow\ViewEditWorkFlow.cshtml" />

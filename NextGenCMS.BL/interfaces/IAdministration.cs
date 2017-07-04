@@ -50,6 +50,7 @@ namespace NextGenCMS.BL.interfaces
         WebResponseModel CreateGroup(Group group);
 
         bool DeleteGroup(List<string> groups);
+        bool UpdateGroup(Group group);
 
         /// <summary>
         /// This method will return all the groups
