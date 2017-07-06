@@ -11,5 +11,12 @@ namespace NextGenCMS.Model.classes.administration
         public string displayName { get; set; }
         public string url { get; set; }
         public List<string> zones { get; set; }
+        public List<GroupUsers> users { get; set; }
+    }
+
+    public class GroupUsers
+    {
+        public string shortname  { get; set; }
+        public bool removed { get; set; }
     }
 }

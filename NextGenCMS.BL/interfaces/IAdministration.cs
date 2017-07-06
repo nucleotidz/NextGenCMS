@@ -74,5 +74,9 @@ namespace NextGenCMS.BL.interfaces
         SiteGroupAndUsers SearchUserAndGroups(string searchText);
 
         bool SavePermissions(SavePermission permissions);
+
+        bool ManageGroupUser(Group group);
+
+        GetGroupsResponse GetGroupUsers(string groupname);
     }
 }

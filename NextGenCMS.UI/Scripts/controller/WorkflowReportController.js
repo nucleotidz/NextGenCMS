@@ -125,7 +125,7 @@
                         vm.WorkflowData.description = data.description;
                         if (data.initiator != null) {
                             var lastName = data.initiator.lastName;
-                            vm.WorkflowData.username = data.initiator.firstName + (lastName === null && lastName === "" ? "" : " " + lastName);
+                            vm.WorkflowData.username = data.initiator.firstName + (lastName === null || lastName === "" ? "" : " " + lastName);
                         }
                         else {
                             vm.WorkflowData.username = "";

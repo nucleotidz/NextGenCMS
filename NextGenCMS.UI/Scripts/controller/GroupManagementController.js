@@ -11,7 +11,7 @@
         vm.searchClicked = false;
         vm.searchText = "";
         vm.orientation = "vertical";
-        vm.editGroup = true;
+        vm.singleSelect = true;
         vm.groupData = [];
         vm.groupDataSource = new kendo.data.DataSource({
             type: "json",
@@ -56,7 +56,7 @@
                 previousNext: false,
                 messages: {
                     empty: "No Records exist",
-                    display: "No of records is: {2}"
+                    display: "No of records: {2}"
                 }
             },
             columns: [
@@ -113,7 +113,7 @@
             if (action === "Delete") {
                 deleteUser();
             }
-            else if (action === "Edit") {
+            else {
                 var entityGrid = $("#groupGrid").data("kendoGrid");
                 var selectedItems = entityGrid.select();
                 if (selectedItems == null) {
@@ -124,9 +124,34 @@
                 vm.editData = {};
                 vm.editData.fullName = data.fullName;
                 vm.editData.displayName = data.displayName;
-                vm.editData.editMode = true;
-                vm.addGroup(vm.editData);
+                if (action === "Edit") {
+                    vm.editData.editMode = true;
+                    vm.addGroup(vm.editData);
+                }
+                else if (action === "Manage Users") {
+                    vm.ManageUsers();
+                }
             }
+        };
+
+        vm.ManageUsers = function () {
+            var modalInstance = $modal.open({
+                backdrop: 'static',
+                keyboard: false,
+                templateUrl: './Administration/ManageGroupUsersPopup',
+                controller: 'ManageGroupUsersPopupController',
+                resolve: {
+                    items: function () {
+                        return vm.editData;
+                    }
+                }
+            });
+            modalInstance.result.then(function () {
+            }, function (popupData) {
+                if (popupData !== "close") {
+                    alert(popupData);
+                }
+            });
         };
 
         vm.open = function (evt) {
@@ -136,7 +161,7 @@
                 evt.preventDefault();
                 return;
             }
-            vm.editGroup = selectedItems.length == 1;
+            vm.singleSelect = selectedItems.length == 1;
         };
 
         function deleteUser() {

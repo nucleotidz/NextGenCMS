@@ -88,7 +88,8 @@ namespace NextGenCMS.UI
                "~/Scripts/controller/MenuController.js",
                "~/Scripts/controller/ManagePermissionsPopupController.js",
                 "~/Scripts/controller/MetaDataController.js",
-               "~/Scripts/controller/AddGroupPopupController.js"
+               "~/Scripts/controller/AddGroupPopupController.js",
+               "~/Scripts/controller/ManageGroupUsersPopupController.js"
              ));
         }
         private static void LoadDirective(BundleCollection bundles)

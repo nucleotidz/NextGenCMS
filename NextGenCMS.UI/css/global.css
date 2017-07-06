@@ -1060,3 +1060,13 @@ ul.searchList {
 .font10 {
     font-size: 10px;
 }
+
+.k-listbox:first-of-type{
+    width: 50%;
+    margin-right: 1px;
+}
+
+.k-widget.k-listbox{
+    width: 49%;
+    margin-right: 1px;
+}

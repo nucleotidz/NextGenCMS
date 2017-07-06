@@ -21,11 +21,15 @@ namespace NextGenCMS.Model.constants
         /// Token
         /// </summary>
         public static readonly string AlfTicket = "&alf_ticket=";
-        
+
         /// <summary>
         /// Token
         /// </summary>
         public static readonly string Alf_Ticket = "/alf_ticket=";
+        /// <summary>
+        /// Token
+        /// </summary>
+        public static readonly string Alf_Ticket_QM = "?alf_ticket=";
         #endregion
 
         #region "Administration - User"
@@ -72,7 +76,11 @@ namespace NextGenCMS.Model.constants
         public static readonly string GroupExistSuffix = "/parents?level=ALL&maxSize=10";
         public static readonly string Groups = AppConfigKeys.ServiceUrl + "alfresco/s/api/groups/";
 
-        public static readonly string AddDeleteGroupUser = AppConfigKeys.ServiceUrl + "alfresco/s/api/groups/Swanesh/children/";
+        public static readonly string GroupUser = AppConfigKeys.ServiceUrl + "alfresco/s/api/groups/";
+
+        public static readonly string GroupUserSuffix = "/children";
+
+        public static readonly string GetGroupUserSuffix = "/children?sortBy=displayName&maxItems=50&skipCount=0";
         #endregion
 
         #region Folder File

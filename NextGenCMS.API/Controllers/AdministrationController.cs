@@ -153,6 +153,20 @@ namespace NextGenCMS.API.Controllers
         {
             return Request.CreateResponse(HttpStatusCode.OK, this._administration.UpdateGroup(group));
         }
+
+        [HttpGet]
+        [Route("group/users/get/{groupname}")]
+        public HttpResponseMessage GetGroupUsers(string groupname)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, this._administration.GetGroupUsers(groupname));
+        }
+
+        [HttpPost]
+        [Route("group/users/manage")]
+        public HttpResponseMessage ManageGroupUser(Group group)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, this._administration.ManageGroupUser(group));
+        }
         #endregion
 
         #region "Permissions"

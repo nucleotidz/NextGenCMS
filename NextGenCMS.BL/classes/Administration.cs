@@ -316,20 +316,50 @@ namespace NextGenCMS.BL.classes
             return true;
         }
 
-        public void AddGroupUser(string username)
+
+        public bool ManageGroupUser(Group group)
         {
-            if (HttpContext.Current.Items[Filter.Token] != null)
-            {
-                var response = this._apiHelper.Submit(ServiceUrl.AddDeleteGroupUser + username + ServiceUrl.Alf_Ticket + HttpContext.Current.Items[Filter.Token], "");
-            }
+            var result = AddGroupUser(group);
+            return DeleteGroupUser(group);
         }
 
-        public void DeleteGroupUser(string username)
+        private bool AddGroupUser(Group group)
         {
             if (HttpContext.Current.Items[Filter.Token] != null)
             {
-                var response = this._apiHelper.Delete(ServiceUrl.AddDeleteGroupUser + username + ServiceUrl.Alf_Ticket + HttpContext.Current.Items[Filter.Token]);
+                foreach (var user in group.users.Where(users => !users.removed))
+                {
+                    var response = this._apiHelper.Submit(ServiceUrl.GroupUser + group.fullName + ServiceUrl.GroupUserSuffix + "/" + user.shortname + ServiceUrl.Alf_Ticket_QM + HttpContext.Current.Items[Filter.Token], "");
+                }
             }
+
+            return true;
+        }
+
+        private bool DeleteGroupUser(Group group)
+        {
+            if (HttpContext.Current.Items[Filter.Token] != null)
+            {
+                foreach (var user in group.users.Where(users => users.removed))
+                {
+                    var response = this._apiHelper.Delete(ServiceUrl.GroupUser + group.fullName + ServiceUrl.GroupUserSuffix + "/" + user.shortname + ServiceUrl.Alf_Ticket_QM + HttpContext.Current.Items[Filter.Token]);
+                }
+            }
+
+            return true;
+        }
+
+        public GetGroupsResponse GetGroupUsers(string groupname)
+        {
+            string data = string.Empty;
+            if (HttpContext.Current.Items[Filter.Token] != null)
+            {
+                data = this._apiHelper.Get(ServiceUrl.GroupUser + groupname + ServiceUrl.GetGroupUserSuffix + ServiceUrl.AlfTicket + HttpContext.Current.Items[Filter.Token]);
+            }
+
+            var response = JsonConvert.DeserializeObject<GetGroupsResponse>(data);
+
+            return response;
         }
         #endregion
 

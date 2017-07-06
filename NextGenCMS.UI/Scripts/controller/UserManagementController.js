@@ -98,7 +98,7 @@
                 previousNext: false,
                 messages: {
                     empty: "No Records exist",
-                    display: "No of records is: {2}"
+                    display: "No of records: {2}"
                 }
             },
             columns: [

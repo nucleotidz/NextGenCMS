@@ -57,6 +57,18 @@
             isArray: false,
             param: {}
         },
+        getGroupUsers: {
+            method: "GET",
+            url: Global.apiuri + "administration/group/users/get/:groupname",
+            isArray: false,
+            param: {}
+        },
+        manageGroupUsers: {
+            method: "POST",
+            url: Global.apiuri + "administration/group/users/manage",
+            isArray: false,
+            param: {}
+        },
         getPermissions: {
             method: "GET",
             url: Global.apiuri + "administration/permissions/:nodeId",
